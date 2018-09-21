@@ -1,0 +1,12 @@
+*.log
+*.o
+*.elf
+*.map
+*.d
+*.bak
+**/nbproject/private
+**/nbproject/Makefile-*
+**/nbproject/Package-*
+**/*.X/debug
+**/*.X/dist
+**/*.X/build

@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Module name="net" id="65AF1D34-FDC5-40A1-A2B6-7BEA2D03EA5D" version="1.0.0">
-<!--
+<Module name="Bluetooth" id="E5FFE3B6-60BF-4B8D-AE69-73C8FADEA22F" version="1.0.0">			       
     <ConfigRoot path="config/module.py"/>
--->
 </Module>
