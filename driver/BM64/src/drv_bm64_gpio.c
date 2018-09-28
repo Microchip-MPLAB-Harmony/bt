@@ -48,23 +48,6 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "driver/bm64/drv_bm64_gpio.h"
 #include "peripheral/pio/plib_pio.h"
 
-// modified for bt audio dev kit
-
-// this is now done in system_config.h/sys_ports_static.c using SYS_PORT_B_TRIS and SYS_PORT_G_TRIS  #defines
-//void GPIO_Initialize ( void )
-//{  
-//    PLIB_PORTS_PinDirectionOutputSet(PORTS_ID_0,PORT_CHANNEL_G,PORTS_BIT_POS_15);    // BT RST - RG15
-//    PLIB_PORTS_PinDirectionOutputSet(PORTS_ID_0,PORT_CHANNEL_B,PORTS_BIT_POS_2);    // MFB    - RB2
-//}
-
-//also have in system_config.h (defined by BSP)
-/*** Functions for BM64_MFB pin ***/
-//#define BM64_MFBToggle() PLIB_PORTS_PinToggle(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_2)
-//#define BM64_MFBOn() PLIB_PORTS_PinSet(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_2)
-//#define BM64_MFBOff() PLIB_PORTS_PinClear(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_2)
-//#define BM64_MFBStateGet() PLIB_PORTS_PinGetLatched(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_2)
-//#define BM64_MFBStateSet(Value) PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_2, Value)
-
 void DRV_BM64_MFB_SetHigh(void)
 {   
     BM64_MFB_Set();
@@ -85,46 +68,24 @@ uint32_t DRV_BM64_MFB_GetValue(void)
     return BM64_MFB_Get();
 }
 
-// and in bsp.c:
-//void BSP_BluetoothPinStateSet(BSP_BT_STATE state)/
-//{
-//    PLIB_PORTS_PinWrite (PORTS_ID_0 , PORT_CHANNEL_G , PORTS_BIT_POS_15, state );
-//}
-//void BSP_BluetoothPinSetHigh(void)
-//{   
-//    PLIB_PORTS_PinSet(PORTS_ID_0, PORT_CHANNEL_G, PORTS_BIT_POS_15);   
-//}
-//void BSP_BluetoothPinSetLow(void)
-//{    
-//    PLIB_PORTS_PinClear(PORTS_ID_0, PORT_CHANNEL_G, PORTS_BIT_POS_15);    
-//}
-//void BSP_BluetoothPinToggle(void)
-//{
-//    PLIB_PORTS_PinToggle(PORTS_ID_0, PORT_CHANNEL_G, PORTS_BIT_POS_15);    
-//}
-//uint32_t BSP_BluetoothPinGetValue(void)
-//{
-//    return PLIB_PORTS_PinGet(PORTS_ID_0, PORT_CHANNEL_G, PORTS_BIT_POS_15);
-//}
-
 void DRV_BM64_RESET_SetHigh(void)
 {
-    BM64_STBYRST_Set();
+    STBYRST_Set();
 }
 
 void DRV_BM64_RESET_SetLow(void)
 {   
-    BM64_STBYRST_Clear();    
+    STBYRST_Clear();    
 }
 
 void DRV_BM64_RESET_Toggle(void)
 {
-    BM64_STBYRST_Toggle();   
+    STBYRST_Toggle();   
 }
 
 uint32_t DRV_BM64_RESET_GetValue(void)
 {
-    return BM64_STBYRST_Get();
+    return STBYRST_Get();
 }
 
 

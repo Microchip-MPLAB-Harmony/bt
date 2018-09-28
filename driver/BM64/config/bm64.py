@@ -45,33 +45,27 @@ def instantiateComponent(bm64Component):
     bm64IncludeBLE.setVisible(True)
     bm64IncludeBLE.setLabel("Include BLE Features?")
     bm64IncludeBLE.setDefaultValue(True)
-    #select DRIVER
-    #select USE_DRV_TMR_NEEDED
-    #select USE_SYS_TMR_NEEDED
-    #select USE_DRV_USART_NEEDED
-    #set DRV_USART_PERIPHERAL_ID_IDX0 to "USART_ID_2"
-    #set DRV_USART_BAUD_RATE_IDX0 to "115200"
 
     # Enable "Generate Harmony Application Files" option in MHC
-    Database.setSymbolValue("Harmony", "ENABLE_APP_FILE", True, 1)
+    Database.setSymbolValue("HarmonyCore", "ENABLE_APP_FILE", True, 1)
 
     # Enable "Generate Harmony Driver Common Files" option in MHC
-    Database.setSymbolValue("Harmony", "ENABLE_DRV_COMMON", True, 1)
+    Database.setSymbolValue("HarmonyCore", "ENABLE_DRV_COMMON", True, 1)
 
     # Enable "Generate Harmony System Service Common Files" option in MHC
-    Database.setSymbolValue("Harmony", "ENABLE_SYS_COMMON", True, 1)
+    Database.setSymbolValue("HarmonyCore", "ENABLE_SYS_COMMON", True, 1)
 
     # Enable "Enable System Interrupt" option in MHC
-    Database.setSymbolValue("Harmony", "ENABLE_SYS_INT", True, 1)
+    Database.setSymbolValue("HarmonyCore", "ENABLE_SYS_INT", True, 1)
 
     # Enable "Enable System Ports" option in MHC
-    Database.setSymbolValue("Harmony", "ENABLE_SYS_PORTS", True, 1)
+    Database.setSymbolValue("HarmonyCore", "ENABLE_SYS_PORTS", True, 1)
 
     # Enable "Enable System DMA" option in MHC
-    Database.setSymbolValue("Harmony", "ENABLE_SYS_DMA", True, 1)
+    Database.setSymbolValue("HarmonyCore", "ENABLE_SYS_DMA", True, 1)
 
     # Enable "Enable OSAL" option in MHC
-    Database.setSymbolValue("Harmony", "ENABLE_OSAL", True, 1)
+    Database.setSymbolValue("HarmonyCore", "ENABLE_OSAL", True, 1)
 
     ############################################################################
     #### Code Generation ####

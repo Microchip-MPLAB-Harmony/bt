@@ -67,6 +67,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include <stdbool.h>
 #include <stdint.h>
 #include <stddef.h>     // for typedef __SIZE_TYPE__ size_t needed in  osal_impl_basic.h
+#include "system/system_module.h"
 #include "driver/driver_common.h"
 #include "configuration.h"
 <#if INCLUDE_BM64_I2S == true>
