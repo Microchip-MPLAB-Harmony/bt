@@ -1,3 +1,26 @@
+# coding: utf-8
+################################################################################
+# Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+# 
+# Subject to your compliance with these terms, you may use Microchip software 
+# and any derivatives exclusively with Microchip products. It is your 
+# responsibility to comply with third party license terms applicable to your 
+# use of third party software (including open source software) that may 
+# accompany Microchip software.
+# 
+# THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER 
+# EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED 
+# WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A PARTICULAR 
+# PURPOSE.
+# 
+# IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
+# INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND 
+# WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS 
+# BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE 
+# FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN 
+# ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY, 
+# THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+################################################################################
 def instantiateComponent(bm64Component):
     Log.writeInfoMessage("BM64 instantiated")
 
@@ -76,64 +99,64 @@ def instantiateComponent(bm64Component):
     bm64SymHeaderFile.setMarkup(True) 
     bm64SymHeaderFile.setSourcePath("templates/drv_bm64.h.ftl")
     bm64SymHeaderFile.setOutputName("drv_bm64.h")
-    bm64SymHeaderFile.setDestPath("driver/bm64/")
-    bm64SymHeaderFile.setProjectPath("config/" + configName + "/driver/bm64/")
+    bm64SymHeaderFile.setDestPath("bt/driver/bm64/")
+    bm64SymHeaderFile.setProjectPath("config/" + configName + "/bt/driver/bm64/")
     bm64SymHeaderFile.setType("HEADER")
     bm64SymHeaderFile.setOverwrite(True)
 
     bm64SymHeaderFile = bm64Component.createFileSymbol("DRV_BM64_BLE_H", None)
     bm64SymHeaderFile.setSourcePath("drv_bm64_ble.h")
     bm64SymHeaderFile.setOutputName("drv_bm64_ble.h")
-    bm64SymHeaderFile.setDestPath("driver/bm64/")
-    bm64SymHeaderFile.setProjectPath("config/" + configName + "/driver/bm64/")
+    bm64SymHeaderFile.setDestPath("bt/driver/bm64/")
+    bm64SymHeaderFile.setProjectPath("config/" + configName + "/bt/driver/bm64/")
     bm64SymHeaderFile.setType("HEADER")
     bm64SymHeaderFile.setOverwrite(True)
 
     bm64SymHeaderFile = bm64Component.createFileSymbol("DRV_BM64_COMMAND_DECODE_H", None)
     bm64SymHeaderFile.setSourcePath("drv_bm64_command_decode.h")
     bm64SymHeaderFile.setOutputName("drv_bm64_command_decode.h")
-    bm64SymHeaderFile.setDestPath("driver/bm64/")
-    bm64SymHeaderFile.setProjectPath("config/" + configName + "/driver/bm64/")
+    bm64SymHeaderFile.setDestPath("bt/driver/bm64/")
+    bm64SymHeaderFile.setProjectPath("config/" + configName + "/bt/driver/bm64/")
     bm64SymHeaderFile.setType("HEADER")
     bm64SymHeaderFile.setOverwrite(True)
 
     bm64SymHeaderFile = bm64Component.createFileSymbol("DRV_BM64_COMMAND_SEND_H", None)
     bm64SymHeaderFile.setSourcePath("drv_bm64_command_send.h")
     bm64SymHeaderFile.setOutputName("drv_bm64_command_send.h")
-    bm64SymHeaderFile.setDestPath("driver/bm64/")
-    bm64SymHeaderFile.setProjectPath("config/" + configName + "/driver/bm64/")
+    bm64SymHeaderFile.setDestPath("bt/driver/bm64/")
+    bm64SymHeaderFile.setProjectPath("config/" + configName + "/bt/driver/bm64/")
     bm64SymHeaderFile.setType("HEADER")
     bm64SymHeaderFile.setOverwrite(True)
 
     bm64SymHeaderFile = bm64Component.createFileSymbol("DRV_BM64_GPIO_H", None)
     bm64SymHeaderFile.setSourcePath("drv_bm64_gpio.h")
     bm64SymHeaderFile.setOutputName("drv_bm64_gpio.h")
-    bm64SymHeaderFile.setDestPath("driver/bm64/")
-    bm64SymHeaderFile.setProjectPath("config/" + configName + "/driver/bm64/")
+    bm64SymHeaderFile.setDestPath("bt/driver/bm64/")
+    bm64SymHeaderFile.setProjectPath("config/" + configName + "/bt/driver/bm64/")
     bm64SymHeaderFile.setType("HEADER")
     bm64SymHeaderFile.setOverwrite(True)
 
     bm64SymHeaderFile = bm64Component.createFileSymbol("DRV_BM64_LINE_IN_H", None)
     bm64SymHeaderFile.setSourcePath("drv_bm64_line_in.h")
     bm64SymHeaderFile.setOutputName("drv_bm64_line_in.h")
-    bm64SymHeaderFile.setDestPath("driver/bm64/")
-    bm64SymHeaderFile.setProjectPath("config/" + configName + "/driver/bm64/")
+    bm64SymHeaderFile.setDestPath("bt/driver/bm64/")
+    bm64SymHeaderFile.setProjectPath("config/" + configName + "/bt/driver/bm64/")
     bm64SymHeaderFile.setType("HEADER")
     bm64SymHeaderFile.setOverwrite(True)
 
     bm64SymHeaderFile = bm64Component.createFileSymbol("DRV_BM64_SHA1_H", None)
     bm64SymHeaderFile.setSourcePath("drv_bm64_sha1.h")
     bm64SymHeaderFile.setOutputName("drv_bm64_sha1.h")
-    bm64SymHeaderFile.setDestPath("driver/bm64/")
-    bm64SymHeaderFile.setProjectPath("config/" + configName + "/driver/bm64/")
+    bm64SymHeaderFile.setDestPath("bt/driver/bm64/")
+    bm64SymHeaderFile.setProjectPath("config/" + configName + "/bt/driver/bm64/")
     bm64SymHeaderFile.setType("HEADER")
     bm64SymHeaderFile.setOverwrite(True)
 
     bm64SymHeaderFile = bm64Component.createFileSymbol("DRV_BM64_UART_H", None)
     bm64SymHeaderFile.setSourcePath("drv_bm64_uart.h")
     bm64SymHeaderFile.setOutputName("drv_bm64_uart.h")
-    bm64SymHeaderFile.setDestPath("driver/bm64/")
-    bm64SymHeaderFile.setProjectPath("config/" + configName + "/driver/bm64/")
+    bm64SymHeaderFile.setDestPath("bt/driver/bm64/")
+    bm64SymHeaderFile.setProjectPath("config/" + configName + "/bt/driver/bm64/")
     bm64SymHeaderFile.setType("HEADER")
     bm64SymHeaderFile.setOverwrite(True)
 
@@ -141,8 +164,8 @@ def instantiateComponent(bm64Component):
     bm64SymHeaderLocalFile.setMarkup(True) 
     bm64SymHeaderLocalFile.setSourcePath("templates/drv_bm64_local.h.ftl")
     bm64SymHeaderLocalFile.setOutputName("drv_bm64_local.h")
-    bm64SymHeaderLocalFile.setDestPath("driver/bm64/")
-    bm64SymHeaderLocalFile.setProjectPath("config/" + configName + "/driver/bm64/")
+    bm64SymHeaderLocalFile.setDestPath("bt/driver/bm64/")
+    bm64SymHeaderLocalFile.setProjectPath("config/" + configName + "/bt/driver/bm64/")
     bm64SymHeaderLocalFile.setType("SOURCE")
     bm64SymHeaderLocalFile.setOverwrite(True)
 
@@ -150,56 +173,56 @@ def instantiateComponent(bm64Component):
     bm64SymSourceFile.setMarkup(True) 
     bm64SymSourceFile.setSourcePath("templates/drv_bm64.c.ftl")
     bm64SymSourceFile.setOutputName("drv_bm64.c")
-    bm64SymSourceFile.setDestPath("driver/bm64/")
-    bm64SymSourceFile.setProjectPath("config/" + configName + "/driver/bm64/")
+    bm64SymSourceFile.setDestPath("bt/driver/bm64/")
+    bm64SymSourceFile.setProjectPath("config/" + configName + "/bt/driver/bm64/")
     bm64SymSourceFile.setType("SOURCE")
     bm64SymSourceFile.setOverwrite(True)
    
     bm64SymSourceFile = bm64Component.createFileSymbol("DRV_BM64_BLE_C", None)
     bm64SymSourceFile.setSourcePath("src/drv_bm64_ble.c")
     bm64SymSourceFile.setOutputName("drv_bm64_ble.c")
-    bm64SymSourceFile.setDestPath("driver/bm64/")
-    bm64SymSourceFile.setProjectPath("config/" + configName + "/driver/bm64/")
+    bm64SymSourceFile.setDestPath("bt/driver/bm64/")
+    bm64SymSourceFile.setProjectPath("config/" + configName + "/bt/driver/bm64/")
     bm64SymSourceFile.setType("SOURCE")
     bm64SymSourceFile.setOverwrite(True)
 
     bm64SymSourceFile = bm64Component.createFileSymbol("DRV_BM64_COMMAND_DECODE_C", None)
     bm64SymSourceFile.setSourcePath("src/drv_bm64_command_decode.c")
     bm64SymSourceFile.setOutputName("drv_bm64_command_decode.c")
-    bm64SymSourceFile.setDestPath("driver/bm64/")
-    bm64SymSourceFile.setProjectPath("config/" + configName + "/driver/bm64/")
+    bm64SymSourceFile.setDestPath("bt/driver/bm64/")
+    bm64SymSourceFile.setProjectPath("config/" + configName + "/bt/driver/bm64/")
     bm64SymSourceFile.setType("SOURCE")
     bm64SymSourceFile.setOverwrite(True)
 
     bm64SymSourceFile = bm64Component.createFileSymbol("DRV_BM64_COMMAND_SEND_C", None)
     bm64SymSourceFile.setSourcePath("src/drv_bm64_command_send.c")
     bm64SymSourceFile.setOutputName("drv_bm64_command_send.c")
-    bm64SymSourceFile.setDestPath("driver/bm64/")
-    bm64SymSourceFile.setProjectPath("config/" + configName + "/driver/bm64/")
+    bm64SymSourceFile.setDestPath("bt/driver/bm64/")
+    bm64SymSourceFile.setProjectPath("config/" + configName + "/bt/driver/bm64/")
     bm64SymSourceFile.setType("SOURCE")
     bm64SymSourceFile.setOverwrite(True)
 
     bm64SymSourceFile = bm64Component.createFileSymbol("DRV_BM64_GPIO_C", None)
     bm64SymSourceFile.setSourcePath("src/drv_bm64_gpio.c")
     bm64SymSourceFile.setOutputName("drv_bm64_gpio.c")
-    bm64SymSourceFile.setDestPath("driver/bm64/")
-    bm64SymSourceFile.setProjectPath("config/" + configName + "/driver/bm64/")
+    bm64SymSourceFile.setDestPath("bt/driver/bm64/")
+    bm64SymSourceFile.setProjectPath("config/" + configName + "/bt/driver/bm64/")
     bm64SymSourceFile.setType("SOURCE")
     bm64SymSourceFile.setOverwrite(True)
 
     bm64SymSourceFile = bm64Component.createFileSymbol("DRV_BM64_LINE_IN_C", None)
     bm64SymSourceFile.setSourcePath("src/drv_bm64_line_in.c")
     bm64SymSourceFile.setOutputName("drv_bm64_line_in.c")
-    bm64SymSourceFile.setDestPath("driver/bm64/")
-    bm64SymSourceFile.setProjectPath("config/" + configName + "/driver/bm64/")
+    bm64SymSourceFile.setDestPath("bt/driver/bm64/")
+    bm64SymSourceFile.setProjectPath("config/" + configName + "/bt/driver/bm64/")
     bm64SymSourceFile.setType("SOURCE")
     bm64SymSourceFile.setOverwrite(True)
 
     bm64SymSourceFile = bm64Component.createFileSymbol("DRV_BM64_SHA1_C", None)
     bm64SymSourceFile.setSourcePath("src/drv_bm64_sha1.c")
     bm64SymSourceFile.setOutputName("drv_bm64_sha1.c")
-    bm64SymSourceFile.setDestPath("driver/bm64/")
-    bm64SymSourceFile.setProjectPath("config/" + configName + "/driver/bm64/")
+    bm64SymSourceFile.setDestPath("bt/driver/bm64/")
+    bm64SymSourceFile.setProjectPath("config/" + configName + "/bt/driver/bm64/")
     bm64SymSourceFile.setType("SOURCE")
     bm64SymSourceFile.setOverwrite(True)
 
@@ -207,8 +230,8 @@ def instantiateComponent(bm64Component):
     bm64SymSourceFile.setMarkup(True) 
     bm64SymSourceFile.setSourcePath("templates/drv_bm64_uart.c.ftl")
     bm64SymSourceFile.setOutputName("drv_bm64_uart.c")
-    bm64SymSourceFile.setDestPath("driver/bm64/")
-    bm64SymSourceFile.setProjectPath("config/" + configName + "/driver/bm64/")
+    bm64SymSourceFile.setDestPath("bt/driver/bm64/")
+    bm64SymSourceFile.setProjectPath("config/" + configName + "/bt/driver/bm64/")
     bm64SymSourceFile.setType("SOURCE")
     bm64SymSourceFile.setOverwrite(True)
    
