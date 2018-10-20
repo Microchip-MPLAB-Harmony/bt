@@ -29,7 +29,7 @@
 
 #include <string.h>
 #include "app.h"        // also beings in app_tone_lookup_table.h
-#include "driver/bm64/drv_bm64.h"     // only reference to BM64 (others use generic BT))
+#include "bt/driver/bm64/drv_bm64.h"     // only reference to BM64 (others use generic BT))
 #include "ble.h"
 extern BLE_DATA bleData;
 

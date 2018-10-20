@@ -59,7 +59,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "configuration.h"
 #include "definitions.h"
 
-#include "driver/bm64/drv_bm64.h"     // only reference to BM64 (others use generic BT))
+#include "bt/driver/bm64/drv_bm64.h"     // only reference to BM64 (others use generic BT))
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
