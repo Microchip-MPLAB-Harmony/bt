@@ -121,9 +121,6 @@ extern "C" {
 /* Disable Host Support */
 #define DRV_USBHSV1_HOST_SUPPORT      false
 
-
-
-
 /* The USB Device Layer will not initialize the USB Driver */
 #define USB_DEVICE_DRIVER_INITIALIZE_EXPLICIT
 
