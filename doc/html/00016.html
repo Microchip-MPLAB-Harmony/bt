@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<html>
+<head>
+<title>Creating a Bluetooth Project from Scratch</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="Doc-O-Matic" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <link rel="STYLESHEET" href="default.css" type="text/css" />
+
+<script type="text/javascript" src="scripts.js"></script>
+</head>
+<body class="Element700" onload="onBodyLoadEx('frames.html', 'topic', '00016.html');" onmousedown="onBodyMouseDown();">
+
+<!-- Begin Popups -->
+
+<!-- End Popups -->
+
+<!-- Begin Page Header -->
+<div class="Element710" id="areafixed">
+<div class="Element94">
+<a href="00015.html" target="topic">Bluetooth Overview</a> &gt; <a href="00016.html" target="topic">Creating a Bluetooth Project from Scratch</a></div>
+<div class="Element92">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="25%">
+<div class="Element1">
+MPLAB Harmony Bluetooth Help</div>
+</td><td width="25%">
+<div class="Element2">
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+</td><td width="25%">
+<div class="Element90">
+<a href="00017.html" target="topic">Previous</a> | <a href="00015.html" target="topic">Up</a> | <a href="00001.html" target="topic">Next</a></div>
+</td><td width="25%">
+<div class="Element96">
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: BT_OVR Creating an Bluetooth Porject from Scratch Topic Title: Creating a Bluetooth Project from Scratch)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+</td></tr></table><div class="Element5">
+Creating a Bluetooth Project from Scratch</div>
+</div>
+</div>
+
+<!-- End Page Header -->
+
+<!-- Begin Client Area -->
+<div class="Element720" id="areascroll">
+<div class="Element721">
+
+<!-- Begin Page Content -->
+<a name="PageContent"></a><div class="Element58">
+<a name="4465736372697074696F6E"></a><div class="Element11">
+<div class="Element10">
+<p class="Element10">
+<u>For projects using Bluetooth Low-Energy (BLE) features:</u>&nbsp;</p>
+<p class="Element10">
+Start by creating a 32-bit MPLAB Harmony 3 project in MPLAB X IDE by selecting <i>File &gt; New Project</i>. Chose the Configuration name the based on the BSP. Select the appropriate processor (e.g. ATSAME70Q21B).&nbsp;</p>
+<p class="Element10">
+In MHC, under Available Components select an appropriate BSP (e.g. SAM E70 Xplained Ultra). Under Bluetooth<i>-&gt;Templates</i>, double-click on a Bluetooth module (e.g. BM64 Bluetooth). Answer Yes to all questions. Besides instantiating all the necessary components (drivers and PLIBs), picking a base BSP plus a Bluetooth template also configures all of the pins for that board needed by the application.&nbsp;</p>
+<p class="Element10">
+You should end up with a project graph that looks like this, after rearranging the boxes: </p><p class="Element10" style="text-align: center;">
+<img src="APPS BT BM64 BLE comm Project Graph.png" border="0" alt="" title=""></p><p class="Element10">
+In the Project Graph, click on TC0 in the graph, and and in the Configuration Options dialog expand Channel 0, and under Enable-&gt;Operating Mode-&gt;Timer uncheck Enable Compare Interrupt and check Enable Periodic Interrupt. Click on USART0 in the graph, and change the Baud Rate to 115,200 in the Configuration Options dialog.&nbsp;</p>
+<p class="Element10">
+If using the SAM E70 Xplained Ultra board, in the Clock Diagram, set MOSCEL to Main Crystal, check the Bypass checkbox, and uncheck the RC Crystal Oscillator and Main Crystal Oscillator boxes: </p><p class="Element10" style="text-align: center;">
+<img src="APPS BT E70 clock diagram main bypass.png" border="0" alt="" title=""></p></div>
+</div>
+</div>
+<!-- End Page Content -->
+
+<!-- Begin Page Footer -->
+<div class="Element95">
+<a href="00015.html" target="topic">Bluetooth Overview</a> &gt; <a href="00016.html" target="topic">Creating a Bluetooth Project from Scratch</a></div>
+<div class="Element93">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="25%">
+<div class="Element3">
+MPLAB Harmony Bluetooth Help</div>
+</td><td width="25%">
+<div class="Element4">
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+</td><td width="25%">
+<div class="Element91">
+<a href="00017.html" target="topic">Previous</a> | <a href="00015.html" target="topic">Up</a> | <a href="00001.html" target="topic">Next</a></div>
+</td><td width="25%">
+<div class="Element97">
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: BT_OVR Creating an Bluetooth Porject from Scratch Topic Title: Creating a Bluetooth Project from Scratch)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+</td></tr></table></div>
+
+<!-- End Page Footer -->
+</div>
+</div>
+
+<!-- End Client Area -->
+</body></html>

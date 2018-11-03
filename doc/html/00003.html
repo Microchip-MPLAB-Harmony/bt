@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<html>
+<head>
+<title>BM64_ble_comm</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="Doc-O-Matic" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <link rel="STYLESHEET" href="default.css" type="text/css" />
+
+<script type="text/javascript" src="scripts.js"></script>
+</head>
+<body class="Element700" onload="onBodyLoadEx('frames.html', 'topic', '00003.html');" onmousedown="onBodyMouseDown();">
+
+<!-- Begin Popups -->
+
+<!-- End Popups -->
+
+<!-- Begin Page Header -->
+<div class="Element710" id="areafixed">
+<div class="Element94">
+<a href="00001.html" target="topic">Bluetooth Demonstrations</a> &gt; <a href="00002.html" target="topic">BM64 Driver Demonstrations</a> &gt; <a href="00003.html" target="topic">BM64_ble_comm</a></div>
+<div class="Element92">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="25%">
+<div class="Element1">
+MPLAB Harmony Bluetooth Help</div>
+</td><td width="25%">
+<div class="Element2">
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+</td><td width="25%">
+<div class="Element90">
+<a href="00010.html" target="topic">Previous</a> | <a href="00002.html" target="topic">Up</a> | <a href="00004.html" target="topic">Next</a></div>
+</td><td width="25%">
+<div class="Element96">
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: APPS BLUETOOTH BM64_ble_comm Topic Title: BM64_ble_comm)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+</td></tr></table><div class="Element5">
+BM64_ble_comm</div>
+</div>
+</div>
+
+<!-- End Page Header -->
+
+<!-- Begin Client Area -->
+<div class="Element720" id="areascroll">
+<div class="Element721">
+
+<!-- Begin Page Content -->
+<a name="PageContent"></a><div class="Element58">
+<a name="4465736372697074696F6E"></a><div class="Element11">
+<div class="Element10">
+<p class="Element10">
+In this demonstration application, the Bluetooth® Low Energy (BLE) capabilities of the BM64 Module Daughter Board, installed on the SAM E70 Xplained Ultra board, are used to send a string of characters to a smartphone when one of the push buttons is pressed on the board, and to receive a string of characters from the smartphone causing an LED to turn on or off on the board.&nbsp;</p>
+<p class="Element10">
+Although the current BM64 module does not support standard BLE GATT predefined profiles, it does provide what is called a Transparent Service, which allows generic text strings up to 20 bytes in length to be sent back and forth between a server (e.g., BM64) and a client (e.g., smartphone). Therefore, users can add their own structure on top of this capability and implement their own protocol such as a command/data format.&nbsp;</p>
+<p class="Element10">
+The Transparent Service provides a BLE substitute for the Serial Port Protocol (SPP) of classic Bluetooth for use with an Apple® iPhone®, which <i>does not</i> support SPP.&nbsp;</p>
+<p class="Element10">
+To successfully run this application, you will need an iPhone 4s or later which supports Bluetooth 4.0. </p><div class="Element63">
+<div class="TableDiv">
+<table cellspacing="0" class="Table0">
+<tr>
+<td class="Element67" valign="top" width="5%" style="border:none;">
+<div class="Element68">
+<img src="Note Icon.png" border="0" alt="" title="">&nbsp;</div></td><td class="Element67" valign="top" width="3%" style="border:none;">
+<div class="Element68">
+<strong>Note:</strong>&nbsp;</div></td><td class="Element67" valign="top" width="92%" style="border:none;">
+<div class="Element68">
+This MPLAB Harmony application has been designed to also work with a smartphones running Android™, as well as an iPhone; however, the firmware on the BM64 module currently does not support connections to Android smartphones. If you need this application to work with an Android™ phone, please contact your local Microchip Marketing Representative as to the possibility of getting an update to the BM64 firmware.&nbsp;</div></td></tr></table></div></div>
+<div class="Element15">
+Architecture</div>
+<p class="Element10">
+This application runs on the SAM E70 Xplained Ultra board, which contains a ATSAME70Q21B microcontroller with 2 MB of Flash memory and 384 KB of RAM running at 300 MHz with the following features:</p>
+<ul class="Element630">
+<li class="Element600">Single user push button (SW1)</li>
+<li class="Element600">Two user LEDs (LED1 and 2)</li>
+<li class="Element600">USB Device and Host interfaces</li>
+<li class="Element600">One X32 sockets, used for the BM64 Bluetooth module daughterboard.</li>
+</ul><div class="Element63">
+<div class="TableDiv">
+<table cellspacing="0" class="Table0">
+<tr>
+<td class="Element67" valign="top" width="5%" style="border:none;">
+<div class="Element68">
+<img src="Note Icon.png" border="0" alt="" title="">&nbsp;</div></td><td class="Element67" valign="top" width="5%" style="border:none;">
+<div class="Element68">
+<strong>Notes:</strong>&nbsp;</div></td><td class="Element67" valign="top" width="90%" style="border:none;">
+<div class="Element68">
+</p>
+<ol class="Element630">
+<li value="1" class="Element600">The SAM E70 Xplained Ultra does not include the BM64 Bluetooth Module Daughter Board. It must be purchased separately from microchipDIRECT, part number AC320032-3.</li>
+<li value="2" class="Element600">The USB Device and Host interfaces <i>are not used</i> in this application.</li>
+</ol><p class="Element68">
+&nbsp;</div></td></tr></table></div></div>
+<p class="Element10">
+The following figure illustrates the application architecture: </p><p class="Element10" style="text-align: center;">
+<img src="APPS BT bm64 ble commE70 architecture diagram.png" border="0" alt="" title=""></p><p class="Element10">
+The ATSAME70Q21B microcontroller (MCU) runs the application code, and communicates with the BM64 over a USART interface operating at 115,200 baud. The BM64 module contains its own Bluetooth stack, so it is unnecessary to include a software Bluetooth stack in the MCU. The program takes up only about 1% (21 KB) of the ATSAME70Q21B microcontroller’s program space, and 1% (3 KB) of its RAM.&nbsp;</p>
+<p class="Element10">
+The button and LEDs are interfaced using GPIO pins.&nbsp;</p>
+<p class="Element10">
+As with any MPLAB Harmony application, the SYS_Initialize function, which is located in the <span class="Element146">system_init.c</span> source file, makes calls to initialize various subsystems, such as the clock, ports, board support package (BSP), PMP, BM64, timers, UART, graphics, and interrupts.&nbsp;</p>
+<p class="Element10">
+The BM64 driver, graphics, and the application state machines are all updated through calls located in the SYS_Tasks function in <span class="Element146">system_tasks.c</span> file. Interrupt handlers in the <span class="Element146">system_interrupt.c</span> file are only used for receiving characters from the UART and for the two timers.&nbsp;</p>
+<p class="Element10">
+The application code is contained in two principal source files. The first, <span class="Element146">app.c</span>, contains a simple state machine (APP_Tasks), which initializes the application, and then while idle, calls a secondary state machine, buttonTasks, to process any button pushes (resulting in a call to the BM64 driver to send a string from the BM64 to a connected smartphone).&nbsp;</p>
+<p class="Element10">
+APP_Tasks also calls another secondary state machine (bleTasks), which is located in the source file <span class="Element146">ble.c</span> to process BLE-related tasks. bleTasks receives a handle to the BM64 driver by calling DRV_BT_Open, and then registers an event handler, _BLEEventHandler, as a callback with the BM64 driver. The callback is called when either a message is received from the BM64 or when the BLE status changes (i.e., when it is connected or disconnected). Both of these actions result in updates to the LED.</p><div class="Element15">
+Demonstration Features</div>
+
+<ul class="Element630">
+<li class="Element600">Use of the BM64 Bluetooth Driver Library</li>
+<li class="Element600">At a lower level, the BM64 Driver uses the USART PLIB to communicate with the BM64 module</li>
+<li class="Element600">BLE advertising</li>
+<li class="Element600">Connection of BM64 to the smartphone</li>
+<li class="Element600">Display of service and characteristic UUIDs on the smartphone</li>
+<li class="Element600">Sending of a text string from the SAM E70 Xplained Ultra board/BM64 to the smartphone when a button is pressed</li>
+<li class="Element600">Sending of a text string from the smartphone to the BM64/SAM E70 Xplained Ultra board, causing an LED to turn on or off.</li>
+<li class="Element600">Sending and receiving characters between the USART of the SAM E70 MCU and the BM64.</li>
+<li class="Element600">Processing of button pushes on the SAM E70 Xplained Ultra board using a state machine for contact debouncing. (see Ports Peripheral Library)</li>
+<li class="Element600">Use of two timers: one as a periodic 1 ms timer for the application for debouncing the button, and a second used by the BM64 driver (see Timer Driver Library)</li>
+</ul><p class="Element10">
+&nbsp;</p>
+<div class="Element15">
+Tools Setup Differences</div>
+<p class="Element10">
+When building a new application, start by creating a 32-bit MPLAB Harmony 3 project in MPLAB X IDE by selecting <i>File &gt; New Project</i>. Chose the Configuration name the based on the BSP. Select the appropriate processor (ATSAME70Q21B).&nbsp;</p>
+<p class="Element10">
+In MHC, under Available Components select the BSP SAM E70 Xplained Ultra. Under Bluetooth<i>-&gt;Templates</i>, double-click on BM64 Bluetooth. Answer Yes to all questions.&nbsp;</p>
+<p class="Element10">
+You should end up with a project graph that looks like this, after rearranging the boxes: </p><p class="Element10" style="text-align: center;">
+<img src="APPS BT BM64 BLE comm Project Graph.png" border="0" alt="" title=""></p><p class="Element10">
+In the Project Graph, click on TC0 in the graph, and and in the Configuration Options dialog expand Channel 0, and under Enable-&gt;Operating Mode-&gt;Timer uncheck Enable Compare Interrupt and check Enable Periodic Interrupt. Finally click on USART0 in the graph, and change the Baud Rate to 115,200 in the Configuration Options dialog.</p></div>
+</div>
+<a name="546F70696373"></a><div class="Element14">
+Topics</div>
+<div class="Element11">
+<div class="Element10">
+<div class="Element212">
+<div class="TableDiv">
+<table cellspacing="0" class="Table1">
+<tr>
+<td class="Element200" valign="top" width="35%">
+<div class="Element201">
+Name&nbsp;</div></td><td class="Element204" valign="top" width="65%">
+<div class="Element205">
+Description&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00004.html" target="topic">Building the Application</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+This section identifies the MPLAB X IDE project name and location and lists and describes the available configurations for the demonstration.&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00005.html" target="topic">Configuring the Hardware</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+This section describes how to configure the supported hardware.&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00006.html" target="topic">Running the Demonstration</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+This section describes how to run the demonstration.&nbsp;</div></td></tr></table></div></div>
+</div>
+</div>
+</div>
+<!-- End Page Content -->
+
+<!-- Begin Page Footer -->
+<div class="Element95">
+<a href="00001.html" target="topic">Bluetooth Demonstrations</a> &gt; <a href="00002.html" target="topic">BM64 Driver Demonstrations</a> &gt; <a href="00003.html" target="topic">BM64_ble_comm</a></div>
+<div class="Element93">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="25%">
+<div class="Element3">
+MPLAB Harmony Bluetooth Help</div>
+</td><td width="25%">
+<div class="Element4">
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+</td><td width="25%">
+<div class="Element91">
+<a href="00010.html" target="topic">Previous</a> | <a href="00002.html" target="topic">Up</a> | <a href="00004.html" target="topic">Next</a></div>
+</td><td width="25%">
+<div class="Element97">
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: APPS BLUETOOTH BM64_ble_comm Topic Title: BM64_ble_comm)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+</td></tr></table></div>
+
+<!-- End Page Footer -->
+</div>
+</div>
+
+<!-- End Client Area -->
+</body></html>

@@ -1,0 +1,252 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<html>
+<head>
+<title>Running the Demonstration</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="Doc-O-Matic" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <link rel="STYLESHEET" href="default.css" type="text/css" />
+
+<script type="text/javascript" src="scripts.js"></script>
+</head>
+<body class="Element700" onload="onBodyLoadEx('frames.html', 'topic', '00010.html');" onmousedown="onBodyMouseDown();">
+
+<!-- Begin Popups -->
+
+<!-- End Popups -->
+
+<!-- Begin Page Header -->
+<div class="Element710" id="areafixed">
+<div class="Element94">
+<a href="00001.html" target="topic">Bluetooth Demonstrations</a> &gt; <a href="00002.html" target="topic">BM64 Driver Demonstrations</a> &gt; <a href="00007.html" target="topic">BM64_bootloader</a> &gt; <a href="00010.html" target="topic">Running the Demonstration</a></div>
+<div class="Element92">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="25%">
+<div class="Element1">
+MPLAB Harmony Bluetooth Help</div>
+</td><td width="25%">
+<div class="Element2">
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+</td><td width="25%">
+<div class="Element90">
+<a href="00009.html" target="topic">Previous</a> | <a href="00007.html" target="topic">Up</a> | <a href="00003.html" target="topic">Next</a></div>
+</td><td width="25%">
+<div class="Element96">
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: APPS BLUETOOTH BM64_bootloader_run Topic Title: Running the Demonstration)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+</td></tr></table><div class="Element5">
+Running the Demonstration</div>
+</div>
+</div>
+
+<!-- End Page Header -->
+
+<!-- Begin Client Area -->
+<div class="Element720" id="areascroll">
+<div class="Element721">
+
+<!-- Begin Page Content -->
+<a name="PageContent"></a><div class="Element58">
+<a name="4465736372697074696F6E"></a><div class="Element11">
+<div class="Element10">
+<p class="Element10">
+Do the following to run the demonstration:&nbsp;</p>
+<p class="Element10">
+<strong>Program the Device and Obtain Tools</strong>&nbsp;</p>
+<ol class="Element630">
+<li value="1" class="Element600">Compile, download, and run the program on the target device. There is only one MPLAB X IDE project configuration for the Bootloader.</li>
+<li value="2" class="Element600">Download the BM64 Software and Tools from here: <a href="#" onclick="openExternalLink('http://www.microchip.com/wwwproducts/en/BM64');"><img src="indicator_external_link.gif" border="0" alt="" title="">http://www.microchip.com/wwwproducts/en/BM64</a>, under <i>Documentation &gt; Software &gt; (IS2064 / BM64 Software and Tools)</i>.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="APPS BLUETOOTH BM64 Software and Tools.png" border="0" alt="" title=""></p><p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+Unzip wherever it is convenient for you (e.g., <span class="Element146">C:\ IS2064_BM64 Software &amp; Tools</span>), and unzip any zip files contained within the folders.&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<strong>Program the BM64 Module</strong>&nbsp;</p>
+<p class="Element10">
+The sequence of steps to program the BM64 Module are as follows:</p>
+<ol class="Element630">
+<li value="1" class="Element600">Run the tool <span class="Element146">C:\IS2064_BM64 Software &amp; Tools\ DSPTool_IS206x_012_DualModeSPK1.1_v1.06.exe</span>.</li>
+<li value="2" class="Element600">Do not click on the Load button. Under the I2S/PCM tab, set the I2S Mode to “Slave mode”. Then, save the file as: <span class="Element146">slave-BM64.txt</span>, and exit the DSP Tool.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="APPS BLUETOOTH I2S_PCM Tab.png" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="3" class="Element600">Run the tool: <span class="Element146">C:\IS2064_BM64 Software &amp; Tools\UI Tool\UITool_IS206x_012_DualModeSPK1.1_v1.03.exe</span>.</li>
+<li value="4" class="Element600">Click <strong>Load</strong>, and load the file: <span class="Element146">UITool_IS206x_012_DualModeSPK1.1_v1.03_UI_Default_Table.txt</span>. Then, change the IC Package type to BM64CLS1, and then click <strong>Edit</strong>.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="APPS BLUETOOTH IC Package Type.png" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="5" class="Element600">Do the following In the Main dialog:
+<ul class="Element631">
+<li class="Element601">Clear SPP</li>
+<li class="Element601">Clear all of the Button check boxes</li>
+<li class="Element601">Select UART Command and I2S, and then click <strong>Next</strong></li>
+</ul></li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="APPS BLUETOOTH UART Command Profile.png" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="6" class="Element600">Under the Sys Setup1 tab, change the Power Switch Setting/Power Switch Type to “Power ON Directly”, and then click <strong>Next</strong>.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="APPS BLUETOOTH Power Switch Setting.png" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="7" class="Element600">Under the Sys Setup2 tab, change the Name Fragment to whatever you want (this name will show up in your Smart Phone’s Bluetooth setup). Change the Report Battery Status to Smart Phone setting to Disable, and then select the PMU Setup tab.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="APPS BLUETOOTH PMU Setup Tab.png" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="8" class="Element600">Under PMU Setup, change Battery Detection/Battery Detection Enable to Disable and also change Charging Setting/ Charging Detect Enable to Disable, and then select the BLE Setup tab.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="APPS BLUETOOTH BLE Setup Tab.png" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="9" class="Element600">Under BLE Setup tab, change the Device Name to whatever you want (this name will show up in your Smart Phone’s BLE setup), and then click <strong>Finish</strong>.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="APPS BLUETOOTH BLE Setup Finish.png" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="10" class="Element600">Save the file as: BM64 UI, and then click <strong>Exit</strong>.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="APPS BLUETOOTH UI Exit.png" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="11" class="Element600">Run the tool: <span class="Element146">C:\IS2064_BM64 Software &amp; Tools\MPET Tool\MPET.exe</span>.</li>
+<li value="12" class="Element600">Select UI Patch Only, and then click <strong>Next</strong>.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="APPS BLUETOOTH UI Patch.png" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="13" class="Element600">Click <strong>Browse</strong>, and browse to the folder <span class="Element146">C:\IS2064_BM64 Software &amp; Tools\MPET Tool\default_bin</span> and select the <span class="Element146">.bin</span> file there, and then click <strong>Next</strong>.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="APPS BLUETOOTH Select Bin File.png" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="14" class="Element600">Click the <img src="APPS BLUETOOTH Plus Icon.png" border="0" alt="" title=""> icon and load the file <span class="Element146">slave-BM64.txt</span> that you saved earlier in Step 2. Click the <img src="APPS BLUETOOTH Plus Icon.png" border="0" alt="" title=""> icon again and load the file <span class="Element146">BM64 UI.txt</span> you saved earlier in Step 10, and then click <strong>Next</strong>.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="APPS BLUETOOTH Add Files.png" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="15" class="Element600">Click the Output File button and save the file as <span class="Element146">BM64 Patch</span>, and then click <strong>Next</strong>.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="APPS BLUETOOTH Save BM64 Patch File.png" border="0" alt="" title=""></p>
+<ol class="Element630">
+<li value="16" class="Element600">On this screen, click <strong>Generate</strong>.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="APPS BLUETOOTH Generate Binary Output.png" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="17" class="Element600">In the next dialog, select all 11 check boxes, and then click <strong>Next</strong>.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="APPS BLUETOOTH Select All Check Boxes.png" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="18" class="Element600">Finally, click <strong>Finish</strong>.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="APPS BLUETOOTH Complete MPET Wizard.png" border="0" alt="" title=""></p><div class="Element15">
+Running the Demonstration on the Development Hardware</div>
+
+<ol class="Element630">
+<li value="1" class="Element600">Plug one end of a USB cable into the micro-B USB jack labeled TARGET USB on the SAM E70 Xplained Ultra board and the other into your PC. Set both switches SW1-1 and SW1-2 on the BM64 Module daughter board to the ON position.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="APPS BT bm64-sw on.png" border="0" alt="" title=""></p>
+<ol class="Element630">
+<li value="2" class="Element600">Press and release SW1 on the SAM E70 Xplained Ultra board. The two LEDs on the BM64 module should light up steady as shown in the following figure.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="APPS BT bm64-leds on.png" border="0" alt="" title=""></p>
+<ol class="Element630">
+<li value="3" class="Element600">Run the tool: <span class="Element146">C:\IS2064_BM64 Software &amp; Tools\EEPROM Tool\ EEPROM_Tool_V4851.exe</span>.</li>
+<li value="4" class="Element600">Ensure that the correct COM Port is selected (you can use Window’s Device Manager to verify this), and then click <strong>IC/Module Identify</strong>. It should display one or two strings starting with IS206X…</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="APPS BLUETOOTH Initial EEPROM Tool Dialog.png" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="5" class="Element600">To the right of WRITE EEPROM, click on the <img src="APPS BLUETOOTH Dot Dot Dot Icon.png" border="0" alt="" title=""> button and browse to the <span class="Element146">BM64 Patch.ipf</span> file you specified earlier, and then click <strong>Write</strong>. When done and the dialog appears, click <strong>OK</strong>, and then click <strong>Exit</strong>.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="APPS BLUETOOTH Patch Dialog.png" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="6" class="Element600">On the BM64 Module Daughter Board, set both switches SW1-1 and SW1-2 to the OFF position.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="APPS BT bm64-sw off.png" border="0" alt="" title=""></p>
+<ol class="Element630">
+<li value="7" class="Element600">On the SAMA E70 Xplained Ultra board, press and release the SW1 button. The two LEDs on the BM64 Module should turn off. The BM64 Module is now ready to run with the BM64_a2dp_hfp application.</li>
+</ol><div class="Element15">
+Control Descriptions</div>
+<div class="Element63">
+<div class="TableDiv">
+<table cellspacing="0" class="Table3">
+<tr>
+<td class="Element65" valign="top" width="15%">
+<div class="Element66">
+Control&nbsp;</div></td><td class="Element65" valign="top" width="85%">
+<div class="Element66">
+&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="15%">
+<div class="Element68">
+SW1&nbsp;</div></td><td class="Element67" valign="top" width="85%">
+<div class="Element68">
+Resets then enables the BM64 Bluetooth module&nbsp;</div></td></tr></table></div></div>
+</div>
+</div>
+</div>
+<!-- End Page Content -->
+
+<!-- Begin Page Footer -->
+<div class="Element95">
+<a href="00001.html" target="topic">Bluetooth Demonstrations</a> &gt; <a href="00002.html" target="topic">BM64 Driver Demonstrations</a> &gt; <a href="00007.html" target="topic">BM64_bootloader</a> &gt; <a href="00010.html" target="topic">Running the Demonstration</a></div>
+<div class="Element93">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="25%">
+<div class="Element3">
+MPLAB Harmony Bluetooth Help</div>
+</td><td width="25%">
+<div class="Element4">
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+</td><td width="25%">
+<div class="Element91">
+<a href="00009.html" target="topic">Previous</a> | <a href="00007.html" target="topic">Up</a> | <a href="00003.html" target="topic">Next</a></div>
+</td><td width="25%">
+<div class="Element97">
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: APPS BLUETOOTH BM64_bootloader_run Topic Title: Running the Demonstration)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+</td></tr></table></div>
+
+<!-- End Page Footer -->
+</div>
+</div>
+
+<!-- End Client Area -->
+</body></html>

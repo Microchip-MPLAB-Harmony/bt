@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<html>
+<head>
+<title>BLE Functions</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="Doc-O-Matic" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <link rel="STYLESHEET" href="default.css" type="text/css" />
+
+<script type="text/javascript" src="scripts.js"></script>
+</head>
+<body class="Element700" onload="onBodyLoadEx('frames.html', 'topic', '00033.html');" onmousedown="onBodyMouseDown();">
+
+<!-- Begin Popups -->
+
+<!-- End Popups -->
+
+<!-- Begin Page Header -->
+<div class="Element710" id="areafixed">
+<div class="Element94">
+<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00043.html" target="topic">Using the Library</a> &gt; <a href="00031.html" target="topic">How the Library Works</a> &gt; <a href="00033.html" target="topic">BLE Functions</a></div>
+<div class="Element92">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="25%">
+<div class="Element1">
+MPLAB Harmony Bluetooth Help</div>
+</td><td width="25%">
+<div class="Element2">
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+</td><td width="25%">
+<div class="Element90">
+<a href="00032.html" target="topic">Previous</a> | <a href="00031.html" target="topic">Up</a> | <a href="00025.html" target="topic">Next</a></div>
+</td><td width="25%">
+<div class="Element96">
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM64 HTLW BLE Functions Topic Title: BLE Functions)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+</td></tr></table><div class="Element5">
+BLE Functions</div>
+</div>
+</div>
+
+<!-- End Page Header -->
+
+<!-- Begin Client Area -->
+<div class="Element720" id="areascroll">
+<div class="Element721">
+
+<!-- Begin Page Content -->
+<a name="PageContent"></a><div class="Element58">
+<a name="4465736372697074696F6E"></a><div class="Element11">
+<div class="Element10">
+<p class="Element10">
+The function <a href="00170.html" target="topic">DRV_BM64_ReadByteFromBLE</a> is used to receive data one byte at a time; the function <a href="00171.html" target="topic">DRV_BM64_ReadDataFromBLE</a> is used to receive multiple bytes. Each of them return a Boolean, which is true if data is returned or false if there is no data to return. You can use the function <a href="00060.html" target="topic">DRV_BM64_ClearBLEData</a> to clear out the receive buffer before starting.&nbsp;</p>
+<p class="Element10">
+<strong>Example:</strong> &nbsp;</p><div class="Element13"><div class="Element12"><pre class="Element12">    uint8_t byte;
+    <i><span style="color: #008000">// note generic versions of calls (DRV_BT instead of DRV_BM64) are used</span></i>
+    DRV_BT_ClearBLEData(appData.bt.handle);
+    <i><span style="color: #008000">// wait for byte to arrive</span></i>
+    <strong><span style="color: #000080">while</span></strong> (!DRV_BT_ReadByteFromBLE(appData.bt.handle, &amp;byte))
+    {
+        <i><span style="color: #008000">// should have some sort of way to break out of here if byte never arrives</span></i>
+    }</pre></div></div>
+<div class="Element15">
+Sending Data</div>
+<p class="Element10">
+The function <a href="00189.html" target="topic">DRV_BM64_SendByteOverBLE</a> Is used to send one byte of data at a time; the function <a href="00190.html" target="topic">DRV_BM64_SendDataOverBLE</a> is used to send multiple bytes of data.&nbsp;</p>
+<p class="Element10">
+<strong>Example:</strong> &nbsp;</p><div class="Element13"><div class="Element12"><pre class="Element12">    <strong><span style="color: #000080">#define</span></strong> BUFSIZE    100
+    uint8_t buf [BUFSIZE];
+     <i><span style="color: #008000">// (code goes here to fill in buffer with data)</span></i>
+
+    <i><span style="color: #008000">// note generic version of call (DRV_BT instead of DRV_BM64) is used</span></i>
+    DRV_BT_SendDataOverBLE(appData.bt.handle, buf, BUFSIZE);</pre></div></div>
+<div class="Element15">
+Connection Status</div>
+<p class="Element10">
+The function <a href="00045.html" target="topic">DRV_BM64_BLE_EnableAdvertising</a> is called to enable or disable BLE advertising.&nbsp;</p>
+<p class="Element10">
+The function <a href="00046.html" target="topic">DRV_BM64_BLE_QueryStatus</a> queries the BM64 to respond with a DRV_BM64_EVENT_BLE_STATUS_CHANGED event, which will indicate if the BM64 BLE status is standby, advertising, scanning or connected.&nbsp;</p>
+<p class="Element10">
+<strong>Example:</strong> &nbsp;</p><div class="Element13"><div class="Element12"><pre class="Element12"><i><span style="color: #008000">// note generic version of call (DRV_BT instead of DRV_BM64) is used</span></i>
+DRV_BT_BLE_QueryStatus(appData.bt.handle);
+. . .
+<i><span style="color: #008000">// later, a call will come back to the event handler callback function</span></i>
+<i><span style="color: #008000">// (previously set up via a call to DRV_BM64_EventHandlerSet)</span></i>
+<strong><span style="color: #000080">static</span></strong> <strong><span style="color: #000080">void</span></strong> _BLEEventHandler(DRV_BT_EVENT event, uint32_t param, uintptr_t context)
+{
+    <strong><span style="color: #000080">switch</span></strong>(event)
+    {
+        <strong><span style="color: #000080">case</span></strong> DRV_BT_EVENT_BLE_STATUS_CHANGED:
+        {
+            <i><span style="color: #008000">// do case switch based on param variable</span></i>
+        <strong><span style="color: #000080">switch</span></strong>(param)
+        {
+            <strong><span style="color: #000080">case</span></strong> DRV_BM64_BLE_STATUS_STANDBY:
+            <strong><span style="color: #000080">case</span></strong> DRV_BM64_BLE_STATUS_SCANNING:
+                laWidget_SetVisible((laWidget*)GFX_CONNECTED, LA_FALSE);
+                laWidget_SetVisible((laWidget*)GFX_PAIRED, LA_FALSE);
+                laWidget_SetVisible((laWidget*)GFX_NOPAIR_NOCONNECTION, LA_TRUE);
+                <strong><span style="color: #000080">break</span></strong>;
+            <strong><span style="color: #000080">case</span></strong> DRV_BM64_BLE_STATUS_ADVERTISING:
+                laWidget_SetVisible((laWidget*)GFX_CONNECTED, LA_FALSE);
+                laWidget_SetVisible((laWidget*)GFX_PAIRED, LA_TRUE);    <i><span style="color: #008000">// actually, advertising</span></i>
+                laWidget_SetVisible((laWidget*)GFX_NOPAIR_NOCONNECTION, LA_FALSE);
+                <strong><span style="color: #000080">break</span></strong>;
+            <strong><span style="color: #000080">case</span></strong> DRV_BM64_BLE_STATUS_CONNECTED:
+                laWidget_SetVisible((laWidget*)GFX_CONNECTED, LA_TRUE);
+                laWidget_SetVisible((laWidget*)GFX_PAIRED, LA_FALSE);
+                laWidget_SetVisible((laWidget*)GFX_NOPAIR_NOCONNECTION, LA_FALSE);
+                <strong><span style="color: #000080">break</span></strong>;
+        }
+   }
+}</pre></div></div>
+</div>
+</div>
+</div>
+<!-- End Page Content -->
+
+<!-- Begin Page Footer -->
+<div class="Element95">
+<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00043.html" target="topic">Using the Library</a> &gt; <a href="00031.html" target="topic">How the Library Works</a> &gt; <a href="00033.html" target="topic">BLE Functions</a></div>
+<div class="Element93">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="25%">
+<div class="Element3">
+MPLAB Harmony Bluetooth Help</div>
+</td><td width="25%">
+<div class="Element4">
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+</td><td width="25%">
+<div class="Element91">
+<a href="00032.html" target="topic">Previous</a> | <a href="00031.html" target="topic">Up</a> | <a href="00025.html" target="topic">Next</a></div>
+</td><td width="25%">
+<div class="Element97">
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM64 HTLW BLE Functions Topic Title: BLE Functions)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+</td></tr></table></div>
+
+<!-- End Page Footer -->
+</div>
+</div>
+
+<!-- End Client Area -->
+</body></html>

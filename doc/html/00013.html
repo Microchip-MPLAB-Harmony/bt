@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<html>
+<head>
+<title>Bluetooth Basics</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="Doc-O-Matic" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <link rel="STYLESHEET" href="default.css" type="text/css" />
+
+<script type="text/javascript" src="scripts.js"></script>
+</head>
+<body class="Element700" onload="onBodyLoadEx('frames.html', 'topic', '00013.html');" onmousedown="onBodyMouseDown();">
+
+<!-- Begin Popups -->
+
+<!-- End Popups -->
+
+<!-- Begin Page Header -->
+<div class="Element710" id="areafixed">
+<div class="Element94">
+<a href="00015.html" target="topic">Bluetooth Overview</a> &gt; <a href="00013.html" target="topic">Bluetooth Basics</a></div>
+<div class="Element92">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="25%">
+<div class="Element1">
+MPLAB Harmony Bluetooth Help</div>
+</td><td width="25%">
+<div class="Element2">
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+</td><td width="25%">
+<div class="Element90">
+<a href="00015.html" target="topic">Previous</a> | <a href="00015.html" target="topic">Up</a> | <a href="00014.html" target="topic">Next</a></div>
+</td><td width="25%">
+<div class="Element96">
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: BT_OVR Bluetooth Basics Topic Title: Bluetooth Basics)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+</td></tr></table><div class="Element5">
+Bluetooth Basics</div>
+</div>
+</div>
+
+<!-- End Page Header -->
+
+<!-- Begin Client Area -->
+<div class="Element720" id="areascroll">
+<div class="Element721">
+
+<!-- Begin Page Content -->
+<a name="PageContent"></a><div class="Element58">
+<a name="4465736372697074696F6E"></a><div class="Element11">
+<div class="Element10">
+<p class="Element10">
+<strong>If you are new to Bluetooth, this section provides definitions of basic concepts found in most discussions of Bluetooth.</strong>&nbsp;</p>
+<p class="Element10">
+Bluetooth is a wireless technology standard for exchanging data over relatively short distances, operating between frequencies 2.400 and 2.4835 GHz, using a radio technology called frequency-hopping spread spectrum. Bluetooth sends data in packets on one of 79 channels, each with a bandwidth of 1 MHz.&nbsp;</p>
+<p class="Element10">
+Bluetooth Low Energy (BLE) is aimed at very low power applications powered by a coin cell and uses 2 MHz spacing, which allows for 40 channels. It has a latency time of only 6 ms, compared to 100 ms for classic Bluetooth. However BLE does not support voice.&nbsp;</p>
+<p class="Element10">
+Classic Bluetooth and BLE can be implemented in the same device and operational at the same time.&nbsp;</p>
+<p class="Element10">
+Bluetooth exists in numerous products such as telephones, speakers, tablets, media players, robotics systems, laptops, and console gaming equipment as well as headsets, modems, hearing aids and watches. BLE applications include mobile phones, gaming, smart homes, wearables, automotive, PCs, security, proximity, health care, sports and fitness.&nbsp;</p>
+<p class="Element10">
+The range of Bluetooth devices is based on their class:&nbsp;</p>
+<p class="Element10">
+<strong>Ranges of Bluetooth devices by class</strong> &nbsp;</p><div class="Element63">
+<div class="TableDiv">
+<table cellspacing="0" class="Table2">
+<tr>
+<td class="Element65" valign="top" width="12%">
+<div class="Element66">
+Class&nbsp;</div></td><td class="Element65" valign="top" width="47%">
+<div class="Element66">
+Max. permitted power (mW)&nbsp;</div></td><td class="Element65" valign="top" width="41%">
+<div class="Element66">
+Typical range (m)&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="12%">
+<div class="Element68">
+1&nbsp;</div></td><td class="Element67" valign="top" width="47%">
+<div class="Element68">
+100&nbsp;</div></td><td class="Element67" valign="top" width="41%">
+<div class="Element68">
+~100&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="12%">
+<div class="Element68">
+2&nbsp;</div></td><td class="Element67" valign="top" width="47%">
+<div class="Element68">
+2.5&nbsp;</div></td><td class="Element67" valign="top" width="41%">
+<div class="Element68">
+~10&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="12%">
+<div class="Element68">
+3&nbsp;</div></td><td class="Element67" valign="top" width="47%">
+<div class="Element68">
+1&nbsp;</div></td><td class="Element67" valign="top" width="41%">
+<div class="Element68">
+~1&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="12%">
+<div class="Element68">
+4&nbsp;</div></td><td class="Element67" valign="top" width="47%">
+<div class="Element68">
+0.5&nbsp;</div></td><td class="Element67" valign="top" width="41%">
+<div class="Element68">
+~0.5&nbsp;</div></td></tr></table></div></div>
+<p class="Element10">
+Most Bluetooth applications are for indoor conditions, where attenuation of walls and signal fading due to signal reflections make the range far lower than the specified line-of-sight ranges of some Bluetooth products.</p><div class="Element15">
+Pairing</div>
+<p class="Element10">
+Any classic Bluetooth device in discoverable mode transmits the following information on demand:</p>
+<ul class="Element630">
+<li class="Element600"> Device name</li>
+<li class="Element600"> Device class</li>
+<li class="Element600"> List of services</li>
+</ul><p class="Element10">
+During pairing, the two devices establish a relationship by creating a shared secret known as a link key. Pairing requires both devices to support the same profile.</p><div class="Element15">
+Classic Bluetooth Profiles</div>
+<p class="Element10">
+Bluetooth devices must be able to interpret certain Bluetooth profiles, which define possible applications and specify general behaviors that they will use to communicate with other Bluetooth devices. Som eof the profiles relevant to Harmony applications are:</p>
+<ul class="Element630">
+<li class="Element600">Advanced Audio Distribution Profile (A2DP) – most common profile for streaming multimedia audio.</li>
+<li class="Element600">Audio Video Remote Control Profile (AVRCP) – standardized remote control profile for TV’s, home theater, etc. Used in conjunction with A2DP. Provides playback control such as play, pause, fast-forward and rewind, and volume control.</li>
+<li class="Element600">Hands-Free Profile (HFP) – typically used to place phone calls in automobiles.</li>
+<li class="Element600">Headset Profile (HSP) – used with mobile phones and gaming consoles.</li>
+<li class="Element600">Serial Port Profile (SPP) – standard replacement for wireless RS-232 data transmission</li>
+</ul><div class="Element15">
+Bluetooth Low Energy (BLE)</div>
+<p class="Element10">
+BLE devices are detected through a procedure based on broadcasting advertising packets. This is done using 3 separate channels in order to reduce interference.&nbsp;</p>
+<p class="Element10">
+All Bluetooth Low Energy devices use the Generic Attribute Profile (GATT). GATT has the following terminology:</p>
+<ul class="Element630">
+<li class="Element600">Client - a device that initiates GATT commands and requests, and accepts responses, for example, a computer or smartphone.</li>
+<li class="Element600">Server - a device that receives GATT commands and requests, and returns responses, for example, a temperature sensor.</li>
+<li class="Element600">Characteristic - a data value transferred between client and server, for example, the current battery voltage.</li>
+<li class="Element600">Service - a collection of related characteristics, which operate together to perform a particular function. For instance, the Health Thermometer service includes characteristics for a temperature measurement value, and a time interval between measurements.</li>
+<li class="Element600">Descriptor - provides additional information about a characteristic. For instance, a temperature value characteristic may have an indication of its units (e.g. Celsius), and the maximum and minimum values which the sensor can measure. Descriptors are optional – each characteristic can have any number of descriptors.</li>
+</ul><p class="Element10">
+A large number of low energy application profiles is based on GATT, including:</p>
+<ul class="Element630">
+<li class="Element600">Health care profiles (blood pressure, thermometers, glucose monitors etc.)</li>
+<li class="Element600">Sensors (industrial and residential)</li>
+<li class="Element600">Sports and fitness profiles (heart rate, running speed, weight scale)</li>
+<li class="Element600">HID connectivity (mice and keyboards)</li>
+</ul><p class="Element10" style="text-align: center;">
+<img src="BT BLE.png" border="0" alt="" title=""></p><p class="Element10">
+In addition, some Bluetooth modules support a “Transparent Data Service” for basic communication, where data in any structured format can be communicated. This is used in the BM64_ble_comm demonstration in this distribution.</p></div>
+</div>
+</div>
+<!-- End Page Content -->
+
+<!-- Begin Page Footer -->
+<div class="Element95">
+<a href="00015.html" target="topic">Bluetooth Overview</a> &gt; <a href="00013.html" target="topic">Bluetooth Basics</a></div>
+<div class="Element93">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="25%">
+<div class="Element3">
+MPLAB Harmony Bluetooth Help</div>
+</td><td width="25%">
+<div class="Element4">
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+</td><td width="25%">
+<div class="Element91">
+<a href="00015.html" target="topic">Previous</a> | <a href="00015.html" target="topic">Up</a> | <a href="00014.html" target="topic">Next</a></div>
+</td><td width="25%">
+<div class="Element97">
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: BT_OVR Bluetooth Basics Topic Title: Bluetooth Basics)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+</td></tr></table></div>
+
+<!-- End Page Footer -->
+</div>
+</div>
+
+<!-- End Client Area -->
+</body></html>
