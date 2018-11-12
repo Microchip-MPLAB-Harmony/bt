@@ -53,11 +53,11 @@ Creating a Bluetooth Project from Scratch</div>
 <p class="Element10">
 Start by creating a 32-bit MPLAB Harmony 3 project in MPLAB X IDE by selecting <i>File &gt; New Project</i>. Chose the Configuration name the based on the BSP. Select the appropriate processor (e.g. ATSAME70Q21B).&nbsp;</p>
 <p class="Element10">
-In MHC, under Available Components select an appropriate BSP (e.g. SAM E70 Xplained Ultra). Under Bluetooth<i>-&gt;Templates</i>, double-click on a Bluetooth module (e.g. BM64 Bluetooth). Answer Yes to all questions. Besides instantiating all the necessary components (drivers and PLIBs), picking a base BSP plus a Bluetooth template also configures all of the pins for that board needed by the application.&nbsp;</p>
+In MHC, under Available Components select an appropriate BSP (e.g. SAM E70 Xplained Ultra). Under Bluetooth<i>&gt;Templates</i>, double-click on a Bluetooth module (e.g. BM64 Bluetooth). Answer Yes to all questions. Besides instantiating all the necessary components (drivers and PLIBs), picking a base BSP plus a Bluetooth template also configures all of the pins for that board needed by the application.&nbsp;</p>
 <p class="Element10">
 You should end up with a project graph that looks like this, after rearranging the boxes: </p><p class="Element10" style="text-align: center;">
 <img src="APPS BT BM64 BLE comm Project Graph.png" border="0" alt="" title=""></p><p class="Element10">
-In the Project Graph, click on TC0 in the graph, and and in the Configuration Options dialog expand Channel 0, and under Enable-&gt;Operating Mode-&gt;Timer uncheck Enable Compare Interrupt and check Enable Periodic Interrupt. Click on USART0 in the graph, and change the Baud Rate to 115,200 in the Configuration Options dialog.&nbsp;</p>
+In the Project Graph, click on TC0 in the graph, and and in the Configuration Options dialog expand Channel 0, and under Enable&gt;Operating Mode&gt;Timer uncheck Enable Compare Interrupt and check Enable Periodic Interrupt. Click on USART0 in the graph, and change the Baud Rate to 115,200 in the Configuration Options dialog.&nbsp;</p>
 <p class="Element10">
 If using the SAM E70 Xplained Ultra board, in the Clock Diagram, set MOSCEL to Main Crystal, check the Bypass checkbox, and uncheck the RC Crystal Oscillator and Main Crystal Oscillator boxes: </p><p class="Element10" style="text-align: center;">
 <img src="APPS BT E70 clock diagram main bypass.png" border="0" alt="" title=""></p></div>
