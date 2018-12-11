@@ -48,17 +48,17 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
+#include "bsp/bsp.h"
+#include "bt/driver/bm64/drv_bm64.h"
 #include "peripheral/clk/plib_clk.h"
 #include "peripheral/pio/plib_pio.h"
 #include "peripheral/nvic/plib_nvic.h"
-#include "bsp/bsp.h"
+#include "peripheral/tc/plib_tc0.h"
+#include "peripheral/usart/plib_usart0.h"
 #include "system/int/sys_int.h"
 #include "system/ports/sys_ports.h"
 #include "osal/osal.h"
-#include "bt/driver/bm64/drv_bm64.h"
 #include "system/time/sys_time.h"
-#include "peripheral/tc/plib_tc0.h"
-#include "peripheral/usart/plib_usart0.h"
 #include "app.h"
 
 

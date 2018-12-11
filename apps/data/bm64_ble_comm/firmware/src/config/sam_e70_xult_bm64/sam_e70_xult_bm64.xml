@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Configuration>
   <Components>
-    <UniqueComponent dnOrder="0" id="core">
+    <UniqueComponent dnOrder="0" id="bluetooth_bm64">
+      <Symbols dnOrder="0">
+        <String dnOrder="0" id="DRV_BM64_USART">
+          <Values dnOrder="0">
+            <Dynamic dnOrder="0">
+              <Value dnOrder="0" id="bluetooth_bm64" priority="1" value="USART0"/>
+            </Dynamic>
+          </Values>
+        </String>
+      </Symbols>
+      <Attachments dnOrder="1">
+        <DirectDependency dnOrder="0" id="USART PLIB">
+          <Attributes dnOrder="0">
+            <String dnOrder="0" id="targetComponentID">
+              <Value dnOrder="0">usart0</Value>
+            </String>
+            <String dnOrder="1" id="targetAttachmentID">
+              <Value dnOrder="0">USART0_UART</Value>
+            </String>
+          </Attributes>
+        </DirectDependency>
+      </Attachments>
+    </UniqueComponent>
+    <UniqueComponent bsp="true" dnOrder="1" id="BSP_SAM_E70_Xplained_Ultra"/>
+    <UniqueComponent dnOrder="2" id="cmsis"/>
+    <UniqueComponent dnOrder="3" id="core">
       <Symbols dnOrder="0">
         <Integer dnOrder="0" id="ACC_CLOCK_FREQUENCY">
           <Values dnOrder="0">
@@ -5637,7 +5662,7 @@
         </Integer>
         <String dnOrder="1082" id="PIN_64_PU">
           <Values dnOrder="0">
-            <User dnOrder="0" value="True"/>
+            <User dnOrder="0" value=""/>
           </Values>
         </String>
         <String dnOrder="1083" id="PIN_65_DIR">
@@ -7530,7 +7555,7 @@
         <Hex dnOrder="1458" id="PIOA_PUER_VALUE">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
-              <Value dnOrder="0" id="core" priority="2" value="2048"/>
+              <Value dnOrder="0" id="core" priority="2" value="0"/>
             </Dynamic>
           </Values>
         </Hex>
@@ -10012,38 +10037,59 @@
         </Boolean>
       </Symbols>
     </UniqueComponent>
-    <UniqueComponent bsp="true" dnOrder="1" id="BSP_SAM_E70_Xplained_Ultra"/>
-    <UniqueComponent dnOrder="2" id="HarmonyCore">
+    <UniqueComponent dnOrder="4" id="dfp"/>
+    <UniqueComponent dnOrder="5" id="HarmonyCore">
       <Symbols dnOrder="0">
-        <File dnOrder="0" id="DMA_DEF">
+        <File dnOrder="0" id="CONFIGURATION_H">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">true</Value>
+            </Boolean>
+          </Attributes>
+        </File>
+        <File dnOrder="1" id="DMA_DEF">
           <Attributes dnOrder="0">
             <Boolean dnOrder="0" id="enabled">
               <Value dnOrder="0">false</Value>
             </Boolean>
           </Attributes>
         </File>
-        <File dnOrder="1" id="DMA_HEADER">
+        <File dnOrder="2" id="DMA_HEADER">
           <Attributes dnOrder="0">
             <Boolean dnOrder="0" id="enabled">
               <Value dnOrder="0">false</Value>
             </Boolean>
           </Attributes>
         </File>
-        <File dnOrder="2" id="DMA_MAPPING">
+        <File dnOrder="3" id="DMA_MAPPING">
           <Attributes dnOrder="0">
             <Boolean dnOrder="0" id="enabled">
               <Value dnOrder="0">false</Value>
             </Boolean>
           </Attributes>
         </File>
-        <File dnOrder="3" id="DMA_SOURCE">
+        <File dnOrder="4" id="DMA_SOURCE">
           <Attributes dnOrder="0">
             <Boolean dnOrder="0" id="enabled">
               <Value dnOrder="0">false</Value>
             </Boolean>
           </Attributes>
         </File>
-        <Boolean dnOrder="4" id="ENABLE_APP_FILE">
+        <File dnOrder="5" id="DRIVER_COMMON">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">true</Value>
+            </Boolean>
+          </Attributes>
+        </File>
+        <File dnOrder="6" id="DRIVER_ROOT">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">true</Value>
+            </Boolean>
+          </Attributes>
+        </File>
+        <Boolean dnOrder="7" id="ENABLE_APP_FILE">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="HarmonyCore" priority="1" value="true"/>
@@ -10051,7 +10097,7 @@
             </Dynamic>
           </Values>
         </Boolean>
-        <Boolean dnOrder="5" id="ENABLE_DRV_COMMON">
+        <Boolean dnOrder="8" id="ENABLE_DRV_COMMON">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="bluetooth_bm64" priority="1" value="true"/>
@@ -10059,7 +10105,7 @@
             <User dnOrder="1" value="true"/>
           </Values>
         </Boolean>
-        <Boolean dnOrder="6" id="ENABLE_OSAL">
+        <Boolean dnOrder="9" id="ENABLE_OSAL">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="HarmonyCore" priority="1" value="true"/>
@@ -10067,7 +10113,7 @@
             </Dynamic>
           </Values>
         </Boolean>
-        <Boolean dnOrder="7" id="ENABLE_SYS_COMMON">
+        <Boolean dnOrder="10" id="ENABLE_SYS_COMMON">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="HarmonyCore" priority="2" value="false"/>
@@ -10076,7 +10122,7 @@
             </Dynamic>
           </Values>
         </Boolean>
-        <Boolean dnOrder="8" id="ENABLE_SYS_DMA">
+        <Boolean dnOrder="11" id="ENABLE_SYS_DMA">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="bluetooth_bm64" priority="1" value="true"/>
@@ -10084,7 +10130,7 @@
             <User dnOrder="1" value="false"/>
           </Values>
         </Boolean>
-        <Boolean dnOrder="9" id="ENABLE_SYS_INT">
+        <Boolean dnOrder="12" id="ENABLE_SYS_INT">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="HarmonyCore" priority="1" value="true"/>
@@ -10092,7 +10138,7 @@
             </Dynamic>
           </Values>
         </Boolean>
-        <Boolean dnOrder="10" id="ENABLE_SYS_PORTS">
+        <Boolean dnOrder="13" id="ENABLE_SYS_PORTS">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="bluetooth_bm64" priority="1" value="true"/>
@@ -10100,36 +10146,129 @@
             <User dnOrder="1" value="true"/>
           </Values>
         </Boolean>
-        <Combo dnOrder="11" id="SELECT_RTOS">
+        <File dnOrder="14" id="INT_DEF">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">true</Value>
+            </Boolean>
+          </Attributes>
+        </File>
+        <File dnOrder="15" id="INT_HEADER">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">true</Value>
+            </Boolean>
+          </Attributes>
+        </File>
+        <File dnOrder="16" id="INT_MAPPING">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">true</Value>
+            </Boolean>
+          </Attributes>
+        </File>
+        <File dnOrder="17" id="INT_SOURCE">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">true</Value>
+            </Boolean>
+          </Attributes>
+        </File>
+        <File dnOrder="18" id="OSAL_DEFINITIONS_H">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">true</Value>
+            </Boolean>
+          </Attributes>
+        </File>
+        <File dnOrder="19" id="OSAL_H">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">true</Value>
+            </Boolean>
+          </Attributes>
+        </File>
+        <File dnOrder="20" id="OSAL_IMPL_BASIC_H">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">true</Value>
+            </Boolean>
+          </Attributes>
+        </File>
+        <File dnOrder="21" id="OSAL_SYSDEF_H">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">true</Value>
+            </Boolean>
+          </Attributes>
+        </File>
+        <File dnOrder="22" id="PORTS_DEF">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">true</Value>
+            </Boolean>
+          </Attributes>
+        </File>
+        <File dnOrder="23" id="PORTS_HEADER">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">true</Value>
+            </Boolean>
+          </Attributes>
+        </File>
+        <File dnOrder="24" id="PORTS_MAPPING">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">true</Value>
+            </Boolean>
+          </Attributes>
+        </File>
+        <Combo dnOrder="25" id="SELECT_RTOS">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="HarmonyCore" priority="2" value="BareMetal"/>
             </Dynamic>
           </Values>
         </Combo>
+        <File dnOrder="26" id="SYSTEM_COMMON">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">true</Value>
+            </Boolean>
+          </Attributes>
+        </File>
+        <File dnOrder="27" id="SYSTEM_MODULE">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">true</Value>
+            </Boolean>
+          </Attributes>
+        </File>
+        <File dnOrder="28" id="SYSTEM_ROOT">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">true</Value>
+            </Boolean>
+          </Attributes>
+        </File>
+        <File dnOrder="29" id="TASKS_C">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">true</Value>
+            </Boolean>
+          </Attributes>
+        </File>
+        <File dnOrder="30" id="USER_H">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="enabled">
+              <Value dnOrder="0">true</Value>
+            </Boolean>
+          </Attributes>
+        </File>
       </Symbols>
     </UniqueComponent>
-    <UniqueComponent dnOrder="3" id="bluetooth_bm64">
-      <Dependencies dnOrder="0">
-        <Dependency dnOrder="0" id="USART PLIB" targetAttachmentID="USART0_UART" targetComponentID="usart0"/>
-      </Dependencies>
-      <Symbols dnOrder="1">
-        <String dnOrder="0" id="DRV_BM64_USART">
-          <Values dnOrder="0">
-            <Dynamic dnOrder="0">
-              <Value dnOrder="0" id="bluetooth_bm64" priority="1" value="USART0"/>
-            </Dynamic>
-          </Values>
-        </String>
-      </Symbols>
-    </UniqueComponent>
-    <UniqueComponent dnOrder="4" id="cmsis"/>
-    <UniqueComponent dnOrder="5" id="dfp"/>
     <UniqueComponent dnOrder="6" id="sys_time">
-      <Dependencies dnOrder="0">
-        <Dependency dnOrder="0" id="sys_time_TMR_dependency" targetAttachmentID="TC0_TMR" targetComponentID="tc0"/>
-      </Dependencies>
-      <Symbols dnOrder="1">
+      <Symbols dnOrder="0">
         <String dnOrder="0" id="SYS_TIME_PLIB">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
@@ -10138,12 +10277,21 @@
           </Values>
         </String>
       </Symbols>
+      <Attachments dnOrder="1">
+        <DirectDependency dnOrder="0" id="sys_time_TMR_dependency">
+          <Attributes dnOrder="0">
+            <String dnOrder="0" id="targetComponentID">
+              <Value dnOrder="0">tc0</Value>
+            </String>
+            <String dnOrder="1" id="targetAttachmentID">
+              <Value dnOrder="0">TC0_TMR</Value>
+            </String>
+          </Attributes>
+        </DirectDependency>
+      </Attachments>
     </UniqueComponent>
     <UniqueComponent dnOrder="7" id="tc0">
-      <Capabilities dnOrder="0">
-        <Capability dnOrder="0" id="TC0_TMR" targetAttachmentID="sys_time_TMR_dependency" targetComponentID="sys_time"/>
-      </Capabilities>
-      <Symbols dnOrder="1">
+      <Symbols dnOrder="0">
         <String dnOrder="0" id="CALLBACK_API_NAME">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
@@ -10187,25 +10335,27 @@
           </Values>
         </String>
         <KeyValueSet dnOrder="6" id="SYS_TIME_TC_CHANNEL">
-          <Attributes dnOrder="0">
-            <Boolean dnOrder="0" id="visible">
-              <Value dnOrder="0">true</Value>
-            </Boolean>
-          </Attributes>
-          <Values dnOrder="1">
+          <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="tc0" priority="1" value="0"/>
             </Dynamic>
           </Values>
         </KeyValueSet>
-        <Integer dnOrder="7" id="TC0_CLOCK_FREQ">
+        <Comment dnOrder="7" id="TC0_CLK_ENABLE_COMMENT">
+          <Attributes dnOrder="0">
+            <Boolean dnOrder="0" id="visible">
+              <Value dnOrder="0">false</Value>
+            </Boolean>
+          </Attributes>
+        </Comment>
+        <Integer dnOrder="8" id="TC0_CLOCK_FREQ">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="tc0" priority="2" value="150000000"/>
             </Dynamic>
           </Values>
         </Integer>
-        <Boolean dnOrder="8" id="TC0_ENABLE">
+        <Boolean dnOrder="9" id="TC0_ENABLE">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="sys_time" priority="2" value="true"/>
@@ -10213,20 +10363,15 @@
             </Dynamic>
           </Values>
         </Boolean>
-        <Boolean dnOrder="9" id="TC0_IER_CPAS">
-          <Attributes dnOrder="0">
-            <Boolean dnOrder="0" id="visible">
-              <Value dnOrder="0">true</Value>
-            </Boolean>
-          </Attributes>
-          <Values dnOrder="1">
+        <Boolean dnOrder="10" id="TC0_IER_CPAS">
+          <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="tc0" priority="2" value="true"/>
             </Dynamic>
             <User dnOrder="1" value="false"/>
           </Values>
         </Boolean>
-        <Boolean dnOrder="10" id="TC0_IER_CPCS">
+        <Boolean dnOrder="11" id="TC0_IER_CPCS">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="tc0" priority="2" value="false"/>
@@ -10234,13 +10379,6 @@
             <User dnOrder="1" value="true"/>
           </Values>
         </Boolean>
-        <Comment dnOrder="11" id="TC0_NVIC_ENABLE_COMMENT">
-          <Attributes dnOrder="0">
-            <Boolean dnOrder="0" id="visible">
-              <Value dnOrder="0">false</Value>
-            </Boolean>
-          </Attributes>
-        </Comment>
         <Comment dnOrder="12" id="TC0_Resolution">
           <Attributes dnOrder="0">
             <String dnOrder="0" id="text">
@@ -10269,126 +10407,119 @@
             </Dynamic>
           </Values>
         </Integer>
-        <Float dnOrder="16" id="TC0_TIMER_PERIOD_MS">
-          <Attributes dnOrder="0">
-            <Boolean dnOrder="0" id="visible">
-              <Value dnOrder="0">false</Value>
-            </Boolean>
-          </Attributes>
-        </Float>
-        <Integer dnOrder="17" id="TC1_CLOCK_FREQ">
+        <Integer dnOrder="16" id="TC1_CLOCK_FREQ">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="tc0" priority="1" value="150000000"/>
             </Dynamic>
           </Values>
         </Integer>
-        <Boolean dnOrder="18" id="TC1_ENABLE">
+        <Boolean dnOrder="17" id="TC1_ENABLE">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="tc0" priority="2" value="false"/>
             </Dynamic>
           </Values>
         </Boolean>
-        <Comment dnOrder="19" id="TC1_Resolution">
+        <Comment dnOrder="18" id="TC1_Resolution">
           <Attributes dnOrder="0">
             <String dnOrder="0" id="text">
               <Value dnOrder="0">****Clock&amp;#160;resolution&amp;#160;is&amp;#160;6.66666666667&amp;#160;nS****</Value>
             </String>
           </Attributes>
         </Comment>
-        <Boolean dnOrder="20" id="TC1_SYS_TIME_CONNECTED">
+        <Boolean dnOrder="19" id="TC1_SYS_TIME_CONNECTED">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="tc0" priority="2" value="false"/>
             </Dynamic>
           </Values>
         </Boolean>
-        <Comment dnOrder="21" id="TC1_TIMER_PERIOD_CMT">
+        <Comment dnOrder="20" id="TC1_TIMER_PERIOD_CMT">
           <Attributes dnOrder="0">
             <String dnOrder="0" id="text">
               <Value dnOrder="0">****Period&amp;#160;Count&amp;#160;is&amp;#160;60000****</Value>
             </String>
           </Attributes>
         </Comment>
-        <Integer dnOrder="22" id="TC1_TIMER_PERIOD_COUNT">
+        <Integer dnOrder="21" id="TC1_TIMER_PERIOD_COUNT">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="tc0" priority="2" value="60000"/>
             </Dynamic>
           </Values>
         </Integer>
-        <Integer dnOrder="23" id="TC2_CLOCK_FREQ">
+        <Integer dnOrder="22" id="TC2_CLOCK_FREQ">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="tc0" priority="1" value="150000000"/>
             </Dynamic>
           </Values>
         </Integer>
-        <Boolean dnOrder="24" id="TC2_ENABLE">
+        <Boolean dnOrder="23" id="TC2_ENABLE">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="tc0" priority="2" value="false"/>
             </Dynamic>
           </Values>
         </Boolean>
-        <Comment dnOrder="25" id="TC2_Resolution">
+        <Comment dnOrder="24" id="TC2_Resolution">
           <Attributes dnOrder="0">
             <String dnOrder="0" id="text">
               <Value dnOrder="0">****Clock&amp;#160;resolution&amp;#160;is&amp;#160;6.66666666667&amp;#160;nS****</Value>
             </String>
           </Attributes>
         </Comment>
-        <Boolean dnOrder="26" id="TC2_SYS_TIME_CONNECTED">
+        <Boolean dnOrder="25" id="TC2_SYS_TIME_CONNECTED">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="tc0" priority="2" value="false"/>
             </Dynamic>
           </Values>
         </Boolean>
-        <Comment dnOrder="27" id="TC2_TIMER_PERIOD_CMT">
+        <Comment dnOrder="26" id="TC2_TIMER_PERIOD_CMT">
           <Attributes dnOrder="0">
             <String dnOrder="0" id="text">
               <Value dnOrder="0">****Period&amp;#160;Count&amp;#160;is&amp;#160;60000****</Value>
             </String>
           </Attributes>
         </Comment>
-        <Integer dnOrder="28" id="TC2_TIMER_PERIOD_COUNT">
+        <Integer dnOrder="27" id="TC2_TIMER_PERIOD_COUNT">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="tc0" priority="2" value="60000"/>
             </Dynamic>
           </Values>
         </Integer>
-        <Integer dnOrder="29" id="TC3_CLOCK_FREQ">
+        <Integer dnOrder="28" id="TC3_CLOCK_FREQ">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="tc0" priority="2" value="150000000"/>
             </Dynamic>
           </Values>
         </Integer>
-        <Comment dnOrder="30" id="TC3_Resolution">
+        <Comment dnOrder="29" id="TC3_Resolution">
           <Attributes dnOrder="0">
             <String dnOrder="0" id="text">
               <Value dnOrder="0">****Clock&amp;#160;resolution&amp;#160;is&amp;#160;6.66666666667&amp;#160;nS****</Value>
             </String>
           </Attributes>
         </Comment>
-        <Comment dnOrder="31" id="TC_QEI_PERIOD_COMMENT">
+        <Comment dnOrder="30" id="TC_QEI_PERIOD_COMMENT">
           <Attributes dnOrder="0">
             <String dnOrder="0" id="text">
               <Value dnOrder="0">****Time&amp;#160;Base&amp;#160;is&amp;#160;100.1&amp;#160;uS****</Value>
             </String>
           </Attributes>
         </Comment>
-        <String dnOrder="32" id="TIMER_START_API_NAME">
+        <String dnOrder="31" id="TIMER_START_API_NAME">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="tc0" priority="2" value="TC0_CH0_TimerStart"/>
             </Dynamic>
           </Values>
         </String>
-        <String dnOrder="33" id="TIMER_STOP_API_NAME">
+        <String dnOrder="32" id="TIMER_STOP_API_NAME">
           <Values dnOrder="0">
             <Dynamic dnOrder="0">
               <Value dnOrder="0" id="tc0" priority="2" value="TC0_CH0_TimerStop "/>
@@ -10396,12 +10527,21 @@
           </Values>
         </String>
       </Symbols>
+      <Attachments dnOrder="1">
+        <DirectCapability dnOrder="0" id="TC0_TMR">
+          <Attributes dnOrder="0">
+            <String dnOrder="0" id="targetComponentID">
+              <Value dnOrder="0">sys_time</Value>
+            </String>
+            <String dnOrder="1" id="targetAttachmentID">
+              <Value dnOrder="0">sys_time_TMR_dependency</Value>
+            </String>
+          </Attributes>
+        </DirectCapability>
+      </Attachments>
     </UniqueComponent>
     <UniqueComponent dnOrder="8" id="usart0">
-      <Capabilities dnOrder="0">
-        <Capability dnOrder="0" id="USART0_UART" targetAttachmentID="USART PLIB" targetComponentID="bluetooth_bm64"/>
-      </Capabilities>
-      <Symbols dnOrder="1">
+      <Symbols dnOrder="0">
         <Integer dnOrder="0" id="BAUD_RATE">
           <Values dnOrder="0">
             <User dnOrder="0" value="115200"/>
@@ -10422,11 +10562,22 @@
           </Values>
         </Integer>
       </Symbols>
+      <Attachments dnOrder="1">
+        <DirectCapability dnOrder="0" id="USART0_UART">
+          <Attributes dnOrder="0">
+            <String dnOrder="0" id="targetComponentID">
+              <Value dnOrder="0">bluetooth_bm64</Value>
+            </String>
+            <String dnOrder="1" id="targetAttachmentID">
+              <Value dnOrder="0">USART&amp;#160;PLIB</Value>
+            </String>
+          </Attributes>
+        </DirectCapability>
+      </Attachments>
     </UniqueComponent>
   </Components>
   <UserData>
-    <GraphSettings canvasHeight="400" canvasWidth="400" dnOrder="0" minimap="false"/>
-    <ComponentGraph dnOrder="1">
+    <ComponentGraph dnOrder="0" id="__ROOTVIEW">
       <ElementPositions dnOrder="0">
         <ElementPosition dnOrder="0" id="BSP_SAM_E70_Xplained_Ultra" x="270" y="60"/>
         <ElementPosition dnOrder="1" id="HarmonyCore" x="81" y="61"/>
@@ -10439,5 +10590,6 @@
         <ElementPosition dnOrder="8" id="usart0" x="105" y="257"/>
       </ElementPositions>
     </ComponentGraph>
+    <GraphSettings canvasHeight="400" canvasWidth="400" dnOrder="1"/>
   </UserData>
 </Configuration>

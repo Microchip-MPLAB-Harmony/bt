@@ -4,12 +4,15 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <logicalFolder name="f2" displayName="arm" projectFiles="true">
+        <itemPath>../src/arm/toolchain_specifics.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="f1" displayName="config" projectFiles="true">
         <logicalFolder name="f1" displayName="sam_e70_xult_bm64" projectFiles="true">
-          <logicalFolder name="f2" displayName="bsp" projectFiles="true">
+          <logicalFolder name="f1" displayName="bsp" projectFiles="true">
             <itemPath>../src/config/sam_e70_xult_bm64/bsp/bsp.h</itemPath>
           </logicalFolder>
-          <logicalFolder name="f5" displayName="bt" projectFiles="true">
+          <logicalFolder name="f2" displayName="bt" projectFiles="true">
             <logicalFolder name="f1" displayName="driver" projectFiles="true">
               <logicalFolder name="f1" displayName="bm64" projectFiles="true">
                 <itemPath>../src/config/sam_e70_xult_bm64/bt/driver/bm64/drv_bm64.h</itemPath>
@@ -23,11 +26,11 @@
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
-          <logicalFolder name="f3" displayName="driver" projectFiles="true">
+          <logicalFolder name="f4" displayName="driver" projectFiles="true">
             <itemPath>../src/config/sam_e70_xult_bm64/driver/driver.h</itemPath>
             <itemPath>../src/config/sam_e70_xult_bm64/driver/driver_common.h</itemPath>
           </logicalFolder>
-          <logicalFolder name="f1" displayName="peripheral" projectFiles="true">
+          <logicalFolder name="f3" displayName="peripheral" projectFiles="true">
             <logicalFolder name="f1" displayName="clk" projectFiles="true">
               <itemPath>../src/config/sam_e70_xult_bm64/peripheral/clk/plib_clk.h</itemPath>
             </logicalFolder>
@@ -46,7 +49,7 @@
               <itemPath>../src/config/sam_e70_xult_bm64/peripheral/usart/plib_usart0.h</itemPath>
             </logicalFolder>
           </logicalFolder>
-          <logicalFolder name="f4" displayName="system" projectFiles="true">
+          <logicalFolder name="f5" displayName="system" projectFiles="true">
             <logicalFolder name="f1" displayName="int" projectFiles="true">
               <itemPath>../src/config/sam_e70_xult_bm64/system/int/sys_int.h</itemPath>
               <itemPath>../src/config/sam_e70_xult_bm64/system/int/sys_int_mapping.h</itemPath>
@@ -68,13 +71,58 @@
           <itemPath>../src/config/sam_e70_xult_bm64/configuration.h</itemPath>
         </logicalFolder>
       </logicalFolder>
-      <logicalFolder name="f2" displayName="osal" projectFiles="true">
+      <logicalFolder name="f4" displayName="osal" projectFiles="true">
         <itemPath>../src/config/sam_e70_xult_bm64/osal/osal.h</itemPath>
         <itemPath>../src/config/sam_e70_xult_bm64/osal/osal_definitions.h</itemPath>
         <itemPath>../src/config/sam_e70_xult_bm64/osal/osal_impl_basic.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="packs" projectFiles="true">
-        <logicalFolder name="f1" displayName="CMSIS" projectFiles="true">
+        <logicalFolder name="f1" displayName="ATSAME70Q21B_DFP" projectFiles="true">
+          <logicalFolder name="f1" displayName="component" projectFiles="true">
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/acc.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/aes.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/afec.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/chipid.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/dacc.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/efc.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/gmac.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/gpbr.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/hsmci.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/i2sc.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/icm.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/isi.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/matrix.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/mcan.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/pio.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/pmc.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/pwm.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/qspi.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/rstc.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/rswdt.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/rtc.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/rtt.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/sdramc.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/smc.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/spi.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/ssc.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/supc.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/tc.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/trng.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/twihs.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/uart.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/usart.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/usbhs.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/utmi.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/wdt.h</itemPath>
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/component/xdmac.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="f2" displayName="pio" projectFiles="true">
+            <itemPath>../src/packs/ATSAME70Q21B_DFP/pio/same70q21b.h</itemPath>
+          </logicalFolder>
+          <itemPath>../src/packs/ATSAME70Q21B_DFP/device.h</itemPath>
+          <itemPath>../src/packs/ATSAME70Q21B_DFP/atsame70q21b.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f2" displayName="CMSIS" projectFiles="true">
           <logicalFolder name="f1" displayName="CMSIS" projectFiles="true">
             <logicalFolder name="f1" displayName="Core" projectFiles="true">
               <logicalFolder name="f1" displayName="Include" projectFiles="true">
@@ -108,10 +156,10 @@
                    projectFiles="true">
       <logicalFolder name="f1" displayName="config" projectFiles="true">
         <logicalFolder name="f1" displayName="sam_e70_xult_bm64" projectFiles="true">
-          <logicalFolder name="f3" displayName="bsp" projectFiles="true">
+          <logicalFolder name="f1" displayName="bsp" projectFiles="true">
             <itemPath>../src/config/sam_e70_xult_bm64/bsp/bsp.c</itemPath>
           </logicalFolder>
-          <logicalFolder name="f5" displayName="bt" projectFiles="true">
+          <logicalFolder name="f2" displayName="bt" projectFiles="true">
             <logicalFolder name="f1" displayName="driver" projectFiles="true">
               <logicalFolder name="f1" displayName="bm64" projectFiles="true">
                 <itemPath>../src/config/sam_e70_xult_bm64/bt/driver/bm64/drv_bm64_local.h</itemPath>
@@ -126,7 +174,7 @@
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
-          <logicalFolder name="f2" displayName="peripheral" projectFiles="true">
+          <logicalFolder name="f4" displayName="peripheral" projectFiles="true">
             <logicalFolder name="f1" displayName="clk" projectFiles="true">
               <itemPath>../src/config/sam_e70_xult_bm64/peripheral/clk/plib_clk.c</itemPath>
             </logicalFolder>
@@ -143,10 +191,10 @@
               <itemPath>../src/config/sam_e70_xult_bm64/peripheral/usart/plib_usart0.c</itemPath>
             </logicalFolder>
           </logicalFolder>
-          <logicalFolder name="f1" displayName="stdio" projectFiles="true">
+          <logicalFolder name="f3" displayName="stdio" projectFiles="true">
             <itemPath>../src/config/sam_e70_xult_bm64/stdio/xc32_monitor.c</itemPath>
           </logicalFolder>
-          <logicalFolder name="f4" displayName="system" projectFiles="true">
+          <logicalFolder name="f5" displayName="system" projectFiles="true">
             <logicalFolder name="f1" displayName="int" projectFiles="true">
               <itemPath>../src/config/sam_e70_xult_bm64/system/int/src/sys_int.c</itemPath>
             </logicalFolder>
@@ -187,11 +235,11 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>EdbgTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>2.10</languageToolchainVersion>
+        <languageToolchainVersion>2.15</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="SAME70_DFP" vendor="Atmel" version="2.4.129"/>
+        <pack name="SAME70_DFP" vendor="Atmel" version="2.4.133"/>
         <pack name="CMSIS" vendor="ARM" version="5.0.1"/>
       </packs>
       <compileType>
@@ -210,8 +258,8 @@
         </subordinates>
       </compileType>
       <makeCustomizationType>
-        <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
-        <makeCustomizationPreStep></makeCustomizationPreStep>
+        <makeCustomizationPreStepEnabled>true</makeCustomizationPreStepEnabled>
+        <makeCustomizationPreStep>edbg_msg.bat</makeCustomizationPreStep>
         <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
         <makeCustomizationPostStep></makeCustomizationPostStep>
         <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>
@@ -227,7 +275,7 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="../src;../src/config/sam_e70_xult_bm64;../src/packs/ATSAME70Q21B_DFP;../src/packs/CMSIS;../src/audio_codec;../src;../src/config/sam_e70_xult_bm64;../src/packs/ATSAME70Q21B_DFP;../src/packs/CMSIS;../src;../src/config/sam_e70_xult_bm64;../src/packs/ATSAME70Q21B_DFP;../src/packs/CMSIS;../src;../src/config/sam_e70_xult_bm64;../src/packs/ATSAME70Q21B_DFP;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/CMSIS/"/>
+                  value="../src;../src/config/sam_e70_xult_bm64;../src/packs/ATSAME70Q21B_DFP;../src/packs/CMSIS;../src/audio_codec;../src;../src/config/sam_e70_xult_bm64;../src/packs/ATSAME70Q21B_DFP;../src/packs/CMSIS;../src;../src/config/sam_e70_xult_bm64;../src/packs/ATSAME70Q21B_DFP;../src/packs/CMSIS;../src;../src/config/sam_e70_xult_bm64;../src/packs/ATSAME70Q21B_DFP;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/CMSIS/;../src/arm"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
