@@ -19,8 +19,8 @@
           <Name dnOrder="1">bsp.c</Name>
           <LogicalPath dnOrder="2">config/sam_e70_xult_bm64/bsp/</LogicalPath>
           <PhysicalPath dnOrder="3">/bsp/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">5B0ABC7040175601AE3BFF86683325BD</GeneratedChecksum>
-          <UserChecksum dnOrder="5">5B0ABC7040175601AE3BFF86683325BD</UserChecksum>
+          <GeneratedChecksum dnOrder="4">88EC0E8DE9765171A5719AD6829DF317</GeneratedChecksum>
+          <UserChecksum dnOrder="5">88EC0E8DE9765171A5719AD6829DF317</UserChecksum>
         </File>
         <File dnOrder="2">
           <Type dnOrder="0">SOURCE</Type>
@@ -51,8 +51,8 @@
           <Name dnOrder="1">initialization.c</Name>
           <LogicalPath dnOrder="2">config/sam_e70_xult_bm64/</LogicalPath>
           <PhysicalPath dnOrder="3">/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">62DA00801F2D887E539A55DCECAFC0D8</GeneratedChecksum>
-          <UserChecksum dnOrder="5">62DA00801F2D887E539A55DCECAFC0D8</UserChecksum>
+          <GeneratedChecksum dnOrder="4">1505FE781C26AE23CD9E2AC2C620E566</GeneratedChecksum>
+          <UserChecksum dnOrder="5">1505FE781C26AE23CD9E2AC2C620E566</UserChecksum>
         </File>
         <File dnOrder="6">
           <Type dnOrder="0">SOURCE</Type>
@@ -83,8 +83,8 @@
           <Name dnOrder="1">plib_clk.c</Name>
           <LogicalPath dnOrder="2">config/sam_e70_xult_bm64/peripheral/clk/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/clk/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">B39F1EDAC09E963DAB331533B48BCF3D</GeneratedChecksum>
-          <UserChecksum dnOrder="5">B39F1EDAC09E963DAB331533B48BCF3D</UserChecksum>
+          <GeneratedChecksum dnOrder="4">DC6BCBBAE3310D5C2536DC2EF21EB177</GeneratedChecksum>
+          <UserChecksum dnOrder="5">DC6BCBBAE3310D5C2536DC2EF21EB177</UserChecksum>
         </File>
         <File dnOrder="10">
           <Type dnOrder="0">SOURCE</Type>
@@ -99,8 +99,8 @@
           <Name dnOrder="1">plib_pio.c</Name>
           <LogicalPath dnOrder="2">config/sam_e70_xult_bm64/peripheral/pio/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/pio/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">DE10061441F4645B459AC35386ACF8BC</GeneratedChecksum>
-          <UserChecksum dnOrder="5">DE10061441F4645B459AC35386ACF8BC</UserChecksum>
+          <GeneratedChecksum dnOrder="4">6FDBE41E7FFA7B007F7348A9D9908D46</GeneratedChecksum>
+          <UserChecksum dnOrder="5">6FDBE41E7FFA7B007F7348A9D9908D46</UserChecksum>
         </File>
         <File dnOrder="12">
           <Type dnOrder="0">SOURCE</Type>
@@ -187,8 +187,8 @@
           <Name dnOrder="1">usb_device_init_data.c</Name>
           <LogicalPath dnOrder="2">config/sam_e70_xult_bm64/</LogicalPath>
           <PhysicalPath dnOrder="3">/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">A2F7E871CCBEDF94BAC606C4D7BD8DEB</GeneratedChecksum>
-          <UserChecksum dnOrder="5">A2F7E871CCBEDF94BAC606C4D7BD8DEB</UserChecksum>
+          <GeneratedChecksum dnOrder="4">394186570390830298C19472101CD5C0</GeneratedChecksum>
+          <UserChecksum dnOrder="5">394186570390830298C19472101CD5C0</UserChecksum>
         </File>
         <File dnOrder="23">
           <Type dnOrder="0">SOURCE</Type>
@@ -267,8 +267,8 @@
           <Name dnOrder="1">bsp.h</Name>
           <LogicalPath dnOrder="2">config/sam_e70_xult_bm64/bsp/</LogicalPath>
           <PhysicalPath dnOrder="3">/bsp/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">B44C1F9DBF8E5632461B769DD25F10BF</GeneratedChecksum>
-          <UserChecksum dnOrder="5">B44C1F9DBF8E5632461B769DD25F10BF</UserChecksum>
+          <GeneratedChecksum dnOrder="4">4058E573CB319743295BCDD123E94623</GeneratedChecksum>
+          <UserChecksum dnOrder="5">4058E573CB319743295BCDD123E94623</UserChecksum>
         </File>
         <File dnOrder="33">
           <Type dnOrder="0">HEADER</Type>
@@ -307,8 +307,8 @@
           <Name dnOrder="1">configuration.h</Name>
           <LogicalPath dnOrder="2">config/sam_e70_xult_bm64/</LogicalPath>
           <PhysicalPath dnOrder="3">/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">B91D18CFDA112C2F6C7F427817AE3240</GeneratedChecksum>
-          <UserChecksum dnOrder="5">B91D18CFDA112C2F6C7F427817AE3240</UserChecksum>
+          <GeneratedChecksum dnOrder="4">AFFD1F512CD339BA404B3A2D7D57CABC</GeneratedChecksum>
+          <UserChecksum dnOrder="5">AFFD1F512CD339BA404B3A2D7D57CABC</UserChecksum>
         </File>
         <File dnOrder="38">
           <Type dnOrder="0">HEADER</Type>
@@ -331,8 +331,8 @@
           <Name dnOrder="1">definitions.h</Name>
           <LogicalPath dnOrder="2">config/sam_e70_xult_bm64/</LogicalPath>
           <PhysicalPath dnOrder="3">/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">CC3DD2D3B9C3D7FAC9A693752E102FBA</GeneratedChecksum>
-          <UserChecksum dnOrder="5">CC3DD2D3B9C3D7FAC9A693752E102FBA</UserChecksum>
+          <GeneratedChecksum dnOrder="4">165EEBF3E17223D9352D290BD804A4EC</GeneratedChecksum>
+          <UserChecksum dnOrder="5">165EEBF3E17223D9352D290BD804A4EC</UserChecksum>
         </File>
         <File dnOrder="41">
           <Type dnOrder="0">HEADER</Type>
@@ -531,8 +531,8 @@
           <Name dnOrder="1">plib_pio.h</Name>
           <LogicalPath dnOrder="2">config/sam_e70_xult_bm64/peripheral/pio/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/pio/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">55C68208EA20E3B4EEE9B6BD3E895169</GeneratedChecksum>
-          <UserChecksum dnOrder="5">55C68208EA20E3B4EEE9B6BD3E895169</UserChecksum>
+          <GeneratedChecksum dnOrder="4">1C52E40B0E1C9C08977FA7F3E0CE9D08</GeneratedChecksum>
+          <UserChecksum dnOrder="5">1C52E40B0E1C9C08977FA7F3E0CE9D08</UserChecksum>
         </File>
         <File dnOrder="66">
           <Type dnOrder="0">HEADER</Type>
