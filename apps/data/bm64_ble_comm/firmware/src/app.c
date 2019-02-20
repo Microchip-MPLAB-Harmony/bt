@@ -141,7 +141,7 @@ void APP_Initialize ( void )
     appData.waitingToConnect = false;
     appData.waitingToConnectTimer = 0;
 
-    bleInitialize();
+    bleInitialize(true);
 }
 
 /******************************************************************************
@@ -261,16 +261,8 @@ void APP_Button_Tasks()
             else if ((appData.buttonDelay==0)&&
                      (SWITCH_Get()==SWITCH_STATE_PRESSED))  // SW0 still pressed after 1 sec
             {
-                // long press reserved for future feature, now just turns off LED
-                //appData.buttonMode = !appData.buttonMode;
-                if (appData.buttonMode)
-                {
-                    LED1_On();
-                }
-                else
-                {
-                    LED1_Off();
-                }               
+                // long press reserved for future feature
+                //appData.buttonMode = !appData.buttonMode;             
                 
                 appData.buttonState=BUTTON_STATE_WAIT_FOR_RELEASE;                
             }                          
