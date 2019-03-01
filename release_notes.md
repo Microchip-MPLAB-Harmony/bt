@@ -1,30 +1,6 @@
 # Microchip MPLAB Harmony 3 Release Notes
 ## Bluetooth Release v3.2.0 (March, 2019)
-### Software Requirements
-
-Before using MPLAB Harmony Bluetooth, ensure that the following are installed:
-
-- [MPLAB X IDE v5.15](https://www.microchip.com/mplab/mplab-x-ide) or later
-- [MPLAB XC32 C/C++ Compiler v2.15](https://www.microchip.com/mplab/compilers) or later
-- MPLAB Harmony Configurator (MHC) v.3.2.0
-- Harmony bt repository, 3.2.0
-- Harmony bsp repository, 3.2.0
-- Harmony csp repository, 3.2.0
-- Harmony core repository, 3.2.0
-- Harmony dev_packs repository, 3.2.0
-- Harmony gfx repository, 3.2.0 (if building an app with graphics)
-- Harmony mplabx_plugin repository, 3.2.0
-- CMSIS-FreeRTOS repository, 10.0.1 if building a FreeRTOS project (from www.github.com/arm-software/cmsis-freertos)
-
-### Development Kit Support
-
-- **Development kit support** - This release supports applications for the following development kits:
-
-| Development Kits |
-| --- |
-| [SAM E70 Xplained Ultra Evaluation Kit](https://www.microchip.com/DevelopmentTools/ProductDetails.aspx?PartNO=ATSAME70-XULT) |
-
-### Additions and Updates for 3.2.0:
+### ADDITIONS AND UPDATES FOR 3.2.0:
 
 - **Updated Applications**
 
@@ -35,39 +11,40 @@ The following table provides the list of updated applications for the SAM E70:
 | bm64_ble_comm | added graphics and FreeRTOS projects |
 
 
-### Additions for 3.1.0:
+### TESTED WITH:
 
-- **New driver support**
+#### Software Dependencies
 
-The following table provides the list of new support for Bluetooth drivers:
+Before using MPLAB Harmony Audio, ensure that the following are installed:
 
-| Driver | Name | Feature |
-| --- | --- | --- |
-| BM64| BM64 | Added BM64 Bluetooth Driver|
+- [MPLAB X IDE v5.15](https://www.microchip.com/mplab/mplab-x-ide) or later
+- [MPLAB XC32 C/C++ Compiler v2.15](https://www.microchip.com/mplab/compilers) or later
+- Harmony bt repository, 3.2.0
 
-- **New Audios Application Templates**
- 
-The following table provides the list templates for different product families:
+In order to regenerate source code for any of the applications, you will also need the following to be installed:
 
-| Template | Description |
-| --- | --- |
-| bm64 | bm64 with E70 Xplained Ultra  |
+- MPLAB Harmony Configurator (MHC) v.3.2.0
+- Harmony mplabx_plugin repository, 3.2.0
+- Harmony bsp repository, 3.2.0
+- Harmony csp repository, 3.2.0
+- Harmony core repository, 3.2.0
+- Harmony dev_packs repository, 3.2.0
+- Harmony gfx repository, 3.2.0 (if building a project with graphics)
+- CMSIS-FreeRTOS repository, 10.0.1 if building a FreeRTOS project (from www.github.com/arm-software/cmsis-freertos)
 
-- **New Applications**
+#### Development Kit Support
 
-The following table provides the list of new applications for the SAM E70:
+This release supports applications for the following development kits
 
-| Application | Description |
-| --- | --- |
-| bm64_ble_comm | sends and receives BLE data to/from an iPhone or Android smartphone |
-| bm64_bootloader | updates the EEPROM and firmware of the BM64 from a PC |
+| Development Kits |
+| --- |
+| [SAM E70 Xplained Ultra Evaluation Kit](https://www.microchip.com/DevelopmentTools/ProductDetails.aspx?PartNO=ATSAME70-XULT) |
 
 ### KNOWN ISSUES
 
 The current known issues are as follows:
 
-* BM64 Driver
-    - Interactive help using the Show User Manual Entry in the Right-click menu for configuration options provided by this module is not yet available from within the MPLAB Harmony Configurator (MHC).  Please see the *Configuring the Library* section in the help documentation in the doc folder for this Harmony 3 module instead.  Help is available in both CHM and PDF formats.
+None.
 
 ### RELEASE CONTENTS
 
@@ -84,6 +61,34 @@ This table lists the contents of this release, including a brief description, an
 | bt\apps\utilities\bm64_bootloader | BM64 boot loader | Beta |
 | bt\driver\BM64 | BM64 Bluetooth Driver | Beta |
 | bt\templates\bm64 | Bluetooth application template for SAM E70 Xplained Ultra | Beta |
+
+## Bluetooth Release v3.1.0 (January, 2019)
+### Additions for 3.1.0:
+
+- **New Drivers**
+
+The following table provides the list of new Bluetooth drivers for the SAM E70:
+
+| Driver | Name | Feature |
+| --- | --- | --- |
+| BM64| BM64 | Added BM64 Bluetooth Driver|
+
+- **New Bluetooth Application Templates**
+ 
+The following table provides the list of new templates for the SAM E70:
+
+| Template | Description |
+| --- | --- |
+| bm64 | bm64 with E70 Xplained Ultra  |
+
+- **New Applications**
+
+The following table provides the list of new applications for the SAM E70:
+
+| Application | Description |
+| --- | --- |
+| bm64_ble_comm | sends and receives BLE data to/from an iPhone or Android smartphone |
+| bm64_bootloader | updates the EEPROM and firmware of the BM64 from a PC |
 
 
 
