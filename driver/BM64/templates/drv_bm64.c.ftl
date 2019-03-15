@@ -2244,7 +2244,7 @@ static uint8_t _volumeFormatFrom7bits(uint8_t vol_7bits)
 /*------------------------------------------------------------*/
 static void _volumeUp(DRV_BM64_VOLUME_MODE mode)
 {
-    uint8_t* p;
+    uint8_t* p = NULL;
     switch(mode)
     {
         case DRV_BM64_VOLUME_A2DP:
@@ -2266,7 +2266,7 @@ static void _volumeUp(DRV_BM64_VOLUME_MODE mode)
 /*------------------------------------------------------------*/
 static void _volumeDown(DRV_BM64_VOLUME_MODE mode)
 {
-    uint8_t* p;
+    uint8_t* p = NULL;
     switch(mode)
     {
         case DRV_BM64_VOLUME_A2DP:
@@ -2288,7 +2288,7 @@ static void _volumeDown(DRV_BM64_VOLUME_MODE mode)
 /*------------------------------------------------------------*/
 static void _set4bitVol(uint8_t vol, DRV_BM64_VOLUME_MODE mode)
 {
-    uint8_t* p;
+    uint8_t* p = NULL;
     switch(mode)
     {
         case DRV_BM64_VOLUME_A2DP:
@@ -2308,7 +2308,7 @@ static void _set4bitVol(uint8_t vol, DRV_BM64_VOLUME_MODE mode)
 /*------------------------------------------------------------*/
 static void _set7bitVol(uint8_t vol, DRV_BM64_VOLUME_MODE mode)
 {  
-    uint8_t* p;
+    uint8_t* p = NULL;
     switch(mode)
     {
         case DRV_BM64_VOLUME_A2DP:
