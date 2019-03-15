@@ -108,11 +108,11 @@ Tools Setup Differences</div>
 <p class="Element10">
 When building a new application, start by creating a 32-bit MPLAB Harmony 3 project in MPLAB X IDE by selecting <i>File &gt; New Project</i>. Chose the Configuration name the based on the BSP. Select the appropriate processor (ATSAME70Q21B).&nbsp;</p>
 <p class="Element10">
-In the Available Components section of MHC, under Board Support Packages, select SAM E70 Xplained Ultra BSP. Also in the Available Components section, under Libraries&gt;USB&gt;Device Stack, choose CDC Function Driver. Answer Yes to all questions except activating FreeRTOS. Finally choose Peipherals&gt;USART0 and Peripherals&gt;TC0, and under Harmony&gt;System Services, choose TIME. Connect TC0 to the TIME block.&nbsp;</p>
+In the Available Components section of MHC, under Board Support Packages, select SAM E70 Xplained Ultra BSP. Also in the Available Components section, under Libraries-&gt;USB-&gt;Device Stack, choose CDC Function Driver. Answer Yes to all questions except activating FreeRTOS. Finally choose Peipherals-&gt;USART0 and Peripherals-&gt;TC0, and under Harmony-&gt;System Services, choose TIME. Connect TC0 to the TIME block.&nbsp;</p>
 <p class="Element10">
 The Project Graph should look something like this: </p><p class="Element10" style="text-align: center;">
 <img src="APPS BT BM64 Bootloader Project Graph.png" border="0" alt="" title=""></p><p class="Element10">
-In the Project Graph, click on the USB Device Layer, and in the Configuration Options dialog change Product ID Selection to cdc_serial_emulator_demo. Then Click on TC0 in the graph, and and in the Configuration Options dialog expand Channel 0, and under Enable&gt;Operating Mode&gt;Timer uncheck Enable Compare Interrupt and check Enable Periodic Interrupt. Click on USART0 in the graph, and change the Baud Rate to 115,200 in the Configuration Options dialog.&nbsp;</p>
+In the Project Graph, click on the USB Device Layer, and in the Configuration Options dialog change Product ID Selection to cdc_serial_emulator_demo. Then Click on TC0 in the graph, and and in the Configuration Options dialog expand Channel 0, and under Enable-&gt;Operating Mode-&gt;Timer uncheck Enable Compare Interrupt and check Enable Periodic Interrupt. Click on USART0 in the graph, and change the Baud Rate to 115,200 in the Configuration Options dialog.&nbsp;</p>
 <p class="Element10">
 If using the ATSAME70Q21B, in the Clock Diagram, set MOSCEL to Main Crystal, check the Bypass checkbox, and uncheck the RC Crystal Oscillator and Main Crystal Oscillator boxes: </p><p class="Element10" style="text-align: center;">
 <img src="APPS BT E70 clock diagram main bypass.png" border="0" alt="" title=""></p></div>

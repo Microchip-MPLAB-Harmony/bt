@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
-<title>Creating a Bluetooth Project from Scratch</title>
+<title>Creating Your First Bluetooth Application from Scratch</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="Doc-O-Matic" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -18,7 +18,7 @@
 <!-- Begin Page Header -->
 <div class="Element710" id="areafixed">
 <div class="Element94">
-<a href="00015.html" target="topic">Bluetooth Overview</a> &gt; <a href="00016.html" target="topic">Creating a Bluetooth Project from Scratch</a></div>
+<a href="00015.html" target="topic">Bluetooth Overview</a> &gt; <a href="00016.html" target="topic">Creating Your First Bluetooth Application from Scratch</a></div>
 <div class="Element92">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -32,9 +32,9 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="00017.html" target="topic">Previous</a> | <a href="00015.html" target="topic">Up</a> | <a href="00001.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element96">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: BT_OVR Creating an Bluetooth Porject from Scratch Topic Title: Creating a Bluetooth Project from Scratch)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: BT_OVR Creating an Bluetooth Porject from Scratch Topic Title: Creating Your First Bluetooth Application from Scratch)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table><div class="Element5">
-Creating a Bluetooth Project from Scratch</div>
+Creating Your First Bluetooth Application from Scratch</div>
 </div>
 </div>
 
@@ -49,25 +49,609 @@ Creating a Bluetooth Project from Scratch</div>
 <a name="4465736372697074696F6E"></a><div class="Element11">
 <div class="Element10">
 <p class="Element10">
-<u>For projects using Bluetooth Low-Energy (BLE) features:</u>&nbsp;</p>
+This tutorial provides information on how to create a Bluetooth Low Energy (BLE) project using MPLAB Harmony 3. To keep the application as simple as possible, a very minimal UI is included (one button and one LED). It connects to a smartphone (iPhone or Android) using BLE protocol and sends a string of characters to the smartphone when a button is pressed.&nbsp;</p>
 <p class="Element10">
-Start by creating a 32-bit MPLAB Harmony 3 project in MPLAB X IDE by selecting <i>File &gt; New Project</i>. Chose the Configuration name the based on the BSP. Select the appropriate processor (e.g. ATSAME70Q21B).&nbsp;</p>
+The following hardware setup is supported:</p>
+<ul class="Element630">
+<li class="Element600">SAM E70 Xplained Ultra Evaluation Kit</li>
+<li class="Element600">BM64 Bluetooth Radio Daughter Board (not included with SAM E70 Xplained Ultra board; purchase separate as microchipDIRECT part # AC328904).</li>
+</ul><p class="Element10">
+&nbsp;</p>
+<div class="Element15">
+Getting Started</div>
 <p class="Element10">
-In MHC, under Available Components select an appropriate BSP (e.g. SAM E70 Xplained Ultra). Under Bluetooth<i>&gt;Templates</i>, double-click on a Bluetooth module (e.g. BM64 Bluetooth). Answer Yes to all questions. Besides instantiating all the necessary components (drivers and PLIBs), picking a base BSP plus a Bluetooth template also configures all of the pins for that board needed by the application.&nbsp;</p>
+Before beginning this tutorial, ensure that the MPLAB X IDE is installed and necessary language tools as described in Getting Started With MPLAB Harmony. In addition, ensure that the MPLAB Harmony framework is installed on a local hard drive and that the correct version of MHC plug-in is installed within the MPLAB X IDE.&nbsp;</p>
 <p class="Element10">
-You should end up with a project graph that looks like this, after rearranging the boxes: </p><p class="Element10" style="text-align: center;">
-<img src="APPS BT BM64 BLE comm Project Graph.png" border="0" alt="" title=""></p><p class="Element10">
-In the Project Graph, click on TC0 in the graph, and and in the Configuration Options dialog expand Channel 0, and under Enable&gt;Operating Mode&gt;Timer uncheck Enable Compare Interrupt and check Enable Periodic Interrupt. Click on USART0 in the graph, and change the Baud Rate to 115,200 in the Configuration Options dialog.&nbsp;</p>
+Follow the tutorial found in MPLAB Harmony Core Library Help &gt; Creating Your First Project to first learn about the basics of software development using MPLAB Harmony. Successfully completing the tutorial can serve as a confirmation of the software setup.&nbsp;</p>
 <p class="Element10">
-If using the SAM E70 Xplained Ultra board, in the Clock Diagram, set MOSCEL to Main Crystal, check the Bypass checkbox, and uncheck the RC Crystal Oscillator and Main Crystal Oscillator boxes: </p><p class="Element10" style="text-align: center;">
-<img src="APPS BT E70 clock diagram main bypass.png" border="0" alt="" title=""></p></div>
+&nbsp;</p><div class="Element15">
+Configuring the Hardware</div>
+<p class="Element10">
+<strong>SAM E70 Xplained Ultra board</strong>&nbsp;</p>
+<p class="Element10">
+The board is programmed via an Embedded Debugger (EDBG) interface via a USB cable, connected on one end to your computer using a USB-A plug, and to the E70 XULT board using a Micro-B plug as shown below: </p><p class="Element10" style="text-align: center;">
+<img src="BT QS e70_xult_bm64.jpg" border="0" alt="" title=""></p><p class="Element10">
+In order to connect to the smartphone, a Bluetooth module is required. In this example, we are using a BM64 Bluetooth radio, mounted on a daughterboard that plugs into the XC32 header of the E70 XULT board.&nbsp;</p>
+<p class="Element10">
+The jumpers on the board (if any) are not used and can be left as is in any position.&nbsp;</p>
+<p class="Element10">
+&nbsp;</p><div class="Element15">
+Tutorial Steps</div>
+
+<ol class="Element630">
+<li value="1" class="Element600">Launch the MPLAB X IDE. From the File pull-down menu, select New Project. (This will bring up the New Project dialog window.)</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="AUDIO QS mplab_new_project.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="2" class="Element600">On the New Project dialog window, be sure the project type is 32-bit MPLAB Harmony Project, then hit the <strong>Next &gt;</strong> button.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="AUDIO QS mplab_new_project2.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="3" class="Element600">In the New Project dialog window, be sure the Harmony Path is pointing to the MPLAB Harmony framework installation.</li>
+</ol><p class="Element10">
+The New Project dialog should show the following: </p><p class="Element10" style="text-align: center;">
+<img src="AUDIO QS mplab_new_project3.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+<p class="Element10">
+Hit the <strong>Next &gt;</strong> button.&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<ol class="Element630">
+<li value="4" class="Element600">For the project name, type in MyBluetoothProject or some other name.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="BT QS mplab_new_project_bt4.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+<p class="Element10">
+Hit the <strong>Next &gt;</strong> button&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<ol class="Element630">
+<li value="5" class="Element600">For the SAM E70 Xplained Ultra board, select the ATSAME70Q21B as the target device.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="AUDIO QS mplab_new_project_audio5.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+<p class="Element10">
+Select <strong>Finish</strong> when done.&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<ol class="Element630">
+<li value="6" class="Element600">In the MPLAB Harmony Launcher dialog window select the Launch Path that corresponds to the Harmony installation to be used. In the example below, both MPLAB X IDE’s default configuration and the project’s path point to the same MPLAB Harmony installation:</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="AUDIO QS mplab_launcher.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+<p class="Element10">
+then select the <strong>Launch</strong> button.&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<ol class="Element630">
+<li value="7" class="Element600">When the “Configuration Database Setup” dialog window appears, make sure <strong>bsp</strong>, <strong>bt</strong>, <strong>core</strong> and <strong>csp</strong> are selected:</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="BT QS mplab_launcher2.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+<p class="Element10">
+then select the Launch button. MHC’s component graph should appear: </p><p class="Element10" style="text-align: center;">
+<img src="AUDIO QS mhc_graph_default.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="8" class="Element600">In the MHC’s Available Components panel drag and drop the SAM E70 Xplained Ultra BSP onto the project’s Component Graph</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="AUDIO QS mhc_graph_bsp.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="9" class="Element600">In Available Components, under Bluetooth&gt;Templates, double-click on the desired Bluetooth module, e.g. BM64 Bluetooth. Answer Yes to all questions except for the one regarding FreeRTOS; answer No to that one.</li>
+</ol><p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+Besides instantiating all the necessary components (drivers and PLIBs), picking a base BSP plus a Bluetooth template also configures all the pins for that board needed by the application.&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+The result will be a project graph that looks like this, after rearranging the boxes, </p><p class="Element10" style="text-align: center;">
+<img src="BT QS mhc_graph_bt.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+<ol class="Element630">
+<li value="10" class="Element600">In the menu bar, select <i>Tools&gt;Clock Configuration</i>. In the Clock Diagram that pops up, set MOSCEL to Main Crystal, check the Bypass checkbox, and uncheck the RC Crystal Oscillator and Main Crystal Oscillator boxes, to make use the 12 MHz resonator on the board:</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="AUDIO QS mhc_e70_clock.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="11" class="Element600">Click on USART0 in the graph and change the Baud Rate to 115,200 in the Configuration Options dialog.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="BT QS mhc_e70_usart.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="12" class="Element600">Click on the Code button.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="AUDIO QS mhc_code.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+<p class="Element10">
+On the next screen, click <strong>Don’t Save</strong>. </p><p class="Element10" style="text-align: center;">
+<img src="AUDIO QS mhc_code2.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+<p class="Element10">
+On the Generate Project Screen, click Generate: </p><p class="Element10" style="text-align: center;">
+<img src="AUDIO QS mhc_code3.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+<p class="Element10">
+This completes the MHC configuration. The final step is to create the application code. Return to the MPLAB X GUI screen.&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<ol class="Element630">
+<li value="13" class="Element600">Right-click on the Project Name and select Properties.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="AUDIO QS mplab_properties_audio.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+<p class="Element10">
+On the next screen, select a compiler and debugger. </p><p class="Element10" style="text-align: center;">
+<img src="BT QS mplab_properties_bt2.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="14" class="Element600">Click on the Clean and Build Project button.</li>
+</ol><p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+You should get a BUILD SUCCESSFUL message (if not, go back and click on the Code button again).&nbsp;</p>
+<p class="Element10">
+&nbsp;</p><div class="Element15">
+Adding code</div>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+Under MyBluetoothProject, expand Header Files, and open app.h. Under Included Files, at around line 35, add:&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<span class="Element146">#include &quot;definitions.h</span>&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+Under Application States, around line 62 replace the <span class="Element146">APP_STATES</span> enum with:&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<span class="Element146">typedef enum</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146">{</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> // Application's state machine's initial state.</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> APP_STATE_INIT=0,</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> APP_STATE_IDLE,</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> APP_STATE_MSG_SENT,</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146">} APP_STATES;</span>&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<span class="Element146">typedef enum</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146">{</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> BLE_STATE_OPEN,</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> BLE_STATE_SET_BT_EVENT_HANDLER,</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> BLE_STATE_INIT_DONE,</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146">} BLE_STATES;</span>&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+and insert this struct after the <span class="Element146">APP_DATA</span> struct (line 96):&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<span class="Element146">typedef struct</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146">{</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> // The application's current BT state</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> BLE_STATES state;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> bool waitingToConnect;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> DRV_HANDLE handle;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> DRV_BT_EVENT_HANDLER eventHandler;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146">} BLE_DATA;</span>&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+Under MyBluetoothProject, expand Source Files, and open<span class="Element146"> app.c</span>. In the Included Files section, around line 31, add the following lines:&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<span class="Element146">#include &lt;string.h&gt; // for strlen</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146">#include &lt;ctype.h&gt; // for tolower</span>&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+In the Global Data Definitions section, around line 56 add the line right after <span class="Element146">APP_DATA</span>:&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<span class="Element146">BLE_DATA bleData;</span>&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+In the Application Callback Functions, around line 64 add the function:&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<span class="Element146">static void _bleEventHandler(DRV_BT_EVENT event, uint32_t param,</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> uintptr_t context)</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146">{</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> switch(event)</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> {</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> case DRV_BT_EVENT_BLE_STATUS_CHANGED:</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> {</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> switch(param)</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> {</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> case DRV_BM64_BLE_STATUS_STANDBY:</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> case DRV_BM64_BLE_STATUS_SCANNING:</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> case DRV_BM64_BLE_STATUS_ADVERTISING:</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> LED1_Off();</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> bleData.waitingToConnect = true;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> break;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"></span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> case DRV_BM64_BLE_STATUS_CONNECTED:</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> LED1_On();</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> bleData.waitingToConnect = false;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> break;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> }</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> }</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> break;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"></span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> default:</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> break;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> }</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146">}</span>&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+In the Application Local Functions section, around line 102 add the following function:&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<span class="Element146">void _bleTasks()</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146">{</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> switch(bleData.state)</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> {</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> case BLE_STATE_OPEN:</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> {</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> if (SYS_STATUS_READY == DRV_BT_Status())</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> {</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> // open BT module</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> bleData.handle = DRV_BT_Open(DRV_IO_INTENT_READ,</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> DRV_BT_PROTOCOL_BLE);</span>&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> if(bleData.handle != DRV_HANDLE_INVALID)</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> {</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> bleData.state = BLE_STATE_SET_BT_EVENT_HANDLER;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> }</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> }</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> }</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> break;</span>&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> case BLE_STATE_SET_BT_EVENT_HANDLER:</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> {</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> DRV_BT_EventHandlerSet(bleData.handle,</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> bleData.eventHandler, (uintptr_t)0);</span>&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> bleData.state = BLE_STATE_INIT_DONE;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> }</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> break;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"></span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> // Initialized</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> case BLE_STATE_INIT_DONE:</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> {</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> // waits in this state</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> break;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> }</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> }</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146">}</span>&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+In the Application Initialization and State Machine Functions, at around line 154, change the <span class="Element146">APP_Initialize</span> function to:&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<span class="Element146">void APP_Initialize ( void )</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146">{</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> appData.state = APP_STATE_INIT;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"></span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> bleData.state = BLE_STATE_OPEN;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> bleData.waitingToConnect = true;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> bleData.eventHandler = (DRV_BT_EVENT_HANDLER) _bleEventHandler;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146">}</span>&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+At around line 172, replace the <span class="Element146">APP_Tasks</span> function with the following:&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<span class="Element146">void APP_Tasks ( void )</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146">{</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> _bleTasks();</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"></span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> /* Check the application's current state. */</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> switch ( appData.state )</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> {</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> /* Application's initial state. */</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> case APP_STATE_INIT:</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> {</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> if (DRV_BT_STATUS_READY == DRV_BT_GetPowerStatus())</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> {</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> appData.state=APP_STATE_IDLE;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> }</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> }</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> break;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"></span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> // Initialized</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> case APP_STATE_IDLE:</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> {</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> char* test_string;</span>&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> if (false==bleData.waitingToConnect)</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> {</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> if (SWITCH_Get()==SWITCH_STATE_PRESSED) // switch pressed</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> {</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> test_string = &quot;Button pressed&quot;;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> DRV_BT_SendDataOverBLE(bleData.handle,</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> (uint8_t*)test_string, strlen(test_string));</span>&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> appData.state = APP_STATE_MSG_SENT;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> }</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> }</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> }</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> break;</span>&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> case APP_STATE_MSG_SENT:</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> {</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> if (bleData.waitingToConnect)</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> {</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> appData.state = APP_STATE_IDLE;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> }</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> }</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> break;</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146"> }</span>&nbsp;</p>
+<p class="Element10">
+<span class="Element146">}</span>&nbsp;</p>
+<p class="Element10">
+&nbsp;</p><div class="Element15">
+Running the Application</div>
+<p class="Element10">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="1" class="Element600">If you are using the BM64, if you have not done so already, use the BM64_bootloader application to give the BM64 module a unique name.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="BT QS bm64_bootloader.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="2" class="Element600">The mobile application, BLE Scanner, by Bluepixel Technologies LLP, is used in this demonstration. This application is available as a free download from iTunes. Locate and download this application to your smartphone.</li>
+</ol><p class="Element10">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="3" class="Element600">Start the BLE Scanner app. Once opened, it will begin scanning for BLE devices.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="BT QS scanner.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="4" class="Element600">Select the device name that you set up for your BM64 running the BM64_bootloader program and the yellow LED on the SAM E70 Xplained Ultra board should go on, indicating a connection.</li>
+</ol><p class="Element10">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="5" class="Element600">A list of services is displayed.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="BT QS scanner2.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="6" class="Element600">Select the service named CUSTOM SERVICE. A list of characteristics is displayed.</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="BT QS scanner3.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="7" class="Element600">If necessary, scroll down and tap the characteristic labeled Notify. Tap the Updating ? icon to the right, which will display the following screen (ensure that the slider switch to the right of Notify is enabled (set to the right position). Tap the white less than (&lt;) symbol in the upper left corner of the screen to return to the previous screen).</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="BT QS scanner4.jpg" border="0" alt="" title="">&nbsp;</p>
+<p class="Element10" style="text-align: center;">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="8" class="Element600">On the SAM E70 Xplained Ultra board, press the user push button.</li>
+</ol><p class="Element10">
+&nbsp;</p>
+
+<ol class="Element630">
+<li value="9" class="Element600">The text string 'Button pressed' should appear on your smartphone:</li>
+</ol><p class="Element10" style="text-align: center;">
+<img src="BT QS scanner5.jpg" border="0" alt="" title=""></p><p class="Element10">
+&nbsp;</p>
+<div class="Element15">
+Discussion</div>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+The application starts off by calling <span class="Element146">SYS_Initialize</span> in the file<span class="Element146"> initialization.c</span>, to initialize the various peripherals that were selected in MHC (clocks, timer, I2C, I2S, Bluetooth module, etc.). Near the end of that routine, the application initialization routine <span class="Element146">APP_Initialize</span> is called, where a number of variables are initialized in the structures <span class="Element146">appData</span> and <span class="Element146">bleData</span>.&nbsp;</p>
+<p class="Element10">
+After initialization, control passes into the routine <span class="Element146">SYS_Tasks</span> in <span class="Element146">tasks.c</span>, which is just a tight while loop calling either the task routine for the Bluetooth module (e.g. <span class="Element146"><a href="00195.html" target="topic">DRV_BM64_Tasks</a></span>) or the one for the application (<span class="Element146">APP_Tasks</span>). Both are implemented as state machines.&nbsp;</p>
+<p class="Element10">
+Every time <span class="Element146">APP_Tasks</span> is called, it first calls a local routine <span class="Element146">_bleTasks</span> to manage the BM64 module. In the initial state <span class="Element146">BLE_STATE_OPEN</span>, it waits until the Bluetooth module reports that its initialization is complete. Once the driver is ready, it is opened via a call to <span class="Element146">DRV_BT_Open</span> with a protocol of <span class="Element146">DRV_BT_PROTOCOL_BLE</span>.&nbsp;</p>
+<p class="Element10">
+If the open call is successful, the <span class="Element146">_bleTasks</span> state machine advances to the state <span class="Element146">BLE_STATE_SET_BT_EVENT_HANDLER</span>, where it registers the BM64 event callback by calling the routine <span class="Element146">DRV_BT_EventHandlerSet</span> with the name of the callback function <span class="Element146">_bleEventHandler</span>. This completes the Bluetooth tasks setup, and from then on, <span class="Element146">_bleTasks</span> sits in state <span class="Element146">BLE_STATE_INIT_DONE</span>.&nbsp;</p>
+<p class="Element10">
+Meanwhile the main app state machine is waiting in state <span class="Element146">APP_STATE_INIT</span>, until the Bluetooth module reports that its initialization is complete. The application state machine then advances to the state <span class="Element146">APP_STATE_IDLE</span>, where it waits a connection. When that occurs, the callback function <span class="Element146">_bleEventHandler</span> is executed, setting <span class="Element146">bleData.waitingToConnect</span> true.&nbsp;</p>
+<p class="Element10">
+Once a connection is established, if the user presses the pushbutton, <span class="Element146">DRV_BT_SendDataOverBLE</span> is called to send the string &quot;Button pressed&quot; to the host. The state is then advanced to <span class="Element146">APP_STATE_MSG_SENT</span> so the message doesn’t get sent out repeatedly. In a more robust application, a timer could be added to debounce the switch.</p></div>
 </div>
 </div>
 <!-- End Page Content -->
 
 <!-- Begin Page Footer -->
 <div class="Element95">
-<a href="00015.html" target="topic">Bluetooth Overview</a> &gt; <a href="00016.html" target="topic">Creating a Bluetooth Project from Scratch</a></div>
+<a href="00015.html" target="topic">Bluetooth Overview</a> &gt; <a href="00016.html" target="topic">Creating Your First Bluetooth Application from Scratch</a></div>
 <div class="Element93">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -81,7 +665,7 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="00017.html" target="topic">Previous</a> | <a href="00015.html" target="topic">Up</a> | <a href="00001.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element97">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: BT_OVR Creating an Bluetooth Porject from Scratch Topic Title: Creating a Bluetooth Project from Scratch)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: BT_OVR Creating an Bluetooth Porject from Scratch Topic Title: Creating Your First Bluetooth Application from Scratch)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table></div>
 
 <!-- End Page Footer -->

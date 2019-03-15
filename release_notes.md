@@ -44,7 +44,7 @@ This release supports applications for the following development kits
 
 The current known issues are as follows:
 
-None.
+Code is compliant to MISRA C 2012 Mandatory guidelines, except for Rules R.9.1 and R.17.3.
 
 ### RELEASE CONTENTS
 
