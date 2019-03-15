@@ -16,8 +16,8 @@ the following links for release notes, training materials, and interface
 reference information.
 
  - [Release Notes](./release_notes.md)
- - [MPLAB Harmony 3 Audio Wiki](https://github.com/Microchip-MPLAB-Harmony/bt/wiki)
- - [MPLAB Harmony 3 Audio API Help](https://microchip-mplab-harmony.github.io/bt)
+ - [MPLAB Harmony 3 Bluetooth Wiki](https://github.com/Microchip-MPLAB-Harmony/bt/wiki)
+ - [MPLAB Harmony 3 Bluetooth API Help](https://microchip-mplab-harmony.github.io/bt)
 
 # Contents Summary
 
