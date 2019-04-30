@@ -102,6 +102,25 @@ extern "C" {
 // Section: Middleware & Other Library Configuration
 // *****************************************************************************
 // *****************************************************************************
+/* Number of Endpoints used */
+#define DRV_USBHSV1_ENDPOINTS_NUMBER                        4
+
+/* The USB Device Layer will not initialize the USB Driver */
+#define USB_DEVICE_DRIVER_INITIALIZE_EXPLICIT
+
+/* Maximum device layer instances */
+#define USB_DEVICE_INSTANCES_NUMBER                         1
+
+/* EP0 size in bytes */
+#define USB_DEVICE_EP0_BUFFER_SIZE                          64
+
+/* Enable SOF Events */
+#define USB_DEVICE_SOF_EVENT_ENABLE
+
+
+
+
+
 /* Maximum instances of CDC function driver */
 #define USB_DEVICE_CDC_INSTANCES_NUMBER                     1
 
@@ -123,25 +142,6 @@ extern "C" {
 	
 /* Disable Host Support */
 #define DRV_USBHSV1_HOST_SUPPORT                            false
-
-/* Number of Endpoints used */
-#define DRV_USBHSV1_ENDPOINTS_NUMBER                        4
-
-/* The USB Device Layer will not initialize the USB Driver */
-#define USB_DEVICE_DRIVER_INITIALIZE_EXPLICIT
-
-/* Maximum device layer instances */
-#define USB_DEVICE_INSTANCES_NUMBER                         1
-
-/* EP0 size in bytes */
-#define USB_DEVICE_EP0_BUFFER_SIZE                          64
-
-/* Enable SOF Events */
-#define USB_DEVICE_SOF_EVENT_ENABLE
-
-
-
-
 
 
 

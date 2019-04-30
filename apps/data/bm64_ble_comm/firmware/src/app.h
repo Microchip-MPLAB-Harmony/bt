@@ -33,16 +33,6 @@
 #include <stdlib.h>
 #include "configuration.h"
 #include "definitions.h"
-#include "peripheral/clk/plib_clk.h"
-#include "peripheral/nvic/plib_nvic.h"
-#include "peripheral/pio/plib_pio.h"
-#include "bsp/bsp.h"
-#include "system/int/sys_int.h"
-#include "system/ports/sys_ports.h"
-#include "osal/osal.h"
-//#include "driver/i2s/drv_i2s.h"
-#include "peripheral/twihs/plib_twihs0.h"
-#include "system/time/sys_time.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -201,6 +191,18 @@ void APP_Initialize ( void );
 void APP_Tasks( void );
 
 void APP_Button_Tasks( void );
+
+// make boards with multiple switches/LEDs compatible with those with just one
+#ifdef SWITCH1_STATE_PRESSED
+#define SWITCH_Get             SWITCH1_Get
+#define SWITCH_STATE_PRESSED   SWITCH1_STATE_PRESSED
+#endif
+
+#ifdef LED1_On
+#define LED_On                 LED1_On
+#define LED_Off                LED1_Off
+#define LED_Toggle             LED1_Toggle
+#endif
 
 #endif /* APP_H */
 

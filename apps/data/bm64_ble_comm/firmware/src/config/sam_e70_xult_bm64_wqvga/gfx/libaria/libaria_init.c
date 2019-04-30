@@ -40,6 +40,7 @@
 // DOM-IGNORE-END
 
 #include "gfx/libaria/libaria_init.h"
+#include "gfx/libaria/inc/libaria_utils.h"
 
 laScheme defaultScheme;
 laScheme titleScheme;
@@ -272,6 +273,7 @@ static void ScreenCreate_default(laScreen* screen)
     laWidget_AddChild((laWidget*)layer0, (laWidget*)Title);
 
 }
+
 
 
 

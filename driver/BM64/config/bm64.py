@@ -273,9 +273,13 @@ def instantiateComponent(bm64Component):
 
 # this callback occurs when user connects I2S or USART driver to BM64 driver block in Project Graph    
 def onDependencyConnected(info):
+
     if info["dependencyID"] == "I2S driver":
         plibUsed = info["localComponent"].getSymbolByID("DRV_BM64_I2S")
     elif info["dependencyID"] == "USART PLIB":
         plibUsed = info["localComponent"].getSymbolByID("DRV_BM64_USART")
     i2sOrUartId = info["remoteComponent"].getID().upper()
-    plibUsed.setValue(i2sOrUartId, 1)
+    if (info["dependencyID"] == "USART PLIB") and ("SERCOM" in i2sOrUartId):
+        plibUsed.setValue(i2sOrUartId+"_USART") # SERCOM PLIB doesn't include USART string
+    else:
+        plibUsed.setValue(i2sOrUartId)

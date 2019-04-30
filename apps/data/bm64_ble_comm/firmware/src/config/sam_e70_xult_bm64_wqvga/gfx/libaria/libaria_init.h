@@ -81,6 +81,9 @@ extern laImagePlusWidget* ImagePlusWidget1;
 extern laLabelWidget* Title;
 
 
+
+
+
 int32_t libaria_initialize(void);
 
 //DOM-IGNORE-BEGIN
