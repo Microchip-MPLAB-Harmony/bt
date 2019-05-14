@@ -1,177 +1,177 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="66">
+<configurationDescriptor version="65">
   <logicalFolder name="root" displayName="root" projectFiles="true">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="f4" displayName="ble" projectFiles="true">
         <logicalFolder name="f1" displayName="non_gui" projectFiles="true">
-          <itemPath ex="false">../src/ble/non_gui/ble.h</itemPath>
+          <itemPath>../src/ble/non_gui/ble.h</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f1" displayName="config" projectFiles="true">
         <logicalFolder name="f1" displayName="sam_e54_cult_bm64" projectFiles="true">
           <logicalFolder name="f3" displayName="bsp" projectFiles="true">
-            <itemPath ex="false">../src/config/sam_e54_cult_bm64/bsp/bsp.h</itemPath>
+            <itemPath>../src/config/sam_e54_cult_bm64/bsp/bsp.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f1" displayName="bt" projectFiles="true">
             <logicalFolder name="f1" displayName="driver" projectFiles="true">
               <logicalFolder name="f1" displayName="bm64" projectFiles="true">
-                <itemPath ex="false">../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64.h</itemPath>
-                <itemPath ex="false">../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_ble.h</itemPath>
-                <itemPath ex="false">../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_command_decode.h</itemPath>
-                <itemPath ex="false">../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_command_send.h</itemPath>
-                <itemPath ex="false">../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_gpio.h</itemPath>
-                <itemPath ex="false">../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_line_in.h</itemPath>
-                <itemPath ex="false">../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_sha1.h</itemPath>
-                <itemPath ex="false">../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_uart.h</itemPath>
+                <itemPath>../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64.h</itemPath>
+                <itemPath>../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_ble.h</itemPath>
+                <itemPath>../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_command_decode.h</itemPath>
+                <itemPath>../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_command_send.h</itemPath>
+                <itemPath>../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_gpio.h</itemPath>
+                <itemPath>../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_line_in.h</itemPath>
+                <itemPath>../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_sha1.h</itemPath>
+                <itemPath>../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_uart.h</itemPath>
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="f4" displayName="driver" projectFiles="true">
-            <itemPath ex="false">../src/config/sam_e54_cult_bm64/driver/driver.h</itemPath>
-            <itemPath ex="false">../src/config/sam_e54_cult_bm64/driver/driver_common.h</itemPath>
+            <itemPath>../src/config/sam_e54_cult_bm64/driver/driver.h</itemPath>
+            <itemPath>../src/config/sam_e54_cult_bm64/driver/driver_common.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="peripheral" projectFiles="true">
             <logicalFolder name="f5" displayName="clock" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/peripheral/clock/plib_clock.h</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/peripheral/clock/plib_clock.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f7" displayName="cmcc" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/peripheral/cmcc/plib_cmcc.h</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/peripheral/cmcc/plib_cmcc.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f2" displayName="evsys" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/peripheral/evsys/plib_evsys.h</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/peripheral/evsys/plib_evsys.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f6" displayName="nvic" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/peripheral/nvic/plib_nvic.h</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/peripheral/nvic/plib_nvic.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f1" displayName="nvmctrl" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/peripheral/nvmctrl/plib_nvmctrl.h</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/peripheral/nvmctrl/plib_nvmctrl.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f4" displayName="port" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/peripheral/port/plib_port.h</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/peripheral/port/plib_port.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f3" displayName="sercom" projectFiles="true">
               <logicalFolder name="f1" displayName="usart" projectFiles="true">
-                <itemPath ex="false">../src/config/sam_e54_cult_bm64/peripheral/sercom/usart/plib_sercom7_usart.h</itemPath>
-                <itemPath ex="false">../src/config/sam_e54_cult_bm64/peripheral/sercom/usart/plib_sercom_usart_common.h</itemPath>
+                <itemPath>../src/config/sam_e54_cult_bm64/peripheral/sercom/usart/plib_sercom7_usart.h</itemPath>
+                <itemPath>../src/config/sam_e54_cult_bm64/peripheral/sercom/usart/plib_sercom_usart_common.h</itemPath>
               </logicalFolder>
             </logicalFolder>
             <logicalFolder name="f8" displayName="tc" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/peripheral/tc/plib_tc_common.h</itemPath>
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/peripheral/tc/plib_tc0.h</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/peripheral/tc/plib_tc_common.h</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/peripheral/tc/plib_tc0.h</itemPath>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="f5" displayName="system" projectFiles="true">
             <logicalFolder name="f3" displayName="cache" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/system/cache/sys_cache.h</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/system/cache/sys_cache.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f4" displayName="dma" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/system/dma/sys_dma.h</itemPath>
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/system/dma/sys_dma_mapping.h</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/system/dma/sys_dma.h</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/system/dma/sys_dma_mapping.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f1" displayName="int" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/system/int/sys_int.h</itemPath>
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/system/int/sys_int_mapping.h</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/system/int/sys_int.h</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/system/int/sys_int_mapping.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f2" displayName="ports" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/system/ports/sys_ports.h</itemPath>
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/system/ports/sys_ports_mapping.h</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/system/ports/sys_ports.h</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/system/ports/sys_ports_mapping.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f5" displayName="time" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/system/time/sys_time.h</itemPath>
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/system/time/sys_time_definitions.h</itemPath>
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/system/time/src/sys_time_local.h</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/system/time/sys_time.h</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/system/time/sys_time_definitions.h</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/system/time/src/sys_time_local.h</itemPath>
             </logicalFolder>
-            <itemPath ex="false">../src/config/sam_e54_cult_bm64/system/system.h</itemPath>
-            <itemPath ex="false">../src/config/sam_e54_cult_bm64/system/system_common.h</itemPath>
-            <itemPath ex="false">../src/config/sam_e54_cult_bm64/system/system_module.h</itemPath>
+            <itemPath>../src/config/sam_e54_cult_bm64/system/system.h</itemPath>
+            <itemPath>../src/config/sam_e54_cult_bm64/system/system_common.h</itemPath>
+            <itemPath>../src/config/sam_e54_cult_bm64/system/system_module.h</itemPath>
           </logicalFolder>
-          <itemPath ex="false">../src/config/sam_e54_cult_bm64/device_cache.h</itemPath>
-          <itemPath ex="false">../src/config/sam_e54_cult_bm64/toolchain_specifics.h</itemPath>
-          <itemPath ex="false">../src/config/sam_e54_cult_bm64/definitions.h</itemPath>
-          <itemPath ex="false">../src/config/sam_e54_cult_bm64/user.h</itemPath>
-          <itemPath ex="false">../src/config/sam_e54_cult_bm64/configuration.h</itemPath>
+          <itemPath>../src/config/sam_e54_cult_bm64/device_cache.h</itemPath>
+          <itemPath>../src/config/sam_e54_cult_bm64/toolchain_specifics.h</itemPath>
+          <itemPath>../src/config/sam_e54_cult_bm64/definitions.h</itemPath>
+          <itemPath>../src/config/sam_e54_cult_bm64/user.h</itemPath>
+          <itemPath>../src/config/sam_e54_cult_bm64/configuration.h</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f3" displayName="osal" projectFiles="true">
-        <itemPath ex="false">../src/config/sam_e54_cult_bm64/osal/osal.h</itemPath>
-        <itemPath ex="false">../src/config/sam_e54_cult_bm64/osal/osal_definitions.h</itemPath>
-        <itemPath ex="false">../src/config/sam_e54_cult_bm64/osal/osal_impl_basic.h</itemPath>
+        <itemPath>../src/config/sam_e54_cult_bm64/osal/osal.h</itemPath>
+        <itemPath>../src/config/sam_e54_cult_bm64/osal/osal_definitions.h</itemPath>
+        <itemPath>../src/config/sam_e54_cult_bm64/osal/osal_impl_basic.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="packs" projectFiles="true">
         <logicalFolder name="f1" displayName="ATSAME54P20A_DFP" projectFiles="true">
           <logicalFolder name="f1" displayName="component" projectFiles="true">
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/ac.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/adc.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/aes.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/can.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/ccl.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/cmcc.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/dac.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/dmac.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/dsu.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/eic.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/evsys.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/freqm.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/gclk.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/gmac.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/hmatrixb.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/i2s.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/icm.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/mclk.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/nvmctrl.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/osc32kctrl.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/oscctrl.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/pac.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/pcc.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/pdec.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/pm.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/port.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/pukcc.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/qspi.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/ramecc.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/rstc.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/rtc.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/sdhc.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/sercom.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/supc.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/tc.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/tcc.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/trng.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/usb.h</itemPath>
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/component/wdt.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/ac.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/adc.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/aes.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/can.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/ccl.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/cmcc.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/dac.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/dmac.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/dsu.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/eic.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/evsys.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/freqm.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/gclk.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/gmac.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/hmatrixb.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/i2s.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/icm.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/mclk.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/nvmctrl.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/osc32kctrl.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/oscctrl.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/pac.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/pcc.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/pdec.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/pm.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/port.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/pukcc.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/qspi.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/ramecc.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/rstc.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/rtc.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/sdhc.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/sercom.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/supc.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/tc.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/tcc.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/trng.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/usb.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/component/wdt.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="pio" projectFiles="true">
-            <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/pio/same54p20a.h</itemPath>
+            <itemPath>../src/packs/ATSAME54P20A_DFP/pio/same54p20a.h</itemPath>
           </logicalFolder>
-          <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/device.h</itemPath>
-          <itemPath ex="false">../src/packs/ATSAME54P20A_DFP/atsame54p20a.h</itemPath>
+          <itemPath>../src/packs/ATSAME54P20A_DFP/device.h</itemPath>
+          <itemPath>../src/packs/ATSAME54P20A_DFP/atsame54p20a.h</itemPath>
         </logicalFolder>
         <logicalFolder name="f2" displayName="CMSIS" projectFiles="true">
           <logicalFolder name="f1" displayName="CMSIS" projectFiles="true">
             <logicalFolder name="f1" displayName="Core" projectFiles="true">
               <logicalFolder name="f1" displayName="Include" projectFiles="true">
-                <itemPath ex="false">../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h</itemPath>
-                <itemPath ex="false">../src/packs/CMSIS/CMSIS/Core/Include/cmsis_iccarm.h</itemPath>
-                <itemPath ex="false">../src/packs/CMSIS/CMSIS/Core/Include/cmsis_gcc.h</itemPath>
-                <itemPath ex="false">../src/packs/CMSIS/CMSIS/Core/Include/tz_context.h</itemPath>
-                <itemPath ex="false">../src/packs/CMSIS/CMSIS/Core/Include/core_cm4.h</itemPath>
-                <itemPath ex="false">../src/packs/CMSIS/CMSIS/Core/Include/mpu_armv7.h</itemPath>
-                <itemPath ex="false">../src/packs/CMSIS/CMSIS/Core/Include/cmsis_version.h</itemPath>
+                <itemPath>../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h</itemPath>
+                <itemPath>../src/packs/CMSIS/CMSIS/Core/Include/cmsis_iccarm.h</itemPath>
+                <itemPath>../src/packs/CMSIS/CMSIS/Core/Include/cmsis_gcc.h</itemPath>
+                <itemPath>../src/packs/CMSIS/CMSIS/Core/Include/tz_context.h</itemPath>
+                <itemPath>../src/packs/CMSIS/CMSIS/Core/Include/core_cm4.h</itemPath>
+                <itemPath>../src/packs/CMSIS/CMSIS/Core/Include/mpu_armv7.h</itemPath>
+                <itemPath>../src/packs/CMSIS/CMSIS/Core/Include/cmsis_version.h</itemPath>
               </logicalFolder>
             </logicalFolder>
             <logicalFolder name="f2" displayName="DSP" projectFiles="true">
               <logicalFolder name="f1" displayName="Include" projectFiles="true">
-                <itemPath ex="false">../src/packs/CMSIS/CMSIS/DSP/Include/arm_common_tables.h</itemPath>
-                <itemPath ex="false">../src/packs/CMSIS/CMSIS/DSP/Include/arm_const_structs.h</itemPath>
-                <itemPath ex="false">../src/packs/CMSIS/CMSIS/DSP/Include/arm_math.h</itemPath>
+                <itemPath>../src/packs/CMSIS/CMSIS/DSP/Include/arm_common_tables.h</itemPath>
+                <itemPath>../src/packs/CMSIS/CMSIS/DSP/Include/arm_const_structs.h</itemPath>
+                <itemPath>../src/packs/CMSIS/CMSIS/DSP/Include/arm_math.h</itemPath>
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
         </logicalFolder>
       </logicalFolder>
-      <itemPath ex="false">../src/app.h</itemPath>
+      <itemPath>../src/app.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -182,89 +182,89 @@
                    projectFiles="true">
       <logicalFolder name="f2" displayName="ble" projectFiles="true">
         <logicalFolder name="f1" displayName="non_gui" projectFiles="true">
-          <itemPath ex="false">../src/ble/non_gui/ble.c</itemPath>
+          <itemPath>../src/ble/non_gui/ble.c</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f1" displayName="config" projectFiles="true">
         <logicalFolder name="f1" displayName="sam_e54_cult_bm64" projectFiles="true">
           <logicalFolder name="f4" displayName="bsp" projectFiles="true">
-            <itemPath ex="false">../src/config/sam_e54_cult_bm64/bsp/bsp.c</itemPath>
+            <itemPath>../src/config/sam_e54_cult_bm64/bsp/bsp.c</itemPath>
           </logicalFolder>
           <logicalFolder name="f1" displayName="bt" projectFiles="true">
             <logicalFolder name="f1" displayName="driver" projectFiles="true">
               <logicalFolder name="f1" displayName="bm64" projectFiles="true">
-                <itemPath ex="false">../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_local.h</itemPath>
-                <itemPath ex="false">../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64.c</itemPath>
-                <itemPath ex="false">../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_ble.c</itemPath>
-                <itemPath ex="false">../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_command_decode.c</itemPath>
-                <itemPath ex="false">../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_command_send.c</itemPath>
-                <itemPath ex="false">../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_gpio.c</itemPath>
-                <itemPath ex="false">../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_line_in.c</itemPath>
-                <itemPath ex="false">../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_sha1.c</itemPath>
-                <itemPath ex="false">../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_uart.c</itemPath>
+                <itemPath>../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_local.h</itemPath>
+                <itemPath>../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64.c</itemPath>
+                <itemPath>../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_ble.c</itemPath>
+                <itemPath>../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_command_decode.c</itemPath>
+                <itemPath>../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_command_send.c</itemPath>
+                <itemPath>../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_gpio.c</itemPath>
+                <itemPath>../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_line_in.c</itemPath>
+                <itemPath>../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_sha1.c</itemPath>
+                <itemPath>../src/config/sam_e54_cult_bm64/bt/driver/bm64/drv_bm64_uart.c</itemPath>
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="f2" displayName="peripheral" projectFiles="true">
             <logicalFolder name="f5" displayName="clock" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/peripheral/clock/plib_clock.c</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/peripheral/clock/plib_clock.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f7" displayName="cmcc" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/peripheral/cmcc/plib_cmcc.c</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/peripheral/cmcc/plib_cmcc.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f2" displayName="evsys" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/peripheral/evsys/plib_evsys.c</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/peripheral/evsys/plib_evsys.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f6" displayName="nvic" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/peripheral/nvic/plib_nvic.c</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/peripheral/nvic/plib_nvic.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f1" displayName="nvmctrl" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/peripheral/nvmctrl/plib_nvmctrl.c</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/peripheral/nvmctrl/plib_nvmctrl.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f4" displayName="port" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/peripheral/port/plib_port.c</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/peripheral/port/plib_port.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f3" displayName="sercom" projectFiles="true">
               <logicalFolder name="f1" displayName="usart" projectFiles="true">
-                <itemPath ex="false">../src/config/sam_e54_cult_bm64/peripheral/sercom/usart/plib_sercom7_usart.c</itemPath>
+                <itemPath>../src/config/sam_e54_cult_bm64/peripheral/sercom/usart/plib_sercom7_usart.c</itemPath>
               </logicalFolder>
             </logicalFolder>
             <logicalFolder name="f8" displayName="tc" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/peripheral/tc/plib_tc0.c</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/peripheral/tc/plib_tc0.c</itemPath>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="f3" displayName="stdio" projectFiles="true">
-            <itemPath ex="false">../src/config/sam_e54_cult_bm64/stdio/xc32_monitor.c</itemPath>
+            <itemPath>../src/config/sam_e54_cult_bm64/stdio/xc32_monitor.c</itemPath>
           </logicalFolder>
           <logicalFolder name="f5" displayName="system" projectFiles="true">
             <logicalFolder name="f2" displayName="cache" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/system/cache/sys_cache.c</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/system/cache/sys_cache.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f3" displayName="dma" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/system/dma/sys_dma.c</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/system/dma/sys_dma.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f1" displayName="int" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/system/int/src/sys_int.c</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/system/int/src/sys_int.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f4" displayName="time" projectFiles="true">
-              <itemPath ex="false">../src/config/sam_e54_cult_bm64/system/time/src/sys_time.c</itemPath>
+              <itemPath>../src/config/sam_e54_cult_bm64/system/time/src/sys_time.c</itemPath>
             </logicalFolder>
           </logicalFolder>
-          <itemPath ex="false">../src/config/sam_e54_cult_bm64/initialization.c</itemPath>
-          <itemPath ex="false">../src/config/sam_e54_cult_bm64/interrupts.c</itemPath>
-          <itemPath ex="false">../src/config/sam_e54_cult_bm64/exceptions.c</itemPath>
-          <itemPath ex="false">../src/config/sam_e54_cult_bm64/startup_xc32.c</itemPath>
-          <itemPath ex="false">../src/config/sam_e54_cult_bm64/libc_syscalls.c</itemPath>
-          <itemPath ex="false">../src/config/sam_e54_cult_bm64/tasks.c</itemPath>
+          <itemPath>../src/config/sam_e54_cult_bm64/initialization.c</itemPath>
+          <itemPath>../src/config/sam_e54_cult_bm64/interrupts.c</itemPath>
+          <itemPath>../src/config/sam_e54_cult_bm64/exceptions.c</itemPath>
+          <itemPath>../src/config/sam_e54_cult_bm64/startup_xc32.c</itemPath>
+          <itemPath>../src/config/sam_e54_cult_bm64/libc_syscalls.c</itemPath>
+          <itemPath>../src/config/sam_e54_cult_bm64/tasks.c</itemPath>
         </logicalFolder>
       </logicalFolder>
-      <itemPath ex="false">../src/main.c</itemPath>
-      <itemPath ex="false">../src/app.c</itemPath>
+      <itemPath>../src/main.c</itemPath>
+      <itemPath>../src/app.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="false">
-      <itemPath ex="false">Makefile</itemPath>
+      <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
@@ -280,12 +280,12 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>EdbgTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>2.15</languageToolchainVersion>
+        <languageToolchainVersion>2.20</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="SAME54_DFP" vendor="Microchip" version="3.0.27"/>
         <pack name="CMSIS" vendor="ARM" version="5.0.1"/>
+        <pack name="SAME54_DFP" vendor="Microchip" version="3.0.27"/>
       </packs>
       <compileType>
         <linkerTool>
@@ -483,13 +483,18 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-fffff"/>
+        <property key="poweroptions.powerenable" value="false"/>
+        <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.preservedataflash" value="false"/>
+        <property key="programoptions.preservedataflash.ranges"
+                  value="${memories.dataflash.default}"/>
         <property key="programoptions.preserveeeprom" value="false"/>
         <property key="programoptions.preserveeeprom.ranges" value=""/>
         <property key="programoptions.preserveprogram.ranges" value=""/>
         <property key="programoptions.preserveprogramrange" value="false"/>
         <property key="programoptions.preserveuserid" value="false"/>
         <property key="programoptions.programuserotp" value="false"/>
+        <property key="voltagevalue" value=""/>
       </EdbgTool>
       <PICkit3PlatformTool>
         <property key="ADC 1" value="true"/>
