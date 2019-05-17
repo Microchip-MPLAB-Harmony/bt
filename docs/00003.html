@@ -72,36 +72,37 @@ To know more about the MPLAB Harmony Bluetooth Drivers, configuring the Bluetoot
 &nbsp;</p><div class="Element15">
 Architecture</div>
 <p class="Element10">
-There are three different projects packaged in this application.&nbsp;</p>
-<p class="Element10">
-<u>SAM E70 Xplained Ultra Project:</u>&nbsp;</p>
-<p class="Element10">
-This project runs on the SAM E70 Xplained Ultra board, which contains a ATSAME70Q21B microcontroller with 2 MB of Flash memory and 384 KB of RAM running at 300 MHz with the following features:</p>
-<ul class="Element630">
-<li class="Element600">Single user push button</li>
-<li class="Element600">Two user LEDs (only one is used)</li>
-<li class="Element600">One X32 sockets, used for the BM64 Bluetooth module daughterboard.</li>
-</ul><div class="Element63">
-<div class="TableDiv">
-<table cellspacing="0" class="Table0">
-<tr>
-<td class="Element67" valign="top" width="5%" style="border:none;">
-<div class="Element68">
-<img src="Note Icon.png" border="0" alt="" title="">&nbsp;</div></td><td class="Element67" valign="top" width="7%" style="border:none;">
-<div class="Element68">
-<strong>Notes:</strong>&nbsp;</div></td><td class="Element67" valign="top" width="88%" style="border:none;">
-<div class="Element68">
-The SAM E70 Xplained Ultra does not include the BM64 Bluetooth Module Daughter Board. It must be purchased separately from microchipDIRECT, part number AC320032-3.&nbsp;</div></td></tr></table></div></div>
-<p class="Element10">
-The following figure illustrates the application architecture: </p><p class="Element10" style="text-align: center;">
-<img src="APPS BT bm64 ble commE70 architecture diagram.png" border="0" alt="" title=""></p><p class="Element10">
-The ATSAME70Q21B microcontroller (MCU) runs the application code, and communicates with the BM64 over a USART interface operating at 115,200 baud. The BM64 module contains its own Bluetooth stack, so it is unnecessary to include a software Bluetooth stack in the MCU. The program takes up about 1% (21 KB) of the ATSAME70Q21B microcontroller’s program space, about 1% (3 KB) of its RAM. No heap is used.&nbsp;</p>
+There are four different projects packaged in this application.&nbsp;</p>
 <p class="Element10">
 &nbsp;</p>
 <p class="Element10">
-<u>SAM E70 Xplained Ultra Project using FreeRTOS:</u>&nbsp;</p>
+This project runs on the SAM E54 Curiosity Ultra Board, which contains a ATSAME54P20A microcontroller with 1 MB of Flash memory and 256 KB of RAM running at 48 MHz using the following features:</p>
+<ul class="Element630">
+<li class="Element600">Two push buttons (SW1 and SW2)</li>
+<li class="Element600">Two LEDs (LED1 and 2)</li>
+<li class="Element600">One X32 socket, used for the BM64 Bluetooth module daughterboard.</li>
+</ul><p class="Element10">
+The SAM E54 Curiosity Ultra does not include the BM64 Bluetooth Module Daughter Board. It must be purchased separately from microchipDIRECT, part number AC320032-3.&nbsp;</p>
 <p class="Element10">
-This project is identical to the bare-metal version above, except that it uses FreeRTOS. The program takes up about 2% (43 KB) of the ATSAME70Q21B microcontroller’s program space, and 1% (26 KB) of the RAM. No heap is used. The application architecture is the same as the previous project, except for the addition of the FreeRTOS block (not shown)&nbsp;</p>
+The following figure illustrates the application architecture: </p><p class="Element10" style="text-align: center;">
+<img src="APPS BT bm64 ble commE54 architecture diagram.png" border="0" alt="" title=""></p><p class="Element10">
+The ATSAME54P20A microcontroller (MCU) runs the application code, and communicates with the BM64 over a USART interface operating at 115,200 baud. The BM64 module contains its own Bluetooth stack, so it is unnecessary to include a software Bluetooth stack in the MCU. The program takes up about 2% (23 KB) of the ATSAME54P20A microcontroller’s program space, about 1% (3 KB) of its RAM. No heap is used.&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<u>SAM E70 Xplained Ultra Projects (no display):</u>&nbsp;</p>
+<p class="Element10">
+Two projects run on the SAM E70 Xplained Ultra Board without a display, , which contains a ATSAME70Q21B microcontroller with 2 MB of Flash memory and 384 KB of RAM running at 300 MHz with the following features:</p>
+<ul class="Element630">
+<li class="Element600">One push button (SW1, may be labeled as SW0 on some boards)</li>
+<li class="Element600">Two user LEDs (only one is used)</li>
+<li class="Element600">One X32 socket, used for the BM64 Bluetooth module daughterboard.</li>
+</ul><p class="Element10">
+The SAM E70 Xplained Ultra does not include the BM64 Bluetooth Module Daughter Board. It must be purchased separately from microchipDIRECT, part number AC320032-3.&nbsp;</p>
+<p class="Element10">
+The following figure illustrates the application architecture (RTOS not shown): </p><p class="Element10" style="text-align: center;">
+<img src="APPS BT bm64 ble commE70 architecture diagram.png" border="0" alt="" title=""></p><p class="Element10">
+The ATSAME70Q21B microcontroller (MCU) runs the application code, and communicates with the BM64 over a USART interface operating at 115,200 baud. The BM64 module contains its own Bluetooth stack, so it is unnecessary to include a software Bluetooth stack in the MCU. The non-RTOS version of the program takes up about 1% (21 KB) of the ATSAME70Q21B microcontroller’s program space, about 1% (3 KB) of its RAM. No heap is used. For the FreeRTOS project, the program takes up to approximately 2% (43 KB) of the ATSAME70Q21B microcontroller’s program space, and 1% (26 KB) of the RAM. No heap is used.&nbsp;</p>
 <p class="Element10">
 &nbsp;</p>
 <p class="Element10">
@@ -111,17 +112,9 @@ This project runs on the SAM E70 Xplained Ultra Board, which contains a ATSAME70
 <p class="Element10">
 • WM8904 Codec Daughter Board mounted on a X32 socket&nbsp;</p>
 <p class="Element10">
-• PDA TM4301B 480x272 (WQVGA) Display </p><div class="Element63">
-<div class="TableDiv">
-<table cellspacing="0" class="Table0">
-<tr>
-<td class="Element67" valign="top" width="5%" style="border:none;">
-<div class="Element68">
-<img src="Note Icon.png" border="0" alt="" title="">&nbsp;</div></td><td class="Element67" valign="top" width="5%" style="border:none;">
-<div class="Element68">
-<strong>Notes:</strong>&nbsp;</div></td><td class="Element67" valign="top" width="90%" style="border:none;">
-<div class="Element68">
-The SAM E70 Xplained Ultra board does not include either the WM8904 Audio Codec daughterboard or the TM4301B graphics<br>card, which are sold separately on microchipDIRECT as part numbers AC328904 and AC320005-4, respectively.&nbsp;</div></td></tr></table></div></div>
+• PDA TM4301B 480x272 (WQVGA) Display&nbsp;</p>
+<p class="Element10">
+The SAM E70 Xplained Ultra board does not include either the WM8904 Audio Codec daughterboard or the TM4301B graphics card, which are sold separately on microchipDIRECT as part numbers AC328904 and AC320005-4, respectively.&nbsp;</p>
 <p class="Element10">
 The following figure illustrates the application architecture, for this project: </p><p class="Element10" style="text-align: center;">
 <img src="APPS BT bm64 ble commE70 gfx architecture diagram.png" border="0" alt="" title=""></p><p class="Element10">
@@ -139,7 +132,7 @@ The application code is contained in two principal source files. The first, <spa
 <p class="Element10">
 APP_Tasks also calls another secondary state machine (bleTasks), which is located in the source file <span class="Element146">ble.c</span> to process BLE-related tasks. bleTasks receives a handle to the BM64 driver by calling DRV_BT_Open, and then registers an event handler, _BLEEventHandler, as a callback with the BM64 driver. The callback is called when either a message is received from the BM64 or when the BLE status changes (i.e., when it is connected or disconnected). Both of these actions result in updates to the LED and/or display.&nbsp;</p>
 <p class="Element10">
-For two of the projects, the button and LEDs are interfaced using GPIO pins. In the other project, a 480x272 LCD screen is used as the user interface.&nbsp;</p>
+For three of the projects, the button and LEDs are interfaced using GPIO pins. In the other project, a 480x272 LCD screen is used as the user interface.&nbsp;</p>
 <p class="Element10">
 &nbsp;</p><div class="Element15">
 Demonstration Features</div>
@@ -161,6 +154,22 @@ Demonstration Features</div>
 <div class="Element15">
 Tools Setup Differences</div>
 <p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<u>For projects using the E54:</u>&nbsp;</p>
+<p class="Element10">
+When building a new application, start by creating a 32-bit MPLAB Harmony 3 project in MPLAB X IDE by selecting <i>File &gt; New Project</i>. Chose the Configuration name the based on the BSP. Select the appropriate processor (ATSAME70Q21B).&nbsp;</p>
+<p class="Element10">
+In MHC, under Available Components select the BSP SAM E70 Xplained Ultra. Under Bluetooth<i>-&gt;Templates</i>, double-click on BM64 Bluetooth. Answer Yes to all questions.&nbsp;</p>
+<p class="Element10">
+You should end up with a project graph that looks like this, after rearranging the boxes: </p><p class="Element10" style="text-align: center;">
+<img src="APPS BT BM64 BLE comm E54 Project Graph.png" border="0" alt="" title=""></p><p class="Element10">
+Click on SERCOM7 in the graph, and change Receive Pinout to &quot;SERCOM Pad[1] is used for data reception&quot; in the Configuration Options dialog.&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<u>For projects using the E70:</u>&nbsp;</p>
+<p class="Element10">
 When building a new application, start by creating a 32-bit MPLAB Harmony 3 project in MPLAB X IDE by selecting <i>File &gt; New Project</i>. Chose the Configuration name the based on the BSP. Select the appropriate processor (ATSAME70Q21B).&nbsp;</p>
 <p class="Element10">
 In MHC, under Available Components select the BSP SAM E70 Xplained Ultra. Under Bluetooth<i>-&gt;Templates</i>, double-click on BM64 Bluetooth. Answer Yes to all questions.&nbsp;</p>
@@ -171,7 +180,7 @@ Click on USART0 in the graph, and change the Baud Rate to 115,200 in the Configu
 <p class="Element10">
 &nbsp;</p>
 <p class="Element10">
-If building an application that is goling to use the 480x272 display, then do the following instead. In the MHC, under Available&nbsp;</p>
+If building an application that is going to use the 480x272 display, then do the following instead. In the MHC, under Available&nbsp;</p>
 <p class="Element10">
 Components select the BSP (SAM E70 Xplained Ultra). Under Graphics&gt;Templates, double-click on Aria Graphics w/ PDA&nbsp;</p>
 <p class="Element10">
