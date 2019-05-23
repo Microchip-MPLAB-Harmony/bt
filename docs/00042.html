@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<html>
+<head>
+<title>Using the Library</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="Doc-O-Matic" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <link rel="STYLESHEET" href="default.css" type="text/css" />
+
+<script type="text/javascript" src="scripts.js"></script>
+</head>
+<body class="Element700" onload="onBodyLoadEx('frames.html', 'topic', '00042.html');" onmousedown="onBodyMouseDown();">
+
+<!-- Begin Popups -->
+
+<!-- End Popups -->
+
+<!-- Begin Page Header -->
+<div class="Element710" id="areafixed">
+<div class="Element94">
+<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00042.html" target="topic">Using the Library</a></div>
+<div class="Element92">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="25%">
+<div class="Element1">
+MPLAB Harmony Bluetooth Help</div>
+</td><td width="25%">
+<div class="Element2">
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+</td><td width="25%">
+<div class="Element90">
+<a href="00037.html" target="topic">Previous</a> | <a href="00012.html" target="topic">Up</a> | <a href="00018.html" target="topic">Next</a></div>
+</td><td width="25%">
+<div class="Element96">
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM64 Using the Library Topic Title: Using the Library)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+</td></tr></table><div class="Element5">
+Using the Library</div>
+</div>
+</div>
+
+<!-- End Page Header -->
+
+<!-- Begin Client Area -->
+<div class="Element720" id="areascroll">
+<div class="Element721">
+
+<!-- Begin Page Content -->
+<a name="PageContent"></a><div class="Element58">
+<a name="4465736372697074696F6E"></a><div class="Element11">
+<div class="Element10">
+<p class="Element10">
+<strong>Interface Header File</strong>: <span class="Element146"><a href="00043.html" target="topic">drv_bm64.h</a></span>&nbsp;</p>
+<p class="Element10">
+The interface to the BM64 Bluetooth Driver library is defined in the <span class="Element146"><a href="00043.html" target="topic">drv_bm64.h</a></span> header file. Any C language source (<span class="Element146">.c</span>) file that uses the BM64 Bluetooth Driver library should include this header.&nbsp;</p>
+<p class="Element10">
+Please refer to the What is MPLAB Harmony section for how the driver interacts with the framework.&nbsp;</p>
+<p class="Element10">
+<strong>Library Source Files:</strong>&nbsp;</p>
+<p class="Element10">
+The BM64 Bluetooth Driver Library source files are provided in the <span class="Element146">bt\driver\BM64\src</span> directory. This folder may contain optional files and alternate implementations. Please refer to Configuring the Library for instructions on how to select optional features. and to Building the Library for instructions on how to build the library.&nbsp;</p>
+<p class="Element10">
+When the library is being used to stream A2DP audio from the BM64 to the MCU, the BM64 must be configured as a I2S slave device. See the application BM64_bootloader demonstration application for instructions on how to do this.</p></div>
+</div>
+<a name="546F70696373"></a><div class="Element14">
+Topics</div>
+<div class="Element11">
+<div class="Element10">
+<div class="Element212">
+<div class="TableDiv">
+<table cellspacing="0" class="Table1">
+<tr>
+<td class="Element200" valign="top" width="35%">
+<div class="Element201">
+Name&nbsp;</div></td><td class="Element204" valign="top" width="65%">
+<div class="Element205">
+Description&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00018.html" target="topic">Abstraction Model</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+This library provides a low-level abstraction of the BM64 Bluetooth Driver Library on the Microchip family microcontrollers with a convenient C language interface. This topic describes how that abstraction is modeled in software and introduces the library's interface.&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00039.html" target="topic">Library Overview</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+Refer to the Driver Library Overview section for information on how the driver operates in a system.<br><span style="color: #000000">The BM64 Bluetooth Driver Library provides an API interface to transfer control commands and digital audio data to the serially interfaced BM64 Bluetooth module. The library interface routines are divided into various sub-sections, which address one of the blocks or the overall operation of the BM64 Bluetooth Driver Library.</span> &nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00030.html" target="topic">How the Library Works</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+Provides information on how the library works.&nbsp;</div></td></tr></table></div></div>
+</div>
+</div>
+</div>
+<!-- End Page Content -->
+
+<!-- Begin Page Footer -->
+<div class="Element95">
+<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00042.html" target="topic">Using the Library</a></div>
+<div class="Element93">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="25%">
+<div class="Element3">
+MPLAB Harmony Bluetooth Help</div>
+</td><td width="25%">
+<div class="Element4">
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+</td><td width="25%">
+<div class="Element91">
+<a href="00037.html" target="topic">Previous</a> | <a href="00012.html" target="topic">Up</a> | <a href="00018.html" target="topic">Next</a></div>
+</td><td width="25%">
+<div class="Element97">
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM64 Using the Library Topic Title: Using the Library)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+</td></tr></table></div>
+
+<!-- End Page Footer -->
+</div>
+</div>
+
+<!-- End Client Area -->
+</body></html>

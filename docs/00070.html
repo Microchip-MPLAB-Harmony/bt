@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
-<title>DRV_BM64_EnterBTPairingMode Function</title>
+<title>DRV_BM64_EVENT Enumeration</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="Doc-O-Matic" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -18,7 +18,7 @@
 <!-- Begin Page Header -->
 <div class="Element710" id="areafixed">
 <div class="Element94">
-<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00039.html" target="topic">Library Interface</a> &gt; e) Bluetooth-specific Functions &gt; <a href="00070.html" target="topic">DRV_BM64_EnterBTPairingMode Function</a></div>
+<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00038.html" target="topic">Library Interface</a> &gt; i) Data Types and Constants &gt; <a href="00070.html" target="topic">DRV_BM64_EVENT Enumeration</a></div>
 <div class="Element92">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -29,12 +29,12 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element90">
-<a href="00064.html" target="topic">Previous</a> | <a href="00039.html" target="topic">Up</a> | <a href="00130.html" target="topic">Next</a></div>
+<a href="00064.html" target="topic">Previous</a> | <a href="00038.html" target="topic">Up</a> | <a href="00126.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element96">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_EnterBTPairingMode@DRV_HANDLE Topic Title: DRV_BM64_EnterBTPairingMode Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_EVENT Topic Title: DRV_BM64_EVENT Enumeration)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table><div class="Element5">
-DRV_BM64_EnterBTPairingMode Function</div>
+DRV_BM64_EVENT Enumeration</div>
 </div>
 </div>
 
@@ -46,83 +46,76 @@ DRV_BM64_EnterBTPairingMode Function</div>
 
 <!-- Begin Page Content -->
 <a name="PageContent"></a><div class="Element58">
-<a name="53756D6D617279"></a><div class="Element11">
+<a name="4465736372697074696F6E"></a><div class="Element11">
 <div class="Element10">
 <p class="Element10">
-Enter Bluetooth pairing mode.</p></div>
-</div>
-<a name="4465736372697074696F6E"></a><div class="Element14">
-Description</div>
-<div class="Element11">
-<div class="Element10">
-<p class="Element10">
-Function DRV_BM64_EnterBTPairingMode:&nbsp;</p>
-<p class="Element10">
-void DRV_BM64_EnterBTPairingMode(const DRV_HANDLE handle);&nbsp;</p>
-<p class="Element10">
-Starting the pairing process, making this BM64 available for pairing with a Bluetooth host.</p></div>
-</div>
-<a name="507265636F6E646974696F6E73"></a><div class="Element14">
-Preconditions</div>
-<div class="Element11">
-<div class="Element10">
-<p class="Element10">
-<a href="00150.html" target="topic">DRV_BM64_Open</a> must have been called to obtain a valid opened device handle.</p></div>
-</div>
-<a name="506172616D6574657273"></a><div class="Element14">
-Parameters</div>
-<div class="Element11">
-<div class="Element10">
-<div class="Element312">
-<div class="TableDiv">
-<table cellspacing="0" class="Table4">
-<tr>
-<td class="Element300" valign="top" width="35%">
-<div class="Element301">
-Parameters&nbsp;</div></td><td class="Element304" valign="top" width="65%">
-<div class="Element305">
-Description&nbsp;</div></td></tr><tr>
-<td class="Element302" valign="top" width="35%">
-<div class="Element303">
-handle&nbsp;</div></td><td class="Element306" valign="top" width="65%">
-<div class="Element307">
-valid handle to an opened BM64 device driver unique to client&nbsp;</div></td></tr></table></div></div>
-</div>
-</div>
-<a name="52657475726E73"></a><div class="Element14">
-Returns</div>
-<div class="Element11">
-<div class="Element10">
-<p class="Element10">
-None.</p></div>
-</div>
-<a name="4578616D706C65"></a><div class="Element14">
-Example</div>
-<div class="Element11">
-<div class="Element10">
-<div class="Element13"><div class="Element12"><pre class="Element12"><strong><span style="color: #000080">case</span></strong> BUTTON_STATE_PRESSED:      <i><span style="color: #008000">// (debouncing not shown)</span></i>
-{
-    <strong><span style="color: #000080">if</span></strong> (BSP_SwitchStateGet(BSP_SWITCH_1)==BSP_SWITCH_STATE_PRESSED))
-    {
-        <i><span style="color: #008000">// note generic version of call (DRV_BT instead of DRV_BM64) is used</span></i>
-        DRV_BT_EnterBTPairingMode(appData.bt.handle);               
-        appData.buttonState=BUTTON_STATE_WAIT_FOR_RELEASE;                
-    }
-}
-<strong><span style="color: #000080">break</span></strong>;</pre></div></div>
-</div>
+events that can be returned to a client via callback</p></div>
 </div>
 <a name="43"></a><div class="Element99">
 C</div>
-<div class="Element101"><div class="Element100"><pre class="Element100"><strong><span style="color: #000080">void</span></strong> <strong><span style="color: #000000">DRV_BM64_EnterBTPairingMode</span></strong>(
-    <strong><span style="color: #000080">const</span></strong> DRV_HANDLE <strong><span style="color: #000000">handle</span></strong>
-);</pre></div></div>
+<div class="Element101"><div class="Element100"><pre class="Element100"><strong><span style="color: #000080">typedef</span></strong> <strong><span style="color: #000080">enum</span></strong> {
+  <strong><span style="color: #000000">DRV_BM64_EVENT_NONE</span></strong> = 0,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_NSPK_STATUS</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_LINE_IN_STATUS</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_A2DP_STATUS</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_CALL_STATUS_CHANGED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_CODEC_TYPE</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_HFP_CONNECTED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_HFP_DISCONNECTED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_A2DP_CONNECTED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_A2DP_DISCONNECTED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_AVRCP_CONNECTED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_AVRCP_DISCONNECTED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_SPP_CONNECTED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_IAP_CONNETED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_SPP_IAP_DISCONNECTED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_ACL_CONNECTED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_ACL_DISCONNECTED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_SCO_CONNECTED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_SCO_DISCONNECTED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_MAP_CONNECTED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_MAP_DISCONNECTED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_SYS_POWER_ON</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_SYS_POWER_OFF</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_SYS_STANDBY</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_SYS_PAIRING_START</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_SYS_PAIRING_OK</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_SYS_PAIRING_FAILED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_LINKBACK_SUCCESS</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_LINKBACK_FAILED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_BD_ADDR_RECEIVED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_PAIR_RECORD_RECEIVED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_LINK_MODE_RECEIVED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_PLAYBACK_STATUS_CHANGED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_AVRCP_VOLUME_CTRL</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_AVRCP_ABS_VOLUME_CHANGED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_HFP_VOLUME_CHANGED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_VOLUME_CHANGED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_SAMPLERATE_CHANGED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_NSPK_SYNC_POWER_OFF</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_NSPK_SYNC_VOL_CTRL</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_NSPK_SYNC_INTERNAL_GAIN</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_NSPK_SYNC_ABS_VOL</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_NSPK_CHANNEL_SETTING</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_NSPK_ADD_SPEAKER3</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_LE_STATUS_CHANGED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_LE_ADV_CONTROL_REPORT</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_LE_CONNECTION_PARA_REPORT</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_LE_CONNECTION_PARA_UPDATE_RSP</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_GATT_ATTRIBUTE_DATA</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_PORT0_INPUT_CHANGED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_PORT1_INPUT_CHANGED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_PORT2_INPUT_CHANGED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_PORT3_INPUT_CHANGED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_BLESPP_MSG_RECEIVED</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_EVENT_BLE_STATUS_CHANGED</span></strong>
+} DRV_BM64_EVENT;</pre></div></div>
 </div>
 <!-- End Page Content -->
 
 <!-- Begin Page Footer -->
 <div class="Element95">
-<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00039.html" target="topic">Library Interface</a> &gt; e) Bluetooth-specific Functions &gt; <a href="00070.html" target="topic">DRV_BM64_EnterBTPairingMode Function</a></div>
+<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00038.html" target="topic">Library Interface</a> &gt; i) Data Types and Constants &gt; <a href="00070.html" target="topic">DRV_BM64_EVENT Enumeration</a></div>
 <div class="Element93">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -133,10 +126,10 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element91">
-<a href="00064.html" target="topic">Previous</a> | <a href="00039.html" target="topic">Up</a> | <a href="00130.html" target="topic">Next</a></div>
+<a href="00064.html" target="topic">Previous</a> | <a href="00038.html" target="topic">Up</a> | <a href="00126.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element97">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_EnterBTPairingMode@DRV_HANDLE Topic Title: DRV_BM64_EnterBTPairingMode Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_EVENT Topic Title: DRV_BM64_EVENT Enumeration)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table></div>
 
 <!-- End Page Footer -->

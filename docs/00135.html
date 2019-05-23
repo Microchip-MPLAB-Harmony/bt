@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
-<title>DRV_BM64_GetPowerStatus Function</title>
+<title>DRV_BM64_H Macro</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="Doc-O-Matic" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -18,7 +18,7 @@
 <!-- Begin Page Header -->
 <div class="Element710" id="areafixed">
 <div class="Element94">
-<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00039.html" target="topic">Library Interface</a> &gt; a) System Functions &gt; <a href="00135.html" target="topic">DRV_BM64_GetPowerStatus Function</a></div>
+<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00038.html" target="topic">Library Interface</a> &gt; i) Data Types and Constants &gt; <a href="00135.html" target="topic">DRV_BM64_H Macro</a></div>
 <div class="Element92">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -29,12 +29,12 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element90">
-<a href="00195.html" target="topic">Previous</a> | <a href="00039.html" target="topic">Up</a> | <a href="00192.html" target="topic">Next</a></div>
+<a href="00046.html" target="topic">Previous</a> | <a href="00038.html" target="topic">Up</a> | <a href="00029.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element96">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_GetPowerStatus Topic Title: DRV_BM64_GetPowerStatus Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_H Topic Title: DRV_BM64_H Macro)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table><div class="Element5">
-DRV_BM64_GetPowerStatus Function</div>
+DRV_BM64_H Macro</div>
 </div>
 </div>
 
@@ -46,61 +46,20 @@ DRV_BM64_GetPowerStatus Function</div>
 
 <!-- Begin Page Content -->
 <a name="PageContent"></a><div class="Element58">
-<a name="53756D6D617279"></a><div class="Element11">
+<a name="4465736372697074696F6E"></a><div class="Element11">
 <div class="Element10">
 <p class="Element10">
-Gets the current status of the BM64 Bluetooth driver module (BM64-specific).</p></div>
-</div>
-<a name="4465736372697074696F6E"></a><div class="Element14">
-Description</div>
-<div class="Element11">
-<div class="Element10">
-<p class="Element10">
-Function DRV_BM64_GetPowerStatus:&nbsp;</p>
-<p class="Element10">
-<a href="00065.html" target="topic">DRV_BM64_DRVR_STATUS</a> DRV_BM64_GetPowerStatus( void );&nbsp;</p>
-<p class="Element10">
-This routine provides the current status (power on/off/ready) of the BM64 Bluetooth driver module passed back as type <a href="00065.html" target="topic">DRV_BM64_DRVR_STATUS</a> enum.</p></div>
-</div>
-<a name="507265636F6E646974696F6E73"></a><div class="Element14">
-Preconditions</div>
-<div class="Element11">
-<div class="Element10">
-<p class="Element10">
-<a href="00137.html" target="topic">DRV_BM64_Initialize</a> must have been called to initialize the driver instance.</p></div>
-</div>
-<a name="52657475726E73"></a><div class="Element14">
-Returns</div>
-<div class="Element11">
-<div class="Element10">
-<p class="Element10">
-Driver status, encoded as type <a href="00065.html" target="topic">DRV_BM64_DRVR_STATUS</a> enum.</p></div>
-</div>
-<a name="4578616D706C65"></a><div class="Element14">
-Example</div>
-<div class="Element11">
-<div class="Element10">
-<div class="Element13"><div class="Element12"><pre class="Element12"><strong><span style="color: #000080">case</span></strong> APP_STATE_WAIT_INIT:
-{
-   <i><span style="color: #008000">// note generic version of call (DRV_BT instead of DRV_BM64) is used</span></i>
-   <strong><span style="color: #000080">if</span></strong> (DRV_BT_STATUS_READY == DRV_BT_GetPowerStatus())
-   {           
-       appData.state=APP_STATE_IDLE;
-       <i><span style="color: #008000">// start can processing audio</span></i>
-   }
-}
-<strong><span style="color: #000080">break</span></strong>;</pre></div></div>
-</div>
+This is macro DRV_BM64_H.</p></div>
 </div>
 <a name="43"></a><div class="Element99">
 C</div>
-<div class="Element101"><div class="Element100"><pre class="Element100"><a href="00065.html" target="topic">DRV_BM64_DRVR_STATUS</a> <strong><span style="color: #000000">DRV_BM64_GetPowerStatus</span></strong>();</pre></div></div>
+<div class="Element101"><div class="Element100"><pre class="Element100"><strong><span style="color: #000080">#define</span></strong> <strong><span style="color: #000000">DRV_BM64_H</span></strong> </pre></div></div>
 </div>
 <!-- End Page Content -->
 
 <!-- Begin Page Footer -->
 <div class="Element95">
-<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00039.html" target="topic">Library Interface</a> &gt; a) System Functions &gt; <a href="00135.html" target="topic">DRV_BM64_GetPowerStatus Function</a></div>
+<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00038.html" target="topic">Library Interface</a> &gt; i) Data Types and Constants &gt; <a href="00135.html" target="topic">DRV_BM64_H Macro</a></div>
 <div class="Element93">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -111,10 +70,10 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element91">
-<a href="00195.html" target="topic">Previous</a> | <a href="00039.html" target="topic">Up</a> | <a href="00192.html" target="topic">Next</a></div>
+<a href="00046.html" target="topic">Previous</a> | <a href="00038.html" target="topic">Up</a> | <a href="00029.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element97">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_GetPowerStatus Topic Title: DRV_BM64_GetPowerStatus Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_H Topic Title: DRV_BM64_H Macro)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table></div>
 
 <!-- End Page Footer -->

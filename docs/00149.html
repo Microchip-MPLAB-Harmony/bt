@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
-<title>DRV_BM64_MAXBDNAMESIZE Macro</title>
+<title>DRV_BM64_Open Function</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="Doc-O-Matic" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -18,7 +18,7 @@
 <!-- Begin Page Header -->
 <div class="Element710" id="areafixed">
 <div class="Element94">
-<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00039.html" target="topic">Library Interface</a> &gt; i) Data Types and Constants &gt; <a href="00149.html" target="topic">DRV_BM64_MAXBDNAMESIZE Macro</a></div>
+<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00038.html" target="topic">Library Interface</a> &gt; b) Client Setup Functions &gt; <a href="00149.html" target="topic">DRV_BM64_Open Function</a></div>
 <div class="Element92">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -29,12 +29,12 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element90">
-<a href="00063.html" target="topic">Previous</a> | <a href="00039.html" target="topic">Up</a> | <a href="00047.html" target="topic">Next</a></div>
+<a href="00191.html" target="topic">Previous</a> | <a href="00038.html" target="topic">Up</a> | <a href="00060.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element96">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_MAXBDNAMESIZE Topic Title: DRV_BM64_MAXBDNAMESIZE Macro)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_Open@DRV_IO_INTENT@DRV_BM64_PROTOCOL Topic Title: DRV_BM64_Open Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table><div class="Element5">
-DRV_BM64_MAXBDNAMESIZE Macro</div>
+DRV_BM64_Open Function</div>
 </div>
 </div>
 
@@ -46,15 +46,102 @@ DRV_BM64_MAXBDNAMESIZE Macro</div>
 
 <!-- Begin Page Content -->
 <a name="PageContent"></a><div class="Element58">
+<a name="53756D6D617279"></a><div class="Element11">
+<div class="Element10">
+<p class="Element10">
+Open the specified BM64 driver instance and returns a handle to it</p></div>
+</div>
+<a name="4465736372697074696F6E"></a><div class="Element14">
+Description</div>
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+Function DRV_BM64_Open:&nbsp;</p>
+<p class="Element10">
+DRV_HANDLE DRV_BM64_Open(const DRV_IO_INTENT ioIntent, const <a href="00162.html" target="topic">DRV_BM64_PROTOCOL</a> protocol);&nbsp;</p>
+<p class="Element10">
+This routine opens the specified BM64 Bluetooth driver instance and provides a handle that must be provided to all other client-level operations to identify the caller and the instance of the driver. The ioIntent parameter defines how the client interacts with this driver instance.&nbsp;</p>
+<p class="Element10">
+Only DRV_IO_INTENT_READ is a valid ioIntent option as the BM64 Bluetooth driver audio stream is read-only.&nbsp;</p>
+<p class="Element10">
+Specifying a DRV_IO_INTENT_EXCLUSIVE will cause the driver to provide exclusive access to this client. The driver cannot be opened by any other client.</p></div>
+</div>
+<a name="507265636F6E646974696F6E73"></a><div class="Element14">
+Preconditions</div>
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+<a href="00136.html" target="topic">DRV_BM64_Initialize</a> must have been called to initialize the driver instance.</p></div>
+</div>
+<a name="506172616D6574657273"></a><div class="Element14">
+Parameters</div>
+<div class="Element11">
+<div class="Element10">
+<div class="Element312">
+<div class="TableDiv">
+<table cellspacing="0" class="Table4">
+<tr>
+<td class="Element300" valign="top" width="35%">
+<div class="Element301">
+Parameters&nbsp;</div></td><td class="Element304" valign="top" width="65%">
+<div class="Element305">
+Description&nbsp;</div></td></tr><tr>
+<td class="Element302" valign="top" width="35%">
+<div class="Element303">
+ioIntent&nbsp;</div></td><td class="Element306" valign="top" width="65%">
+<div class="Element307">
+valid handle to an opened BM64 device driver unique to client&nbsp;</div></td></tr><tr>
+<td class="Element302" valign="top" width="35%">
+<div class="Element303">
+protocol&nbsp;</div></td><td class="Element306" valign="top" width="65%">
+<div class="Element307">
+specifies which protocol(s) the client intends to use with this driver. One of the various <a href="00162.html" target="topic">DRV_BM64_PROTOCOL</a> enum values, including DRV_BM64_PROTOCOL_ALL.&nbsp;</div></td></tr></table></div></div>
+</div>
+</div>
+<a name="52657475726E73"></a><div class="Element14">
+Returns</div>
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+valid handle to an opened BM64 device driver unique to client</p></div>
+</div>
+<a name="4578616D706C65"></a><div class="Element14">
+Example</div>
+<div class="Element11">
+<div class="Element10">
+<div class="Element13"><div class="Element12"><pre class="Element12"><strong><span style="color: #000080">case</span></strong> APP_STATE_OPEN:
+{
+    <strong><span style="color: #000080">if</span></strong> (SYS_STATUS_READY == DRV_BT_Status())
+    { 
+        <i><span style="color: #008000">// open BT module, including RX audio stream</span></i>
+        <i><span style="color: #008000">// note generic version of call (DRV_BT instead of DRV_BM64) is used</span></i>
+        appData.bt.handle = DRV_BT_Open(DRV_IO_INTENT_READ, DRV_BT_PROTOCOL_ALL);
+
+        <strong><span style="color: #000080">if</span></strong>(appData.bt.handle != DRV_HANDLE_INVALID)
+        {
+            appData.state = APP_STATE_SET_BT_BUFFER_HANDLER;
+        }
+        <strong><span style="color: #000080">else</span></strong>
+        {
+            <i><span style="color: #008000">// Got an Invalid Handle.  Wait for BT module to Initialize</span></i>
+        }
+    }
+}
+<strong><span style="color: #000080">break</span></strong>;</pre></div></div>
+</div>
+</div>
 <a name="43"></a><div class="Element99">
 C</div>
-<div class="Element101"><div class="Element100"><pre class="Element100"><strong><span style="color: #000080">#define</span></strong> <strong><span style="color: #000000">DRV_BM64_MAXBDNAMESIZE</span></strong> 32</pre></div></div>
+<div class="Element101"><div class="Element100"><pre class="Element100">DRV_HANDLE <strong><span style="color: #000000">DRV_BM64_Open</span></strong>(
+    <strong><span style="color: #000080">const</span></strong> DRV_IO_INTENT <strong><span style="color: #000000">ioIntent</span></strong>, 
+    <strong><span style="color: #000080">const</span></strong> <a href="00162.html" target="topic">DRV_BM64_PROTOCOL</a> <strong><span style="color: #000000">protocol</span></strong>
+);</pre></div></div>
 </div>
 <!-- End Page Content -->
 
 <!-- Begin Page Footer -->
 <div class="Element95">
-<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00039.html" target="topic">Library Interface</a> &gt; i) Data Types and Constants &gt; <a href="00149.html" target="topic">DRV_BM64_MAXBDNAMESIZE Macro</a></div>
+<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00038.html" target="topic">Library Interface</a> &gt; b) Client Setup Functions &gt; <a href="00149.html" target="topic">DRV_BM64_Open Function</a></div>
 <div class="Element93">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -65,10 +152,10 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element91">
-<a href="00063.html" target="topic">Previous</a> | <a href="00039.html" target="topic">Up</a> | <a href="00047.html" target="topic">Next</a></div>
+<a href="00191.html" target="topic">Previous</a> | <a href="00038.html" target="topic">Up</a> | <a href="00060.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element97">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_MAXBDNAMESIZE Topic Title: DRV_BM64_MAXBDNAMESIZE Macro)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_Open@DRV_IO_INTENT@DRV_BM64_PROTOCOL Topic Title: DRV_BM64_Open Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table></div>
 
 <!-- End Page Footer -->

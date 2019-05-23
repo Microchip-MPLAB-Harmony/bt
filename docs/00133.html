@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
-<title>DRV_BM64_GetLinkStatus Function</title>
+<title>DRV_BM64_GetPlayingStatus Function</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="Doc-O-Matic" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -18,7 +18,7 @@
 <!-- Begin Page Header -->
 <div class="Element710" id="areafixed">
 <div class="Element94">
-<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00039.html" target="topic">Library Interface</a> &gt; e) Bluetooth-specific Functions &gt; <a href="00133.html" target="topic">DRV_BM64_GetLinkStatus Function</a></div>
+<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00038.html" target="topic">Library Interface</a> &gt; f) AVRCP Functions &gt; <a href="00133.html" target="topic">DRV_BM64_GetPlayingStatus Function</a></div>
 <div class="Element92">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -29,12 +29,12 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element90">
-<a href="00138.html" target="topic">Previous</a> | <a href="00039.html" target="topic">Up</a> | <a href="00129.html" target="topic">Next</a></div>
+<a href="00058.html" target="topic">Previous</a> | <a href="00038.html" target="topic">Up</a> | <a href="00130.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element96">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_GetLinkStatus@DRV_HANDLE Topic Title: DRV_BM64_GetLinkStatus Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_GetPlayingStatus@DRV_HANDLE Topic Title: DRV_BM64_GetPlayingStatus Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table><div class="Element5">
-DRV_BM64_GetLinkStatus Function</div>
+DRV_BM64_GetPlayingStatus Function</div>
 </div>
 </div>
 
@@ -49,25 +49,25 @@ DRV_BM64_GetLinkStatus Function</div>
 <a name="53756D6D617279"></a><div class="Element11">
 <div class="Element10">
 <p class="Element10">
-Return link status.</p></div>
+Return the current playing status of the device.</p></div>
 </div>
 <a name="4465736372697074696F6E"></a><div class="Element14">
 Description</div>
 <div class="Element11">
 <div class="Element10">
 <p class="Element10">
-Function DRV_BM64_GetLinkStatus:&nbsp;</p>
+Function DRV_BM64_GetPlayingStatus:&nbsp;</p>
 <p class="Element10">
-<a href="00139.html" target="topic">DRV_BM64_LINKSTATUS</a> DRV_BM64_GetLinkStatus(const DRV_HANDLE handle);&nbsp;</p>
+void DRV_BM64_GetPlayingStatus(const DRV_HANDLE handle);&nbsp;</p>
 <p class="Element10">
-Returns a 8-bit value containing current link status as bit flags for SCO (bit 0), ACL, HFP, A2DP, AVRCP, SPP, IAP, MAP (bit 7)</p></div>
+Return the current AVRCP playing status of the device, e.g. stopped, playing, paused, fast forward or rewind, encoded as as the enum <a href="00152.html" target="topic">DRV_BM64_PLAYINGSTATUS</a>.</p></div>
 </div>
 <a name="507265636F6E646974696F6E73"></a><div class="Element14">
 Preconditions</div>
 <div class="Element11">
 <div class="Element10">
 <p class="Element10">
-<a href="00150.html" target="topic">DRV_BM64_Open</a> must have been called to obtain a valid opened device handle.</p></div>
+<a href="00149.html" target="topic">DRV_BM64_Open</a> must have been called to obtain a valid opened device handle.</p></div>
 </div>
 <a name="506172616D6574657273"></a><div class="Element14">
 Parameters</div>
@@ -94,7 +94,7 @@ Returns</div>
 <div class="Element11">
 <div class="Element10">
 <p class="Element10">
-8-bit value defined by <a href="00139.html" target="topic">DRV_BM64_LINKSTATUS</a> enum.</p></div>
+None.</p></div>
 </div>
 <a name="4578616D706C65"></a><div class="Element14">
 Example</div>
@@ -103,11 +103,11 @@ Example</div>
 <div class="Element13"><div class="Element12"><pre class="Element12"><strong><span style="color: #000080">case</span></strong> BUTTON_STATE_PRESSED:      <i><span style="color: #008000">// (debouncing not shown)</span></i>
 {
     <strong><span style="color: #000080">if</span></strong> (BSP_SwitchStateGet(BSP_SWITCH_3)==BSP_SWITCH_STATE_PRESSED))
-    {             
+    { 
+        <i><span style="color: #008000">// note generic version of call (DRV_BT instead of DRV_BM64) is used</span></i>
         DRV_BT_PLAYINGSTATUS playingStatus = DRV_BT_GetPlayingStatus(appData.bt.handle);
         <strong><span style="color: #000080">if</span></strong> ((playingStatus==DRV_BT_PLAYING_FF)||(playingStatus==DRV_BT_PLAYING_FR))
         {
-           <i><span style="color: #008000">// note generic version of call (DRV_BT instead of DRV_BM64) is used</span></i>
            <strong><span style="color: #000080">if</span></strong> (DRV_BT_GetLinkStatus(appData.bt.handle) &amp; DRV_BT_AVRCP_LINK_STATUS)
            {                 
                DRV_BT_CancelForwardOrRewind(appData.bt.handle);
@@ -120,7 +120,7 @@ Example</div>
 </div>
 <a name="43"></a><div class="Element99">
 C</div>
-<div class="Element101"><div class="Element100"><pre class="Element100"><a href="00139.html" target="topic">DRV_BM64_LINKSTATUS</a> <strong><span style="color: #000000">DRV_BM64_GetLinkStatus</span></strong>(
+<div class="Element101"><div class="Element100"><pre class="Element100"><a href="00152.html" target="topic">DRV_BM64_PLAYINGSTATUS</a> <strong><span style="color: #000000">DRV_BM64_GetPlayingStatus</span></strong>(
     <strong><span style="color: #000080">const</span></strong> DRV_HANDLE <strong><span style="color: #000000">handle</span></strong>
 );</pre></div></div>
 </div>
@@ -128,7 +128,7 @@ C</div>
 
 <!-- Begin Page Footer -->
 <div class="Element95">
-<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00039.html" target="topic">Library Interface</a> &gt; e) Bluetooth-specific Functions &gt; <a href="00133.html" target="topic">DRV_BM64_GetLinkStatus Function</a></div>
+<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00038.html" target="topic">Library Interface</a> &gt; f) AVRCP Functions &gt; <a href="00133.html" target="topic">DRV_BM64_GetPlayingStatus Function</a></div>
 <div class="Element93">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -139,10 +139,10 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element91">
-<a href="00138.html" target="topic">Previous</a> | <a href="00039.html" target="topic">Up</a> | <a href="00129.html" target="topic">Next</a></div>
+<a href="00058.html" target="topic">Previous</a> | <a href="00038.html" target="topic">Up</a> | <a href="00130.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element97">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_GetLinkStatus@DRV_HANDLE Topic Title: DRV_BM64_GetLinkStatus Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_GetPlayingStatus@DRV_HANDLE Topic Title: DRV_BM64_GetPlayingStatus Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table></div>
 
 <!-- End Page Footer -->
