@@ -32,7 +32,16 @@ extern "C" {
 // Section: User Configuration macros
 // *****************************************************************************
 // *****************************************************************************
-
+  
+#define UARTn_SerialSetup   USART0_SerialSetup
+#define UARTn_WriteCallbackRegister USART0_WriteCallbackRegister
+#define UARTn_ReadCallbackRegister  USART0_ReadCallbackRegister
+#define UARTn_Read          USART0_Read
+#define UARTn_Write         USART0_Write
+#define UART_SERIAL_SETUP   USART_SERIAL_SETUP
+    
+#define SWITCH1_Get             SWITCH_Get
+#define SWITCH1_STATE_PRESSED   SWITCH_STATE_PRESSED
 
 //DOM-IGNORE-BEGIN
 #ifdef __cplusplus

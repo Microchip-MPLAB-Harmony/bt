@@ -18,8 +18,34 @@
     are defined here for convenience.
 *******************************************************************************/
 
+//DOM-IGNORE-BEGIN
+/*******************************************************************************
+* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+*
+* Subject to your compliance with these terms, you may use Microchip software
+* and any derivatives exclusively with Microchip products. It is your
+* responsibility to comply with third party license terms applicable to your
+* use of third party software (including open source software) that may
+* accompany Microchip software.
+*
+* THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
+* EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
+* WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
+* PARTICULAR PURPOSE.
+*
+* IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
+* INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
+* WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
+* BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
+* FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
+* ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
+* THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+ *******************************************************************************/
+//DOM-IGNORE-END
+
 #ifndef _APP_H
 #define _APP_H
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -34,31 +60,19 @@
 #include "configuration.h"
 #include "definitions.h"
 
-// DOM-IGNORE-BEGIN
-#ifdef __cplusplus  // Provide C++ Compatibility
-
-extern "C" {
-
-#endif
-// DOM-IGNORE-END
-
 // *****************************************************************************
 // *****************************************************************************
 // Section: Type Definitions
 // *****************************************************************************
+// ***************************************************************************** 
+#define APP_READ_BUFFER_SIZE                                512
+#define APP_USB_SWITCH_DEBOUNCE_COUNT_FS                    200
+#define APP_USB_SWITCH_DEBOUNCE_COUNT_HS                    1280
+
+
+
 // *****************************************************************************
-
-/*** Application Instance 0 Configuration ***/
-
-#define APP_READ_BUFFER_SIZE 512
-
-/* Macro defines USB internal DMA Buffer criteria*/
-
-#define APP_MAKE_BUFFER_DMA_READY  __attribute__((aligned(16)))
-    
-    
-// *****************************************************************************
-/* Application states
+/* Application States
 
   Summary:
     Application states enumeration
@@ -120,25 +134,17 @@ typedef enum
 
 typedef struct
 {
-   /* Device layer handle returned by device layer open function */
+    /* Device layer handle returned by device layer open function */
     USB_DEVICE_HANDLE usbDevHandle;
 
-    /* Application CDC Instance */
-    USB_DEVICE_CDC_INDEX cdcInstance;
-
-    /* Application USART Driver handle */
-    DRV_HANDLE usartHandle;
-    /* Application state*/
+    /* Application's current state*/
     APP_STATES state;
-
-    /* Track device configuration */
-    bool deviceIsConfigured;
-
-    /* Read Data Buffer */
-    uint8_t * readBuffer;
 
     /* Set Line Coding Data */
     USB_CDC_LINE_CODING setLineCodingData;
+
+    /* Device configured state */
+    bool deviceIsConfigured;
 
     /* Get Line Coding Data */
     USB_CDC_LINE_CODING getLineCodingData;
@@ -162,19 +168,16 @@ typedef struct
     bool isCDCWriteComplete;
 
     /* True if a character was read */
-    bool isUSARTReadComplete;
+    bool isUARTReadComplete;
 
     /* True if a character was written*/
-    bool isUSARTWriteComplete;
+    bool isUARTWriteComplete;
 
     /* UART1 received data */
-    uint8_t * uartReceivedData;
+    uint8_t *uartReceivedData;
 
     /* Read Buffer Length*/
     size_t readLength;
-
-    /* Current UART TX Count*/
-    size_t uartTxCount;
 
     /* This flag is uses to check if Host has requested to change baudrate*/
     bool isBaudrateDataReceived;
@@ -182,38 +185,19 @@ typedef struct
     /* This flag used to check if the Set Line coding command is in progress */
     bool isSetLineCodingCommandInProgress;
 
-    /* Configuration value */
-    uint8_t configValue;
+    /* Application CDC read buffer */
+    uint8_t *cdcReadBuffer;
 
-    /* speed */
-    USB_SPEED speed;
+    /* Application CDC Write buffer */
+    uint8_t *cdcWriteBuffer;
 
-    /* ep data sent */
-    bool epDataWritePending;
-
-    /* ep data received */
-    bool epDataReadPending;
-
-    /* Transfer handle */
-    USB_DEVICE_TRANSFER_HANDLE writeTranferHandle;
-
-    /* Transfer handle */
-    USB_DEVICE_TRANSFER_HANDLE readTranferHandle;
-
-    /* The transmit endpoint address */
-    USB_ENDPOINT_ADDRESS endpointTx;
-
-    /* The receive endpoint address */
-    USB_ENDPOINT_ADDRESS endpointRx;
-
-    /* Tracks the alternate setting */
-    uint8_t altSetting;
-    
+    /* Number of bytes read from Host */ 
+    uint32_t numBytesRead;
+	
     BUTTON_STATES buttonState;   
-    uint16_t buttonDelay;   
- 
+    uint16_t buttonDelay;  
+		 
 } APP_DATA;
-
 
 // *****************************************************************************
 // *****************************************************************************
@@ -222,6 +206,7 @@ typedef struct
 // *****************************************************************************
 /* These routines are called by drivers when certain events occur.
 */
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -237,8 +222,8 @@ typedef struct
      MPLAB Harmony application initialization routine.
 
   Description:
-    This function initializes the Harmony application.  It places the
-    application in its initial state and prepares it to run so that its
+    This function initializes the Harmony application.  It places the 
+    application in its initial state and prepares it to run so that its 
     APP_Tasks function can be called.
 
   Precondition:
@@ -293,10 +278,9 @@ void APP_Initialize ( void );
     This routine must be called from SYS_Tasks() routine.
  */
 
-void APP_Tasks( void );
+void APP_Tasks ( void );
 
 void APP_Button_Tasks();
-
 
 #endif /* _APP_H */
 

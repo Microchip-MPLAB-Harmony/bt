@@ -1,9 +1,9 @@
 /*******************************************************************************
   MPLAB Harmony Application Source File
-
+  
   Company:
     Microchip Technology Inc.
-
+  
   File Name:
     app.c
 
@@ -11,8 +11,8 @@
     This file contains the source code for the MPLAB Harmony application.
 
   Description:
-    This file contains the source code for the MPLAB Harmony application.  It
-    implements the logic of the application's state machine and it may call
+    This file contains the source code for the MPLAB Harmony application.  It 
+    implements the logic of the application's state machine and it may call 
     API routines of other MPLAB Harmony modules in the system, such as drivers,
     system services, and middleware.  However, it does not call any of the
     system interfaces (such as the "Initialize" and "Tasks" functions) of any of
@@ -23,19 +23,28 @@
 
 // *****************************************************************************
 // *****************************************************************************
-// Section: Included Files
+// Section: Included Files 
 // *****************************************************************************
 // *****************************************************************************
 
 #include "app.h"
+
+/* NOTE:  UART/USART references in the source code are generic, e.g. UARTn_Read
+ * These are resolved into actual calls in user.h using #defines, e.g.
+ * #define UARTn_Read          UART1_Read 
+ */
+#include "user.h"
 
 // *****************************************************************************
 // *****************************************************************************
 // Section: Global Data Definitions
 // *****************************************************************************
 // *****************************************************************************
-uint8_t APP_MAKE_BUFFER_DMA_READY readBuffer[APP_READ_BUFFER_SIZE] ;
-uint8_t APP_MAKE_BUFFER_DMA_READY uartReceivedData;
+
+uint8_t CACHE_ALIGN cdcReadBuffer[APP_READ_BUFFER_SIZE];
+uint8_t CACHE_ALIGN cdcWriteBuffer[APP_READ_BUFFER_SIZE];
+
+uint8_t CACHE_ALIGN uartReceivedData;
 
 // *****************************************************************************
 /* Application Data
@@ -48,11 +57,12 @@ uint8_t APP_MAKE_BUFFER_DMA_READY uartReceivedData;
 
   Remarks:
     This structure should be initialized by the APP_Initialize function.
-
+    
     Application strings and buffers are be defined outside this structure.
 */
 
 APP_DATA appData;
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -91,31 +101,26 @@ static void App_TimerCallback( uintptr_t context)
 
 void APP_WriteCallback(uintptr_t context)
 {
-	appData.isUSARTWriteComplete = true;
+	appData.isUARTWriteComplete = true;
 }
 
 void APP_ReadCallback(uintptr_t context)
 {
-	appData.isUSARTReadComplete = true;
+	appData.isUARTReadComplete = true;
 }
-
 /*******************************************************
  * USB CDC Device Events - Application Event Handler
  *******************************************************/
-USB_DEVICE_CDC_EVENT_RESPONSE APP_USBDeviceCDCEventHandler
-(
-    USB_DEVICE_CDC_INDEX index ,
-    USB_DEVICE_CDC_EVENT event ,
-    void* pData,
-    uintptr_t userData
-)
+
+USB_DEVICE_CDC_EVENT_RESPONSE APP_USBDeviceCDCEventHandler(USB_DEVICE_CDC_INDEX index,
+    USB_DEVICE_CDC_EVENT event, void *pData, uintptr_t userData)
 {
     APP_DATA * appDataObject;
-    appDataObject = (APP_DATA *)userData;
-    USB_CDC_CONTROL_LINE_STATE * controlLineStateData;
-    uint16_t * breakData;
 
-    switch ( event )
+    USB_CDC_CONTROL_LINE_STATE * controlLineStateData;
+    appDataObject = (APP_DATA *)userData;
+
+    switch(event)
     {
         case USB_DEVICE_CDC_EVENT_GET_LINE_CODING:
 
@@ -124,9 +129,8 @@ USB_DEVICE_CDC_EVENT_RESPONSE APP_USBDeviceCDCEventHandler
              * USB_DEVICE_ControlSend() function to send the data to
              * host.  */
 
-             USB_DEVICE_ControlSend(appDataObject->usbDevHandle,
+            USB_DEVICE_ControlSend(appDataObject->usbDevHandle,
                     &appDataObject->getLineCodingData, sizeof(USB_CDC_LINE_CODING));
-
             break;
 
         case USB_DEVICE_CDC_EVENT_SET_LINE_CODING:
@@ -139,7 +143,6 @@ USB_DEVICE_CDC_EVENT_RESPONSE APP_USBDeviceCDCEventHandler
             appData.isBaudrateDataReceived = false;
             USB_DEVICE_ControlReceive(appDataObject->usbDevHandle,
                     &appDataObject->setLineCodingData, sizeof(USB_CDC_LINE_CODING));
-
             break;
 
         case USB_DEVICE_CDC_EVENT_SET_CONTROL_LINE_STATE:
@@ -154,7 +157,6 @@ USB_DEVICE_CDC_EVENT_RESPONSE APP_USBDeviceCDCEventHandler
                     controlLineStateData->carrier;
 
             USB_DEVICE_ControlStatus(appDataObject->usbDevHandle, USB_DEVICE_CONTROL_STATUS_OK);
-
             break;
 
         case USB_DEVICE_CDC_EVENT_SEND_BREAK:
@@ -162,11 +164,10 @@ USB_DEVICE_CDC_EVENT_RESPONSE APP_USBDeviceCDCEventHandler
             /* This means that the host is requesting that a break of the
              * specified duration be sent. Read the break duration */
 
-            breakData = (uint16_t *)pData;
-            appDataObject->breakData = *breakData;
-
+            appDataObject->breakData = ((USB_DEVICE_CDC_EVENT_DATA_SEND_BREAK *)pData)->breakDuration;
+            
             /* Complete the control transfer by sending a ZLP  */
-            USB_DEVICE_ControlStatus(appDataObject->usbDevHandle, USB_DEVICE_CONTROL_STATUS_OK);
+            USB_DEVICE_ControlStatus(appDataObject->usbDevHandle, USB_DEVICE_CONTROL_STATUS_OK);         
             break;
 
         case USB_DEVICE_CDC_EVENT_READ_COMPLETE:
@@ -174,7 +175,7 @@ USB_DEVICE_CDC_EVENT_RESPONSE APP_USBDeviceCDCEventHandler
             /* This means that the host has sent some data*/
             appDataObject->isCDCReadComplete = true;
             appDataObject->readLength =
-                    ((USB_DEVICE_CDC_EVENT_DATA_READ_COMPLETE*)pData)->length;
+                       ((USB_DEVICE_CDC_EVENT_DATA_READ_COMPLETE*)pData)->length;				
             break;
 
         case USB_DEVICE_CDC_EVENT_CONTROL_TRANSFER_DATA_RECEIVED:
@@ -184,7 +185,7 @@ USB_DEVICE_CDC_EVENT_RESPONSE APP_USBDeviceCDCEventHandler
             if (appData.isSetLineCodingCommandInProgress == true)
             {
                /* We have received set line coding command from the Host.
-                * DRV_USART_BaudSet() function is not interrupt safe and it
+                * DRV_UART_BaudSet() function is not interrupt safe and it
                 * should not be called here. It is called in APP_Tasks()
                 * function. The ACK for Status stage of the control transfer is
                 * send in the APP_Tasks() function.  */
@@ -200,7 +201,7 @@ USB_DEVICE_CDC_EVENT_RESPONSE APP_USBDeviceCDCEventHandler
 
         case USB_DEVICE_CDC_EVENT_CONTROL_TRANSFER_DATA_SENT:
 
-            /* This means the GET LINE CODING function data is valid. We dont
+            /* This means the GET LINE CODING function data is valid. We don't
              * do much with this data in this demo. */
             break;
         case USB_DEVICE_CDC_EVENT_CONTROL_TRANSFER_ABORTED:
@@ -210,13 +211,13 @@ USB_DEVICE_CDC_EVENT_RESPONSE APP_USBDeviceCDCEventHandler
                 appData.isSetLineCodingCommandInProgress = false;
                 appData.isBaudrateDataReceived = false;
             }
-
             break;
         case USB_DEVICE_CDC_EVENT_WRITE_COMPLETE:
 
             /* This means that the data write got completed. We can schedule
              * the next read. */
 
+            appDataObject->isCDCWriteComplete = true;
             break;
 
         default:
@@ -232,29 +233,32 @@ USB_DEVICE_CDC_EVENT_RESPONSE APP_USBDeviceCDCEventHandler
 
 void APP_USBDeviceEventHandler(USB_DEVICE_EVENT event, void * eventData, uintptr_t context)
 {
-    uint8_t configurationValue;
+    USB_DEVICE_EVENT_DATA_CONFIGURED *configuredEventData;
+
     switch(event)
     {
         case USB_DEVICE_EVENT_RESET:
-        case USB_DEVICE_EVENT_DECONFIGURED:
-
             /* USB device is reset or device is deconfigured.
              * This means that USB device layer is about to deininitialize
              * all function drivers. Update LEDs to indicate
              * reset/deconfigured state. */
+			 
+            /* Update LED to show reset state */
+            LED1_Off();
 
             appData.deviceIsConfigured = false;
-
             break;
 
         case USB_DEVICE_EVENT_CONFIGURED:
 
-            /* Check the configuration */
-            configurationValue = ((USB_DEVICE_EVENT_DATA_CONFIGURED *)eventData)->configurationValue;
-            if (configurationValue == 1)
+            /* Check the configuration. We only support configuration 1 */
+            configuredEventData = (USB_DEVICE_EVENT_DATA_CONFIGURED*)eventData;
+            
+            if ( configuredEventData->configurationValue == 1)
             {
                 /* The device is in configured state. Update LED indication */
-
+                LED1_On();
+                
                 /* Register the CDC Device application event handler here.
                  * Note how the appData object pointer is passed as the
                  * user data */
@@ -265,41 +269,42 @@ void APP_USBDeviceEventHandler(USB_DEVICE_EVENT event, void * eventData, uintptr
                 /* mark that set configuration is complete */
                 appData.deviceIsConfigured = true;
 
-            }
+            }       
             break;
-
-        case USB_DEVICE_EVENT_SUSPENDED:
-
-            /* Update LEDs */
-            break;
-
 
         case USB_DEVICE_EVENT_POWER_DETECTED:
 
-            /* VBUS is detected. Attach the device */
-            USB_DEVICE_Attach(appData.usbDevHandle);
+            /* VBUS was detected. We can attach the device */
+            USB_DEVICE_Attach(appData.usbDevHandle);           
             break;
 
         case USB_DEVICE_EVENT_POWER_REMOVED:
 
-            /* VBUS is removed. Detach the device */
-            USB_DEVICE_Detach (appData.usbDevHandle);
+            /* VBUS is not available any more. Detach the device. */
+            USB_DEVICE_Detach(appData.usbDevHandle);
+            
+            LED1_Off();            
             break;
 
-        /* These events are not used in this demo. */
+        case USB_DEVICE_EVENT_SUSPENDED:
+
+            /* Switch LED to show suspended state */
+            LED1_Off();           
+            break;
+
         case USB_DEVICE_EVENT_RESUMED:
         case USB_DEVICE_EVENT_ERROR:
-        default:
+        default:           
             break;
     }
 }
-
 
 // *****************************************************************************
 // *****************************************************************************
 // Section: Application Local Functions
 // *****************************************************************************
 // *****************************************************************************
+
 
 /*****************************************************
  * This function is called in every step of the
@@ -320,7 +325,6 @@ bool APP_StateReset(void)
         appData.writeTransferHandle = USB_DEVICE_CDC_TRANSFER_HANDLE_INVALID;
         appData.isCDCReadComplete = true;
         appData.isCDCWriteComplete = true;
-
         retVal = true;
 
         appData.isSetLineCodingCommandInProgress = false;
@@ -339,19 +343,14 @@ bool APP_StateReset(void)
  ***************************************************************************/
 void _APP_SetLineCodingHandler(void)
 {
-    USART_SERIAL_SETUP UsartSetup;
+    UART_SERIAL_SETUP UartSetup;
 
-    UsartSetup.baudRate = appData.setLineCodingData.dwDTERate;
-    UsartSetup.parity = appData.setLineCodingData.bParityType;
-    UsartSetup.dataWidth = appData.setLineCodingData.bDataBits;
-    UsartSetup.stopBits = appData.setLineCodingData.bCharFormat;
+    UartSetup.baudRate = appData.setLineCodingData.dwDTERate;
+    UartSetup.parity = appData.setLineCodingData.bParityType;
+    UartSetup.dataWidth = appData.setLineCodingData.bDataBits;
+    UartSetup.stopBits = appData.setLineCodingData.bCharFormat;
 
-//    USART0_SerialSetup(&UsartSetup, CHIP_FREQ_CPU_MAX);
-
-
-//    resultUsartBaurateSet = DRV_USART_BaudSet(appData.usartHandle, appData.setLineCodingData.dwDTERate);
-
-    if (true == USART0_SerialSetup(&UsartSetup, CHIP_FREQ_CPU_MAX))
+    if (true == UARTn_SerialSetup(&UartSetup, CHIP_FREQ_CPU_MAX))
     {
         /* Baudrate is changed successfully. Update Baudrate info in the
          * Get line coding structure. */
@@ -368,7 +367,6 @@ void _APP_SetLineCodingHandler(void)
          * implemented below. */
          USB_DEVICE_ControlStatus(appData.usbDevHandle, USB_DEVICE_CONTROL_STATUS_OK);
 
-
         /* The second possible method is to stall the STATUS stage of the
          * request. STALLing the STATUS stage will cause an exception to be
          * thrown in the requesting application. Some programs, like
@@ -381,7 +379,7 @@ void _APP_SetLineCodingHandler(void)
          * cause applications without the required exception handling to
          * crash.*/
          //USB_DEVICE_ControlStatus(appData.usbDevHandle, USB_DEVICE_CONTROL_STATUS_ERROR);
-    }
+    } 
 }
 
 // *****************************************************************************
@@ -392,27 +390,21 @@ void _APP_SetLineCodingHandler(void)
 
 /*******************************************************************************
   Function:
-    void APP_Initialize ( void )
+    void APP_Initialize(void)
 
   Remarks:
     See prototype in app.h.
  */
 
-void APP_Initialize ( void )
+void APP_Initialize(void)
 {
-     /* Device Layer Handle  */
-    appData.usbDevHandle = USB_DEVICE_HANDLE_INVALID;
-
-    /* USART Driver Handle */
-    appData.usartHandle = DRV_HANDLE_INVALID;
-
-    /* CDC Instance index for this app object00*/
-    appData.cdcInstance = USB_DEVICE_CDC_INDEX_0;
-
-    /* app state */
+    /* Place the App state machine in its initial state. */
     appData.state = APP_STATE_INIT;
+    
+    /* Device Layer Handle  */
+    appData.usbDevHandle = USB_DEVICE_HANDLE_INVALID ;
 
-    /* device configured status */
+    /* Device configured status */
     appData.deviceIsConfigured = false;
 
     /* Initial get line coding state */
@@ -432,21 +424,21 @@ void APP_Initialize ( void )
 
     /*Initialize the write complete flag*/
     appData.isCDCWriteComplete = true;
-
+    
     /*Initialize the buffer pointers */
-    appData.readBuffer = &readBuffer[0];
+    appData.uartReceivedData = &uartReceivedData;   
 
-    appData.uartReceivedData = &uartReceivedData;
+    /* Set up the read buffer */
+    appData.cdcReadBuffer = &cdcReadBuffer[0];
 
-    appData.uartTxCount = 0;
-
-    /* Initialize the Set Line coding flags */
-    appData.isBaudrateDataReceived = false;
-    appData.isSetLineCodingCommandInProgress = false;
-
-	/* Register callback functions */
-	USART0_WriteCallbackRegister(APP_WriteCallback, 0);
-	USART0_ReadCallbackRegister(APP_ReadCallback, 0);
+    /* Set up the read buffer */
+    appData.cdcWriteBuffer = &cdcWriteBuffer[0];
+    
+    UARTn_WriteCallbackRegister(APP_WriteCallback, 0);
+    UARTn_ReadCallbackRegister(APP_ReadCallback, 0);
+    
+	appData.isUARTWriteComplete = false;
+    appData.isUARTReadComplete = false;
     
     appData.buttonState = BUTTON_STATE_IDLE;   
     appData.buttonDelay = 0;        // used for button debounce
@@ -455,20 +447,19 @@ void APP_Initialize ( void )
     
     STBYRST_Set(); 
 
-    LED1_Off();
+    LED1_Off();       
 }
-
 
 /******************************************************************************
   Function:
-    void APP_Tasks ( void )
+    void APP_Tasks(void)
 
   Remarks:
     See prototype in app.h.
  */
 DRV_HANDLE tmrHandle;
 
-void APP_Tasks ( void )
+void APP_Tasks(void)
 {
     APP_Button_Tasks();
 
@@ -480,7 +471,7 @@ void APP_Tasks ( void )
 
     /* Update the application state machine based
      * on the current state */
-
+    
     switch(appData.state)
     {
         case APP_STATE_INIT:        
@@ -502,7 +493,7 @@ void APP_Tasks ( void )
             if(appData.usbDevHandle != USB_DEVICE_HANDLE_INVALID)
             {
                 /* Register a callback with device layer to get event notification (for end point 0) */
-                USB_DEVICE_EventHandlerSet(appData.usbDevHandle,  APP_USBDeviceEventHandler, 0);
+                USB_DEVICE_EventHandlerSet(appData.usbDevHandle, APP_USBDeviceEventHandler, 0);
 
                 /* Application waits for device configuration. */
                 appData.state = APP_STATE_WAIT_FOR_CONFIGURATION;
@@ -512,7 +503,6 @@ void APP_Tasks ( void )
                 /* The Device Layer is not ready to be opened. We should try
                  * again later. */
             }
-
             break;
 
         case APP_STATE_WAIT_FOR_CONFIGURATION:
@@ -524,13 +514,11 @@ void APP_Tasks ( void )
 
                 appData.state = APP_STATE_CHECK_CDC_READ;
                 appData.isCDCReadComplete = false;
+				appData.isUARTReadComplete = false;
 
-				appData.isUSARTReadComplete = false;
-
-                USART0_Read(&appData.uartReceivedData, 1);
-
-                USB_DEVICE_CDC_Read (appData.cdcInstance, &(appData.readTransferHandle),
-                        appData.readBuffer, APP_READ_BUFFER_SIZE);
+                UARTn_Read(appData.uartReceivedData, 1);
+                USB_DEVICE_CDC_Read (USB_DEVICE_CDC_INDEX_0, &appData.readTransferHandle,
+                        appData.cdcReadBuffer, APP_READ_BUFFER_SIZE);
             }
             break;
 
@@ -543,19 +531,19 @@ void APP_Tasks ( void )
 
             /* If CDC read is complete, send the received data to the UART. */
             if(appData.isCDCReadComplete == true)
-            {
-                if(true == USART0_Write(&appData.readBuffer[0], appData.readLength))
+            {               
+                if(true == UARTn_Write(&appData.cdcReadBuffer[0], appData.readLength))                   
 				{
 					appData.isCDCReadComplete = false;
 
-					appData.isUSARTWriteComplete = false;
+					appData.isUARTWriteComplete = false;
 					
 					//LED1_Toggle();   // testing only
 					
                     /* This means we have sent all the data. We schedule the next
                      * CDC Read. */
-                    USB_DEVICE_CDC_Read (appData.cdcInstance, &appData.readTransferHandle,
-                        appData.readBuffer, APP_READ_BUFFER_SIZE);
+                    USB_DEVICE_CDC_Read (USB_DEVICE_CDC_INDEX_0, &appData.readTransferHandle,
+                        appData.cdcReadBuffer, APP_READ_BUFFER_SIZE);
 
                     appData.state = APP_STATE_CHECK_UART_RECEIVE;
 
@@ -577,28 +565,24 @@ void APP_Tasks ( void )
             }
 
             /* Check if a character was received on the UART */
-            if(appData.isUSARTReadComplete == true)
+            if(appData.isUARTReadComplete == true)
             {
                 //LED1_Toggle();     // testing only
-
-                USB_DEVICE_CDC_Write(0, &appData.writeTransferHandle,
-                        &appData.uartReceivedData, 1,
+                USB_DEVICE_CDC_Write(USB_DEVICE_CDC_INDEX_0, &appData.writeTransferHandle,
+                        appData.uartReceivedData, 1,
                         USB_DEVICE_CDC_TRANSFER_FLAGS_DATA_COMPLETE);
 
-				appData.isUSARTReadComplete = false;
-
-                USART0_Read(&appData.uartReceivedData, 1);
-
+				appData.isUARTReadComplete = false;
+                
+                UARTn_Read(appData.uartReceivedData, 1);
             }
 			else
 			{
 				appData.state = APP_STATE_CHECK_CDC_READ;
 			}
-
             break;
 
         case APP_STATE_ERROR:
-            break;
         default:
             break;
     }
@@ -616,7 +600,7 @@ void APP_Button_Tasks()
         case BUTTON_STATE_IDLE:
         {
             if ( (appData.buttonDelay==0)&&
-                 (SWITCH_Get()==SWITCH_STATE_PRESSED))                
+                 (SWITCH1_Get()==SWITCH1_STATE_PRESSED))                
             {
                 appData.buttonDelay=BUTTON_DEBOUNCE;       
                 appData.buttonState=BUTTON_STATE_PRESSED;               
@@ -631,7 +615,7 @@ void APP_Button_Tasks()
                 break;      // still debouncing
             }
             
-            if(SWITCH_Get()==SWITCH_STATE_PRESSED) 
+            if(SWITCH1_Get()==SWITCH1_STATE_PRESSED) 
             {                
                 appData.buttonState=BUTTON_STATE_BUTTON0_PRESSED;                  
             }
@@ -640,7 +624,7 @@ void APP_Button_Tasks()
           
         case BUTTON_STATE_BUTTON0_PRESSED:
         {
-            if (SWITCH_Get()!=SWITCH_STATE_PRESSED)     // SW0 pressed and released < 1 sec
+            if (SWITCH1_Get()!=SWITCH1_STATE_PRESSED)     // SW0 pressed and released < 1 sec
             {
 
                 appData.buttonDelay=200;                
@@ -695,7 +679,3 @@ void APP_Button_Tasks()
     }
 }
 
-
-/*******************************************************************************
- End of File
- */
