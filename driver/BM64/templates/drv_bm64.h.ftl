@@ -94,7 +94,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "driver/driver_common.h"
 #include "configuration.h"
 <#if INCLUDE_BM64_I2S == true>
-#include "driver/i2s/drv_i2s.h"
+#include "audio/driver/i2s/drv_i2s.h"
 </#if>
 #include "osal/osal.h"
 
@@ -893,9 +893,9 @@ void DRV_BM64_volumeUp(const DRV_HANDLE handle);
 void DRV_BM64_volumeDown(const DRV_HANDLE handle);
 
 // *****************************************************************************
-/* Function DRV_BM64_VolumeGet:
+/* Function DRV_BM64_volumeGet:
 
-        uint8_t DRV_BM64_VolumeGet(const DRV_HANDLE handle);
+        uint8_t DRV_BM64_volumeGet(const DRV_HANDLE handle);
 
   Summary:
     Return current volume level.
@@ -924,12 +924,12 @@ void DRV_BM64_volumeDown(const DRV_HANDLE handle);
     None.
 */
 
-uint8_t DRV_BM64_VolumeGet(const DRV_HANDLE handle);	//returns 7-bit value 0-127
+uint8_t DRV_BM64_volumeGet(const DRV_HANDLE handle);	//returns 7-bit value 0-127
 
 // *****************************************************************************
-/* Function DRV_BM64_VolumeSet:
+/* Function DRV_BM64_volumeSet:
 
-        void DRV_BM64_VolumeSet(const DRV_HANDLE handle, uint8_t volume);
+        void DRV_BM64_volumeSet(const DRV_HANDLE handle, uint8_t volume);
 
   Summary:
     Set current volume.
@@ -957,7 +957,7 @@ uint8_t DRV_BM64_VolumeGet(const DRV_HANDLE handle);	//returns 7-bit value 0-127
     None.
 */
 
-void DRV_BM64_VolumeSet(const DRV_HANDLE handle, uint8_t volume);
+void DRV_BM64_volumeSet(const DRV_HANDLE handle, uint8_t volume);
 
 // *****************************************************************************
 /* Function DRV_BM64_SamplingRateGet:

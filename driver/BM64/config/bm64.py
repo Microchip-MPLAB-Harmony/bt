@@ -21,7 +21,17 @@
 # ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY, 
 # THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 ################################################################################
+def updateIncludeBLEStatus(symbol, event):
+    global bm64BLESymHeaderFile
+    global bm64BLESymSourceFile
+
+    includeBLEcode = event["value"]
+    bm64BLESymHeaderFile.setEnabled(includeBLEcode)
+    bm64BLESymSourceFile.setEnabled(includeBLEcode)
+
 def instantiateComponent(bm64Component):
+    global bm64BLESymHeaderFile
+    global bm64BLESymSourceFile
     Log.writeInfoMessage("BM64 instantiated")
 
     bm64Index = bm64Component.createIntegerSymbol("BM64_INDEX", None)
@@ -68,6 +78,7 @@ def instantiateComponent(bm64Component):
     bm64IncludeBLE.setVisible(True)
     bm64IncludeBLE.setLabel("Include BLE Features?")
     bm64IncludeBLE.setDefaultValue(True)
+    bm64IncludeBLE.setDependencies(updateIncludeBLEStatus, ["INCLUDE_BM64_BLE"])
 
     # Enable "Generate Harmony Application Files" option in MHC
     Database.setSymbolValue("HarmonyCore", "ENABLE_APP_FILE", True, 1)
@@ -104,13 +115,14 @@ def instantiateComponent(bm64Component):
     bm64SymHeaderFile.setType("HEADER")
     bm64SymHeaderFile.setOverwrite(True)
 
-    bm64SymHeaderFile = bm64Component.createFileSymbol("DRV_BM64_BLE_H", None)
-    bm64SymHeaderFile.setSourcePath("drv_bm64_ble.h")
-    bm64SymHeaderFile.setOutputName("drv_bm64_ble.h")
-    bm64SymHeaderFile.setDestPath("bt/driver/bm64/")
-    bm64SymHeaderFile.setProjectPath("config/" + configName + "/bt/driver/bm64/")
-    bm64SymHeaderFile.setType("HEADER")
-    bm64SymHeaderFile.setOverwrite(True)
+    bm64BLESymHeaderFile = bm64Component.createFileSymbol("DRV_BM64_BLE_H", None)
+    bm64BLESymHeaderFile.setSourcePath("drv_bm64_ble.h")
+    bm64BLESymHeaderFile.setOutputName("drv_bm64_ble.h")
+    bm64BLESymHeaderFile.setDestPath("bt/driver/bm64/")
+    bm64BLESymHeaderFile.setProjectPath("config/" + configName + "/bt/driver/bm64/")
+    bm64BLESymHeaderFile.setType("HEADER")
+    bm64BLESymHeaderFile.setOverwrite(True)
+    bm64BLESymHeaderFile.setEnabled(bm64IncludeBLE.getValue())
 
     bm64SymHeaderFile = bm64Component.createFileSymbol("DRV_BM64_COMMAND_DECODE_H", None)
     bm64SymHeaderFile.setSourcePath("drv_bm64_command_decode.h")
@@ -178,13 +190,14 @@ def instantiateComponent(bm64Component):
     bm64SymSourceFile.setType("SOURCE")
     bm64SymSourceFile.setOverwrite(True)
    
-    bm64SymSourceFile = bm64Component.createFileSymbol("DRV_BM64_BLE_C", None)
-    bm64SymSourceFile.setSourcePath("src/drv_bm64_ble.c")
-    bm64SymSourceFile.setOutputName("drv_bm64_ble.c")
-    bm64SymSourceFile.setDestPath("bt/driver/bm64/")
-    bm64SymSourceFile.setProjectPath("config/" + configName + "/bt/driver/bm64/")
-    bm64SymSourceFile.setType("SOURCE")
-    bm64SymSourceFile.setOverwrite(True)
+    bm64BLESymSourceFile = bm64Component.createFileSymbol("DRV_BM64_BLE_C", None)
+    bm64BLESymSourceFile.setSourcePath("src/drv_bm64_ble.c")
+    bm64BLESymSourceFile.setOutputName("drv_bm64_ble.c")
+    bm64BLESymSourceFile.setDestPath("bt/driver/bm64/")
+    bm64BLESymSourceFile.setProjectPath("config/" + configName + "/bt/driver/bm64/")
+    bm64BLESymSourceFile.setType("SOURCE")
+    bm64BLESymSourceFile.setOverwrite(True)
+    bm64BLESymSourceFile.setEnabled(bm64IncludeBLE.getValue())
 
     bm64SymSourceFile = bm64Component.createFileSymbol("DRV_BM64_COMMAND_DECODE_C", None)
     bm64SymSourceFile.setSourcePath("src/drv_bm64_command_decode.c")

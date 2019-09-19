@@ -27,8 +27,8 @@
           <Name dnOrder="1">drv_bm64.c</Name>
           <LogicalPath dnOrder="2">config/pic32mz_ef_c2_bm64/bt/driver/bm64/</LogicalPath>
           <PhysicalPath dnOrder="3">/bt/driver/bm64/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">730445BCCC7A125BEEE8642318865758</GeneratedChecksum>
-          <UserChecksum dnOrder="5">730445BCCC7A125BEEE8642318865758</UserChecksum>
+          <GeneratedChecksum dnOrder="4">26A20EC2678F71C44E97E65FDD944729</GeneratedChecksum>
+          <UserChecksum dnOrder="5">26A20EC2678F71C44E97E65FDD944729</UserChecksum>
         </File>
         <File dnOrder="3">
           <Type dnOrder="0">SOURCE</Type>
@@ -59,8 +59,8 @@
           <Name dnOrder="1">drv_bm64_gpio.c</Name>
           <LogicalPath dnOrder="2">config/pic32mz_ef_c2_bm64/bt/driver/bm64/</LogicalPath>
           <PhysicalPath dnOrder="3">/bt/driver/bm64/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">70B8CF29CCB3E42F36585327E5CEA0B3</GeneratedChecksum>
-          <UserChecksum dnOrder="5">70B8CF29CCB3E42F36585327E5CEA0B3</UserChecksum>
+          <GeneratedChecksum dnOrder="4">EB585ED31FB6AED2EB457381555DDB39</GeneratedChecksum>
+          <UserChecksum dnOrder="5">EB585ED31FB6AED2EB457381555DDB39</UserChecksum>
         </File>
         <File dnOrder="7">
           <Type dnOrder="0">SOURCE</Type>
@@ -107,8 +107,8 @@
           <Name dnOrder="1">initialization.c</Name>
           <LogicalPath dnOrder="2">config/pic32mz_ef_c2_bm64/</LogicalPath>
           <PhysicalPath dnOrder="3">/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">9441FDDBBCFE55FECA8203AE0F6E586C</GeneratedChecksum>
-          <UserChecksum dnOrder="5">9441FDDBBCFE55FECA8203AE0F6E586C</UserChecksum>
+          <GeneratedChecksum dnOrder="4">653479C2B2ED7B9452E4C3CB80236A49</GeneratedChecksum>
+          <UserChecksum dnOrder="5">653479C2B2ED7B9452E4C3CB80236A49</UserChecksum>
         </File>
         <File dnOrder="13">
           <Type dnOrder="0">SOURCE</Type>
@@ -219,8 +219,8 @@
           <Name dnOrder="1">configuration.h</Name>
           <LogicalPath dnOrder="2">config/pic32mz_ef_c2_bm64/</LogicalPath>
           <PhysicalPath dnOrder="3">/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">5CDB577F03CA6B7604C79076339F9D5D</GeneratedChecksum>
-          <UserChecksum dnOrder="5">5CDB577F03CA6B7604C79076339F9D5D</UserChecksum>
+          <GeneratedChecksum dnOrder="4">F0FAA911EA3EE2355269CAC36D764798</GeneratedChecksum>
+          <UserChecksum dnOrder="5">F0FAA911EA3EE2355269CAC36D764798</UserChecksum>
         </File>
         <File dnOrder="27">
           <Type dnOrder="0">HEADER</Type>

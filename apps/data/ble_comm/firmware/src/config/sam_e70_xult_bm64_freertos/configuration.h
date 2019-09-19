@@ -190,6 +190,7 @@ extern "C" {
 #define DRV_BT_EnterBTPairingMode               DRV_BM64_EnterBTPairingMode
 #define DRV_BT_ForgetAllLinks                   DRV_BM64_ForgetAllLinks
 #define DRV_BT_GetLinkStatus                    DRV_BM64_GetLinkStatus
+#define DRV_BT_SamplingRateSet                  DRV_BM64_SamplingRateSet
 
 #define DRV_BT_GetBDAddress                     DRV_BM64_GetBDAddress
 #define DRV_BT_GetBDName                        DRV_BM64_GetBDName

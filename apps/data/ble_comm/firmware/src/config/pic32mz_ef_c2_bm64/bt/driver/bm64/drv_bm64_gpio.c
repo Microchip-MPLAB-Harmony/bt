@@ -71,22 +71,38 @@ uint32_t DRV_BM64_MFB_GetValue(void)
 
 void DRV_BM64_RESET_SetHigh(void)
 {
-    STBYRST_Set();
+#ifdef BT_STBYRST_PIN 
+    BT_STBYRST_Set();
+#else
+    STBYRST_Set();    
+#endif    
 }
 
 void DRV_BM64_RESET_SetLow(void)
 {   
+#ifdef BT_STBYRST_PIN 
+    BT_STBYRST_Clear();
+#else
     STBYRST_Clear();    
+#endif    
 }
 
 void DRV_BM64_RESET_Toggle(void)
 {
-    STBYRST_Toggle();   
+#ifdef BT_STBYRST_PIN 
+    BT_STBYRST_Toggle();
+#else
+    STBYRST_Toggle();    
+#endif      
 }
 
 uint32_t DRV_BM64_RESET_GetValue(void)
 {
-    return STBYRST_Get();
+#ifdef BT_STBYRST_PIN 
+    return BT_STBYRST_Get();
+#else
+    return STBYRST_Get();    
+#endif    
 }
 
 

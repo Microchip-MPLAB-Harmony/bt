@@ -62,8 +62,10 @@
 #include "bt/driver/bm64/drv_bm64_gpio.h"
 #include "system/time/sys_time.h"
 
+<#if INCLUDE_BM64_BLE == true>
 #define BM64_BLE_JUMPER_ENABLED 0
 
+</#if>
 #define SYS_DEBUG(x,y)      // not implemented
 
 // all #defines, enums and non-static functions and variables prefixed by
@@ -80,9 +82,6 @@ static uint8_t _localBDAddr[6];
 static uint8_t _masterBDAddr[6];
 static uint8_t _linkbackBDAddr[6];
 static char _localBDName[DRV_BM64_MAXBDNAMESIZE+1]; // +1 for trailing null char
-<#if INCLUDE_BM64_I2S == true>
-static void _BM64MasterClockSet(uint32_t samplingRate, uint16_t mclk_multiplier);
-</#if>
 
 #define DRV_BM64_SPP_RxFifoSize 200                       //receive buffer max. size
 uint8_t DRV_BM64_SPP_RxFifo[DRV_BM64_SPP_RxFifoSize];          //receive buffer
@@ -504,17 +503,17 @@ DRV_HANDLE DRV_BM64_Open
                 hClient->protocol = protocol;
                 gDrvBm64Obj.numClients++; 
                 
-<#if INCLUDE_BM64_I2S == true>
-                _BM64MasterClockSet(gDrvBm64Obj.samplingRate, gDrvBm64Obj.mclk_multiplier);                
-
+<#if INCLUDE_BM64_I2S == true>             
                 gDrvBm64Obj.i2sDriverHandle = DRV_I2S_Open(gDrvBm64Obj.i2sDriverModuleIndex, ioIntent);
                 if (gDrvBm64Obj.i2sDriverHandle != DRV_HANDLE_INVALID)
                 {
-                    DRV_I2S_TransmitErrorIgnore(gDrvBm64Obj.i2sDriverHandle, true);
-                    DRV_I2S_ReceiveErrorIgnore(gDrvBm64Obj.i2sDriverHandle, true);
-                    DRV_I2S_BaudSet(gDrvBm64Obj.i2sDriverHandle,
-                            (gDrvBm64Obj.samplingRate * gDrvBm64Obj.bclk_divider),
-                            gDrvBm64Obj.samplingRate);
+<#if __PROCESSOR?matches("PIC32M.*") == true>
+                    DRV_I2S_BaudRateSet(gDrvBm64Obj.i2sDriverHandle,
+                        gDrvBm64Obj.samplingRate*gDrvBm64Obj.bclk_divider, gDrvBm64Obj.samplingRate);
+
+                    DRV_I2S_RefClockSet(gDrvBm64Obj.i2sDriverHandle, SYS_TIME_CPU_CLOCK_FREQUENCY,
+                            gDrvBm64Obj.samplingRate, gDrvBm64Obj.mclk_multiplier);
+</#if>
                 }
                 else
                 {
@@ -760,8 +759,8 @@ void DRV_BM64_BufferAddRead
         return;
     }
     
-    DRV_I2S_BufferAddRead(gDrvBm64Obj.i2sDriverHandle, 
-                          bufferHandle, (uint8_t *) buffer, size);      
+    DRV_I2S_ReadBufferAdd(gDrvBm64Obj.i2sDriverHandle,
+            (uint8_t *) buffer, size, bufferHandle);       
 
     /* Release mutex */
     if((OSAL_MUTEX_Unlock(&(gDrvBm64Obj.mutexDriverInstance))) != OSAL_RESULT_TRUE)
@@ -1093,6 +1092,7 @@ void DRV_BM64_volumeSet(DRV_HANDLE handle, uint8_t volume)
     if (p != NULL)
     {
     	*p = _volumeFormatFrom7bits(volume16bits);
+        _setCodecVolCurrentMode();      // call back to client to set codec volume
 	}
 }
 
@@ -1154,9 +1154,13 @@ uint32_t DRV_BM64_SamplingRateGet(DRV_HANDLE handle)
 <#if INCLUDE_BM64_I2S == true>
 void DRV_BM64_SamplingRateSet(DRV_HANDLE handle, uint32_t samplingRate)
 {
-    DRV_I2S_BaudSet(gDrvBm64Obj.i2sDriverHandle, (samplingRate*gDrvBm64Obj.bclk_divider), samplingRate);
+<#if __PROCESSOR?matches("PIC32M.*") == true>
+    DRV_I2S_BaudRateSet(gDrvBm64Obj.i2sDriverHandle,gDrvBm64Obj.samplingRate*gDrvBm64Obj.bclk_divider, samplingRate);
     gDrvBm64Obj.samplingRate = samplingRate;
-    _BM64MasterClockSet(samplingRate, gDrvBm64Obj.mclk_multiplier);                    
+
+    DRV_I2S_RefClockSet(gDrvBm64Obj.i2sDriverHandle, SYS_TIME_CPU_CLOCK_FREQUENCY,
+        samplingRate, gDrvBm64Obj.mclk_multiplier);                    
+</#if>
 }
 </#if>
 
@@ -1903,6 +1907,7 @@ void DRV_BM64_SetBDName(const DRV_HANDLE handle, const char* buffer)
     }    
     DRV_BM64_ChangeDeviceNameCommand(_localBDName);   
 }
+<#if INCLUDE_BM64_BLE == true>
 
 // *****************************************************************************
 /* Function DRV_BM64_ClearBLEData:
@@ -2087,6 +2092,7 @@ void DRV_BM64_SendDataOverBLE(const DRV_HANDLE handle, uint8_t* addr, uint16_t s
 {
     DRV_BM64_SendSPPData(addr, size, gDrvBm64Obj.linkIndex);
 }
+</#if>
 
 // *****************************************************************************
 // *****************************************************************************
@@ -2680,14 +2686,12 @@ void DRV_BM64_Timer_1ms( uintptr_t context)
 //================================================
 static void _BM64ControlTasks(void)
 {        
-#if defined( ENABLE_SYS_LOG ) 
     static uint16_t laststate = 0xffff;
     if (gDrvBm64Obj.state != laststate)    
     {
-        SYS_LOG2("DRV_BM64_Task: state=%d, request=%d",gDrvBm64Obj.state,gDrvBm64Obj.request);
+        printf("DRV_BM64_Task: state=%d, request=%d\r\n",gDrvBm64Obj.state,gDrvBm64Obj.request);
         laststate = gDrvBm64Obj.state;
-    }    
-#endif
+    }
     
     DRV_BM64_UART_Tasks();       // take care of UART first
     
@@ -2789,6 +2793,7 @@ static void _BM64ControlTasks(void)
             break;            
 
         case DRV_BM64_STATE_INIT_BLE_ADV_START:
+<#if INCLUDE_BM64_BLE == true>
             if(BM64_BLE_JUMPER_ENABLED)
             {
                 DRV_BM64_BLE_advUpdateLocalUniqueID(_localBDAddr);
@@ -2800,6 +2805,9 @@ static void _BM64ControlTasks(void)
             {
                 gDrvBm64Obj.state = DRV_BM64_STATE_POWER_OFF;       //don't enable BLE
             }
+<#else>
+            gDrvBm64Obj.state = DRV_BM64_STATE_POWER_OFF;       //don't enable BLE
+</#if>
             break;
 
         case DRV_BM64_STATE_POWER_ON_START:
@@ -2830,6 +2838,7 @@ static void _BM64ControlTasks(void)
             // not getting DRV_BM64_SystemStatus events?
             if(1/*DRV_BM64_SystemStatus == DRV_BM64_SYSTEM_STANDBY*/)        //wait until status is standby
             {
+<#if INCLUDE_BM64_BLE == true>
                 if(BM64_BLE_JUMPER_ENABLED)
                 {
                     //BTAPP_timer1ms = 50;
@@ -2842,9 +2851,13 @@ static void _BM64ControlTasks(void)
                     DRV_BM64_BLE_advUpdateBTconnectable(BT_CONNECTABLE);
                     gDrvBm64Obj.state = DRV_BM64_STATE_BLE_ADV_WAIT;
                 }
+<#else>
+                gDrvBm64Obj.state = DRV_BM64_STATE_VOL_SYNC;
+</#if>
             }
             break;
 
+<#if INCLUDE_BM64_BLE == true>
         case DRV_BM64_STATE_BLE_ADV_WAIT:
             if(DRV_BM64_BLE_advUpdateIsEnd())
             {
@@ -2853,6 +2866,7 @@ static void _BM64ControlTasks(void)
             }
             break;
 
+</#if>
         case DRV_BM64_STATE_VOL_SYNC:
 <#if INCLUDE_BM64_I2S == true>
             if(/*!_timer1ms &&*/ DRV_BM64_IsAllowedToSendCommand()) {
@@ -3121,12 +3135,13 @@ static void _BM64ControlTasks(void)
             if (!_timer1ms)
             {
                 gDrvBm64Obj.state = DRV_BM64_STATE_POWER_OFF;              
-
+<#if INCLUDE_BM64_BLE == true>
                 if(BM64_BLE_JUMPER_ENABLED)            //check jumper setting to determine if need to enable BLE when power off
                 {
                     DRV_BM64_BLE_UpdateAdvType(CONNECTABLE_UNDIRECT_ADV);
                     DRV_BM64_BLE_advUpdateBTconnectable(BT_CONNECTABLE);
                 }
+</#if>
             }
             break;
 
@@ -3148,7 +3163,9 @@ static void _BM64ControlTasks(void)
     {
         DRV_BM64_CommandDecodeMain();
         DRV_BM64_CommandSendTask();
+<#if INCLUDE_BM64_BLE == true>
 		DRV_BM64_BLE_advertiserUpdateTask();
+</#if>
         _nextCommandReqCheck();
 }
 }
@@ -3160,9 +3177,7 @@ void DRV_BM64_EventHandler(uint8_t event, uint16_t para, uint8_t* para_full)
 {
     uint8_t lowByte, highByte;
     
-#if defined( ENABLE_SYS_LOG )    
-    SYS_LOG2("DRV_BM64_EventHandler: event=%d, para=%d",event,para);
-#endif     
+    printf("DRV_BM64_EventHandler: event=%d, para=%d\r\n",event,para);  
     
     switch(event)
 	{
@@ -3188,10 +3203,12 @@ void DRV_BM64_EventHandler(uint8_t event, uint16_t para, uint8_t* para_full)
                             _masterBDAddr[3] = _localBDAddr[3];
                             _masterBDAddr[4] = _localBDAddr[4];
                             _masterBDAddr[5] = _localBDAddr[5];
+<#if INCLUDE_BM64_BLE == true>
                             DRV_BM64_BLE_advUpdateMasterUniqueID(_masterBDAddr);
                             DRV_BM64_BLE_advUpdateGroupStatus(DRV_BM64_BLE_GROUP);
                             DRV_BM64_BLE_advUpdateNumOfPlayer(para_full[2]);
                             DRV_BM64_BLE_advUpdateRoleInGroup(DRV_BM64_BLE_MASTER_ROLE);
+</#if>
                         }
                         else if(DRV_BM64_eCSBStatus.snpk_event == DRV_BM64_CSB_EVENT_CONTINUE_CONNECTING) {
                             DRV_BM64_eCSBStatus.nspk_status = DRV_BM64_CSB_STATUS_NSPK_MASTER_CONNECTING;
@@ -3209,15 +3226,19 @@ void DRV_BM64_EventHandler(uint8_t event, uint16_t para, uint8_t* para_full)
                             _masterBDAddr[3] = para_full[6];
                             _masterBDAddr[4] = para_full[7];
                             _masterBDAddr[5] = para_full[8];
+<#if INCLUDE_BM64_BLE == true>
                             DRV_BM64_BLE_advUpdateMasterUniqueID(_masterBDAddr);
                             DRV_BM64_BLE_advUpdateGroupStatus(DRV_BM64_BLE_GROUP);
                             DRV_BM64_BLE_advUpdateNumOfPlayer(0);
                             DRV_BM64_BLE_advUpdateRoleInGroup(DRV_BM64_BLE_PLAYER_ROLE);
+</#if>
                         }
 
+<#if INCLUDE_BM64_BLE == true>
                         DRV_BM64_BLE_UpdateAdvType(SCANNABLE_UNDIRECT_ADV); //non-connectable
                         DRV_BM64_BLE_advUpdateBTconnectable(BT_NON_CONNECTABLE);
 
+</#if>
                         if (gDrvBm64Obj.state == DRV_BM64_STATE_POWERBACK_NSPK_SLAVE_WAITING) {
                             _timer1ms = 0; //clear time out timer
                             gDrvBm64Obj.state = DRV_BM64_STATE_BT_RUNNING;
@@ -3231,18 +3252,6 @@ void DRV_BM64_EventHandler(uint8_t event, uint16_t para, uint8_t* para_full)
                             if (gDrvBm64Obj.state == DRV_BM64_STATE_POWERBACK_BROADCAST_MASTER_WAITING) {
                                 gDrvBm64Obj.nSPKLinkingBackCounter = para_full[2];
                             }
-#if 0       //SPEC change 0603
-                            BT_masterBDAddr[0] = BT_localBDAddr[0];
-                            BT_masterBDAddr[1] = BT_localBDAddr[1];
-                            BT_masterBDAddr[2] = BT_localBDAddr[2];
-                            BT_masterBDAddr[3] = BT_localBDAddr[3];
-                            BT_masterBDAddr[4] = BT_localBDAddr[4];
-                            BT_masterBDAddr[5] = BT_localBDAddr[5];
-                            BLE_advUpdateMasterUniqueID(BT_masterBDAddr);
-                            BLE_advUpdateGroupStatus(GROUP);
-                            BLE_advUpdateRoleInGroup(MASTER_ROLE);
-                            BLE_advUpdateNumOfPlayer(para_full[2]);
-#endif
                         }
                         else if(DRV_BM64_eCSBStatus.snpk_event == DRV_BM64_CSB_EVENT_CONTINUE_CONNECTING) {
                             DRV_BM64_eCSBStatus.nspk_status = DRV_BM64_CSB_STATUS_BROADCAST_MASTER_CONNECTING;
@@ -3252,23 +3261,13 @@ void DRV_BM64_EventHandler(uint8_t event, uint16_t para, uint8_t* para_full)
                     case DRV_BM64_BROADCAST_SLAVE:// = 6
                         if (DRV_BM64_eCSBStatus.snpk_event == DRV_BM64_CSB_EVENT_CONNECTED) {
                             DRV_BM64_eCSBStatus.nspk_status = DRV_BM64_CSB_STATUS_CONNECTED_AS_BROADCAST_SLAVE;
-#if 0       //SPEC change 0603
-                            BT_masterBDAddr[0] = para_full[3];
-                            BT_masterBDAddr[1] = para_full[4];
-                            BT_masterBDAddr[2] = para_full[5];
-                            BT_masterBDAddr[3] = para_full[6];
-                            BT_masterBDAddr[4] = para_full[7];
-                            BT_masterBDAddr[5] = para_full[8];
-                            BLE_advUpdateMasterUniqueID(BT_masterBDAddr);
-                            BLE_advUpdateGroupStatus(GROUP);
-                            BLE_advUpdateRoleInGroup(PLAYER_ROLE);
-                            BLE_advUpdateNumOfPlayer(0);
-#endif
                         }
 
+<#if INCLUDE_BM64_BLE == true>
                         DRV_BM64_BLE_UpdateAdvType(SCANNABLE_UNDIRECT_ADV); //non-connectable
                         DRV_BM64_BLE_advUpdateBTconnectable(BT_NON_CONNECTABLE);
 
+</#if>
                         if (gDrvBm64Obj.state == DRV_BM64_STATE_POWERBACK_BROADCAST_SLAVE_WAITING) {
                             _timer1ms = 0; //clear time out timer
                             gDrvBm64Obj.state = DRV_BM64_STATE_BT_RUNNING;
@@ -3290,7 +3289,9 @@ void DRV_BM64_EventHandler(uint8_t event, uint16_t para, uint8_t* para_full)
             break;
 
         case DRV_BM64_DEC_EVENT_NSPK_CHANNEL_SETTING:
+<#if INCLUDE_BM64_BLE == true>
             DRV_BM64_BLE_advUpdateOutputChannel((uint8_t)(para&0x00ff));
+</#if>
             break;
 
         case DRV_BM64_DEC_EVENT_LINE_IN_STATUS:
@@ -3330,6 +3331,7 @@ void DRV_BM64_EventHandler(uint8_t event, uint16_t para, uint8_t* para_full)
                 uint8_t mode = (uint8_t)(para&0x00ff);
                 if ((mode == 4)||(mode == 6))
                 {
+                    printf("sample rate changed: %d\r\n",(DRV_BM64_SAMPLE_FREQUENCY)(para>>8));
                     _switchSampleFrequency((DRV_BM64_SAMPLE_FREQUENCY)(para>>8));
                 }
             }
@@ -3593,6 +3595,7 @@ void DRV_BM64_EventHandler(uint8_t event, uint16_t para, uint8_t* para_full)
             break;
 
         case DRV_BM64_DEC_EVENT_LE_STATUS_CHANGED:
+<#if INCLUDE_BM64_BLE == true>
             lowByte = (uint8_t)para;
             para >>= 8;
             highByte = (uint8_t)para;
@@ -3623,6 +3626,7 @@ void DRV_BM64_EventHandler(uint8_t event, uint16_t para, uint8_t* para_full)
                     break;
             }
             _clientCallBack(DRV_BM64_EVENT_BLE_STATUS_CHANGED,highByte);
+</#if>
             break;
         case DRV_BM64_DEC_EVENT_LE_ADV_CONTROL_REPORT:
             break;
@@ -3820,12 +3824,6 @@ void BTAPP_BroadcastBtnLongPress(void)
                 gDrvBm64Obj.nextMMIActionReq2.CancelNSPKReq = 1;
             break;
     }
-}
-
-/*-----------------------------------------------------------------------------*/
-void BTAPP_BroadcastBtnShortPress(void)
-{
-    //NA
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -4095,42 +4093,13 @@ static void _switchSampleFrequency(DRV_BM64_SAMPLE_FREQUENCY sampleFreq)
     {      
         gDrvBm64Obj.samplingRate = iSampleFreq;
 <#if INCLUDE_BM64_I2S == true>
-        DRV_I2S_BaudSet(gDrvBm64Obj.i2sDriverHandle,(iSampleFreq*DRV_BM64_BCLK_BIT_CLK_DIVISOR),iSampleFreq); 
-        _BM64MasterClockSet(iSampleFreq, gDrvBm64Obj.mclk_multiplier);
+<#if __PROCESSOR?matches("PIC32M.*") == true>
+    DRV_I2S_BaudRateSet(gDrvBm64Obj.i2sDriverHandle, iSampleFreq*DRV_BM64_BCLK_BIT_CLK_DIVISOR,iSampleFreq);
+
+    DRV_I2S_RefClockSet(gDrvBm64Obj.i2sDriverHandle, SYS_TIME_CPU_CLOCK_FREQUENCY,
+            iSampleFreq, gDrvBm64Obj.mclk_multiplier);
+</#if>
 </#if>                        
         _clientCallBack(DRV_BM64_EVENT_SAMPLERATE_CHANGED, iSampleFreq);
     }
 }
-
-<#if INCLUDE_BM64_I2S == true>
-// *****************************************************************************
- /*
-  Function:
-    static void _BM64MasterClockSet(uint32_t samplingRate, uint16_t mclk_multiplier)
-
-  Summary:
-    Generates the master clock(to AK4384) from REFCLOCK  for the given
-    sampling rate.
-
-  Description:
-    Generates the master clock(to AK4384) from REFCLOCK  for the given
-    sampling rate.
-
-  Remarks:
-    None
-*/
-static void _BM64MasterClockSet(uint32_t samplingRate, uint16_t mclk_multiplier)
-{
-    uint32_t mclkInHertz, achievedFrequencyHz;
-
-    mclkInHertz = mclk_multiplier*samplingRate;
-    achievedFrequencyHz = SYS_CLK_ReferenceFrequencySet(
-                                CLK_BUS_REFERENCE_1,
-                                APP_CODEC_INPUT_REFCLOCK,
-                                mclkInHertz, true );
-    if (achievedFrequencyHz == 0)
-    {
-        SYS_DEBUG(0, "Frequency not set properly. check what is the problem \r\n");
-    }
-}
-</#if>

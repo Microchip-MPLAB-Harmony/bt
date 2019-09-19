@@ -981,6 +981,7 @@ void DRV_BM64_volumeSet(DRV_HANDLE handle, uint8_t volume)
     if (p != NULL)
     {
     	*p = _volumeFormatFrom7bits(volume16bits);
+        _setCodecVolCurrentMode();      // call back to client to set codec volume
 	}
 }
 
@@ -2494,14 +2495,12 @@ void DRV_BM64_Timer_1ms( uintptr_t context)
 //================================================
 static void _BM64ControlTasks(void)
 {        
-#if defined( ENABLE_SYS_LOG ) 
     static uint16_t laststate = 0xffff;
     if (gDrvBm64Obj.state != laststate)    
     {
-        SYS_LOG2("DRV_BM64_Task: state=%d, request=%d",gDrvBm64Obj.state,gDrvBm64Obj.request);
+        printf("DRV_BM64_Task: state=%d, request=%d\r\n",gDrvBm64Obj.state,gDrvBm64Obj.request);
         laststate = gDrvBm64Obj.state;
-    }    
-#endif
+    }
     
     DRV_BM64_UART_Tasks();       // take care of UART first
     
@@ -2925,7 +2924,6 @@ static void _BM64ControlTasks(void)
             if (!_timer1ms)
             {
                 gDrvBm64Obj.state = DRV_BM64_STATE_POWER_OFF;              
-
                 if(BM64_BLE_JUMPER_ENABLED)            //check jumper setting to determine if need to enable BLE when power off
                 {
                     DRV_BM64_BLE_UpdateAdvType(CONNECTABLE_UNDIRECT_ADV);
@@ -2964,9 +2962,7 @@ void DRV_BM64_EventHandler(uint8_t event, uint16_t para, uint8_t* para_full)
 {
     uint8_t lowByte, highByte;
     
-#if defined( ENABLE_SYS_LOG )    
-    SYS_LOG2("DRV_BM64_EventHandler: event=%d, para=%d",event,para);
-#endif     
+    printf("DRV_BM64_EventHandler: event=%d, para=%d\r\n",event,para);  
     
     switch(event)
 	{
@@ -3035,18 +3031,6 @@ void DRV_BM64_EventHandler(uint8_t event, uint16_t para, uint8_t* para_full)
                             if (gDrvBm64Obj.state == DRV_BM64_STATE_POWERBACK_BROADCAST_MASTER_WAITING) {
                                 gDrvBm64Obj.nSPKLinkingBackCounter = para_full[2];
                             }
-#if 0       //SPEC change 0603
-                            BT_masterBDAddr[0] = BT_localBDAddr[0];
-                            BT_masterBDAddr[1] = BT_localBDAddr[1];
-                            BT_masterBDAddr[2] = BT_localBDAddr[2];
-                            BT_masterBDAddr[3] = BT_localBDAddr[3];
-                            BT_masterBDAddr[4] = BT_localBDAddr[4];
-                            BT_masterBDAddr[5] = BT_localBDAddr[5];
-                            BLE_advUpdateMasterUniqueID(BT_masterBDAddr);
-                            BLE_advUpdateGroupStatus(GROUP);
-                            BLE_advUpdateRoleInGroup(MASTER_ROLE);
-                            BLE_advUpdateNumOfPlayer(para_full[2]);
-#endif
                         }
                         else if(DRV_BM64_eCSBStatus.snpk_event == DRV_BM64_CSB_EVENT_CONTINUE_CONNECTING) {
                             DRV_BM64_eCSBStatus.nspk_status = DRV_BM64_CSB_STATUS_BROADCAST_MASTER_CONNECTING;
@@ -3056,18 +3040,6 @@ void DRV_BM64_EventHandler(uint8_t event, uint16_t para, uint8_t* para_full)
                     case DRV_BM64_BROADCAST_SLAVE:// = 6
                         if (DRV_BM64_eCSBStatus.snpk_event == DRV_BM64_CSB_EVENT_CONNECTED) {
                             DRV_BM64_eCSBStatus.nspk_status = DRV_BM64_CSB_STATUS_CONNECTED_AS_BROADCAST_SLAVE;
-#if 0       //SPEC change 0603
-                            BT_masterBDAddr[0] = para_full[3];
-                            BT_masterBDAddr[1] = para_full[4];
-                            BT_masterBDAddr[2] = para_full[5];
-                            BT_masterBDAddr[3] = para_full[6];
-                            BT_masterBDAddr[4] = para_full[7];
-                            BT_masterBDAddr[5] = para_full[8];
-                            BLE_advUpdateMasterUniqueID(BT_masterBDAddr);
-                            BLE_advUpdateGroupStatus(GROUP);
-                            BLE_advUpdateRoleInGroup(PLAYER_ROLE);
-                            BLE_advUpdateNumOfPlayer(0);
-#endif
                         }
 
                         DRV_BM64_BLE_UpdateAdvType(SCANNABLE_UNDIRECT_ADV); //non-connectable
@@ -3134,6 +3106,7 @@ void DRV_BM64_EventHandler(uint8_t event, uint16_t para, uint8_t* para_full)
                 uint8_t mode = (uint8_t)(para&0x00ff);
                 if ((mode == 4)||(mode == 6))
                 {
+                    printf("sample rate changed: %d\r\n",(DRV_BM64_SAMPLE_FREQUENCY)(para>>8));
                     _switchSampleFrequency((DRV_BM64_SAMPLE_FREQUENCY)(para>>8));
                 }
             }
@@ -3627,12 +3600,6 @@ void BTAPP_BroadcastBtnLongPress(void)
 }
 
 /*-----------------------------------------------------------------------------*/
-void BTAPP_BroadcastBtnShortPress(void)
-{
-    //NA
-}
-
-/*-----------------------------------------------------------------------------*/
 void BTAPP_BroadcastBtnDbClick(void)
 {
     if(DRV_BM64_GetPowerStatus() != DRV_BM64_STATUS_READY)
@@ -3901,4 +3868,3 @@ static void _switchSampleFrequency(DRV_BM64_SAMPLE_FREQUENCY sampleFreq)
         _clientCallBack(DRV_BM64_EVENT_SAMPLERATE_CHANGED, iSampleFreq);
     }
 }
-
