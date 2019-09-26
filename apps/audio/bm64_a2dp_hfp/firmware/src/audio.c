@@ -122,7 +122,19 @@ void audioInitialize()
 
 void audioStart()
 {
+    /* If codec option in MHC "Delay driver initialization (due to shared RESET pin)"
+       is checked, then we have to wait until after the BT module has finished initializing
+       before we begin initializing the codec.  */
+    if (true == DRV_CODEC_IsInitializationDelayed(sysObjdrvCodec0))
+    {
+        DRV_CODEC_EnableInitialization(sysObjdrvCodec0);    // BT module has finished initializing, okay to start codec now
+        audioData.state = AUDIO_STATE_CODEC_OPEN;
+    }
+    else
+    {
+		// otherwise we have just been waiting for the BT to initialize before transferring data
         audioData.state = AUDIO_STATE_BT_SUBMIT_INITIAL_READS;
+    }
 }
 
 void audioTasks()
@@ -173,10 +185,28 @@ void audioTasks()
             
             DRV_BT_EventHandlerSet(audioData.bt.handle,
                                           audioData.bt.eventHandler,
-                                          (uintptr_t)0);                                  
-            audioData.state = AUDIO_STATE_CODEC_OPEN;
+                                          (uintptr_t)0);
+            
+            if (true == DRV_CODEC_IsInitializationDelayed(sysObjdrvCodec0))
+            {
+				// if delayed initialization is enabled, go into a wait state
+				// until BT module has finished its initialization
+                audioData.state = AUDIO_STATE_WAIT_OPEN;
+            }
+            else
+            {
+				// otherwise we can continue
+                audioData.state = AUDIO_STATE_CODEC_OPEN;
+            }
         }
-        break;             
+        break;
+        
+        case AUDIO_STATE_WAIT_OPEN:
+        {
+            // waits in this state until BT initialization done and app state machine
+            // calls audioStart()
+            break;
+        }         
         
         //----------------------------------------------------------------------
         // Open CODEC Client
@@ -211,8 +241,17 @@ void audioTasks()
                                             audioData.codec.bufferHandler,
                                             audioData.codec.context);
 
-            // otherwise go into a wait state until BT module is ready
-            audioData.state = AUDIO_STATE_INIT_DONE;     
+            if (true == DRV_CODEC_IsInitializationDelayed(sysObjdrvCodec0))
+            {
+				// if delayed initialzation is enabled, BT module has already
+				// finished if we are here, and we can continue
+                audioData.state = AUDIO_STATE_BT_SUBMIT_INITIAL_READS;      
+            }
+            else
+            {
+				// otherwise go into a wait state until BT module is ready
+                audioData.state = AUDIO_STATE_INIT_DONE;     
+            }  
         }
         break;
         
@@ -400,14 +439,6 @@ void AUDIO_BT_RxBufferEventHandler(DRV_BT_BUFFER_EVENT event,
             }
         }
         break;
-
-        //case DRV_BT_BUFFER_EVENT_ERROR:
-        //{
-        //} break;
-
-        //case DRV_BT_BUFFER_EVENT_ABORT:
-        //{
-        //} break;
         default:
         break;
     } //End switch(event)
@@ -471,32 +502,22 @@ void updateLEDPlayingStatus(bool on)
             case DRV_BT_PLAYING_STOPPED:
             case DRV_BT_PLAYING_PAUSED:
             case DRV_BT_PLAYING_ERROR:
-                RGB_LED_R_On();                          
-                RGB_LED_G_Off();                     
-                RGB_LED_B_Off();                    
+                STATUS_LED_STOP     // red       
                 break;
             case DRV_BT_PLAYING_PLAYING:                                      
-                RGB_LED_G_On(); 
-                RGB_LED_R_Off();                     
-                RGB_LED_B_Off();                     
+                STATUS_LED_PLAY     // green
                 break;
             case DRV_BT_PLAYING_FF:
-                RGB_LED_B_On();
-                RGB_LED_R_Off();                     
-                RGB_LED_G_Off();                      
+                STATUS_LED_FF       // blue
                 break;
             case DRV_BT_PLAYING_FR:
-                RGB_LED_R_On();
-                RGB_LED_G_On();
-                RGB_LED_B_Off();                      
+                STATUS_LED_REWIND   // yellow                     
                 break;
         }
     }
     else
     {
-        RGB_LED_R_Off();                          
-        RGB_LED_G_Off();                     
-        RGB_LED_B_Off();          
+        STATUS_LED_OFF          
     }    
 }
 static void _audioEventHandler(DRV_BT_EVENT event, uint32_t param, uintptr_t context)
@@ -587,9 +608,9 @@ static void _audioEventHandler(DRV_BT_EVENT event, uint32_t param, uintptr_t con
 
 void SetCodecSamplingRate(uint32_t sampleFreq)
 {
-    LED1_Off();    
-    LED2_Off();
-    LED3_Off();
+    LOW_SR_LED_Off();
+    LINK_LED_Off();
+    HI_SR_LED_Off();
    
     if ((audioData.codec.handle != (DRV_HANDLE)NULL) && 
         (audioData.codec.handle != DRV_HANDLE_INVALID))
@@ -598,15 +619,12 @@ void SetCodecSamplingRate(uint32_t sampleFreq)
         {
             case 8000:          // 8 kHz    
             case 16000:         // 16 kHz                
-                LED1_On();
+                LOW_SR_LED_On();
                 break;
 
             case 44100:          // 44.1 kHz
-                LED3_On();
-                break;
-
             case 48000:          // 48 kHz
-                LED3_On();
+                HI_SR_LED_On();
                 break;
         }
         DRV_CODEC_SamplingRateSet(audioData.codec.handle,sampleFreq);        

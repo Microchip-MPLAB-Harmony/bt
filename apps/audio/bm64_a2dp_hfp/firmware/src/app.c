@@ -140,12 +140,10 @@ bool firstSync;
 
 void APP_Initialize()
 {
-    LED1_On();      // all LED's on during initialization    
-    LED2_On();
-    LED3_On();
-    RGB_LED_R_Off();
-    RGB_LED_G_Off();
-    RGB_LED_B_Off();    
+    LOW_SR_LED_On();        // all LED's on during initialization    
+    LINK_LED_On();
+    HI_SR_LED_On();
+    STATUS_LED_OFF    
         
     //Place the App state machine in its initial state.
     appData.state = APP_STATE_INIT;
@@ -160,9 +158,9 @@ void APP_Initialize()
     
     audioInitialize();
     
-    LED1_Off();      // all LED's off
-    LED2_Off();
-    LED3_Off();   
+    LOW_SR_LED_Off();       // all LED's off    
+    LINK_LED_Off();
+    HI_SR_LED_Off();  
 
     printf("Starting:\r\n----------------------\r\n");
 
@@ -228,24 +226,14 @@ void APP_Tasks()
     {     
         DRV_BT_LINKSTATUS newLinkStatus = DRV_BT_GetLinkStatus(audioData.bt.handle);          
         // update connection status
-        if (newLinkStatus & (DRV_BT_HFP_LINK_STATUS|DRV_BT_SCO_LINK_STATUS))
-        {
-            //LED1_On();
-        }
-        else
-        {
-            //LED1_Off();
-        }
         if (newLinkStatus & DRV_BT_A2DP_LINK_STATUS)
         {
-            LED2_On();
+            LINK_LED_On();
         }
         else
         {
-            LED2_Off();
-            RGB_LED_R_Off();
-            RGB_LED_G_Off();
-            RGB_LED_B_Off();            
+            LINK_LED_Off();
+            STATUS_LED_OFF          
         }
         
         if (newLinkStatus != appData.linkStatus)
@@ -295,10 +283,10 @@ void buttonTasks( )
             if (audioData.bt.handle)
             {
                 if ( (appData.buttonDelay==0)&&
-                     ((SWITCH1_Get()==SWITCH1_STATE_PRESSED)||
-                      (SWITCH2_Get()==SWITCH2_STATE_PRESSED)||
-                      (SWITCH3_Get()==SWITCH3_STATE_PRESSED)||
-                      (SWITCH4_Get()==SWITCH4_STATE_PRESSED)) )
+                     ((SWITCH_VOL_UP_Get()==SWITCHn_STATE_PRESSED)||
+                      (SWITCH_PREV_Get()==SWITCHn_STATE_PRESSED)||
+                      (SWITCH_PLAY_Get()==SWITCHn_STATE_PRESSED)||
+                      (SWITCH_NEXT_Get()==SWITCHn_STATE_PRESSED)) )
                 {
                     appData.buttonDelay=BUTTON_DEBOUNCE;       
                     appData.buttonState=BUTTON_STATE_PRESSED;
@@ -321,9 +309,9 @@ void buttonTasks( )
                 break;      // still debouncing
             }
             
-            if(SWITCH1_Get()==SWITCH1_STATE_PRESSED)       // SW1 volume up/pairing
+            if(SWITCH_VOL_UP_Get()==SWITCHn_STATE_PRESSED)       // SW1 volume up/pairing
             {
-                if (SWITCH3_Get()==SWITCH3_STATE_PRESSED)
+                if (SWITCH_PLAY_Get()==SWITCHn_STATE_PRESSED)
                 {
                     // both SW1 and SW3 together
                     appData.buttonState=BUTTON_STATE_FORGET_ALL_LINKS;
@@ -332,7 +320,7 @@ void buttonTasks( )
                 appData.buttonDelay=LONG_BUTTON_PRESS;          // 1 sec is long press
                 appData.buttonState=BUTTON_STATE_UPPAIRING_PRESSED;                  
             }           
-            else if (SWITCH4_Get()==SWITCH4_STATE_PRESSED)        // SW4 -- next song)
+            else if (SWITCH_NEXT_Get()==SWITCHn_STATE_PRESSED)        // SW4 -- next song)
             {
                 DRV_BT_PLAYINGSTATUS playingStatus = DRV_BT_GetPlayingStatus(audioData.bt.handle);
                 if ((playingStatus==DRV_BT_PLAYING_FF)||(playingStatus==DRV_BT_PLAYING_FR))
@@ -349,9 +337,9 @@ void buttonTasks( )
                     appData.buttonState=BUTTON_STATE_NEXTFF_PRESSED;                
                 }
             }           
-            else if (SWITCH3_Get()==SWITCH3_STATE_PRESSED)       // SW3 -- play/pause
+            else if (SWITCH_PLAY_Get()==SWITCHn_STATE_PRESSED)       // SW3 -- play/pause
             {
-                if (SWITCH1_Get()==SWITCH1_STATE_PRESSED)
+                if (SWITCH_VOL_UP_Get()==SWITCHn_STATE_PRESSED)
                 {
                     // both SW1 and SW3 together
                     appData.buttonState=BUTTON_STATE_FORGET_ALL_LINKS;
@@ -372,7 +360,7 @@ void buttonTasks( )
                     appData.buttonState=BUTTON_STATE_PLAYPAUSE_PRESSED;                   
                 }
             }            
-            else if (SWITCH2_Get()==SWITCH2_STATE_PRESSED)       // SW2 -- previous song
+            else if (SWITCH_PREV_Get()==SWITCHn_STATE_PRESSED)       // SW2 -- previous song
             {
                 DRV_BT_PLAYINGSTATUS playingStatus = DRV_BT_GetPlayingStatus(audioData.bt.handle);
                 if ((playingStatus==DRV_BT_PLAYING_FF)||(playingStatus==DRV_BT_PLAYING_FR))
@@ -399,14 +387,14 @@ void buttonTasks( )
         
         case BUTTON_STATE_UPPAIRING_PRESSED:
         {
-            if (SWITCH3_Get()==SWITCH3_STATE_PRESSED)
+            if (SWITCH_PLAY_Get()==SWITCHn_STATE_PRESSED)
             {
                 // both SW1 and SW3 together
                 appData.buttonState=BUTTON_STATE_FORGET_ALL_LINKS;
                 break;
             }            
             if ((appData.buttonDelay>0)&&
-                (SWITCH1_Get()!=SWITCH1_STATE_PRESSED))     // SW1 pressed and released < 1 sec -- Next
+                (SWITCH_VOL_UP_Get()!=SWITCHn_STATE_PRESSED))     // SW1 pressed and released < 1 sec -- Next
             {                               
                 if (DRV_BT_GetLinkStatus(audioData.bt.handle) & DRV_BT_AVRCP_LINK_STATUS)
                 { 
@@ -426,7 +414,7 @@ void buttonTasks( )
                 appData.buttonState=BUTTON_STATE_IDLE;              
             }
             else if ((appData.buttonDelay==0)&&
-                     (SWITCH1_Get()==SWITCH1_STATE_PRESSED))       // SW1 still pressed after 1 sec -- start pairing
+                     (SWITCH_VOL_UP_Get()==SWITCHn_STATE_PRESSED))       // SW1 still pressed after 1 sec -- start pairing
             {
                 DRV_BT_SamplingRateSet(audioData.bt.handle, 8000);
                 SetCodecSamplingRate(8000);                
@@ -439,7 +427,7 @@ void buttonTasks( )
         case BUTTON_STATE_NEXTFF_PRESSED:
         {
             if ((appData.buttonDelay>0)&&
-                (SWITCH4_Get()!=SWITCH4_STATE_PRESSED))     // SW4 pressed and released < 1 sec -- Next
+                (SWITCH_NEXT_Get()!=SWITCHn_STATE_PRESSED))     // SW4 pressed and released < 1 sec -- Next
             {
                 if (DRV_BT_GetLinkStatus(audioData.bt.handle) & DRV_BT_AVRCP_LINK_STATUS)
                 {                 
@@ -449,7 +437,7 @@ void buttonTasks( )
                 appData.buttonState=BUTTON_STATE_IDLE;              
             }
             else if ((appData.buttonDelay==0)&&
-                     (SWITCH4_Get()==SWITCH4_STATE_PRESSED))       // SW3 still pressed after 1 sec -- fast forward
+                     (SWITCH_NEXT_Get()==SWITCHn_STATE_PRESSED))       // SW3 still pressed after 1 sec -- fast forward
             {
                 if (DRV_BT_GetLinkStatus(audioData.bt.handle) & DRV_BT_AVRCP_LINK_STATUS)                
                 {                 
@@ -463,14 +451,14 @@ void buttonTasks( )
         
         case BUTTON_STATE_PLAYPAUSE_PRESSED:
         {
-            if (SWITCH1_Get()==SWITCH1_STATE_PRESSED)
+            if (SWITCH_VOL_UP_Get()==SWITCHn_STATE_PRESSED)
             {
                 // both SW1 and SW3 together
                 appData.buttonState=BUTTON_STATE_FORGET_ALL_LINKS;
                 break;
             }            
             if ((appData.buttonDelay>0)&&
-                (SWITCH3_Get()!=SWITCH3_STATE_PRESSED))     // SW3 pressed and released < 1 sec -- play/pause
+                (SWITCH_PLAY_Get()!=SWITCHn_STATE_PRESSED))     // SW3 pressed and released < 1 sec -- play/pause
             {
                 DRV_BT_PLAYINGSTATUS playingStatus = DRV_BT_GetPlayingStatus(audioData.bt.handle);
                 if ((playingStatus==DRV_BT_PLAYING_FF)||(playingStatus==DRV_BT_PLAYING_FR))
@@ -491,7 +479,7 @@ void buttonTasks( )
                 appData.buttonState=BUTTON_STATE_IDLE;              
             }
             else if ((appData.buttonDelay==0)&&
-                     (SWITCH3_Get()==SWITCH3_STATE_PRESSED))       // SW4 still pressed after 1 sec -- disconnect
+                     (SWITCH_PLAY_Get()==SWITCHn_STATE_PRESSED))       // SW4 still pressed after 1 sec -- disconnect
             {
                 if (DRV_BT_GetLinkStatus(audioData.bt.handle)!=0)
                 {                 
@@ -512,7 +500,7 @@ void buttonTasks( )
         case BUTTON_STATE_PREVREWIND_PRESSED:
         {
             if ((appData.buttonDelay>0)&&
-                (SWITCH2_Get()!=SWITCH2_STATE_PRESSED))     // SW3 pressed and released < 1 sec -- previous
+                (SWITCH_PREV_Get()!=SWITCHn_STATE_PRESSED))     // SW3 pressed and released < 1 sec -- previous
             {
                 if (DRV_BT_GetLinkStatus(audioData.bt.handle) & DRV_BT_AVRCP_LINK_STATUS)
                 {                 
@@ -522,7 +510,7 @@ void buttonTasks( )
                 appData.buttonState=BUTTON_STATE_IDLE;              
             }
             else if ((appData.buttonDelay==0)&&
-                     (SWITCH2_Get()==SWITCH2_STATE_PRESSED))       // SW3 still pressed after 1 sec -- fast forward
+                     (SWITCH_PREV_Get()==SWITCHn_STATE_PRESSED))       // SW3 still pressed after 1 sec -- fast forward
             {
                 if (DRV_BT_GetLinkStatus(audioData.bt.handle) & DRV_BT_AVRCP_LINK_STATUS)                
                 {                 
@@ -550,10 +538,10 @@ void buttonTasks( )
 
         case BUTTON_STATE_WAIT_FOR_RELEASE:
         {
-            if ((SWITCH1_Get()!=SWITCH1_STATE_PRESSED)&&
-                (SWITCH2_Get()!=SWITCH2_STATE_PRESSED)&&
-                (SWITCH3_Get()!=SWITCH3_STATE_PRESSED)&&
-                (SWITCH4_Get()!=SWITCH4_STATE_PRESSED))
+            if ((SWITCH_VOL_UP_Get()!=SWITCHn_STATE_PRESSED)&&
+                (SWITCH_PREV_Get()!=SWITCHn_STATE_PRESSED)&&
+                (SWITCH_PLAY_Get()!=SWITCHn_STATE_PRESSED)&&
+                (SWITCH_NEXT_Get()!=SWITCHn_STATE_PRESSED))
             {
                 appData.buttonDelay=BUTTON_DEBOUNCE;
                 appData.buttonState=BUTTON_STATE_IDLE;

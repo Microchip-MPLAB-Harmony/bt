@@ -58,6 +58,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include <stdlib.h>
 #include "configuration.h"
 #include "definitions.h"
+#include "user.h"           // defines switches and LEDs
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -65,7 +66,7 @@ extern "C" {
 #endif
 // DOM-IGNORE-END
 
-#define AUDIO_BUFFER_SAMPLES   1000
+#define AUDIO_BUFFER_SAMPLES   4000
 #define AUDIO_QUEUE_SIZE          2  //PING/PONG buffer scheme
     
 #define DELAY_AFTER_VOLME_CHG   1000    // must wait 1000 sec between volume changes from button    
@@ -89,6 +90,7 @@ extern "C" {
 
 typedef enum
 {
+    AUDIO_STATE_WAIT_OPEN,    
     AUDIO_STATE_OPEN,
     AUDIO_STATE_SET_BT_BUFFER_HANDLER,     
     AUDIO_STATE_CODEC_OPEN,

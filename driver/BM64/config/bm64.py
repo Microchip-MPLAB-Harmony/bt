@@ -58,6 +58,11 @@ def instantiateComponent(bm64Component):
     bm64USARTDriver.setReadOnly(True)
     bm64USARTDriver.setDefaultValue("USART")
 
+    bm64I2SDriverIndex = bm64Component.createStringSymbol("DRV_BM64_I2S_INDEX", None)
+    bm64I2SDriverIndex.setVisible(False)
+    bm64I2SDriverIndex.setReadOnly(True)
+    bm64I2SDriverIndex.setDefaultValue("DRV_I2S_INDEX")
+
     bm64Clients = bm64Component.createIntegerSymbol("DRV_BM64_CLIENTS_NUMBER", None)
     bm64Clients.setVisible(True)
     bm64Clients.setLabel("Number of BM64 Driver Clients")
@@ -288,11 +293,16 @@ def instantiateComponent(bm64Component):
 def onDependencyConnected(info):
 
     if info["dependencyID"] == "I2S driver":
-        plibUsed = info["localComponent"].getSymbolByID("DRV_BM64_I2S")
+        pliborDrvUsed = info["localComponent"].getSymbolByID("DRV_BM64_I2S")
+        i2sOrUartId = info["remoteComponent"].getID().upper()
+        i2sOrUartId = i2sOrUartId.replace("A_","")    # I2S driver in audio repo have an "a_" prefix
+        drvIndexUsed = info["localComponent"].getSymbolByID("DRV_BM64_I2S_INDEX")
+        i2sIndex = i2sOrUartId.replace("I2S_","I2S_INDEX_")    # DRV_I2S_1 => DRV_I2S_INDEX_1
+        drvIndexUsed.setValue(i2sIndex, 1)
     elif info["dependencyID"] == "USART PLIB":
-        plibUsed = info["localComponent"].getSymbolByID("DRV_BM64_USART")
-    i2sOrUartId = info["remoteComponent"].getID().upper()
+        pliborDrvUsed = info["localComponent"].getSymbolByID("DRV_BM64_USART")
+        i2sOrUartId = info["remoteComponent"].getID().upper()
     if (info["dependencyID"] == "USART PLIB") and ("SERCOM" in i2sOrUartId):
-        plibUsed.setValue(i2sOrUartId+"_USART") # SERCOM PLIB doesn't include USART string
+        pliborDrvUsed.setValue(i2sOrUartId+"_USART") # SERCOM PLIB doesn't include USART string
     else:
-        plibUsed.setValue(i2sOrUartId)
+        pliborDrvUsed.setValue(i2sOrUartId)
