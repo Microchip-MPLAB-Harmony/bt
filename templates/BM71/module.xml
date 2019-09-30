@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Module name="bm64 bluetooth" id="2542c4ec-b70a-4ed6-878d-8acbd704a9a4" version="1.0.0">
+<Module name="bm71 bluetooth" id="2c9c9267-28e2-4dc5-985e-b7ca2b53c026" version="1.0.0">
     <ConfigRoot path="module.py"/>
 </Module>

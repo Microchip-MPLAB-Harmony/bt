@@ -1,6 +1,6 @@
 # coding: utf-8
 ##############################################################################
-# Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+# Copyright (C) 2019 Microchip Technology Inc. and its subsidiaries.
 #
 # Subject to your compliance with these terms, you may use Microchip software
 # and any derivatives exclusively with Microchip products. It is your
@@ -22,14 +22,14 @@
 # THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 ##############################################################################
 
-same70xultComponentIDList = ["usart0", "sys_time", "tc0"]		
-same70xultAutoConnectList = [["bluetooth_bm64", "USART PLIB", "usart0", "USART0_UART"],
-                          ["sys_time", "sys_time_TMR_dependency", "tc0", "TC0_TMR"]]
-same70xultPinConfigs = [{"pin": 20, "name": "USART0_TXD0", "type": "USART0_TXD0", "direction": "", "latch": "", "abcd": "C"},  # PB1
-                     {"pin": 21, "name": "USART0_RXD0", "type": "USART0_RXD0", "direction": "", "latch": "", "abcd": "C"},  # PB0
-                     {"pin": 26, "name": "BM64_MFB", "type": "GPIO", "direction": "Out", "latch": "Low", "abcd": ""},       # PB2
-                     {"pin": 98, "name": "STBYRST", "type": "GPIO", "direction": "Out", "latch": "High", "abcd": ""}]       # PD11 
+samd21xproComponentIDList = ["sercom4", "sys_time", "tc3"]		
+samd21xproAutoConnectList = [["bluetooth_bm71", "USART PLIB", "sercom4", "SERCOM4_UART"],
+                          ["sys_time", "sys_time_TMR_dependency", "tc3", "TC3_TMR"]]
+samd21xproPinConfigs = [{"pin": 11, "name": "SERCOM4_PAD0", "type": "SERCOM4_PAD0", "direction": "", "latch": "", "abcd": "D"},     # PB08
+                        {"pin": 12, "name": "SERCOM4_PAD1", "type": "SERCOM4_PAD1", "direction": "", "latch": "", "abcd": "D"},     # PB09
+                        {"pin": 6,  "name": "BM71_RX_IND", "type": "GPIO", "direction": "Out", "latch": "High", "abcd": ""},        # PB05
+                        {"pin": 62, "name": "STBYRST", "type": "GPIO", "direction": "Out", "latch": "High", "abcd": ""}]            # PB01 
 
-sam_e70_xplained_ultra = bspSupportObj(same70xultPinConfigs, same70xultComponentIDList, None, same70xultAutoConnectList, None)					
+sam_d21_xplained_pro = bspSupportObj(samd21xproPinConfigs, samd21xproComponentIDList, None, samd21xproAutoConnectList, None)					
 
-addBSPSupport("BSP_SAM_E70_Xplained_Ultra", "E70_XPLAINED_ULTRA", sam_e70_xplained_ultra)
+addBSPSupport("BSP_SAM_D21_Xplained_Pro", "D21_XPLAINED_PRO", sam_d21_xplained_pro)

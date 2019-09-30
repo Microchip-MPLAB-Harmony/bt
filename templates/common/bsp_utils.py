@@ -73,6 +73,9 @@ def getBSPSupportNode(bspID, configID):
 	if (configID != None):
 		keyID += configID
 
+	if keyID not in bspSupportObjList:
+		return None
+
 	return bspSupportObjList[keyID]
 
 # Gets the ID of the first supported BSP component in the project

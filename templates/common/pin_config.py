@@ -23,27 +23,59 @@
 ##############################################################################
 
 def resetPins(pinConfigs):
-    for pinConfig in pinConfigs:
-        print("Resetting " + pinConfig["name"])
-        Database.clearSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_FUNCTION_NAME")
-        Database.setSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_FUNCTION_TYPE", "Available", 1)
-        Database.clearSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_DIR")
-        Database.clearSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_LAT")
-        Database.clearSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_PERIPHERAL_FUNCTION")
+	for pinConfig in pinConfigs:
+		print("Resetting " + pinConfig["name"])
+		Database.clearSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_FUNCTION_NAME")
+		Database.clearSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_FUNCTION_TYPE")
+		Database.setSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_FUNCTION_TYPE", "Available", 1)
+		Database.clearSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_DIR")
+		Database.clearSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_LAT")
+		Database.clearSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_PERIPHERAL_FUNCTION")
 
 def configurePins(pinConfigs):
-    for pinConfig in pinConfigs:
-        print("Configuring " + pinConfig["name"])
-        Database.clearSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_FUNCTION_NAME")
-        Database.clearSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_FUNCTION_TYPE")
-        Database.clearSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_DIR")
-        Database.clearSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_LAT")
-        Database.clearSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_PERIPHERAL_FUNCTION")
-		
-        Database.setSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_FUNCTION_TYPE", pinConfig["type"], 1)
-        if (pinConfig["type"] == "GPIO"):
-            Database.setSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_FUNCTION_NAME", pinConfig["name"], 1)
-            Database.setSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_DIR", pinConfig["direction"], 1)
-            Database.setSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_LAT", pinConfig["latch"], 1)
-        else:
-            Database.setSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_PERIPHERAL_FUNCTION", pinConfig["abcd"], 1)
+	for pinConfig in pinConfigs:
+		print("Configuring SAM pin # " + str(pinConfig["pin"]) + " name: " + pinConfig["name"])
+		Database.clearSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_FUNCTION_NAME")
+		Database.clearSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_FUNCTION_TYPE")
+		Database.clearSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_DIR")
+		### Comment out clear of Pin Latch, it looks like if latch symbol is cleared it couldn't
+		### be changed from low
+		#Database.clearSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_LAT")
+		Database.clearSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_PERIPHERAL_FUNCTION")
+		Database.setSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_FUNCTION_TYPE", pinConfig["type"], 1)
+
+		if (pinConfig["type"] == "GPIO"):
+			Database.setSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_FUNCTION_NAME", pinConfig["name"], 1)
+			Database.setSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_DIR", pinConfig["direction"], 1)
+			Database.setSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_LAT", pinConfig["latch"], 1)
+		else:
+			Database.setSymbolValue("core", "PIN_" + str(pinConfig["pin"]) + "_PERIPHERAL_FUNCTION", pinConfig["abcd"], 1)
+
+def resetPinsPIC32M(pinConfigs):
+	for pinConfig in pinConfigs:
+		print("Resetting PIC32M pin # " + str(pinConfig["pin"]) + " name: " + pinConfig["name"])
+		Database.clearSymbolValue("core", "BSP_PIN_" + str(pinConfig["pin"]) + "_FUNCTION_NAME")
+		Database.clearSymbolValue("core", "BSP_PIN_" + str(pinConfig["pin"]) + "_FUNCTION_TYPE")
+		Database.setSymbolValue("core", "BSP_PIN_" + str(pinConfig["pin"]) + "_FUNCTION_TYPE", "Available", 1)
+		Database.clearSymbolValue("core", "BSP_PIN_" + str(pinConfig["pin"]) + "_DIR")
+		Database.clearSymbolValue("core", "BSP_PIN_" + str(pinConfig["pin"]) + "_LAT")
+		Database.clearSymbolValue("core", "BSP_PIN_" + str(pinConfig["pin"]) + "_PERIPHERAL_FUNCTION")
+
+def configurePinsPIC32M(pinConfigs):
+	for pinConfig in pinConfigs:
+		print("Configuring PIC32M pin # " + str(pinConfig["pin"]) + " name: " + pinConfig["name"])
+		Database.clearSymbolValue("core", "BSP_PIN_" + str(pinConfig["pin"]) + "_FUNCTION_NAME")
+		Database.clearSymbolValue("core", "BSP_PIN_" + str(pinConfig["pin"]) + "_FUNCTION_TYPE")
+		Database.clearSymbolValue("core", "BSP_PIN_" + str(pinConfig["pin"]) + "_DIR")
+		### Comment out clear of Pin Latch, it looks like if latch symbol is cleared it couldn't
+		### be changed from low
+		#Database.clearSymbolValue("core", "BSP_PIN_" + str(pinConfig["pin"]) + "_LAT")
+		Database.clearSymbolValue("core", "BSP_PIN_" + str(pinConfig["pin"]) + "_PERIPHERAL_FUNCTION")
+		Database.setSymbolValue("core", "BSP_PIN_" + str(pinConfig["pin"]) + "_FUNCTION_TYPE", pinConfig["type"], 1)
+
+		if (pinConfig["type"] == "GPIO"):
+			Database.setSymbolValue("core", "BSP_PIN_" + str(pinConfig["pin"]) + "_FUNCTION_NAME", pinConfig["name"], 1)
+			Database.setSymbolValue("core", "BSP_PIN_" + str(pinConfig["pin"]) + "_DIR", pinConfig["direction"], 1)
+			Database.setSymbolValue("core", "BSP_PIN_" + str(pinConfig["pin"]) + "_LAT", pinConfig["latch"], 1)
+		else:
+			Database.setSymbolValue("core", "BSP_PIN_" + str(pinConfig["pin"]) + "_PERIPHERAL_FUNCTION", pinConfig["abcd"], 1)

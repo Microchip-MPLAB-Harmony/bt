@@ -22,14 +22,14 @@
 # THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 ##############################################################################
 
-same70xultComponentIDList = ["usart0", "sys_time", "tc0"]		
-same70xultAutoConnectList = [["bluetooth_bm64", "USART PLIB", "usart0", "USART0_UART"],
-                          ["sys_time", "sys_time_TMR_dependency", "tc0", "TC0_TMR"]]
-same70xultPinConfigs = [{"pin": 20, "name": "USART0_TXD0", "type": "USART0_TXD0", "direction": "", "latch": "", "abcd": "C"},  # PB1
-                     {"pin": 21, "name": "USART0_RXD0", "type": "USART0_RXD0", "direction": "", "latch": "", "abcd": "C"},  # PB0
-                     {"pin": 26, "name": "BM64_MFB", "type": "GPIO", "direction": "Out", "latch": "Low", "abcd": ""},       # PB2
-                     {"pin": 98, "name": "STBYRST", "type": "GPIO", "direction": "Out", "latch": "High", "abcd": ""}]       # PD11 
+pic32mzCuriosity20ComponentIDList = ["uart1", "sys_time", "core_timer"]		
+pic32mzCuriosity20AutoConnectList = [["bluetooth_bm64", "USART PLIB", "uart1", "UART1_UART"],
+                      ["sys_time", "sys_time_TMR_dependency", "core_timer", "CORE_TIMER_TMR"]]
+pic32mzCuriosity20PinConfigs = [{"pin": 6,   "name": "U1RX", "type": "U1RX", "direction": "", "latch": "", "abcd": ""},					# RRC1
+                                {"pin": 13,  "name": "U1TX", "type": "U1TX", "direction": "", "latch": "", "abcd": ""},					# RC4
+                                {"pin": 58,  "name": "BM64_MFB", "type": "GPIO", "direction": "Out", "latch": "Low", "abcd": ""}, 	    # RF12
+                                {"pin": 9,   "name": "BT_STBYRST", "type": "GPIO", "direction": "Out", "latch": "High", "abcd": ""}]	# RJ12
+					
+pic32mz_ef_curiosity20 = bspSupportObj(pic32mzCuriosity20PinConfigs, pic32mzCuriosity20ComponentIDList, None, pic32mzCuriosity20AutoConnectList, None)
 
-sam_e70_xplained_ultra = bspSupportObj(same70xultPinConfigs, same70xultComponentIDList, None, same70xultAutoConnectList, None)					
-
-addBSPSupport("BSP_SAM_E70_Xplained_Ultra", "E70_XPLAINED_ULTRA", sam_e70_xplained_ultra)
+addBSPSupport("BSP_PIC32MZ_EF_Curiosity_2.0", "PIC32MZ_CURIOSITY_20", pic32mz_ef_curiosity20)

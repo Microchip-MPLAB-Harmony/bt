@@ -22,14 +22,14 @@
 # THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 ##############################################################################
 
-same70xultComponentIDList = ["usart0", "sys_time", "tc0"]		
-same70xultAutoConnectList = [["bluetooth_bm64", "USART PLIB", "usart0", "USART0_UART"],
-                          ["sys_time", "sys_time_TMR_dependency", "tc0", "TC0_TMR"]]
-same70xultPinConfigs = [{"pin": 20, "name": "USART0_TXD0", "type": "USART0_TXD0", "direction": "", "latch": "", "abcd": "C"},  # PB1
-                     {"pin": 21, "name": "USART0_RXD0", "type": "USART0_RXD0", "direction": "", "latch": "", "abcd": "C"},  # PB0
-                     {"pin": 26, "name": "BM64_MFB", "type": "GPIO", "direction": "Out", "latch": "Low", "abcd": ""},       # PB2
-                     {"pin": 98, "name": "STBYRST", "type": "GPIO", "direction": "Out", "latch": "High", "abcd": ""}]       # PD11 
+pic32mxBtadkComponentIDList = ["uart2", "sys_time", "core_timer"]		
+pic32mxBtadkAutoConnectList = [["bluetooth_bm64", "USART PLIB", "uart2", "UART2_UART"],
+                      ["sys_time", "sys_time_TMR_dependency", "core_timer", "CORE_TIMER_TMR"]]
+pic32mxBtadkPinConfigs = [{"pin": 49, "name": "U2RX", "type": "U2RX", "direction": "", "latch": "", "abcd": ""},   		 # RF4
+                          {"pin": 50, "name": "U2TX", "type": "U2TX", "direction": "", "latch": "", "abcd": ""},   		 # RF5					
+                          {"pin": 23, "name": "BM64_MFB", "type": "GPIO", "direction": "Out", "latch": "Low", "abcd": ""}, # RB3					
+                          {"pin": 1,  "name": "STBYRST", "type": "GPIO", "direction": "Out", "latch": "High", "abcd": ""}] # RG15
+					
+pic32mx_bluetooth_audio_dev_kit = bspSupportObj(pic32mxBtadkPinConfigs, pic32mxBtadkComponentIDList, None, pic32mxBtadkAutoConnectList, None)
 
-sam_e70_xplained_ultra = bspSupportObj(same70xultPinConfigs, same70xultComponentIDList, None, same70xultAutoConnectList, None)					
-
-addBSPSupport("BSP_SAM_E70_Xplained_Ultra", "E70_XPLAINED_ULTRA", sam_e70_xplained_ultra)
+addBSPSupport("BSP_PIC32MX_Bluetooth_Audio_Development_Kit", "PIC32MX_BTADK", pic32mx_bluetooth_audio_dev_kit)

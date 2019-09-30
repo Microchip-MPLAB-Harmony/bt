@@ -1,6 +1,6 @@
 # coding: utf-8
 ##############################################################################
-# Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+# Copyright (C) 2019 Microchip Technology Inc. and its subsidiaries.
 #
 # Subject to your compliance with these terms, you may use Microchip software
 # and any derivatives exclusively with Microchip products. It is your
@@ -22,14 +22,14 @@
 # THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 ##############################################################################
 
-same70xultComponentIDList = ["usart0", "sys_time", "tc0"]		
-same70xultAutoConnectList = [["bluetooth_bm64", "USART PLIB", "usart0", "USART0_UART"],
+same54cultComponentIDList = ["sercom7", "sys_time", "tc0"]		
+same54cultAutoConnectList = [["bluetooth_bm64", "USART PLIB", "sercom7", "SERCOM7_UART"],
                           ["sys_time", "sys_time_TMR_dependency", "tc0", "TC0_TMR"]]
-same70xultPinConfigs = [{"pin": 20, "name": "USART0_TXD0", "type": "USART0_TXD0", "direction": "", "latch": "", "abcd": "C"},  # PB1
-                     {"pin": 21, "name": "USART0_RXD0", "type": "USART0_RXD0", "direction": "", "latch": "", "abcd": "C"},  # PB0
-                     {"pin": 26, "name": "BM64_MFB", "type": "GPIO", "direction": "Out", "latch": "Low", "abcd": ""},       # PB2
-                     {"pin": 98, "name": "STBYRST", "type": "GPIO", "direction": "Out", "latch": "High", "abcd": ""}]       # PD11 
+same54cultPinConfigs = [{"pin": 56, "name": "SERCOM7_PAD0", "type": "SERCOM7_PAD0", "direction": "", "latch": "", "abcd": "C"},     # PC12
+                        {"pin": 57, "name": "SERCOM7_PAD1", "type": "SERCOM7_PAD1", "direction": "", "latch": "", "abcd": "C"},     # PC13
+                        {"pin": 59, "name": "BM64_MFB", "type": "GPIO", "direction": "Out", "latch": "Low", "abcd": ""},            # PC15
+                        {"pin": 72, "name": "STBYRST", "type": "GPIO", "direction": "Out", "latch": "High", "abcd": ""}]            # PC18 
 
-sam_e70_xplained_ultra = bspSupportObj(same70xultPinConfigs, same70xultComponentIDList, None, same70xultAutoConnectList, None)					
+sam_e54_curiosity_ultra = bspSupportObj(same54cultPinConfigs, same54cultComponentIDList, None, same54cultAutoConnectList, None)					
 
-addBSPSupport("BSP_SAM_E70_Xplained_Ultra", "E70_XPLAINED_ULTRA", sam_e70_xplained_ultra)
+addBSPSupport("BSP_SAM_E54_Curiosity_Ultra", "E54_CURIOSITY_ULTRA", sam_e54_curiosity_ultra)
