@@ -225,6 +225,7 @@ SYS_MODULE_OBJ  DRV_AK4954_Initialize
     drvObj->whichMicInput                   = ak4954Init->whichMicInput;
     drvObj->enableMicBias                   = ak4954Init->enableMicBias;
     drvObj->micGain                         = ak4954Init->micGain;
+    // KEEP NEXT 2 LINES UNTIL JIRA MH3-22284 IS RESOLVED
     drvObj->mclk_multiplier                 = DRV_AK4954_MCLK_SAMPLE_FREQ_MULTPLIER;
     drvObj->bclk_divider                    = DRV_AK4954_BCLK_BIT_CLK_DIVISOR;
     
@@ -692,6 +693,7 @@ DRV_HANDLE DRV_AK4954_Open
 
                 hClient->ioIntent |= DRV_IO_INTENT_NONBLOCKING;
 
+                // KEEP NEXT 2 LINES UNTIL JIRA MH3-22284 IS RESOLVED
                 DRV_I2S_BaudRateSet(drvObj->i2sDriverHandle, drvObj->samplingRate*drvObj->bclk_divider,
                         drvObj->samplingRate);
 
@@ -1400,8 +1402,10 @@ void DRV_AK4954_SamplingRateSet(DRV_HANDLE handle, uint32_t samplingRate)
         return;
     }
     drvObj = (DRV_AK4954_OBJ *)clientObj->hDriver;
+
     drvObj->samplingRate = samplingRate;
 
+    // KEEP NEXT 5 LINES UNTIL JIRA MH3-22284 IS RESOLVED
     DRV_I2S_RefClockSet(drvObj->i2sDriverHandle, SYS_TIME_CPU_CLOCK_FREQUENCY,
             drvObj->samplingRate, drvObj->mclk_multiplier);
 
@@ -2540,6 +2544,7 @@ static void _DRV_AK4954_ControlTasks(DRV_AK4954_OBJ *drvObj)
 
         case DRV_AK4954_COMMAND_INIT_CLK_PDN_SET:
         {
+            // KEEP NEXT 3 LINES UNTIL JIRA MH3-22284 IS RESOLVED
 			/* Generate master clock from REFCLOCK for the given sampling rate */
             DRV_I2S_RefClockSet(drvObj->i2sDriverHandle, SYS_TIME_CPU_CLOCK_FREQUENCY,
                     drvObj->samplingRate, drvObj->mclk_multiplier);

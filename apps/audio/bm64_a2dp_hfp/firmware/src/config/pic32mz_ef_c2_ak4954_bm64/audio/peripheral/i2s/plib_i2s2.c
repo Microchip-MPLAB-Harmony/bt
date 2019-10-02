@@ -39,6 +39,7 @@
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
 
+// KEEP NEXT 3 LINES UNTIL JIRA MH3-22284 IS RESOLVED
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>                    // Defines true
@@ -113,6 +114,7 @@ uint32_t I2S2_LRCLK_Get(void)
     return ret;
 }
 
+// KEEP LINES TO END UNTIL JIRA MH3-22284 IS RESOLVED
 static uint32_t _calcRefclock(uint32_t sysclk, uint32_t rodivInt, uint32_t rotrimInt)
 {
     return sysclk / ((uint32_t)2.0*((double)rodivInt+(double)rotrimInt/512.0));    

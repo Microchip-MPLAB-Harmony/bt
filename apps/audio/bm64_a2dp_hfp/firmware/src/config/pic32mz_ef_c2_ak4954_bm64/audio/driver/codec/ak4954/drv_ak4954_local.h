@@ -887,6 +887,8 @@ typedef struct _DRV_AK4954_OBJ_STRUCT
     uintptr_t commandContextData;
 
     uint16_t mclk_multiplier;
+
+    // KEEP NEXT LINE UNTIL JIRA MH3-22284 IS RESOLVED
     uint16_t bclk_divider; 
     
     uintptr_t drvI2CMasterHandle;

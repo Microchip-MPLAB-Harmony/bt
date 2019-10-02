@@ -1235,6 +1235,7 @@ bool DRV_I2S_LRCLK_Sync (const DRV_HANDLE handle, const uint32_t sample_rate)
     return true;
 } //End DRV_I2S_LRCLK_Sync()
 
+// KEEP LINES TO END UNTIL JIRA MH3-22284 IS RESOLVED
 uint32_t DRV_I2S_RefClockSet(DRV_HANDLE handle,uint32_t sysclk, uint32_t samplingRate, uint32_t mclk_sampleRate_multiplier)
 {
     DRV_I2S_OBJ * dObj = NULL;

@@ -91,8 +91,8 @@
           <Name dnOrder="1">initialization.c</Name>
           <LogicalPath dnOrder="2">config/pic32mz_ef_c2_bm71/</LogicalPath>
           <PhysicalPath dnOrder="3">/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">66A3A32CF26E4BB4E788EC986D8C5752</GeneratedChecksum>
-          <UserChecksum dnOrder="5">66A3A32CF26E4BB4E788EC986D8C5752</UserChecksum>
+          <GeneratedChecksum dnOrder="4">5E1277BC6A92AFE10BB2333597CFA0C2</GeneratedChecksum>
+          <UserChecksum dnOrder="5">5E1277BC6A92AFE10BB2333597CFA0C2</UserChecksum>
         </File>
         <File dnOrder="11">
           <Type dnOrder="0">SOURCE</Type>
@@ -115,8 +115,8 @@
           <Name dnOrder="1">plib_clk.c</Name>
           <LogicalPath dnOrder="2">config/pic32mz_ef_c2_bm71/peripheral/clk/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/clk/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">C09E6D10E94114509143C7C6A1C045BE</GeneratedChecksum>
-          <UserChecksum dnOrder="5">C09E6D10E94114509143C7C6A1C045BE</UserChecksum>
+          <GeneratedChecksum dnOrder="4">C574E767A1D4DD88F80F39B69D5AF0EF</GeneratedChecksum>
+          <UserChecksum dnOrder="5">C574E767A1D4DD88F80F39B69D5AF0EF</UserChecksum>
         </File>
         <File dnOrder="14">
           <Type dnOrder="0">SOURCE</Type>
@@ -147,8 +147,8 @@
           <Name dnOrder="1">plib_uart1.c</Name>
           <LogicalPath dnOrder="2">config/pic32mz_ef_c2_bm71/peripheral/uart/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/uart/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">89399D811024A185CCFE3B8732984CBB</GeneratedChecksum>
-          <UserChecksum dnOrder="5">89399D811024A185CCFE3B8732984CBB</UserChecksum>
+          <GeneratedChecksum dnOrder="4">04C0B2D9648E3D56BDC6224C78EEFE8C</GeneratedChecksum>
+          <UserChecksum dnOrder="5">04C0B2D9648E3D56BDC6224C78EEFE8C</UserChecksum>
         </File>
         <File dnOrder="18">
           <Type dnOrder="0">SOURCE</Type>
@@ -331,8 +331,8 @@
           <Name dnOrder="1">plib_coretimer.h</Name>
           <LogicalPath dnOrder="2">config/pic32mz_ef_c2_bm71/peripheral/coretimer/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/coretimer/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">B56E73929AA8C9899F0BA761F7053A87</GeneratedChecksum>
-          <UserChecksum dnOrder="5">B56E73929AA8C9899F0BA761F7053A87</UserChecksum>
+          <GeneratedChecksum dnOrder="4">77E2C83A700CD1F724CFD90ED3AA2B71</GeneratedChecksum>
+          <UserChecksum dnOrder="5">77E2C83A700CD1F724CFD90ED3AA2B71</UserChecksum>
         </File>
         <File dnOrder="41">
           <Type dnOrder="0">HEADER</Type>
@@ -355,8 +355,8 @@
           <Name dnOrder="1">plib_uart1.h</Name>
           <LogicalPath dnOrder="2">config/pic32mz_ef_c2_bm71/peripheral/uart/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/uart/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">E1D3F2D86FA79C30CC442558A14E4737</GeneratedChecksum>
-          <UserChecksum dnOrder="5">E1D3F2D86FA79C30CC442558A14E4737</UserChecksum>
+          <GeneratedChecksum dnOrder="4">826443BC0DE904951AF65CBAEF9DED7E</GeneratedChecksum>
+          <UserChecksum dnOrder="5">826443BC0DE904951AF65CBAEF9DED7E</UserChecksum>
         </File>
         <File dnOrder="44">
           <Type dnOrder="0">HEADER</Type>
@@ -480,7 +480,7 @@
     </Manifest>
     <Settings dnOrder="4">
       <Setting dnOrder="0" key="CMSISPath" value=".\dev_packs\arm\CMSIS\5.5.1"/>
-      <Setting dnOrder="1" key="DFPPath" value=".\dev_packs\Microchip\PIC32MZ_EF_DFP\1.0.29\atdf\PIC32MZ2048EFM144.atdf"/>
+      <Setting dnOrder="1" key="DFPPath" value=".\dev_packs\Microchip\PIC32MZ_EF_DFP\1.0.39\atdf\PIC32MZ2048EFM144.atdf"/>
       <Setting dnOrder="2" key="MERGE_STRATEGY" value="ALL"/>
       <Setting dnOrder="3" key="PackageFilter" value="bsp;bt;core;csp;"/>
     </Settings>

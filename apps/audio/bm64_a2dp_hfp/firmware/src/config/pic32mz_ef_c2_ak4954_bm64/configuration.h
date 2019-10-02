@@ -258,10 +258,13 @@ extern "C" {
 #define DRV_AK4954_WHICH_MIC_INPUT                          MIC1
 #define DRV_AK4954_ENABLE_MIC_BIAS                          true
 #define DRV_AK4954_MIC_GAIN	                      	        20
+// KEEP NEXT 2 LINES UNTIL JIRA MH3-22284 IS RESOLVED
 #define DRV_AK4954_MCLK_SAMPLE_FREQ_MULTPLIER               256
 #define DRV_AK4954_BCLK_BIT_CLK_DIVISOR                     4
-#define DRV_AK4954_DELAY_INITIALIZATION                     false
+// KEEP NEXT LINE UNTIL JIRA MH3-22285 IS RESOLVED
+#define DRV_AK4954_DELAY_INITIALIZATION                     true
 
+// KEEP NEXT LINE AS IS UNTIL JIRA MH3-22284 IS RESOLVED
 #define DRV_AK4954_I2S_DRIVER_MODULE_INDEX_IDX0             DRV_I2S_INDEX_1
 #define DRV_AK4954_I2C_DRIVER_MODULE_INDEX_IDX0             DRV_I2C_INDEX_0
 /* CODEC Driver Abstraction definition */
@@ -305,7 +308,8 @@ extern "C" {
 #define DRV_CODEC_MicMuteOn                                 DRV_AK4954_MicMuteOn
 #define DRV_CODEC_MicMuteOff                                DRV_AK4954_MicMuteOff
 #define DRV_CODEC_GetI2SDriver                              DRV_AK4954_GetI2SDriver
-#define DRV_CODEC_LRCLK_Sync                                DRV_AK4954_LRCLK_Sync 
+#define DRV_CODEC_LRCLK_Sync                                DRV_AK4954_LRCLK_Sync
+// KEEP NEXT 2 LINES UNTIL JIRA MH3-22285 IS RESOLVED
 #define DRV_CODEC_EnableInitialization                      DRV_AK4954_EnableInitialization    
 #define DRV_CODEC_IsInitializationDelayed                   DRV_AK4954_IsInitializationDelayed         
 

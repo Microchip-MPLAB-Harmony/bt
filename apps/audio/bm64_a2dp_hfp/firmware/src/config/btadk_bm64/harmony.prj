@@ -27,16 +27,16 @@
           <Name dnOrder="1">drv_ak4954.c</Name>
           <LogicalPath dnOrder="2">config/btadk_bm64/audio/driver/codec/ak4954/</LogicalPath>
           <PhysicalPath dnOrder="3">/audio/driver/codec/ak4954/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">CDDAF0762B3130FCE2DC6D702E04C2A4</GeneratedChecksum>
-          <UserChecksum dnOrder="5">CDDAF0762B3130FCE2DC6D702E04C2A4</UserChecksum>
+          <GeneratedChecksum dnOrder="4">B1933996005C56C7D1B198A3BD14F542</GeneratedChecksum>
+          <UserChecksum dnOrder="5">B3C4A26DCEDD29822FE109F875ECB539</UserChecksum>
         </File>
         <File dnOrder="3">
           <Type dnOrder="0">SOURCE</Type>
           <Name dnOrder="1">drv_ak4954_local.h</Name>
           <LogicalPath dnOrder="2">config/btadk_bm64/audio/driver/codec/ak4954/</LogicalPath>
           <PhysicalPath dnOrder="3">/audio/driver/codec/ak4954/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">BB7509DBA3F9E66FFD7F675227423656</GeneratedChecksum>
-          <UserChecksum dnOrder="5">BB7509DBA3F9E66FFD7F675227423656</UserChecksum>
+          <GeneratedChecksum dnOrder="4">953ED526357BCB04C236E9CCEF2EC4A9</GeneratedChecksum>
+          <UserChecksum dnOrder="5">89BF740193DC838A976FBB56DDE00234</UserChecksum>
         </File>
         <File dnOrder="4">
           <Type dnOrder="0">SOURCE</Type>
@@ -107,24 +107,24 @@
           <Name dnOrder="1">drv_i2c.c</Name>
           <LogicalPath dnOrder="2">config/btadk_bm64/driver/i2c/</LogicalPath>
           <PhysicalPath dnOrder="3">/driver/i2c/src/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">00BE2152C659AE45DBA8630ACD809BD2</GeneratedChecksum>
-          <UserChecksum dnOrder="5">00BE2152C659AE45DBA8630ACD809BD2</UserChecksum>
+          <GeneratedChecksum dnOrder="4">6076FC7677C4756E36D944DCBDB0A998</GeneratedChecksum>
+          <UserChecksum dnOrder="5">6076FC7677C4756E36D944DCBDB0A998</UserChecksum>
         </File>
         <File dnOrder="13">
           <Type dnOrder="0">SOURCE</Type>
           <Name dnOrder="1">drv_i2c_local.h</Name>
           <LogicalPath dnOrder="2">config/btadk_bm64/driver/i2c/</LogicalPath>
           <PhysicalPath dnOrder="3">/driver/i2c/src/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">56728194E73D695E178AF2B34855ADBB</GeneratedChecksum>
-          <UserChecksum dnOrder="5">56728194E73D695E178AF2B34855ADBB</UserChecksum>
+          <GeneratedChecksum dnOrder="4">5EB905590CA7087C5CC181ABFFFB5765</GeneratedChecksum>
+          <UserChecksum dnOrder="5">5EB905590CA7087C5CC181ABFFFB5765</UserChecksum>
         </File>
         <File dnOrder="14">
           <Type dnOrder="0">SOURCE</Type>
           <Name dnOrder="1">drv_i2s.c</Name>
           <LogicalPath dnOrder="2">config/btadk_bm64/audio/driver/i2s/</LogicalPath>
           <PhysicalPath dnOrder="3">/audio/driver/i2s/src/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">84F1C388FBC82CA2D8974B6B5EAD26C6</GeneratedChecksum>
-          <UserChecksum dnOrder="5">84F1C388FBC82CA2D8974B6B5EAD26C6</UserChecksum>
+          <GeneratedChecksum dnOrder="4">92408711DFE17D3B209CF39E0372C7BF</GeneratedChecksum>
+          <UserChecksum dnOrder="5">B92123640BBFEB18601CCE517001040B</UserChecksum>
         </File>
         <File dnOrder="15">
           <Type dnOrder="0">SOURCE</Type>
@@ -147,8 +147,8 @@
           <Name dnOrder="1">initialization.c</Name>
           <LogicalPath dnOrder="2">config/btadk_bm64/</LogicalPath>
           <PhysicalPath dnOrder="3">/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">5E3E11E28C2EF1341D979C528ABD1247</GeneratedChecksum>
-          <UserChecksum dnOrder="5">5E3E11E28C2EF1341D979C528ABD1247</UserChecksum>
+          <GeneratedChecksum dnOrder="4">2DDD3B17772745076947B028DB041650</GeneratedChecksum>
+          <UserChecksum dnOrder="5">CE1284926A220B0FA11A6DBC4B411319</UserChecksum>
         </File>
         <File dnOrder="18">
           <Type dnOrder="0">SOURCE</Type>
@@ -171,8 +171,8 @@
           <Name dnOrder="1">plib_clk.c</Name>
           <LogicalPath dnOrder="2">config/btadk_bm64/peripheral/clk/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/clk/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">E70EFBF563D30F634FF4A9CAE0706E35</GeneratedChecksum>
-          <UserChecksum dnOrder="5">E70EFBF563D30F634FF4A9CAE0706E35</UserChecksum>
+          <GeneratedChecksum dnOrder="4">FBDE5AFA0186117D3A8CAE6ECB89B7BC</GeneratedChecksum>
+          <UserChecksum dnOrder="5">FBDE5AFA0186117D3A8CAE6ECB89B7BC</UserChecksum>
         </File>
         <File dnOrder="21">
           <Type dnOrder="0">SOURCE</Type>
@@ -211,24 +211,24 @@
           <Name dnOrder="1">plib_i2c1.c</Name>
           <LogicalPath dnOrder="2">config/btadk_bm64/peripheral/i2c/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/i2c/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">04474C65DEC0183ED9BD7D766F56AC70</GeneratedChecksum>
-          <UserChecksum dnOrder="5">FA3A989B42FC281998D0B6EFBF761BFD</UserChecksum>
+          <GeneratedChecksum dnOrder="4">0FC64732680D4D3BD76517CE40DF9017</GeneratedChecksum>
+          <UserChecksum dnOrder="5">BEFC2B1F685F129C78B66657C07986CA</UserChecksum>
         </File>
         <File dnOrder="26">
           <Type dnOrder="0">SOURCE</Type>
           <Name dnOrder="1">plib_i2s1.c</Name>
           <LogicalPath dnOrder="2">config/btadk_bm64/audio/peripheral/i2s</LogicalPath>
           <PhysicalPath dnOrder="3">/audio/peripheral/i2s/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">8D71EFB0A79D4F766C92F1E102985C46</GeneratedChecksum>
-          <UserChecksum dnOrder="5">8D71EFB0A79D4F766C92F1E102985C46</UserChecksum>
+          <GeneratedChecksum dnOrder="4">77AA72F7BB69AB6AF9A0308D5B960D51</GeneratedChecksum>
+          <UserChecksum dnOrder="5">78553A595DE9BEA990E414FFAFFCAE89</UserChecksum>
         </File>
         <File dnOrder="27">
           <Type dnOrder="0">SOURCE</Type>
           <Name dnOrder="1">plib_i2s2.c</Name>
           <LogicalPath dnOrder="2">config/btadk_bm64/audio/peripheral/i2s</LogicalPath>
           <PhysicalPath dnOrder="3">/audio/peripheral/i2s/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">C810BB9481672CDFB88B844BD4F6512A</GeneratedChecksum>
-          <UserChecksum dnOrder="5">C810BB9481672CDFB88B844BD4F6512A</UserChecksum>
+          <GeneratedChecksum dnOrder="4">71FEF5238371B1EF250CBA7B635F762A</GeneratedChecksum>
+          <UserChecksum dnOrder="5">B2F5B0BB7EA35B9450F39253A429AB3C</UserChecksum>
         </File>
         <File dnOrder="28">
           <Type dnOrder="0">SOURCE</Type>
@@ -299,8 +299,8 @@
           <Name dnOrder="1">configuration.h</Name>
           <LogicalPath dnOrder="2">config/btadk_bm64/</LogicalPath>
           <PhysicalPath dnOrder="3">/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">0CF7EA7A9E371FD7098FA90C7C1E3136</GeneratedChecksum>
-          <UserChecksum dnOrder="5">0CF7EA7A9E371FD7098FA90C7C1E3136</UserChecksum>
+          <GeneratedChecksum dnOrder="4">946310C8B5CAFE692E52E14DD1ECEDB5</GeneratedChecksum>
+          <UserChecksum dnOrder="5">3F21200AD3DBD9D184E99B02082FB917</UserChecksum>
         </File>
         <File dnOrder="37">
           <Type dnOrder="0">HEADER</Type>
@@ -403,32 +403,32 @@
           <Name dnOrder="1">drv_i2c.h</Name>
           <LogicalPath dnOrder="2">config/btadk_bm64/driver/i2c/</LogicalPath>
           <PhysicalPath dnOrder="3">/driver/i2c/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">7DC093674665965E223A7AD52F7BAF83</GeneratedChecksum>
-          <UserChecksum dnOrder="5">7DC093674665965E223A7AD52F7BAF83</UserChecksum>
+          <GeneratedChecksum dnOrder="4">C57076A27820E4EDE93AD2DA070AA748</GeneratedChecksum>
+          <UserChecksum dnOrder="5">C57076A27820E4EDE93AD2DA070AA748</UserChecksum>
         </File>
         <File dnOrder="50">
           <Type dnOrder="0">HEADER</Type>
           <Name dnOrder="1">drv_i2c_definitions.h</Name>
           <LogicalPath dnOrder="2">config/btadk_bm64/driver/i2c/</LogicalPath>
           <PhysicalPath dnOrder="3">/driver/i2c/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">A2D12C1907596C873BA91F3009960CF0</GeneratedChecksum>
-          <UserChecksum dnOrder="5">A2D12C1907596C873BA91F3009960CF0</UserChecksum>
+          <GeneratedChecksum dnOrder="4">2872C68B45CE75A8BBBC1DD7F7287282</GeneratedChecksum>
+          <UserChecksum dnOrder="5">2872C68B45CE75A8BBBC1DD7F7287282</UserChecksum>
         </File>
         <File dnOrder="51">
           <Type dnOrder="0">HEADER</Type>
           <Name dnOrder="1">drv_i2s.h</Name>
           <LogicalPath dnOrder="2">config/btadk_bm64/audio/driver/i2s/</LogicalPath>
           <PhysicalPath dnOrder="3">/audio/driver/i2s/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">286480D625E01930A6754127AA6F0360</GeneratedChecksum>
-          <UserChecksum dnOrder="5">286480D625E01930A6754127AA6F0360</UserChecksum>
+          <GeneratedChecksum dnOrder="4">3DCC478824D5F8545672CBCAAA7194CB</GeneratedChecksum>
+          <UserChecksum dnOrder="5">F24E14A2C448949C36223704636DC660</UserChecksum>
         </File>
         <File dnOrder="52">
           <Type dnOrder="0">HEADER</Type>
           <Name dnOrder="1">drv_i2s_definitions.h</Name>
           <LogicalPath dnOrder="2">config/btadk_bm64/audio/driver/i2s/</LogicalPath>
           <PhysicalPath dnOrder="3">/audio/driver/i2s/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">8EEB17867F41E54FD6535DB4F88AC6FE</GeneratedChecksum>
-          <UserChecksum dnOrder="5">8EEB17867F41E54FD6535DB4F88AC6FE</UserChecksum>
+          <GeneratedChecksum dnOrder="4">FD9DE9C94277157A1ED800E36B95BCA0</GeneratedChecksum>
+          <UserChecksum dnOrder="5">D43E1DAAD0DBEBD74CB8A2F7D21EE35E</UserChecksum>
         </File>
         <File dnOrder="53">
           <Type dnOrder="0">HEADER</Type>
@@ -467,8 +467,8 @@
           <Name dnOrder="1">plib_coretimer.h</Name>
           <LogicalPath dnOrder="2">config/btadk_bm64/peripheral/coretimer/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/coretimer/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">703A4222E2EE7A178846266EB036CA45</GeneratedChecksum>
-          <UserChecksum dnOrder="5">703A4222E2EE7A178846266EB036CA45</UserChecksum>
+          <GeneratedChecksum dnOrder="4">84C4DBB98A34064F6199CAE65561FF20</GeneratedChecksum>
+          <UserChecksum dnOrder="5">84C4DBB98A34064F6199CAE65561FF20</UserChecksum>
         </File>
         <File dnOrder="58">
           <Type dnOrder="0">HEADER</Type>
@@ -499,32 +499,32 @@
           <Name dnOrder="1">plib_i2c1.h</Name>
           <LogicalPath dnOrder="2">config/btadk_bm64/peripheral/i2c/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/i2c/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">6B7CE55C6287B6BC5FB3FE9E26DC7BB8</GeneratedChecksum>
-          <UserChecksum dnOrder="5">6B7CE55C6287B6BC5FB3FE9E26DC7BB8</UserChecksum>
+          <GeneratedChecksum dnOrder="4">D9FABFEA435EFF1F4FD9B61917E54CD1</GeneratedChecksum>
+          <UserChecksum dnOrder="5">D9FABFEA435EFF1F4FD9B61917E54CD1</UserChecksum>
         </File>
         <File dnOrder="62">
           <Type dnOrder="0">HEADER</Type>
           <Name dnOrder="1">plib_i2c_master.h</Name>
           <LogicalPath dnOrder="2">config/btadk_bm64/peripheral/i2c/</LogicalPath>
           <PhysicalPath dnOrder="3">/peripheral/i2c/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">FE1F77611D435D0C55012B2886CFBD69</GeneratedChecksum>
-          <UserChecksum dnOrder="5">FE1F77611D435D0C55012B2886CFBD69</UserChecksum>
+          <GeneratedChecksum dnOrder="4">0CE7018D4B951DF14C45D3AC2E8F9B19</GeneratedChecksum>
+          <UserChecksum dnOrder="5">0CE7018D4B951DF14C45D3AC2E8F9B19</UserChecksum>
         </File>
         <File dnOrder="63">
           <Type dnOrder="0">HEADER</Type>
           <Name dnOrder="1">plib_i2s1.h</Name>
           <LogicalPath dnOrder="2">config/btadk_bm64/audio/peripheral/i2s</LogicalPath>
           <PhysicalPath dnOrder="3">/audio/peripheral/i2s/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">179E28C5A188F7BADA7AA73F2B78CCF7</GeneratedChecksum>
-          <UserChecksum dnOrder="5">179E28C5A188F7BADA7AA73F2B78CCF7</UserChecksum>
+          <GeneratedChecksum dnOrder="4">3F2FC687048D2420466E1CC5B75D53BC</GeneratedChecksum>
+          <UserChecksum dnOrder="5">A30EF0E4A18DF0AC80D2526D71962322</UserChecksum>
         </File>
         <File dnOrder="64">
           <Type dnOrder="0">HEADER</Type>
           <Name dnOrder="1">plib_i2s2.h</Name>
           <LogicalPath dnOrder="2">config/btadk_bm64/audio/peripheral/i2s</LogicalPath>
           <PhysicalPath dnOrder="3">/audio/peripheral/i2s/</PhysicalPath>
-          <GeneratedChecksum dnOrder="4">BE06AA80269C9CC117532D9FB369F739</GeneratedChecksum>
-          <UserChecksum dnOrder="5">BE06AA80269C9CC117532D9FB369F739</UserChecksum>
+          <GeneratedChecksum dnOrder="4">0C2FAFF15ED251114B396D37F8758FD4</GeneratedChecksum>
+          <UserChecksum dnOrder="5">975C7E3AF36998F17B13A5F8F692A570</UserChecksum>
         </File>
         <File dnOrder="65">
           <Type dnOrder="0">HEADER</Type>
@@ -664,7 +664,7 @@
     </Manifest>
     <Settings dnOrder="4">
       <Setting dnOrder="0" key="CMSISPath" value=".\dev_packs\arm\CMSIS\5.5.1"/>
-      <Setting dnOrder="1" key="DFPPath" value=".\dev_packs\Microchip\PIC32MX_DFP\1.0.50\atdf\PIC32MX470F512L.atdf"/>
+      <Setting dnOrder="1" key="DFPPath" value=".\dev_packs\Microchip\PIC32MX_DFP\1.0.208\atdf\PIC32MX470F512L.atdf"/>
       <Setting dnOrder="2" key="FORCE_OPTIMIZATION" value="false"/>
       <Setting dnOrder="3" key="GENERATE_BACKUP" value="true"/>
       <Setting dnOrder="4" key="MERGE_STRATEGY" value="ALL"/>

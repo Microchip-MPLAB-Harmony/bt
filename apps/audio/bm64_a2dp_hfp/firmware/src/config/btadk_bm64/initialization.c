@@ -96,9 +96,6 @@
 
 
 
-
-
-
 // *****************************************************************************
 // *****************************************************************************
 // Section: Driver Initialization Data
@@ -121,11 +118,15 @@ const DRV_I2C_PLIB_INTERFACE drvI2C0PLibAPI = {
     /* I2C PLib Transfer Write Add function */
     .write = (DRV_I2C_PLIB_WRITE)I2C1_Write,
 
+
     /* I2C PLib Transfer Write Read Add function */
     .writeRead = (DRV_I2C_PLIB_WRITE_READ)I2C1_WriteRead,
 
     /* I2C PLib Transfer Status function */
     .errorGet = (DRV_I2C_PLIB_ERROR_GET)I2C1_ErrorGet,
+
+    /* I2C PLib Transfer Setup function */
+    .transferSetup = (DRV_I2C_PLIB_TRANSFER_SETUP)I2C1_TransferSetup,
 
     /* I2C PLib Callback Register */
     .callbackRegister = (DRV_I2C_PLIB_CALLBACK_REGISTER)I2C1_CallbackRegister,
@@ -176,7 +177,8 @@ const DRV_I2C_INIT drvI2C0InitData =
 /* I2S PLIB Interface Initialization */
 DRV_I2S_PLIB_INTERFACE drvI2S0PlibAPI =
 {
-    .I2S_LRCLK_Get = (DRV_I2S_LRCLK_GET)I2S2_LRCLK_Get,  
+    .I2S_LRCLK_Get = (DRV_I2S_LRCLK_GET)I2S2_LRCLK_Get,
+    // KEEP NEXT 2 LINES UNTIL JIRA MH3-22284 IS RESOLVED
     .I2S_RefClockSet = (DRV_I2S_REFCLOCKSET) I2S2_RefClockSet,
     .I2S_BaudRateSet = (DRV_I2S_BAUDRATESET) I2S2_BaudRateSet,
 };
@@ -212,7 +214,8 @@ DRV_I2S_INIT drvI2S0InitData =
 /* I2S PLIB Interface Initialization */
 DRV_I2S_PLIB_INTERFACE drvI2S1PlibAPI =
 {
-    .I2S_LRCLK_Get = (DRV_I2S_LRCLK_GET)I2S1_LRCLK_Get,  
+    .I2S_LRCLK_Get = (DRV_I2S_LRCLK_GET)I2S1_LRCLK_Get,
+    // KEEP NEXT 2 LINES UNTIL JIRA MH3-22284 IS RESOLVED
     .I2S_RefClockSet = (DRV_I2S_REFCLOCKSET) I2S1_RefClockSet,
     .I2S_BaudRateSet = (DRV_I2S_BAUDRATESET) I2S1_BaudRateSet,
 };
@@ -246,6 +249,7 @@ DRV_I2S_INIT drvI2S1InitData =
 /*** CODEC Driver Initialization Data ***/
 const DRV_AK4954_INIT drvak4954Codec0InitData =
 {
+    // KEEP NEXT 2 LINES UNTIL JIRA MH3-22284 IS RESOLVED
     .i2sDriverModuleIndex = DRV_AK4954_I2S_DRIVER_MODULE_INDEX_IDX0,
     .i2cDriverModuleIndex = DRV_AK4954_I2C_DRIVER_MODULE_INDEX_IDX0,
     .masterMode = DRV_AK4954_MASTER_MODE,
@@ -254,6 +258,7 @@ const DRV_AK4954_INIT drvak4954Codec0InitData =
     .audioDataFormat = DRV_AK4954_AUDIO_DATA_FORMAT_MACRO,
     .whichMicInput = DRV_AK4954_WHICH_MIC_INPUT,
     .enableMicBias = DRV_AK4954_ENABLE_MIC_BIAS,
+    // KEEP NEXT 2 LINES UNTIL JIRA MH3-22285 IS RESOLVED
     .micGain = DRV_AK4954_MIC_GAIN,
     .delayDriverInitialization = DRV_AK4954_DELAY_INITIALIZATION,
 };

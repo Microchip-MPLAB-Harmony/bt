@@ -58,6 +58,7 @@ void I2S2_Initialize ( void );
 
 uint32_t I2S2_LRCLK_Get(void);
 
+// KEEP NEXT 2 LINES UNTIL JIRA MH3-22284 IS RESOLVED
 uint32_t I2S2_RefClockSet(uint32_t sysclk, uint32_t samplingRate, uint32_t mclk_sampleRate_multiplier);
 uint32_t I2S2_BaudRateSet(uint32_t bitClk, uint32_t baudRate);
 

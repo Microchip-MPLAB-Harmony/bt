@@ -106,6 +106,7 @@ typedef    void (* DRV_BAUDSET)(const uint32_t);
 //PLIB Interface Member Functions 
 typedef    uint32_t (* DRV_I2S_LRCLK_GET)();
 
+// KEEP NEXT 2 LINES UNTIL JIRA MH3-22284 IS RESOLVED
 typedef    uint32_t (* DRV_I2S_REFCLOCKSET)(uint32_t, uint32_t, uint32_t);
 typedef    uint32_t (* DRV_I2S_BAUDRATESET)(uint32_t, uint32_t);
 
@@ -203,6 +204,7 @@ typedef struct
 {
 	/* I2S PLIB baud rate set function */
     DRV_I2S_LRCLK_GET   I2S_LRCLK_Get;
+    // KEEP NEXT 2 LINES UNTIL JIRA MH3-22284 IS RESOLVED
     DRV_I2S_REFCLOCKSET I2S_RefClockSet;
     DRV_I2S_BAUDRATESET I2S_BaudRateSet;
 } DRV_I2S_PLIB_INTERFACE;
