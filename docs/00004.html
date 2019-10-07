@@ -18,7 +18,7 @@
 <!-- Begin Page Header -->
 <div class="Element710" id="areafixed">
 <div class="Element94">
-<a href="00001.html" target="topic">Bluetooth Demonstrations</a> &gt; <a href="00002.html" target="topic">BM64 Driver Demonstrations</a> &gt; <a href="00003.html" target="topic">BM64_ble_comm</a> &gt; <a href="00004.html" target="topic">Building the Application</a></div>
+<a href="00001.html" target="topic">Bluetooth Demonstrations</a> &gt; <a href="00002.html" target="topic">BM64 and BM71 Driver Demonstrations</a> &gt; <a href="00003.html" target="topic">bm64_a2dp_hfp</a> &gt; <a href="00004.html" target="topic">Building the Application</a></div>
 <div class="Element92">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -26,13 +26,13 @@
 MPLAB Harmony Bluetooth Help</div>
 </td><td width="25%">
 <div class="Element2">
-<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element90">
 <a href="00003.html" target="topic">Previous</a> | <a href="00003.html" target="topic">Up</a> | <a href="00005.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element96">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: APPS BLUETOOTH BM64_ble_comm_build Topic Title: Building the Application)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: APPS BLUETOOTH BM64_a2dp_hfp_build Topic Title: Building the Application)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table><div class="Element5">
 Building the Application</div>
 </div>
@@ -49,49 +49,34 @@ Building the Application</div>
 <a name="4465736372697074696F6E"></a><div class="Element11">
 <div class="Element10">
 <p class="Element10">
-The parent folder for these files is bt/apps/data/bm64_ble_comm. To build this project, you must open the bt/apps/data/bm64_ble_comm/firmware/*.X project file in MPLAB X IDE that corresponds to your hardware configuration.&nbsp;</p>
+The parent folder for these files is bt/apps/audio/bm64_a2dp_hfp. To build this project, you must open the bt/apps/audio/bm64_a2dp_hfp/firmware/*.X project file in MPLAB X IDE that corresponds to your hardware configuration.</p><div class="Element15">
+MPLAB X IDE Project Configurations</div>
 <p class="Element10">
-<strong>MPLAB X IDE Project Configurations</strong>&nbsp;</p>
-<p class="Element10">
-The following table lists and describes supported project configurations. </p><div class="Element63">
+This table lists and describes the supported configurations of the demonstration, which are located within <span class="Element146">./firmware/src/system_config</span>. </p><div class="Element63">
 <div class="TableDiv">
 <table cellspacing="0" class="Table3">
 <tr>
-<td class="Element65" valign="top" width="18%">
+<td class="Element65" valign="top" width="21%">
 <div class="Element66">
-Project Configuration Name&nbsp;</div></td><td class="Element65" valign="top" width="7%">
+Project Configuration Name&nbsp;</div></td><td class="Element65" valign="top" width="9%">
 <div class="Element66">
-BSP Used&nbsp;</div></td><td class="Element65" valign="top" width="75%">
+BSP Used&nbsp;</div></td><td class="Element65" valign="top" width="70%">
 <div class="Element66">
 Description&nbsp;</div></td></tr><tr>
-<td class="Element67" valign="top" width="18%">
+<td class="Element67" valign="top" width="21%">
 <div class="Element68">
-bm64_ble_sam_e54_cult_bm64&nbsp;</div></td><td class="Element67" valign="top" width="7%">
+bm64_a2dp_hfp_<br>btadk_ak4954&nbsp;</div></td><td class="Element67" valign="top" width="9%">
 <div class="Element68">
-sam_e54_cult&nbsp;</div></td><td class="Element67" valign="top" width="75%">
+pic32mx_btadk&nbsp;</div></td><td class="Element67" valign="top" width="70%">
 <div class="Element68">
-This demonstration runs on the ATSAME54P20A processor on the SAM E54 Curiosity Ultra board and the BM64 Bluetooth Module Daughter Board.&nbsp;</div></td></tr><tr>
-<td class="Element67" valign="top" width="18%">
+This demonstration runs on the PIC32MX470F512L processor on the PIC32 Bluetooth Audio Development Kit (BTADK) and the BM64 Bluetooth Module Daughter Board.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="21%">
 <div class="Element68">
-bm64_ble_sam_e70_xult_bm64&nbsp;</div></td><td class="Element67" valign="top" width="7%">
+bm64_a2dp_hfp_<br>pic32mz_ef_c2_ak4954&nbsp;</div></td><td class="Element67" valign="top" width="9%">
 <div class="Element68">
-sam_e70_xult&nbsp;</div></td><td class="Element67" valign="top" width="75%">
+pic32mz_ef_curiosity_v2&nbsp;</div></td><td class="Element67" valign="top" width="70%">
 <div class="Element68">
-This demonstration runs on the ATSAME70Q21B processor on the SAM E70 Xplained Ultra board and the BM64 Bluetooth Module Daughter Board.&nbsp;</div></td></tr><tr>
-<td class="Element67" valign="top" width="18%">
-<div class="Element68">
-bm64_ble_sam_e70_xult_bm64_freertos&nbsp;</div></td><td class="Element67" valign="top" width="7%">
-<div class="Element68">
-sam_e70_xult&nbsp;</div></td><td class="Element67" valign="top" width="75%">
-<div class="Element68">
-This demonstration runs on the ATSAME70Q21B processor on the SAM E70 Xplained Ultra board and the BM64 Bluetooth Module Daughter Board. It also uses FreeRTOS.&nbsp;</div></td></tr><tr>
-<td class="Element67" valign="top" width="18%">
-<div class="Element68">
-bm64_ble_sam_e70_xult_bm64_wqvga&nbsp;</div></td><td class="Element67" valign="top" width="7%">
-<div class="Element68">
-sam_e70_xult&nbsp;</div></td><td class="Element67" valign="top" width="75%">
-<div class="Element68">
-This demonstration runs on the ATSAME70Q21B processor on the SAM E70 Xplained Ultra board and the BM64 Bluetooth Module Daughter Board, , plus a PDA TM4301B 480x272 (WQVGA) display.&nbsp;</div></td></tr></table></div></div>
+This demonstration runs on the PIC32MZ2048EFM144 processor on the PIC32 MZ EF Curiosity 2.0 board and the BM64 Bluetooth Module Daughter Board.&nbsp;</div></td></tr></table></div></div>
 </div>
 </div>
 </div>
@@ -99,7 +84,7 @@ This demonstration runs on the ATSAME70Q21B processor on the SAM E70 Xplained Ul
 
 <!-- Begin Page Footer -->
 <div class="Element95">
-<a href="00001.html" target="topic">Bluetooth Demonstrations</a> &gt; <a href="00002.html" target="topic">BM64 Driver Demonstrations</a> &gt; <a href="00003.html" target="topic">BM64_ble_comm</a> &gt; <a href="00004.html" target="topic">Building the Application</a></div>
+<a href="00001.html" target="topic">Bluetooth Demonstrations</a> &gt; <a href="00002.html" target="topic">BM64 and BM71 Driver Demonstrations</a> &gt; <a href="00003.html" target="topic">bm64_a2dp_hfp</a> &gt; <a href="00004.html" target="topic">Building the Application</a></div>
 <div class="Element93">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -107,13 +92,13 @@ This demonstration runs on the ATSAME70Q21B processor on the SAM E70 Xplained Ul
 MPLAB Harmony Bluetooth Help</div>
 </td><td width="25%">
 <div class="Element4">
-<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element91">
 <a href="00003.html" target="topic">Previous</a> | <a href="00003.html" target="topic">Up</a> | <a href="00005.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element97">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: APPS BLUETOOTH BM64_ble_comm_build Topic Title: Building the Application)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: APPS BLUETOOTH BM64_a2dp_hfp_build Topic Title: Building the Application)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table></div>
 
 <!-- End Page Footer -->

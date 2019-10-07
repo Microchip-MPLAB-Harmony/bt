@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
-<title>INCLUDE_BM64_I2S Macro</title>
+<title>DRV_BM64_SAMPLE_FREQUENCY Enumeration</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="Doc-O-Matic" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -18,7 +18,7 @@
 <!-- Begin Page Header -->
 <div class="Element710" id="areafixed">
 <div class="Element94">
-<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00024.html" target="topic">Configuring the Library</a> &gt; <a href="00200.html" target="topic">INCLUDE_BM64_I2S Macro</a></div>
+<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00045.html" target="topic">Library Interface</a> &gt; i) Data Types and Constants &gt; <a href="00200.html" target="topic">DRV_BM64_SAMPLE_FREQUENCY Enumeration</a></div>
 <div class="Element92">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -26,15 +26,15 @@
 MPLAB Harmony Bluetooth Help</div>
 </td><td width="25%">
 <div class="Element2">
-<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element90">
-<a href="00199.html" target="topic">Previous</a> | <a href="00024.html" target="topic">Up</a> | <a href="00201.html" target="topic">Next</a></div>
+<a href="00195.html" target="topic">Previous</a> | <a href="00045.html" target="topic">Up</a> | <a href="00075.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element96">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: INCLUDE_BM64_I2S Topic Title: INCLUDE_BM64_I2S Macro)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_SAMPLE_FREQUENCY Topic Title: DRV_BM64_SAMPLE_FREQUENCY Enumeration)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table><div class="Element5">
-INCLUDE_BM64_I2S Macro</div>
+DRV_BM64_SAMPLE_FREQUENCY Enumeration</div>
 </div>
 </div>
 
@@ -46,33 +46,30 @@ INCLUDE_BM64_I2S Macro</div>
 
 <!-- Begin Page Content -->
 <a name="PageContent"></a><div class="Element58">
-<a name="53756D6D617279"></a><div class="Element11">
+<a name="4465736372697074696F6E"></a><div class="Element11">
 <div class="Element10">
 <p class="Element10">
-Identifies whether the driver should include HFP,A2DP,AVRCP functionality.</p></div>
-</div>
-<a name="4465736372697074696F6E"></a><div class="Element14">
-Description</div>
-<div class="Element11">
-<div class="Element10">
-<p class="Element10">
-Include HFP,A2DP,AVRCP protocols?&nbsp;</p>
-<p class="Element10">
-Identifies whether the driver should include the interface to support HFP, A2DP and AVRCP protocols, which also brings in the I2S driver.&nbsp;</p>
-<p class="Element10">
-If you are building a BLE-only application, uncheck this option.&nbsp;</p>
-<p class="Element10">
-true (checked) - include HFP,A2DP,AVRCP functionality. false (unchecked, default) - do not include HFP,A2DP,AVRCP functionality.</p></div>
+BM64 sample frequency</p></div>
 </div>
 <a name="43"></a><div class="Element99">
 C</div>
-<div class="Element101"><div class="Element100"><pre class="Element100"><strong><span style="color: #000080">#define</span></strong> <strong><span style="color: #000000">INCLUDE_BM64_I2S</span></strong> </pre></div></div>
+<div class="Element101"><div class="Element100"><pre class="Element100"><strong><span style="color: #000080">typedef</span></strong> <strong><span style="color: #000080">enum</span></strong> {
+  <strong><span style="color: #000000">DRV_BM64_SAMPLEFREQ_8000</span></strong> = 0,
+  <strong><span style="color: #000000">DRV_BM64_SAMPLEFREQ_12000</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_SAMPLEFREQ_16000</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_SAMPLEFREQ_24000</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_SAMPLEFREQ_32000</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_SAMPLEFREQ_48000</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_SAMPLEFREQ_44100</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_SAMPLEFREQ_88000</span></strong>,
+  <strong><span style="color: #000000">DRV_BM64_SAMPLEFREQ_96000</span></strong>
+} DRV_BM64_SAMPLE_FREQUENCY;</pre></div></div>
 </div>
 <!-- End Page Content -->
 
 <!-- Begin Page Footer -->
 <div class="Element95">
-<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00024.html" target="topic">Configuring the Library</a> &gt; <a href="00200.html" target="topic">INCLUDE_BM64_I2S Macro</a></div>
+<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00045.html" target="topic">Library Interface</a> &gt; i) Data Types and Constants &gt; <a href="00200.html" target="topic">DRV_BM64_SAMPLE_FREQUENCY Enumeration</a></div>
 <div class="Element93">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -80,13 +77,13 @@ C</div>
 MPLAB Harmony Bluetooth Help</div>
 </td><td width="25%">
 <div class="Element4">
-<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element91">
-<a href="00199.html" target="topic">Previous</a> | <a href="00024.html" target="topic">Up</a> | <a href="00201.html" target="topic">Next</a></div>
+<a href="00195.html" target="topic">Previous</a> | <a href="00045.html" target="topic">Up</a> | <a href="00075.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element97">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: INCLUDE_BM64_I2S Topic Title: INCLUDE_BM64_I2S Macro)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_SAMPLE_FREQUENCY Topic Title: DRV_BM64_SAMPLE_FREQUENCY Enumeration)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table></div>
 
 <!-- End Page Footer -->

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
-<title>DRV_BM64_EnterBTPairingMode Function</title>
+<title>DRV_BM64_BLE_QueryStatus Function</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="Doc-O-Matic" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -18,7 +18,7 @@
 <!-- Begin Page Header -->
 <div class="Element710" id="areafixed">
 <div class="Element94">
-<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00038.html" target="topic">Library Interface</a> &gt; e) Bluetooth-specific Functions &gt; <a href="00069.html" target="topic">DRV_BM64_EnterBTPairingMode Function</a></div>
+<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00045.html" target="topic">Library Interface</a> &gt; h) BLE Functions &gt; <a href="00069.html" target="topic">DRV_BM64_BLE_QueryStatus Function</a></div>
 <div class="Element92">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -26,15 +26,15 @@
 MPLAB Harmony Bluetooth Help</div>
 </td><td width="25%">
 <div class="Element2">
-<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element90">
-<a href="00063.html" target="topic">Previous</a> | <a href="00038.html" target="topic">Up</a> | <a href="00129.html" target="topic">Next</a></div>
+<a href="00068.html" target="topic">Previous</a> | <a href="00045.html" target="topic">Up</a> | <a href="00193.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element96">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_EnterBTPairingMode@DRV_HANDLE Topic Title: DRV_BM64_EnterBTPairingMode Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_BLE_QueryStatus@DRV_HANDLE Topic Title: DRV_BM64_BLE_QueryStatus Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table><div class="Element5">
-DRV_BM64_EnterBTPairingMode Function</div>
+DRV_BM64_BLE_QueryStatus Function</div>
 </div>
 </div>
 
@@ -49,25 +49,25 @@ DRV_BM64_EnterBTPairingMode Function</div>
 <a name="53756D6D617279"></a><div class="Element11">
 <div class="Element10">
 <p class="Element10">
-Enter Bluetooth pairing mode.</p></div>
+Query BM64 LE status.</p></div>
 </div>
 <a name="4465736372697074696F6E"></a><div class="Element14">
 Description</div>
 <div class="Element11">
 <div class="Element10">
 <p class="Element10">
-Function DRV_BM64_EnterBTPairingMode:&nbsp;</p>
+Function DRV_BM64_BLE_QueryStatus:&nbsp;</p>
 <p class="Element10">
-void DRV_BM64_EnterBTPairingMode(const DRV_HANDLE handle);&nbsp;</p>
+void DRV_BM64_BLE_QueryStatus(const DRV_HANDLE handle);&nbsp;</p>
 <p class="Element10">
-Starting the pairing process, making this BM64 available for pairing with a Bluetooth host.</p></div>
+Queries the BM64 to respond with a DRV_BM64_EVENT_BLE_STATUS_CHANGED event, which will indicate if the BM64 BLE status is standby, advertising, scanning or connected.</p></div>
 </div>
 <a name="507265636F6E646974696F6E73"></a><div class="Element14">
 Preconditions</div>
 <div class="Element11">
 <div class="Element10">
 <p class="Element10">
-<a href="00149.html" target="topic">DRV_BM64_Open</a> must have been called to obtain a valid opened device handle.</p></div>
+<a href="00173.html" target="topic">DRV_BM64_Open</a> must have been called to obtain a valid opened device handle.</p></div>
 </div>
 <a name="506172616D6574657273"></a><div class="Element14">
 Parameters</div>
@@ -100,21 +100,28 @@ None.</p></div>
 Example</div>
 <div class="Element11">
 <div class="Element10">
-<div class="Element13"><div class="Element12"><pre class="Element12"><strong><span style="color: #000080">case</span></strong> BUTTON_STATE_PRESSED:      <i><span style="color: #008000">// (debouncing not shown)</span></i>
+<div class="Element13"><div class="Element12"><pre class="Element12"><i><span style="color: #008000">// note generic version of call (DRV_BT instead of DRV_BM64) is used</span></i>
+DRV_BT_BLE_QueryStatus(appData.bt.handle);
+
+. . .
+
+<i><span style="color: #008000">// later, a call will come back to the event handler callback function</span></i>
+<i><span style="color: #008000">// (previously set up via a call to DRV_BM64_EventHandlerSet)</span></i>
+<strong><span style="color: #000080">static</span></strong> <strong><span style="color: #000080">void</span></strong> _BLEEventHandler(DRV_BT_EVENT event, uint32_t param, uintptr_t context)
 {
-    <strong><span style="color: #000080">if</span></strong> (BSP_SwitchStateGet(BSP_SWITCH_1)==BSP_SWITCH_STATE_PRESSED))
+    <strong><span style="color: #000080">switch</span></strong>(event)
     {
-        <i><span style="color: #008000">// note generic version of call (DRV_BT instead of DRV_BM64) is used</span></i>
-        DRV_BT_EnterBTPairingMode(appData.bt.handle);               
-        appData.buttonState=BUTTON_STATE_WAIT_FOR_RELEASE;                
-    }
-}
-<strong><span style="color: #000080">break</span></strong>;</pre></div></div>
+        <strong><span style="color: #000080">case</span></strong> DRV_BT_EVENT_BLE_STATUS_CHANGED:
+        {           
+            <i><span style="color: #008000">// do case switch based on param variable</span></i>
+        }
+   }
+}    </pre></div></div>
 </div>
 </div>
 <a name="43"></a><div class="Element99">
 C</div>
-<div class="Element101"><div class="Element100"><pre class="Element100"><strong><span style="color: #000080">void</span></strong> <strong><span style="color: #000000">DRV_BM64_EnterBTPairingMode</span></strong>(
+<div class="Element101"><div class="Element100"><pre class="Element100"><strong><span style="color: #000080">void</span></strong> <strong><span style="color: #000000">DRV_BM64_BLE_QueryStatus</span></strong>(
     <strong><span style="color: #000080">const</span></strong> DRV_HANDLE <strong><span style="color: #000000">handle</span></strong>
 );</pre></div></div>
 </div>
@@ -122,7 +129,7 @@ C</div>
 
 <!-- Begin Page Footer -->
 <div class="Element95">
-<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00038.html" target="topic">Library Interface</a> &gt; e) Bluetooth-specific Functions &gt; <a href="00069.html" target="topic">DRV_BM64_EnterBTPairingMode Function</a></div>
+<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00045.html" target="topic">Library Interface</a> &gt; h) BLE Functions &gt; <a href="00069.html" target="topic">DRV_BM64_BLE_QueryStatus Function</a></div>
 <div class="Element93">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -130,13 +137,13 @@ C</div>
 MPLAB Harmony Bluetooth Help</div>
 </td><td width="25%">
 <div class="Element4">
-<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element91">
-<a href="00063.html" target="topic">Previous</a> | <a href="00038.html" target="topic">Up</a> | <a href="00129.html" target="topic">Next</a></div>
+<a href="00068.html" target="topic">Previous</a> | <a href="00045.html" target="topic">Up</a> | <a href="00193.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element97">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_EnterBTPairingMode@DRV_HANDLE Topic Title: DRV_BM64_EnterBTPairingMode Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_BLE_QueryStatus@DRV_HANDLE Topic Title: DRV_BM64_BLE_QueryStatus Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table></div>
 
 <!-- End Page Footer -->

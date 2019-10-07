@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
-<title>Example Bluetooth Projects</title>
+<title>BM64 Bluetooth Driver Library</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="Doc-O-Matic" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -18,7 +18,7 @@
 <!-- Begin Page Header -->
 <div class="Element710" id="areafixed">
 <div class="Element94">
-<a href="00015.html" target="topic">Bluetooth Overview</a> &gt; <a href="00016.html" target="topic">Example Bluetooth Projects</a></div>
+<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a></div>
 <div class="Element92">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -26,15 +26,15 @@
 MPLAB Harmony Bluetooth Help</div>
 </td><td width="25%">
 <div class="Element2">
-<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element90">
-<a href="00014.html" target="topic">Previous</a> | <a href="00015.html" target="topic">Up</a> | <a href="00001.html" target="topic">Next</a></div>
+<a href="00023.html" target="topic">Previous</a> | <a href="00023.html" target="topic">Up</a> | <a href="00044.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element96">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: BT_OVR Example Bluetooth Projects Topic Title: Example Bluetooth Projects)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: BM64 Bluetooth Driver Library Topic Title: BM64 Bluetooth Driver Library)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table><div class="Element5">
-Example Bluetooth Projects</div>
+BM64 Bluetooth Driver Library</div>
 </div>
 </div>
 
@@ -46,25 +46,62 @@ Example Bluetooth Projects</div>
 
 <!-- Begin Page Content -->
 <a name="PageContent"></a><div class="Element58">
-<a name="4465736372697074696F6E"></a><div class="Element11">
+<a name="546F70696373"></a><div class="Element14">
+Topics</div>
+<div class="Element11">
 <div class="Element10">
-<p class="Element10">
-<strong><i>The BM64_bootloader Demonstration</i></strong>&nbsp;</p>
-<p class="Element10">
-The MCU is used as a bootloader to configure the EEPROM of the BM64 module on the BM64 Module Daughter Board. This can be done prior to using the BM64 module with the BM64_ble_comm application, for example to configure a unique BLE name for the module. When the application is running, the MCU appears as a virtual COM port on the PC.&nbsp;</p>
-<p class="Element10">
-&nbsp;</p>
-<p class="Element10">
-<strong><i>The BM64_ble_comm Demonstration</i></strong>&nbsp;</p>
-<p class="Element10">
-The Bluetooth® Low Energy (BLE) capabilities of the BM64 Module Daughter Board are used to send a string of characters to a smartphone when a push button is pressed on the development board or touchscreen display, and to receive a string of characters from the smartphone causing an LED to turn on or off on the board, or be displayed on an LCD screen. It uses the Bluetooth driver (e.g. BM64), USART and Timer. A FreeRTOS version is also available</p></div>
+<div class="Element212">
+<div class="TableDiv">
+<table cellspacing="0" class="Table1">
+<tr>
+<td class="Element200" valign="top" width="35%">
+<div class="Element201">
+Name&nbsp;</div></td><td class="Element204" valign="top" width="65%">
+<div class="Element205">
+Description&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00044.html" target="topic">Introduction</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+This library provides an Applications Programming Interface (API) to manage a BM64 Module that is connected to a Microchip microcontroller using USART and I²S for providing Bluetooth solutions for audio and Bluetooth Low Energy (BLE) applications.&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00049.html" target="topic">Using the Library</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+This topic describes the basic architecture of the BM64 Bluetooth Driver Library and provides information and examples on its use.&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00031.html" target="topic">Configuring the Library</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+The configuration of the BM64 Bluetooth Driver is based on the file <span class="Element146">configuration.h</span>.<br>This header file contains the configuration selection for the BM64 Bluetooth Driver. Based on the selections made, the driver may support the selected features. These configuration settings will apply to all instances of the BM64 Bluetooth Driver.<br>This header can be placed anywhere, the path of this header needs to be present in the include search path for a successful build. Refer to the Applications Help section for more details.&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00032.html" target="topic">Configuring the MHC</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+Provides examples on how to configure the MPLAB Harmony Configurator (MHC) for a specific driver.&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00029.html" target="topic">Building the Library</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+This section lists the files that are available in the BM64 Bluetooth Driver Library.&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00045.html" target="topic">Library Interface</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+This section describes the API functions of the BM64 Bluetooth Driver library.<br>Refer to each section for a detailed description.&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00036.html" target="topic">Files</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+This section lists the source and header files used by the BM64 Bluetooth Driver Library.&nbsp;</div></td></tr></table></div></div>
+</div>
 </div>
 </div>
 <!-- End Page Content -->
 
 <!-- Begin Page Footer -->
 <div class="Element95">
-<a href="00015.html" target="topic">Bluetooth Overview</a> &gt; <a href="00016.html" target="topic">Example Bluetooth Projects</a></div>
+<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a></div>
 <div class="Element93">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -72,13 +109,13 @@ The Bluetooth® Low Energy (BLE) capabilities of the BM64 Module Daughter Board 
 MPLAB Harmony Bluetooth Help</div>
 </td><td width="25%">
 <div class="Element4">
-<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element91">
-<a href="00014.html" target="topic">Previous</a> | <a href="00015.html" target="topic">Up</a> | <a href="00001.html" target="topic">Next</a></div>
+<a href="00023.html" target="topic">Previous</a> | <a href="00023.html" target="topic">Up</a> | <a href="00044.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element97">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: BT_OVR Example Bluetooth Projects Topic Title: Example Bluetooth Projects)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: BM64 Bluetooth Driver Library Topic Title: BM64 Bluetooth Driver Library)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table></div>
 
 <!-- End Page Footer -->

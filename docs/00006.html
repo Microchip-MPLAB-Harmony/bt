@@ -18,7 +18,7 @@
 <!-- Begin Page Header -->
 <div class="Element710" id="areafixed">
 <div class="Element94">
-<a href="00001.html" target="topic">Bluetooth Demonstrations</a> &gt; <a href="00002.html" target="topic">BM64 Driver Demonstrations</a> &gt; <a href="00003.html" target="topic">BM64_ble_comm</a> &gt; <a href="00006.html" target="topic">Running the Demonstration</a></div>
+<a href="00001.html" target="topic">Bluetooth Demonstrations</a> &gt; <a href="00002.html" target="topic">BM64 and BM71 Driver Demonstrations</a> &gt; <a href="00003.html" target="topic">bm64_a2dp_hfp</a> &gt; <a href="00006.html" target="topic">Running the Demonstration</a></div>
 <div class="Element92">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -26,13 +26,13 @@
 MPLAB Harmony Bluetooth Help</div>
 </td><td width="25%">
 <div class="Element2">
-<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element90">
-<a href="00005.html" target="topic">Previous</a> | <a href="00003.html" target="topic">Up</a> | <a href="00012.html" target="topic">Next</a></div>
+<a href="00005.html" target="topic">Previous</a> | <a href="00003.html" target="topic">Up</a> | <a href="00007.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element96">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: APPS BLUETOOTH BM64_ble_comm_run Topic Title: Running the Demonstration)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: APPS BLUETOOTH BM64_a2dp_hfp_run Topic Title: Running the Demonstration)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table><div class="Element5">
 Running the Demonstration</div>
 </div>
@@ -48,172 +48,129 @@ Running the Demonstration</div>
 <a name="PageContent"></a><div class="Element58">
 <a name="4465736372697074696F6E"></a><div class="Element11">
 <div class="Element10">
-<div class="Element63">
-<div class="TableDiv">
-<table cellspacing="0" class="Table0">
-<tr>
-<td class="Element67" valign="top" width="5%" style="border:none;">
-<div class="Element68">
-<img src="Important icon.png" border="0" alt="" title="">&nbsp;</div></td><td class="Element67" valign="top" width="11%" style="border:none;">
-<div class="Element68">
-<strong>Important!</strong>&nbsp;</div></td><td class="Element67" valign="top" width="84%" style="border:none;">
-<div class="Element68">
-Prior to using this demonstration, it is recommended to review the MPLAB Harmony 3 Release Notes for<br>any known issues.&nbsp;</div></td></tr></table></div></div>
-<p class="Element10">
-&nbsp;</p>
-<p class="Element10">
-&nbsp;</p>
-<div class="Element15">
-Projects using a Pushbutton LED User interface:</div>
 <p class="Element10">
 Do the following to run the demonstration:</p>
 <ol class="Element630">
-<li value="1" class="Element600">If you have not already done so, use the BM64_bootloader application to give the BM64 module a unique device name.</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm Name the BM64 Module.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="2" class="Element600">Compile the program using MPLAB X, and program the target device using the EDBG interface. While compiling, select the appropriate MPLAB X IDE project. Refer to <span class="Element145">Building the Application</span> for details.</li>
-<li value="3" class="Element600">Program the target device, and run the application. After the program starts, the yellow LED will start blinking slowly (advertising).</li>
-<li value="4" class="Element600">The mobile application, BLE Scanner, by Bluepixel Technologies LLP, is used in this demonstration. This application is available as a free download from iTunes. Locate and download this application to your smartphone.</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm BLE Scanner.png" border="0" alt="" title=""></p><div class="Element63">
-<div class="TableDiv">
-<table cellspacing="0" class="Table0">
-<tr>
-<td class="Element67" valign="top" width="5%" style="border:none;">
-<div class="Element68">
-<img src="Note Icon.png" border="0" alt="" title="">&nbsp;</div></td><td class="Element67" valign="top" width="4%" style="border:none;">
-<div class="Element68">
-<strong>Note:</strong>&nbsp;</div></td><td class="Element67" valign="top" width="91%" style="border:none;">
-<div class="Element68">
-If you are unable find this application for your smartphone, there are several other BLE scanner applications available for the iPhone, which can be used with this MPLAB Harmony application. The functionality will be the same, but the screens may appear somewhat different from those shown here.&nbsp;</div></td></tr></table></div></div>
-
-<ol class="Element630">
-<li value="6" class="Element600">Start the BLE Scanner app. Once opened, it will begin scanning for BLE devices.</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm BLE Scanner Device Scan.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="7" class="Element600">Select the device name that you set up for your BM64 in Step 1 (running the BM64_bootloader program) and tap <strong>Connect</strong>. LED1 on the SAM E70 Xplained Ultra board should go off.</li>
-<li value="8" class="Element600">A list of services is displayed.</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm BLE Scanner List of Services.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="9" class="Element600">Select the service named CUSTOM SERVICE, with the UUID starting with 4953 and ending in E455. This service matches the Transparent Service UUID set up in the BLE section of the UI tool.</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm Transparent Service Config Dialog.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="10" class="Element600">A list of characteristics are displayed.</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm BLE Scanner Characteristics List.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="11" class="Element600">If necessary, scroll down and tap the characteristic labeled <strong>Notify</strong>. Tap the Updating ? icon to the right, which will display the following screen (ensure that the slider switch to the right of Notify is enabled (set to the right position). Tap the white less than (&lt;) symbol in the upper left corner of the screen to return to the previous screen).</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm BLE Scanner Notify Characteristic.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="12" class="Element600">On the SAM E70 Xplained Ultra board, press the push button SW1.</li>
-<li value="13" class="Element600">The text string 'Button pressed' should appear on your smartphone:</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm SW1 Press.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="14" class="Element600">To send a text string from your smartphone back to the BM64, tap <strong>Write</strong> in the BLE Scanner screen:</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm Tap Write.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="15" class="Element600">On the next screen, tap <strong>Write Value</strong>:</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm Tap Write Value.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="16" class="Element600">When the popup appears, tap <strong>Text</strong>.</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm Tap Text.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="17" class="Element600">Enter the text 'LED On', and then tap <strong>Write</strong>.</li>
-<li value="18" class="Element600">LED1 on the SAM E70 Xplained Ultra board should go on.</li>
-<li value="19" class="Element600">Likewise, if you type 'LED Off&quot;, LED1 on the SAM E70 Xplained Ultra board should go off.</li>
-</ol><p class="Element10">
-&nbsp;</p>
-<div class="Element15">
-Project using a Graphical User Interface:</div>
+<li value="1" class="Element600">Using the <a href="00011.html" target="topic">BM64_bootloader</a> application, if you have not done so, configure the BM64 as an I2S slave device and give it a unique device name.</li>
+<li value="2" class="Element600">Connect a pair of headphones to the headphone out connector on the AK4954 Codec Daughter Board.</li>
+<li value="3" class="Element600">Compile the application, program the target device, and run it. While compiling, select the appropriate MPLAB X IDE project configuration. Refer to Building the Application for details.</li>
+<li value="4" class="Element600">Press and hold the Pair Button on the development board (see Table 1) to put the BM64 Module into pairing mode, indicated by the two LEDs on the BM64 Module flashing alternately.</li>
+<li value="5" class="Element600">In the Bluetooth Settings of your smartphone, find the name of the BM64 which you set up in Step 1, then select and pair with it. The two LEDs on the BM64 Module should stop flashing, and instead just one should flash twice every few seconds. Meanwhile the Connection LED should be lit (see Table 2).</li>
+<li value="6" class="Element600">Go into an application on the smartphone that outputs audio, such as Music. Select a song and press play. The Play LED should now be lit and you should hear audio from the headphones.</li>
+<li value="7" class="Element600">Use the Volume Button to increase the volume, the Play/Pause Button to alternately pause and resume the playback, the Next and Previous Buttons to go to the next or previous song (or use a long press of Next/Previous for fast forward or rewind). Set Table 1 below. The LEDs should change state as shown in Table 2.</li>
+<li value="8" class="Element600">Use a long press of the Next Button to disconnect from the smartphone, and a another long press of Next Button to reconnect. Use a long press of Volume Button and Play/Pause Button together to forget all previous pairings.</li>
+<li value="9" class="Element600">Call the smartphone from another phone such as a wired desk phone. When the smartphone is answered, either automatically or manually, the audio should switch over to the BM64. Talking into the handset of the desk phone should come out of the headphones, and talking into a microphone connected to the BM64 Module should come out of the desk phone handset. During the call, the LEDs should change state as shown in Table 2. When the call is terminated, any A2DP streaming that was in progress should resume.</li>
+</ol><div class="Element15">
+Control Descriptions</div>
 <p class="Element10">
-Do the following to run the demonstration:</p>
-<ol class="Element630">
-<li value="1" class="Element600">If you have not already done so, use the BM64_bootloader application to give the BM64 module a unique device name.</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm Name the BM64 Module.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="2" class="Element600">Compile the program using MPLAB X, and program the target device using the EDBG interface. While compiling, select the appropriate MPLAB X IDE project. Refer to <span class="Element145">Building the Application</span> for details.</li>
-<li value="3" class="Element600">Program the target device, and run the application. Initially, a white connection icon will be displayed in the upper right-hand corner of the screen, indicating the program is waiting for a connection:</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BT bm64 gfx waiting to connect.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="4" class="Element600">The mobile application, BLE Scanner, by Bluepixel Technologies LLP, is used in this demonstration. This application is available as a free download from iTunes. Locate and download this application to your smartphone.</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm BLE Scanner.png" border="0" alt="" title=""></p><div class="Element63">
+Table 1 -- Button Assignments </p><div class="Element63">
 <div class="TableDiv">
-<table cellspacing="0" class="Table0">
+<table cellspacing="0" class="Table3">
 <tr>
-<td class="Element67" valign="top" width="5%" style="border:none;">
+<td class="Element65" valign="top" width="20%">
+<div class="Element66">
+Bluetooth Audio Dev Kit&nbsp;</div></td><td class="Element65" valign="top" width="11%">
+<div class="Element66">
+PIC32 MZ EF Curiosity 2.0&nbsp;</div></td><td class="Element65" valign="top" width="69%">
+<div class="Element66">
+Description&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
 <div class="Element68">
-<img src="Note Icon.png" border="0" alt="" title="">&nbsp;</div></td><td class="Element67" valign="top" width="4%" style="border:none;">
+SW1&nbsp;</div></td><td class="Element67" valign="top" width="11%">
 <div class="Element68">
-<strong>Note:</strong>&nbsp;</div></td><td class="Element67" valign="top" width="91%" style="border:none;">
+SW1&nbsp;</div></td><td class="Element67" valign="top" width="69%">
 <div class="Element68">
-If you are unable find this application for your smartphone, there are several other BLE scanner applications available for the iPhone, which can be used with this MPLAB Harmony application. The functionality will be the same, but the screens may appear somewhat different from those shown here.&nbsp;</div></td></tr></table></div></div>
-
-<ol class="Element630">
-<li value="6" class="Element600">Start the BLE Scanner app. Once opened, it will begin scanning for BLE devices.</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm BLE Scanner Device Scan.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="7" class="Element600">Select the device name that you set up for your BM64 in Step 1 (running the BM64_bootloader program) and tap <strong>Connect</strong>.The connection icon on the display will change from white to blue, and a Send Message button will appear on the screen:</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BT bm64 gfx connected.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="8" class="Element600">A list of services is displayed.</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm BLE Scanner List of Services.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="9" class="Element600">Select the service named CUSTOM SERVICE, with the UUID starting with 4953 and ending in E455. This service matches the Transparent Service UUID set up in the BLE section of the UI tool.</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm Transparent Service Config Dialog.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="10" class="Element600">A list of characteristics are displayed.</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm BLE Scanner Characteristics List.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="11" class="Element600">If necessary, scroll down and tap the characteristic labeled <strong>Notify</strong>. Tap the Updating ? icon to the right, which will display the following screen (ensure that the slider switch to the right of Notify is enabled (set to the right position). Tap the white less than (&lt;) symbol in the upper left corner of the screen to return to the previous screen).</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm BLE Scanner Notify Characteristic.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="12" class="Element600">On the display, press on the button marked<strong> Send Message</strong>..</li>
-<li value="13" class="Element600">The text string 'Button pressed' should appear on your smartphone:</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm SW1 Press.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="14" class="Element600">To send a text string from your smartphone back to the BM64, tap <strong>Write</strong> in the BLE Scanner screen:</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm Tap Write.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="15" class="Element600">On the next screen, tap <strong>Write Value</strong>:</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm Tap Write Value.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="16" class="Element600">When the popup appears, tap <strong>Text</strong>.</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BLUETOOTH BM64_ble_comm Tap Text.png" border="0" alt="" title=""></p>
-<ol class="Element630">
-<li value="17" class="Element600">Enter some text, e.g. &quot;Sending from iPhone&quot;, and then tap <strong>Write</strong>.</li>
-<li value="18" class="Element600">The text you entered should be displaed on the screen:</li>
-</ol><p class="Element10" style="text-align: center;">
-<img src="APPS BT bm64 gfx message received.png" border="0" alt="" title=""></p><p class="Element10">
-Additional messages will cause the previous ones to be scrolled.</p></div>
+Volume, in four increments: mute, 33%, 66%, 100% (Start Pairing if held down &gt; 1 second)&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+SW3&nbsp;</div></td><td class="Element67" valign="top" width="11%">
+<div class="Element68">
+SW4&nbsp;</div></td><td class="Element67" valign="top" width="69%">
+<div class="Element68">
+Next Song (Fast Forward if held down &gt; 1 second)&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+SW4&nbsp;</div></td><td class="Element67" valign="top" width="11%">
+<div class="Element68">
+SW3&nbsp;</div></td><td class="Element67" valign="top" width="69%">
+<div class="Element68">
+Play/Pause (Disconnect if held &gt; 1 second)&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+SW5&nbsp;</div></td><td class="Element67" valign="top" width="11%">
+<div class="Element68">
+SW2&nbsp;</div></td><td class="Element67" valign="top" width="69%">
+<div class="Element68">
+Previous Song (Rewind if held down &gt; 1 second)&nbsp;</div></td></tr></table></div></div>
+<p class="Element10">
+Table 2 -- LED States </p><div class="Element63">
+<div class="TableDiv">
+<table cellspacing="0" class="Table3">
+<tr>
+<td class="Element65" valign="top" width="20%">
+<div class="Element66">
+Bluetooth Audio Dev Kit&nbsp;</div></td><td class="Element65" valign="top" width="12%">
+<div class="Element66">
+PIC32 MZ EF Curiosity 2.0&nbsp;</div></td><td class="Element65" valign="top" width="68%">
+<div class="Element66">
+Description&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+D5&nbsp;</div></td><td class="Element67" valign="top" width="12%">
+<div class="Element68">
+LED1&nbsp;</div></td><td class="Element67" valign="top" width="68%">
+<div class="Element68">
+Lit if 8/16 KJHz (HFP mode)&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+D6&nbsp;</div></td><td class="Element67" valign="top" width="12%">
+<div class="Element68">
+LED2&nbsp;</div></td><td class="Element67" valign="top" width="68%">
+<div class="Element68">
+Lit if Bluetooth module connected to host&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+D7&nbsp;</div></td><td class="Element67" valign="top" width="12%">
+<div class="Element68">
+LED3&nbsp;</div></td><td class="Element67" valign="top" width="68%">
+<div class="Element68">
+Lit if 44.1/48 KHz mode (A2DP streaming)&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+D8&nbsp;</div></td><td class="Element67" valign="top" width="12%">
+<div class="Element68">
+LED4 Blue&nbsp;</div></td><td class="Element67" valign="top" width="68%">
+<div class="Element68">
+Lit if Fast Forward Mode (for PIC32 MZ EF Curiosity 2.0 board, blinking if volume muted)&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+D8&nbsp;</div></td><td class="Element67" valign="top" width="12%">
+<div class="Element68">
+LED4 Yellow&nbsp;</div></td><td class="Element67" valign="top" width="68%">
+<div class="Element68">
+Lit if Rewind Mode (for PIC32 MZ EF Curiosity 2.0 board, blinking if volume muted)&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+D9&nbsp;</div></td><td class="Element67" valign="top" width="12%">
+<div class="Element68">
+LED4 Green&nbsp;</div></td><td class="Element67" valign="top" width="68%">
+<div class="Element68">
+Lit if Playing (blinking if volume muted)&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+&nbsp;</div></td><td class="Element67" valign="top" width="12%">
+<div class="Element68">
+LED4 Red&nbsp;</div></td><td class="Element67" valign="top" width="68%">
+<div class="Element68">
+Lit if Paused/Stopped (blinking if volume muted)<br>For Bluetooth Audio Dev Kit, D8 and D9 are both off if paused/stopped&nbsp;</div></td></tr></table></div></div>
+</div>
 </div>
 </div>
 <!-- End Page Content -->
 
 <!-- Begin Page Footer -->
 <div class="Element95">
-<a href="00001.html" target="topic">Bluetooth Demonstrations</a> &gt; <a href="00002.html" target="topic">BM64 Driver Demonstrations</a> &gt; <a href="00003.html" target="topic">BM64_ble_comm</a> &gt; <a href="00006.html" target="topic">Running the Demonstration</a></div>
+<a href="00001.html" target="topic">Bluetooth Demonstrations</a> &gt; <a href="00002.html" target="topic">BM64 and BM71 Driver Demonstrations</a> &gt; <a href="00003.html" target="topic">bm64_a2dp_hfp</a> &gt; <a href="00006.html" target="topic">Running the Demonstration</a></div>
 <div class="Element93">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -221,13 +178,13 @@ Additional messages will cause the previous ones to be scrolled.</p></div>
 MPLAB Harmony Bluetooth Help</div>
 </td><td width="25%">
 <div class="Element4">
-<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element91">
-<a href="00005.html" target="topic">Previous</a> | <a href="00003.html" target="topic">Up</a> | <a href="00012.html" target="topic">Next</a></div>
+<a href="00005.html" target="topic">Previous</a> | <a href="00003.html" target="topic">Up</a> | <a href="00007.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element97">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: APPS BLUETOOTH BM64_ble_comm_run Topic Title: Running the Demonstration)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: APPS BLUETOOTH BM64_a2dp_hfp_run Topic Title: Running the Demonstration)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table></div>
 
 <!-- End Page Footer -->

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
-<title>Introduction</title>
+<title>BM64_bootloader</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="Doc-O-Matic" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -18,7 +18,7 @@
 <!-- Begin Page Header -->
 <div class="Element710" id="areafixed">
 <div class="Element94">
-<a href="00001.html" target="topic">Bluetooth Demonstrations</a> &gt; <a href="00011.html" target="topic">Introduction</a></div>
+<a href="00001.html" target="topic">Bluetooth Demonstrations</a> &gt; <a href="00002.html" target="topic">BM64 and BM71 Driver Demonstrations</a> &gt; <a href="00011.html" target="topic">BM64_bootloader</a></div>
 <div class="Element92">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -26,15 +26,15 @@
 MPLAB Harmony Bluetooth Help</div>
 </td><td width="25%">
 <div class="Element2">
-<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element90">
-<a href="00001.html" target="topic">Previous</a> | <a href="00001.html" target="topic">Up</a> | <a href="00002.html" target="topic">Next</a></div>
+<a href="00010.html" target="topic">Previous</a> | <a href="00002.html" target="topic">Up</a> | <a href="00012.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element96">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: APPS BLUETOOTH Introduction Topic Title: Introduction)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: APPS BLUETOOTH BM64_bootloader Topic Title: BM64_bootloader)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table><div class="Element5">
-Introduction</div>
+BM64_bootloader</div>
 </div>
 </div>
 
@@ -49,14 +49,192 @@ Introduction</div>
 <a name="4465736372697074696F6E"></a><div class="Element11">
 <div class="Element10">
 <p class="Element10">
-This help file contains instructions and associated information about MPLAB Harmony Bluetooth demonstration applications, which are contained in the MPLAB Harmony Library distribution.</p></div>
+In this demonstration application, the PIC32 or SAM processor on the development board is used as a bootloader to configure the EEPROM of the BM64 module on the BM64 Module Daughter Board. This can be done prior to using the BM64 module with the ble_comm application, for example to configure a unique BLE name for the module, or to configure the BM64 module as an I2S Slave to work the a2dp_hfp application.&nbsp;</p>
+<p class="Element10">
+When the application is running, the PIC32 or SAM processor appears as a virtual COM port on the PC.&nbsp;</p>
+<p class="Element10">
+&nbsp;</p><div class="Element15">
+Architecture</div>
+<p class="Element10">
+There are four different projects packaged in this application.&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<u>PIC32_MX Bluetooth Audio Development Kit Project:</u>&nbsp;</p>
+<p class="Element10">
+One project runs on the Bluetooth Audio Development Kit (BTADK). It uses the microcontroller installed on the board, namely the PIC32MX470F512L with 512 KB of Flash memory and 128 KB of RAM running at 96 MHz. The BTADK includes the following features:</p>
+<ul class="Element630">
+<li class="Element600">Six push buttons (SW1-SW6, only SW1 is used)</li>
+<li class="Element600">Five LEDs (D5-D9, only D5 is used)</li>
+<li class="Element600">USB Device interface</li>
+<li class="Element600">Two X32 sockets, one of which is used for the BM64 Bluetooth module.</li>
+</ul><p class="Element10">
+The BTADK also includes an LCD display and USB Host interface, neither of which are used in this project. </p><div class="Element63">
+<div class="TableDiv">
+<table cellspacing="0" class="Table0">
+<tr>
+<td class="Element67" valign="top" width="10%" style="border:none;">
+<div class="Element68">
+<img src="Note Icon.png" border="0" alt="" title=""> <strong>Note:</strong>&nbsp;</div></td><td class="Element67" valign="top" width="90%" style="border:none;">
+<div class="Element68">
+The SAM E70 Xplained Ultra does not include the BM64 Bluetooth Module Daughter Board. It must be purchased separately from microchipDIRECT, part number AC320032-3.&nbsp;</div></td></tr></table></div></div>
+<p class="Element10">
+The program takes up to approximately 7% (34 KB) of the microcontroller’s program space, and 3% (3.5 KB) of the RAM. No heap is used.&nbsp;</p>
+<p class="Element10">
+The following figure illustrates the application architecture: </p><p class="Element10" style="text-align: center;">
+<img src="APPS BT bm64 bootloader BTADK architecture diagram.png" border="0" alt="" title=""></p><p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<u>PIC32 MZ EF Curiosity 2.0 Project:</u>&nbsp;</p>
+<p class="Element10">
+One project runs on the PIC32 MZ EF Curiosity 2.0 board, using the PIC32MZ2048EFM144 microcontroller with 2 MB of Flash memory and 512 KB of RAM running at 198 MHz. The PIC32 MZ EF Curiosity 2.0 board includes the following features:</p>
+<ul class="Element630">
+<li class="Element600">Four push buttons (SW1-SW4, only SW1 is used)</li>
+<li class="Element600">Four LEDs (LED1-LED4, only LED1 is used)</li>
+<li class="Element600">USB Device interface</li>
+<li class="Element600">Two X32 sockets, one of which is used for the BM64 Bluetooth module.</li>
+</ul><div class="Element63">
+<div class="TableDiv">
+<table cellspacing="0" class="Table0">
+<tr>
+<td class="Element67" valign="top" width="10%" style="border:none;">
+<div class="Element68">
+<img src="Note Icon.png" border="0" alt="" title=""> <strong>Note:</strong>&nbsp;</div></td><td class="Element67" valign="top" width="90%" style="border:none;">
+<div class="Element68">
+The PIC32 MZ EF Curiosity 2.0 board does not include the BM64 Bluetooth Module Daughter Board. It must be purchased separately from microchipDIRECT, part number AC320032-3.&nbsp;</div></td></tr></table></div></div>
+<p class="Element10">
+The program takes up to approximately 2% (43 KB) of the PIC32MZ2048EFM144 microcontroller’s program space, and 1% (2.8 KB) of the RAM. No heap is used.&nbsp;</p>
+<p class="Element10">
+The following figure illustrates the application architecture: </p><p class="Element10" style="text-align: center;">
+<img src="APPS BT bm64 bootloader PIC32 MZ C2 architecture diagram.png" border="0" alt="" title=""></p><p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<u>SAM E70 Xplained Ultra Project:</u>&nbsp;</p>
+<p class="Element10">
+One project runs on the SAM E70 Xplained Ultra board, which contains a ATSAME70Q21B microcontroller with 2 MB of Flash memory and 384 KB of RAM running at 300 MHz with the following features:</p>
+<ul class="Element630">
+<li class="Element600">One push button (SW1, may be labeled as SW0 on some boards)</li>
+<li class="Element600">Two user LEDs (LED1 and 2, first LED may be labeled as LED0 on some boards))</li>
+<li class="Element600">USB Device interface</li>
+<li class="Element600">One X32 socket, used for the BM64 Bluetooth module.</li>
+</ul><div class="Element63">
+<div class="TableDiv">
+<table cellspacing="0" class="Table0">
+<tr>
+<td class="Element67" valign="top" width="10%" style="border:none;">
+<div class="Element68">
+<img src="Note Icon.png" border="0" alt="" title=""> <strong>Note:</strong>&nbsp;</div></td><td class="Element67" valign="top" width="90%" style="border:none;">
+<div class="Element68">
+The SAM E70 Xplained Ultra board does not include the BM64 Bluetooth Module Daughter Board. It must be purchased separately from microchipDIRECT, part number AC320032-3.&nbsp;</div></td></tr></table></div></div>
+<p class="Element10">
+The program takes up only about 1% (16 KB) of the ATSAME70Q21B microcontroller’s program space, and 1% (2.5 KB) of its RAM.&nbsp;</p>
+<p class="Element10">
+The following figure illustrates the application architecture: </p><p class="Element10" style="text-align: center;">
+<img src="APPS BT bm64 bootloader E70 XULT architecture diagram.png" border="0" alt="" title=""></p><p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+The same application code is used without change for all three projects.&nbsp;</p>
+<p class="Element10">
+The PIC32 or SAM microcontroller (MCU) runs the application code, and communicates with the BM64 over a UART/USART interface operating at 115,200 baud. The BM64 module contains its own Bluetooth stack, but it is not used in this application since it is only used to update the BM64’s configuration. UART/USART references in the source code are generic, e.g. <span class="Element146">UARTn_Read </span> These are resolved into actual calls in user.h using #defines depending on whether the MCU uses either a UART or USART, and which one, e.g.&nbsp;</p>
+<p class="Element10">
+<span class="Element146">#define UARTn_Read UART1_Read</span>&nbsp;</p>
+<p class="Element10">
+As with any MPLAB Harmony application, the SYS_Initialize function, which is located in the <span class="Element146">system_init.c</span> source file, makes calls to initialize various sub-systems, such as the clock, ports, board support package (BSP), USB, BM64, timers, UART/USART, and interrupts.&nbsp;</p>
+<p class="Element10">
+The USB driver and the application state machines are updated through calls located in the SYS_Tasks function in the <span class="Element146">system_tasks.c</span> file.&nbsp;</p>
+<p class="Element10">
+The program is derived from the cdc_serial_emulator demonstration program. The USB interface looks like a virtual communications port on the PC. It reads characters from the host PC over the USB interface and sends them straight through to the BM64 over the UART/USART; likewise, it reads characters from the BM64 via the UART/USART and sends them back to the host PC.&nbsp;</p>
+<p class="Element10">
+The application code is contained in the source file <span class="Element146">app.c</span>, which contains a state machine (<span class="Element146">APP_Tasks</span>) for the application, as well as two state machines for handling the USB interface. It first initializes the application, then receives a handle to the USB Device driver by calling <span class="Element146">USB_DEVICE_Open</span> function with a mode of <span class="Element146">DRV_IO_INTENT_READWRITE</span>. Then it sets up a fixed baud rate of 115,200 baud, and registers an event handler, <span class="Element146">APP_USBDeviceEventHandler</span> as a callback with the USB driver. It then does initial calls to both <span class="Element146">UARTn_Read</span> and <span class="Element146">USB_DEVICE_CDC_Read</span> to start things off.&nbsp;</p>
+<p class="Element10">
+The program then looks to see if any characters have come in through from the USB interface from the PC, and if so writes them to the transmit side of the UART/USART interface to the BM64 using a <span class="Element146">UARTn_Write</span> call. After each write, it stays in the same state to see if there are any more characters coming it. Once all of the pending characters have been written, it issues a new <span class="Element146">USB_DEVICE_CDC_Read</span> call and then looks for characters from the BM64.&nbsp;</p>
+<p class="Element10">
+As characters come in from the UART/USART, it sends them on to the PC using a <span class="Element146">USB_DEVICE_CDC_Write</span> call. After each write, it stays in the same state to see if there are any more characters coming it. Otherwise it issues a new call to <span class="Element146">UARTn_Read</span>, and goes back to check for characters coming from the USB interface.&nbsp;</p>
+<p class="Element10">
+The <span class="Element146">APP_Tasks</span> function also takes care of polling the buttons, and if SW1 is pressed, asserts the BM64’s reset line (STBYRST) line low for 200 ms, followed by a 50 ms delay, and then asserts the BM64’s MFB (multi-function button line) high for 200 ms.</p><div class="Element15">
+Demonstration Features</div>
+
+<ul class="Element630">
+<li class="Element600">Sending and receiving characters between the USB device interface of the PIC32 or SAM MCU and a host PC using the CDC Function Driver (see USB Device Driver Library)</li>
+<li class="Element600">Sending and receiving characters between the UART/USART of the PIC32 or SAM MCU and the BM64. (see UART/USART Driver Library)</li>
+<li class="Element600">Processing of button pushes on the development board using a state machine for contact debouncing (see Ports Peripheral Library)</li>
+<li class="Element600">Use of two timers: one as a periodic 1 ms timer for the application for debouncing the pushbutton, and a second used by the BM64 driver (see Timer Driver Library)</li>
+</ul><p class="Element10">
+&nbsp;</p>
+<div class="Element15">
+Tools Setup Differences</div>
+<p class="Element10">
+<u>For the projects using the PIC32MX:</u>&nbsp;</p>
+<p class="Element10">
+When building a new application, start by creating a 32-bit MPLAB Harmony 3 project in MPLAB X IDE by selecting <i>File &gt; New Project</i>. Chose the Configuration name the based on the BSP. Select the appropriate processor (PIC32MX470F512L).&nbsp;</p>
+<p class="Element10">
+In the Available Components section of MHC, under Board Support Packages, select PIC32 Bluetooth Audio Development Kit BSP. Also in the Available Components section, under Libraries-&gt;USB-&gt;Device Stack, choose CDC Function Driver. Answer Yes to all questions except activating FreeRTOS. Finally choose Peipherals-&gt;UART2 and Peripherals-&gt;TC0, and under Harmony-&gt;System Services, choose TIME. Connect TC0 to the TIME block.&nbsp;</p>
+<p class="Element10">
+The Project Graph should look something like this: </p><p class="Element10" style="text-align: center;">
+<img src="BM64 bootloader BTADK project graph.png" border="0" alt="" title=""></p><p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<u>For projects using the PIC32MZ:</u>&nbsp;</p>
+<p class="Element10">
+When building a new application, start by creating a 32-bit MPLAB Harmony 3 project in MPLAB X IDE by selecting <i>File &gt; New Project</i>. Chose the Configuration name the based on the BSP. Select the appropriate processor (PIC32MZ2048EFM144).&nbsp;</p>
+<p class="Element10">
+In the Available Components section of MHC, under Board Support Packages, select PIC32MZ EF Curiosity 2.0 BSP. Also in the Available Components section, under Libraries-&gt;USB-&gt;Device Stack, choose CDC Function Driver. Answer Yes to all questions except activating FreeRTOS. Finally choose Peipherals-&gt;UART1 and Peripherals-&gt;TC0, and under Harmony-&gt;System Services, choose TIME. Connect TC0 to the TIME block.&nbsp;</p>
+<p class="Element10">
+The Project Graph should look something like this: </p><p class="Element10" style="text-align: center;">
+<img src="BM64 bootloader MZ C2 project graph.png" border="0" alt="" title=""></p><p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<u>For projects using the SAME70:</u>&nbsp;</p>
+<p class="Element10">
+When building a new application, start by creating a 32-bit MPLAB Harmony 3 project in MPLAB X IDE by selecting <i>File &gt; New Project</i>. Chose the Configuration name the based on the BSP. Select the appropriate processor (ATSAME70Q21B).&nbsp;</p>
+<p class="Element10">
+In the Available Components section of MHC, under Board Support Packages, select SAM E70 Xplained Ultra BSP. Also in the Available Components section, under Libraries-&gt;USB-&gt;Device Stack, choose CDC Function Driver. Answer Yes to all questions except activating FreeRTOS. Finally choose Peipherals-&gt;USART0 and Peripherals-&gt;TC0, and under Harmony-&gt;System Services, choose TIME. Connect TC0 to the TIME block.&nbsp;</p>
+<p class="Element10">
+The Project Graph should look something like this: </p><p class="Element10" style="text-align: center;">
+<img src="APPS BT BM64 Bootloader Project Graph.png" border="0" alt="" title=""></p><p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+In the Project Graph, click on the USB Device Layer, and in the Configuration Options dialog change Product ID Selection to cdc_serial_emulator_demo.&nbsp;</p>
+<p class="Element10">
+If using the ATSAME70Q21B, click on USART0 in the graph, and change the Baud Rate to 115,200 in the Configuration Options dialog. In the Clock Diagram, set MOSCEL to Main Crystal, check the Bypass checkbox, and uncheck the RC Crystal Oscillator and Main Crystal Oscillator boxes: </p><p class="Element10" style="text-align: center;">
+<img src="APPS BT E70 clock diagram main bypass.png" border="0" alt="" title=""></p></div>
+</div>
+<a name="546F70696373"></a><div class="Element14">
+Topics</div>
+<div class="Element11">
+<div class="Element10">
+<div class="Element212">
+<div class="TableDiv">
+<table cellspacing="0" class="Table1">
+<tr>
+<td class="Element200" valign="top" width="35%">
+<div class="Element201">
+Name&nbsp;</div></td><td class="Element204" valign="top" width="65%">
+<div class="Element205">
+Description&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00012.html" target="topic">Building the Application</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+This section identifies the MPLAB X IDE project name and location and lists and describes the available configurations for the demonstration.&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00013.html" target="topic">Configuring the Hardware</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+This section describes how to configure the supported hardware.&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00014.html" target="topic">Running the Demonstration</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+This section describes how to run the demonstration.&nbsp;</div></td></tr></table></div></div>
+</div>
 </div>
 </div>
 <!-- End Page Content -->
 
 <!-- Begin Page Footer -->
 <div class="Element95">
-<a href="00001.html" target="topic">Bluetooth Demonstrations</a> &gt; <a href="00011.html" target="topic">Introduction</a></div>
+<a href="00001.html" target="topic">Bluetooth Demonstrations</a> &gt; <a href="00002.html" target="topic">BM64 and BM71 Driver Demonstrations</a> &gt; <a href="00011.html" target="topic">BM64_bootloader</a></div>
 <div class="Element93">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -64,13 +242,13 @@ This help file contains instructions and associated information about MPLAB Harm
 MPLAB Harmony Bluetooth Help</div>
 </td><td width="25%">
 <div class="Element4">
-<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element91">
-<a href="00001.html" target="topic">Previous</a> | <a href="00001.html" target="topic">Up</a> | <a href="00002.html" target="topic">Next</a></div>
+<a href="00010.html" target="topic">Previous</a> | <a href="00002.html" target="topic">Up</a> | <a href="00012.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element97">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: APPS BLUETOOTH Introduction Topic Title: Introduction)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: APPS BLUETOOTH BM64_bootloader Topic Title: BM64_bootloader)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table></div>
 
 <!-- End Page Footer -->

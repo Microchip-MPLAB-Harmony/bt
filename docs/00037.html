@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
-<title>Introduction</title>
+<title>How the Library Works</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="Doc-O-Matic" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -18,7 +18,7 @@
 <!-- Begin Page Header -->
 <div class="Element710" id="areafixed">
 <div class="Element94">
-<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00037.html" target="topic">Introduction</a></div>
+<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00049.html" target="topic">Using the Library</a> &gt; <a href="00037.html" target="topic">How the Library Works</a></div>
 <div class="Element92">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -26,15 +26,15 @@
 MPLAB Harmony Bluetooth Help</div>
 </td><td width="25%">
 <div class="Element2">
-<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element90">
-<a href="00012.html" target="topic">Previous</a> | <a href="00012.html" target="topic">Up</a> | <a href="00042.html" target="topic">Next</a></div>
+<a href="00046.html" target="topic">Previous</a> | <a href="00049.html" target="topic">Up</a> | <a href="00043.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element96">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM64 Introduction Topic Title: Introduction)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM64 How the Library Works Topic Title: How the Library Works)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table><div class="Element5">
-Introduction</div>
+How the Library Works</div>
 </div>
 </div>
 
@@ -49,30 +49,129 @@ Introduction</div>
 <a name="4465736372697074696F6E"></a><div class="Element11">
 <div class="Element10">
 <p class="Element10">
-The BM64 is a Bluetooth 4.2 Stereo Module that supports classic A2DP, AVRCP, HFP, HSP, and SPP protocols, as well as Bluetooth Low Energy (BLE).&nbsp;</p>
+The library provides interfaces to support:</p>
+<ul class="Element630">
+<li class="Element600">System</li>
+<li class="Element600">Client Setup</li>
+<li class="Element600">Data Transfer</li>
+<li class="Element600">Settings</li>
+<li class="Element600">Bluetooth</li>
+<li class="Element600">AVRCP</li>
+<li class="Element600">Device Name and Address</li>
+<li class="Element600">BLE</li>
+</ul><p class="Element10">
+The library can be used by programs providing functionality for audio (A2DP, AVRCP and BLE), or BLE, or both.&nbsp;</p>
 <p class="Element10">
-The BM64 streams I2S audio at up to 24-bit and 96 kHz, and uses a UART to receive commands from the host microcontroller and send events back over the same interface.&nbsp;</p>
+For audio (A2DP/AVRCP/HFP), typically, there will be one simple state machine for the application and a second state machine just for the audio. After the application initializes, the audio state machine will open the BM64 Bluetooth Driver using a call to its Open function. Then, it will set up callbacks for each of two event handlers, and then open the codec driver using a call to its Open function and set up a callback from it. Then, the driver will wait until the BM64 initialization is complete, at which time the application state machine instructs the audio state machine to perform an initial buffer read from the BM64 using an AddRead call. </p><div class="Element13"><div class="Element12"><pre class="Element12"><strong><span style="color: #000080">case</span></strong> AUDIO_STATE_OPEN:
+{
+    <strong><span style="color: #000080">if</span></strong> (SYS_STATUS_READY == DRV_BT_Status())
+    {
+        <i><span style="color: #008000">// open BT module, including RX audio stream</span></i>
+        audioData.bt.handle = DRV_BT_Open(DRV_IO_INTENT_READ, DRV_BT_PROTOCOL_ALL);
+        <strong><span style="color: #000080">if</span></strong>(audioData.bt.handle != DRV_HANDLE_INVALID)
+        {
+            audioData.state = AUDIO_STATE_SET_BT_BUFFER_HANDLER;
+        }
+    }
+}
+<strong><span style="color: #000080">break</span></strong>;
+<strong><span style="color: #000080">case</span></strong> AUDIO_STATE_SET_BT_BUFFER_HANDLER:
+{
+    DRV_BT_BufferEventHandlerSet(audioData.bt.handle, audioData.bt.bufferHandler,
+                                 audioData.bt.context);
+    DRV_BT_EventHandlerSet(audioData.bt.handle, audioData.bt.eventHandler, (uintptr_t)0);
+                           audioData.state = AUDIO_STATE_CODEC_OPEN;
+}
+<strong><span style="color: #000080">break</span></strong>;
+<strong><span style="color: #000080">case</span></strong> AUDIO_STATE_CODEC_OPEN:
+{
+    audioData.codec.handle =  DRV_CODEC_Open(DRV_CODEC_INDEX_0,  DRV_IO_INTENT_WRITE |
+                                             DRV_IO_INTENT_EXCLUSIVE);
+    <strong><span style="color: #000080">if</span></strong>(audioData.codec.handle != DRV_HANDLE_INVALID)
+    {
+        audioData.state = AUDIO_STATE_CODEC_SET_BUFFER_HANDLER;
+    }
+}
+<strong><span style="color: #000080">break</span></strong>;
+<strong><span style="color: #000080">case</span></strong> AUDIO_STATE_CODEC_SET_BUFFER_HANDLER:
+{
+    _setCodecSamplingRate(DRV_BT_AUDIO_SAMPLING_RATE);
+    DRV_CODEC_BufferEventHandlerSet(audioData.codec.handle, audioData.codec.bufferHandler,
+                                    audioData.codec.context);
+    audioData.state = AUDIO_STATE_INIT_DONE;
+}
+<strong><span style="color: #000080">break</span></strong>;
+<strong><span style="color: #000080">case</span></strong> AUDIO_STATE_INIT_DONE:
+{
+    <i><span style="color: #008000">// waits in this state until BT initialization done and app state machine</span></i>
+    <i><span style="color: #008000">// calls audioStart() to set state to AUDIO_STATE_BT_SUBMIT_INITIAL_READS</span></i>
+    <strong><span style="color: #000080">break</span></strong>;
+}</pre></div></div>
 <p class="Element10">
-Protocols supported by the BM64 include A2DP, AVRCP, HFP, HSP, SPP, and BLE. However, this version of the driver only supports A2DP, AVRCP, HFP, and BLE.&nbsp;</p>
+After the initial buffer read has been completed, the buffer event handler for the BM64 will get a DRV_BT_BUFFER_EVENT_COMPLETE event. Once the queue has filled up, this will advance the audio state machine’s state so that it adds the buffer to the codec’s queue using its AddWrite function call. It then also makes a new call to the AddRead function to keep the queue filled.&nbsp;</p>
 <p class="Element10">
-The BM64 can be connected to a microphone (for HFP) and also has line-input; however, the latter is not supported by this driver. The multi-speaker modes of the BM64 are also not handled by this driver.&nbsp;</p>
+When the buffer event handler for the codec gets a DRV_CODEC_BUFFER_EVENT_COMPLETE event, it will mark the buffer free for use again.&nbsp;</p>
 <p class="Element10">
-A typical interface of BM64 to a Microchip microcontroller is provided in the following diagram: </p><div class="Element63">
+BLE-only applications are much simpler since they do not have to process any audio. Again typically there will be one simple state machine for the application and a second state machine just for the BLE functionality. After the application initializes, the BLE state machine will open the BM64 Bluetooth driver using a call to its Open function, then it will set up a callback for an event handler.&nbsp;</p>
+<p class="Element10">
+The application will call one of the BLE Send functions to send data to the host (smartphone). The event handler will be called whenever data has been received from the BM64, or when the connection status changes. See the BM64 demonstration application, BM64_ble_comm, for more information and example code.</p></div>
+</div>
+<a name="546F70696373"></a><div class="Element14">
+Topics</div>
+<div class="Element11">
+<div class="Element10">
+<div class="Element212">
 <div class="TableDiv">
-<table cellspacing="0" class="Table0">
+<table cellspacing="0" class="Table1">
 <tr>
-<td class="Element77" valign="top" width="100%" style="border:none;">
-<div class="Element78">
-<strong>BM64 to MCU Interface</strong><br><img src="DRV BT BM64 Device Interface Diagram.png" border="0" alt="" title="">&nbsp;</div></td></tr></table></div></div>
-<p class="Element10">
-An example demonstration application using this library to interface with the BM64 for BLE functionality is BM64_ble_comm, which is used to send a string of characters to a smartphone when the push button is pressed on the SAM E70 Xplained Ultra board, and to receive a string of characters from the smartphone causing one of the LEDs to turn on and off, both using the &quot;Transparent Service&quot; feature of the BM64.</p></div>
+<td class="Element200" valign="top" width="35%">
+<div class="Element201">
+Name&nbsp;</div></td><td class="Element204" valign="top" width="65%">
+<div class="Element205">
+Description&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00043.html" target="topic">System Functions</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+This section describes the BM64 Bluetooth driver functions for initialization, maintaining task state and returning status.&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00040.html" target="topic">Client Functions</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+This section describes the BM64 Bluetooth driver functions for client setup (open, close, and setting up event handlers).&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00024.html" target="topic">Data Transfer Function</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+This section describes the BM64 Bluetooth Driver data transfer function.&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00042.html" target="topic">Settings Functions</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+This section describes the BM64 Bluetooth Driver functions for getting and changing settings such as volume and sample rate.&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00041.html" target="topic">Sample Rate</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+This section describes the functions for getting and setting the sampling rate (e.g., 8000, 44100, or 48000 Hz) as a 32-bit integer.&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00038.html" target="topic">AVRCP Functions</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+This section describes the functions for getting and setting the Bluetooth device’s name and address.&nbsp;</div></td></tr><tr>
+<td class="Element202" valign="top" width="35%">
+<div class="Element203">
+<a href="00039.html" target="topic">BLE Functions</a>&nbsp;</div></td><td class="Element206" valign="top" width="65%">
+<div class="Element207">
+This section describes the functions specific to Bluetooth Low Energy (BLE) operations, such as sending and receiving data, and BLE connection-related operations.&nbsp;</div></td></tr></table></div></div>
+</div>
 </div>
 </div>
 <!-- End Page Content -->
 
 <!-- Begin Page Footer -->
 <div class="Element95">
-<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00037.html" target="topic">Introduction</a></div>
+<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00049.html" target="topic">Using the Library</a> &gt; <a href="00037.html" target="topic">How the Library Works</a></div>
 <div class="Element93">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -80,13 +179,13 @@ An example demonstration application using this library to interface with the BM
 MPLAB Harmony Bluetooth Help</div>
 </td><td width="25%">
 <div class="Element4">
-<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element91">
-<a href="00012.html" target="topic">Previous</a> | <a href="00012.html" target="topic">Up</a> | <a href="00042.html" target="topic">Next</a></div>
+<a href="00046.html" target="topic">Previous</a> | <a href="00049.html" target="topic">Up</a> | <a href="00043.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element97">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM64 Introduction Topic Title: Introduction)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM64 How the Library Works Topic Title: How the Library Works)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table></div>
 
 <!-- End Page Footer -->

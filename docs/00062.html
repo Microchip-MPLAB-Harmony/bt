@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
-<title>DRV_BM64_DATA32 Macro</title>
+<title>Introduction</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="Doc-O-Matic" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -18,7 +18,7 @@
 <!-- Begin Page Header -->
 <div class="Element710" id="areafixed">
 <div class="Element94">
-<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00038.html" target="topic">Library Interface</a> &gt; i) Data Types and Constants &gt; <a href="00062.html" target="topic">DRV_BM64_DATA32 Macro</a></div>
+<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00017.html" target="topic">BM71 Bluetooth Driver Library</a> &gt; <a href="00062.html" target="topic">Introduction</a></div>
 <div class="Element92">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -26,15 +26,15 @@
 MPLAB Harmony Bluetooth Help</div>
 </td><td width="25%">
 <div class="Element2">
-<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element90">
-<a href="00055.html" target="topic">Previous</a> | <a href="00038.html" target="topic">Up</a> | <a href="00148.html" target="topic">Next</a></div>
+<a href="00017.html" target="topic">Previous</a> | <a href="00017.html" target="topic">Up</a> | <a href="00066.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element96">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_DATA32 Topic Title: DRV_BM64_DATA32 Macro)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM71 Introduction Topic Title: Introduction)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table><div class="Element5">
-DRV_BM64_DATA32 Macro</div>
+Introduction</div>
 </div>
 </div>
 
@@ -49,17 +49,26 @@ DRV_BM64_DATA32 Macro</div>
 <a name="4465736372697074696F6E"></a><div class="Element11">
 <div class="Element10">
 <p class="Element10">
-BM64 defines based on I2S interface</p></div>
+The BM71 is a Bluetooth 5 Module that supports Bluetooth Low Energy (BLE).&nbsp;</p>
+<p class="Element10">
+The BM71 uses a UART (or USART) to receive commands from the host microcontroller and send events back over the same interface.&nbsp;</p>
+<p class="Element10">
+A typical interface of BM71 to a Microchip microcontroller is provided in the following diagram: </p><div class="Element63">
+<div class="TableDiv">
+<table cellspacing="0" class="Table0">
+<tr>
+<td class="Element77" valign="top" width="100%" style="border:none;">
+<div class="Element78">
+<strong>BM71 to MCU Interface</strong><br><img src="DRV BT BM71 Device Interface Diagram.png" border="0" alt="" title="">&nbsp;</div></td></tr></table></div></div>
+<p class="Element10">
+An example demonstration application using this library to interface with the BM71 for BLE functionality is ble_comm, which is used to send a string of characters to a smartphone when the push button is pressed on a development board, and to receive a string of characters from the smartphone causing one of the LEDs to turn on and off, both using the &quot;Transparent Service&quot; feature of the BM71.</p></div>
 </div>
-<a name="43"></a><div class="Element99">
-C</div>
-<div class="Element101"><div class="Element100"><pre class="Element100"><strong><span style="color: #000080">#define</span></strong> <strong><span style="color: #000000">DRV_BM64_DATA32</span></strong> DRV_I2S_DATA32</pre></div></div>
 </div>
 <!-- End Page Content -->
 
 <!-- Begin Page Footer -->
 <div class="Element95">
-<a href="00012.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00038.html" target="topic">Library Interface</a> &gt; i) Data Types and Constants &gt; <a href="00062.html" target="topic">DRV_BM64_DATA32 Macro</a></div>
+<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00017.html" target="topic">BM71 Bluetooth Driver Library</a> &gt; <a href="00062.html" target="topic">Introduction</a></div>
 <div class="Element93">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -67,13 +76,13 @@ C</div>
 MPLAB Harmony Bluetooth Help</div>
 </td><td width="25%">
 <div class="Element4">
-<a href="contents.html" target="tocidx">Contents</a> | <a href="00015.html" target="topic">Home</a></div>
+<a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element91">
-<a href="00055.html" target="topic">Previous</a> | <a href="00038.html" target="topic">Up</a> | <a href="00148.html" target="topic">Next</a></div>
+<a href="00017.html" target="topic">Previous</a> | <a href="00017.html" target="topic">Up</a> | <a href="00066.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element97">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_DATA32 Topic Title: DRV_BM64_DATA32 Macro)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM71 Introduction Topic Title: Introduction)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table></div>
 
 <!-- End Page Footer -->
