@@ -300,7 +300,7 @@
           <LogicalPath dnOrder="2">config/sam_e70_xult_bm64_freertos/</LogicalPath>
           <PhysicalPath dnOrder="3">/</PhysicalPath>
           <GeneratedChecksum dnOrder="4">F1A42B11F010CE97AAF8F3513A82B0EF</GeneratedChecksum>
-          <UserChecksum dnOrder="5">F1A42B11F010CE97AAF8F3513A82B0EF</UserChecksum>
+          <UserChecksum dnOrder="5">5A33E2B0848E7DE1F2F4955FD68721AA</UserChecksum>
         </File>
         <File dnOrder="37">
           <Type dnOrder="0">SOURCE</Type>
