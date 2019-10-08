@@ -17,7 +17,14 @@ reference information.
 
  - [Release Notes](./release_notes.md)
  - [MPLAB Harmony 3 Bluetooth Wiki](https://github.com/Microchip-MPLAB-Harmony/bt/wiki)
+ - [MPLAB Harmony 3 Bluetooth Quick Start Guide](https://github.com/Microchip-MPLAB-Harmony/bt/wiki/quick_start)
  - [MPLAB Harmony 3 Bluetooth API Help](https://microchip-mplab-harmony.github.io/bt)
+
+# Features
+
+ - Multiple Bluetooth module drivers
+ - Bluetooth audio and BLE solutions
+ - MISRA C (manadatory) compliant
 
 # Contents Summary
 
@@ -25,7 +32,8 @@ reference information.
 | --- | --- |
 | apps | Example applications |
 | doc | Help documentation |
+| docs | Help documentation (HTML) |
 | driver | Bluetooth drivers |
-| templates | Bluetooth template (BM64 + USART + optional audio components) |
+| templates | Bluetooth module + UART + optional audio components |
 
 
