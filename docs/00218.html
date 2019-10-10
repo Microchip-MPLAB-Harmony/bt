@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
-<title>DRV_BM64_Tasks Function</title>
+<title>DRV_BM64_volumeDown Function</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="Doc-O-Matic" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -18,7 +18,7 @@
 <!-- Begin Page Header -->
 <div class="Element710" id="areafixed">
 <div class="Element94">
-<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00045.html" target="topic">Library Interface</a> &gt; a) System Functions &gt; <a href="00218.html" target="topic">DRV_BM64_Tasks Function</a></div>
+<a href="00022.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00044.html" target="topic">Library Interface</a> &gt; d) Settings Functions &gt; <a href="00218.html" target="topic">DRV_BM64_volumeDown Function</a></div>
 <div class="Element92">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -29,12 +29,12 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element90">
-<a href="00217.html" target="topic">Previous</a> | <a href="00045.html" target="topic">Up</a> | <a href="00158.html" target="topic">Next</a></div>
+<a href="00079.html" target="topic">Previous</a> | <a href="00044.html" target="topic">Up</a> | <a href="00221.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element96">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_Tasks Topic Title: DRV_BM64_Tasks Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_volumeDown@DRV_HANDLE Topic Title: DRV_BM64_volumeDown Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table><div class="Element5">
-DRV_BM64_Tasks Function</div>
+DRV_BM64_volumeDown Function</div>
 </div>
 </div>
 
@@ -49,27 +49,45 @@ DRV_BM64_Tasks Function</div>
 <a name="53756D6D617279"></a><div class="Element11">
 <div class="Element10">
 <p class="Element10">
-Maintains the driver's control and data interface state machine.</p></div>
+Turn the volume down on the host device.</p></div>
 </div>
 <a name="4465736372697074696F6E"></a><div class="Element14">
 Description</div>
 <div class="Element11">
 <div class="Element10">
 <p class="Element10">
-Function DRV_BM64_Tasks:&nbsp;</p>
+Function DRV_BM64_VolumeDown:&nbsp;</p>
 <p class="Element10">
-void DRV_BM64_Tasks( void );&nbsp;</p>
+void DRV_BM64_VolumeDown(const DRV_HANDLE handle);&nbsp;</p>
 <p class="Element10">
-This routine is used to maintain the driver's internal control and data interface state machine and implement its control and data interface implementations.&nbsp;</p>
-<p class="Element10">
-This function should be called from the SYS_Tasks() function.</p></div>
+Turn the volume down on the host device by one increment (about 3% of full-scale).</p></div>
 </div>
 <a name="507265636F6E646974696F6E73"></a><div class="Element14">
 Preconditions</div>
 <div class="Element11">
 <div class="Element10">
 <p class="Element10">
-None.</p></div>
+<a href="00172.html" target="topic">DRV_BM64_Open</a> must have been called to obtain a valid opened device handle.</p></div>
+</div>
+<a name="506172616D6574657273"></a><div class="Element14">
+Parameters</div>
+<div class="Element11">
+<div class="Element10">
+<div class="Element312">
+<div class="TableDiv">
+<table cellspacing="0" class="Table4">
+<tr>
+<td class="Element300" valign="top" width="35%">
+<div class="Element301">
+Parameters&nbsp;</div></td><td class="Element304" valign="top" width="65%">
+<div class="Element305">
+Description&nbsp;</div></td></tr><tr>
+<td class="Element302" valign="top" width="35%">
+<div class="Element303">
+handle&nbsp;</div></td><td class="Element306" valign="top" width="65%">
+<div class="Element307">
+valid handle to an opened BM64 device driver unique to client&nbsp;</div></td></tr></table></div></div>
+</div>
 </div>
 <a name="52657475726E73"></a><div class="Element14">
 Returns</div>
@@ -82,21 +100,29 @@ None.</p></div>
 Example</div>
 <div class="Element11">
 <div class="Element10">
-<div class="Element13"><div class="Element12"><pre class="Element12"><i><span style="color: #008000">// (in SYS_Tasks, system_tasks.c)</span></i>
-
-<i><span style="color: #008000">// Maintain Device Drivers</span></i>
-DRV_BM64_Tasks(); </pre></div></div>
+<div class="Element13"><div class="Element12"><pre class="Element12"><strong><span style="color: #000080">case</span></strong> BUTTON_STATE_PRESSED:      <i><span style="color: #008000">// (debouncing not shown)</span></i>
+{
+    <strong><span style="color: #000080">if</span></strong> (BSP_SwitchStateGet(BSP_SWITCH_2)==BSP_SWITCH_STATE_PRESSED))
+    {
+        <i><span style="color: #008000">// note generic version of call (DRV_BT instead of DRV_BM64) is used </span></i>
+        DRV_BT_volumeUp(appData.bt.handle);               
+        appData.buttonState=BUTTON_STATE_WAIT_FOR_RELEASE;                
+    }
+}
+<strong><span style="color: #000080">break</span></strong>; </pre></div></div>
 </div>
 </div>
 <a name="43"></a><div class="Element99">
 C</div>
-<div class="Element101"><div class="Element100"><pre class="Element100"><strong><span style="color: #000080">void</span></strong> <strong><span style="color: #000000">DRV_BM64_Tasks</span></strong>();</pre></div></div>
+<div class="Element101"><div class="Element100"><pre class="Element100"><strong><span style="color: #000080">void</span></strong> <strong><span style="color: #000000">DRV_BM64_volumeDown</span></strong>(
+    <strong><span style="color: #000080">const</span></strong> DRV_HANDLE <strong><span style="color: #000000">handle</span></strong>
+);</pre></div></div>
 </div>
 <!-- End Page Content -->
 
 <!-- Begin Page Footer -->
 <div class="Element95">
-<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00045.html" target="topic">Library Interface</a> &gt; a) System Functions &gt; <a href="00218.html" target="topic">DRV_BM64_Tasks Function</a></div>
+<a href="00022.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00044.html" target="topic">Library Interface</a> &gt; d) Settings Functions &gt; <a href="00218.html" target="topic">DRV_BM64_volumeDown Function</a></div>
 <div class="Element93">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -107,10 +133,10 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element91">
-<a href="00217.html" target="topic">Previous</a> | <a href="00045.html" target="topic">Up</a> | <a href="00158.html" target="topic">Next</a></div>
+<a href="00079.html" target="topic">Previous</a> | <a href="00044.html" target="topic">Up</a> | <a href="00221.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element97">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_Tasks Topic Title: DRV_BM64_Tasks Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM64_volumeDown@DRV_HANDLE Topic Title: DRV_BM64_volumeDown Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table></div>
 
 <!-- End Page Footer -->

@@ -56,33 +56,8 @@ When the application is running, the PIC32 or SAM processor appears as a virtual
 &nbsp;</p><div class="Element15">
 Architecture</div>
 <p class="Element10">
-There are four different projects packaged in this application.&nbsp;</p>
+There are two different projects packaged in this application.&nbsp;</p>
 <p class="Element10">
-&nbsp;</p>
-<p class="Element10">
-<u>PIC32_MX Bluetooth Audio Development Kit Project:</u>&nbsp;</p>
-<p class="Element10">
-One project runs on the Bluetooth Audio Development Kit (BTADK). It uses the microcontroller installed on the board, namely the PIC32MX470F512L with 512 KB of Flash memory and 128 KB of RAM running at 96 MHz. The BTADK includes the following features:</p>
-<ul class="Element630">
-<li class="Element600">Six push buttons (SW1-SW6, only SW1 is used)</li>
-<li class="Element600">Five LEDs (D5-D9, only D5 is used)</li>
-<li class="Element600">USB Device interface</li>
-<li class="Element600">Two X32 sockets, one of which is used for the BM64 Bluetooth module.</li>
-</ul><p class="Element10">
-The BTADK also includes an LCD display and USB Host interface, neither of which are used in this project. </p><div class="Element63">
-<div class="TableDiv">
-<table cellspacing="0" class="Table0">
-<tr>
-<td class="Element67" valign="top" width="10%" style="border:none;">
-<div class="Element68">
-<img src="Note Icon.png" border="0" alt="" title=""> <strong>Note:</strong>&nbsp;</div></td><td class="Element67" valign="top" width="90%" style="border:none;">
-<div class="Element68">
-The SAM E70 Xplained Ultra does not include the BM64 Bluetooth Module Daughter Board. It must be purchased separately from microchipDIRECT, part number AC320032-3.&nbsp;</div></td></tr></table></div></div>
-<p class="Element10">
-The program takes up to approximately 7% (34 KB) of the microcontroller’s program space, and 3% (3.5 KB) of the RAM. No heap is used.&nbsp;</p>
-<p class="Element10">
-The following figure illustrates the application architecture: </p><p class="Element10" style="text-align: center;">
-<img src="APPS BT bm64 bootloader BTADK architecture diagram.png" border="0" alt="" title=""></p><p class="Element10">
 &nbsp;</p>
 <p class="Element10">
 <u>PIC32 MZ EF Curiosity 2.0 Project:</u>&nbsp;</p>
@@ -133,11 +108,11 @@ The following figure illustrates the application architecture: </p><p class="Ele
 <img src="APPS BT bm64 bootloader E70 XULT architecture diagram.png" border="0" alt="" title=""></p><p class="Element10">
 &nbsp;</p>
 <p class="Element10">
-The same application code is used without change for all three projects.&nbsp;</p>
+The same application code is used without change for both projects.&nbsp;</p>
 <p class="Element10">
 The PIC32 or SAM microcontroller (MCU) runs the application code, and communicates with the BM64 over a UART/USART interface operating at 115,200 baud. The BM64 module contains its own Bluetooth stack, but it is not used in this application since it is only used to update the BM64’s configuration. UART/USART references in the source code are generic, e.g. <span class="Element146">UARTn_Read </span> These are resolved into actual calls in user.h using #defines depending on whether the MCU uses either a UART or USART, and which one, e.g.&nbsp;</p>
 <p class="Element10">
-<span class="Element146">#define UARTn_Read UART1_Read</span>&nbsp;</p>
+<span class="Element146"> #define UARTn_Read UART1_Read</span>&nbsp;</p>
 <p class="Element10">
 As with any MPLAB Harmony application, the SYS_Initialize function, which is located in the <span class="Element146">system_init.c</span> source file, makes calls to initialize various sub-systems, such as the clock, ports, board support package (BSP), USB, BM64, timers, UART/USART, and interrupts.&nbsp;</p>
 <p class="Element10">
@@ -164,40 +139,183 @@ Demonstration Features</div>
 <div class="Element15">
 Tools Setup Differences</div>
 <p class="Element10">
-<u>For the projects using the PIC32MX:</u>&nbsp;</p>
-<p class="Element10">
-When building a new application, start by creating a 32-bit MPLAB Harmony 3 project in MPLAB X IDE by selecting <i>File &gt; New Project</i>. Chose the Configuration name the based on the BSP. Select the appropriate processor (PIC32MX470F512L).&nbsp;</p>
-<p class="Element10">
-In the Available Components section of MHC, under Board Support Packages, select PIC32 Bluetooth Audio Development Kit BSP. Also in the Available Components section, under Libraries-&gt;USB-&gt;Device Stack, choose CDC Function Driver. Answer Yes to all questions except activating FreeRTOS. Finally choose Peipherals-&gt;UART2 and Peripherals-&gt;TC0, and under Harmony-&gt;System Services, choose TIME. Connect TC0 to the TIME block.&nbsp;</p>
-<p class="Element10">
-The Project Graph should look something like this: </p><p class="Element10" style="text-align: center;">
-<img src="BM64 bootloader BTADK project graph.png" border="0" alt="" title=""></p><p class="Element10">
-&nbsp;</p>
-<p class="Element10">
 <u>For projects using the PIC32MZ:</u>&nbsp;</p>
 <p class="Element10">
 When building a new application, start by creating a 32-bit MPLAB Harmony 3 project in MPLAB X IDE by selecting <i>File &gt; New Project</i>. Chose the Configuration name the based on the BSP. Select the appropriate processor (PIC32MZ2048EFM144).&nbsp;</p>
 <p class="Element10">
-In the Available Components section of MHC, under Board Support Packages, select PIC32MZ EF Curiosity 2.0 BSP. Also in the Available Components section, under Libraries-&gt;USB-&gt;Device Stack, choose CDC Function Driver. Answer Yes to all questions except activating FreeRTOS. Finally choose Peipherals-&gt;UART1 and Peripherals-&gt;TC0, and under Harmony-&gt;System Services, choose TIME. Connect TC0 to the TIME block.&nbsp;</p>
+In the Available Components section of MHC, under Board Support Packages, select PIC32MZ EF Curiosity 2.0 BSP. Also in the Available Components section, under Libraries-&gt;USB-&gt;Device Stack, choose CDC Function Driver. Answer Yes to all questions except activating FreeRTOS. Finally choose Peripherals-&gt;UART1 and Peripherals-&gt;CORE TIMER, and under Harmony-&gt;System Services, choose TIME. Connect CORE TIMER to the TIME block.&nbsp;</p>
 <p class="Element10">
 The Project Graph should look something like this: </p><p class="Element10" style="text-align: center;">
 <img src="BM64 bootloader MZ C2 project graph.png" border="0" alt="" title=""></p><p class="Element10">
+Click on Tools-&gt;Clock Diagram and change the settings as shown: </p><p class="Element10" style="text-align: center;">
+<img src="BM64 bootloader MZ C2 CLOCK.png" border="0" alt="" title=""></p><p class="Element10">
+Under Tools-&gt;Pin Manager, make the following assignments: </p><div class="Element63">
+<div class="TableDiv">
+<table cellspacing="0" class="Table3">
+<tr>
+<td class="Element65" valign="top" width="8%">
+<div class="Element66">
+Pin&nbsp;</div></td><td class="Element65" valign="top" width="18%">
+<div class="Element66">
+Pin ID&nbsp;</div></td><td class="Element65" valign="top" width="25%">
+<div class="Element66">
+Name&nbsp;</div></td><td class="Element65" valign="top" width="24%">
+<div class="Element66">
+Funcion&nbsp;</div></td><td class="Element65" valign="top" width="14%">
+<div class="Element66">
+Direction&nbsp;</div></td><td class="Element65" valign="top" width="11%">
+<div class="Element66">
+Latch&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="8%">
+<div class="Element68">
+6&nbsp;</div></td><td class="Element67" valign="top" width="18%">
+<div class="Element68">
+RC1&nbsp;</div></td><td class="Element67" valign="top" width="25%">
+<div class="Element68">
+U1RX&nbsp;</div></td><td class="Element67" valign="top" width="24%">
+<div class="Element68">
+U1RX&nbsp;</div></td><td class="Element67" valign="top" width="14%">
+<div class="Element68">
+&nbsp;</div></td><td class="Element67" valign="top" width="11%">
+<div class="Element68">
+&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="8%">
+<div class="Element68">
+9&nbsp;</div></td><td class="Element67" valign="top" width="18%">
+<div class="Element68">
+RB2&nbsp;</div></td><td class="Element67" valign="top" width="25%">
+<div class="Element68">
+STBYRST&nbsp;</div></td><td class="Element67" valign="top" width="24%">
+<div class="Element68">
+GPIO&nbsp;</div></td><td class="Element67" valign="top" width="14%">
+<div class="Element68">
+Out&nbsp;</div></td><td class="Element67" valign="top" width="11%">
+<div class="Element68">
+Low&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="8%">
+<div class="Element68">
+13&nbsp;</div></td><td class="Element67" valign="top" width="18%">
+<div class="Element68">
+RC4&nbsp;</div></td><td class="Element67" valign="top" width="25%">
+<div class="Element68">
+U1TX&nbsp;</div></td><td class="Element67" valign="top" width="24%">
+<div class="Element68">
+U1TX&nbsp;</div></td><td class="Element67" valign="top" width="14%">
+<div class="Element68">
+&nbsp;</div></td><td class="Element67" valign="top" width="11%">
+<div class="Element68">
+&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="8%">
+<div class="Element68">
+58&nbsp;</div></td><td class="Element67" valign="top" width="18%">
+<div class="Element68">
+RF12&nbsp;</div></td><td class="Element67" valign="top" width="25%">
+<div class="Element68">
+BM64_MFB&nbsp;</div></td><td class="Element67" valign="top" width="24%">
+<div class="Element68">
+GPIO_AH&nbsp;</div></td><td class="Element67" valign="top" width="14%">
+<div class="Element68">
+Out&nbsp;</div></td><td class="Element67" valign="top" width="11%">
+<div class="Element68">
+High&nbsp;</div></td></tr></table></div></div>
+<p class="Element10">
 &nbsp;</p>
 <p class="Element10">
 <u>For projects using the SAME70:</u>&nbsp;</p>
 <p class="Element10">
 When building a new application, start by creating a 32-bit MPLAB Harmony 3 project in MPLAB X IDE by selecting <i>File &gt; New Project</i>. Chose the Configuration name the based on the BSP. Select the appropriate processor (ATSAME70Q21B).&nbsp;</p>
 <p class="Element10">
-In the Available Components section of MHC, under Board Support Packages, select SAM E70 Xplained Ultra BSP. Also in the Available Components section, under Libraries-&gt;USB-&gt;Device Stack, choose CDC Function Driver. Answer Yes to all questions except activating FreeRTOS. Finally choose Peipherals-&gt;USART0 and Peripherals-&gt;TC0, and under Harmony-&gt;System Services, choose TIME. Connect TC0 to the TIME block.&nbsp;</p>
+In the Available Components section of MHC, under Board Support Packages, select SAM E70 Xplained Ultra BSP. Also in the Available Components section, under Libraries-&gt;USB-&gt;Device Stack, choose CDC Function Driver. Answer Yes to all questions except activating FreeRTOS. Finally choose Peripherals-&gt;USART0 and Peripherals-&gt;TC0, and under Harmony-&gt;System Services, choose TIME. Connect TC0 to the TIME block.&nbsp;</p>
 <p class="Element10">
 The Project Graph should look something like this: </p><p class="Element10" style="text-align: center;">
 <img src="APPS BT BM64 Bootloader Project Graph.png" border="0" alt="" title=""></p><p class="Element10">
-&nbsp;</p>
-<p class="Element10">
 In the Project Graph, click on the USB Device Layer, and in the Configuration Options dialog change Product ID Selection to cdc_serial_emulator_demo.&nbsp;</p>
 <p class="Element10">
-If using the ATSAME70Q21B, click on USART0 in the graph, and change the Baud Rate to 115,200 in the Configuration Options dialog. In the Clock Diagram, set MOSCEL to Main Crystal, check the Bypass checkbox, and uncheck the RC Crystal Oscillator and Main Crystal Oscillator boxes: </p><p class="Element10" style="text-align: center;">
-<img src="APPS BT E70 clock diagram main bypass.png" border="0" alt="" title=""></p></div>
+Click on USART0 in the graph, and change the Baud Rate to 115,200 in the Configuration Options dialog. In the Clock Diagram, set MOSCEL to Main Crystal, check the Bypass checkbox, and uncheck the RC Crystal Oscillator and Main Crystal Oscillator boxes: </p><p class="Element10" style="text-align: center;">
+<img src="APPS BT E70 clock diagram main bypass.png" border="0" alt="" title=""></p><p class="Element10">
+Under Tools-&gt;Pin Manager, make the following assignments: </p><div class="Element63">
+<div class="TableDiv">
+<table cellspacing="0" class="Table3">
+<tr>
+<td class="Element65" valign="top" width="9%">
+<div class="Element66">
+Pin&nbsp;</div></td><td class="Element65" valign="top" width="14%">
+<div class="Element66">
+Pin ID&nbsp;</div></td><td class="Element65" valign="top" width="34%">
+<div class="Element66">
+Name&nbsp;</div></td><td class="Element65" valign="top" width="25%">
+<div class="Element66">
+Funcion&nbsp;</div></td><td class="Element65" valign="top" width="11%">
+<div class="Element66">
+Direction&nbsp;</div></td><td class="Element65" valign="top" width="7%">
+<div class="Element66">
+Latch&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="9%">
+<div class="Element68">
+20&nbsp;</div></td><td class="Element67" valign="top" width="14%">
+<div class="Element68">
+PB1&nbsp;</div></td><td class="Element67" valign="top" width="34%">
+<div class="Element68">
+USART0_TXD0&nbsp;</div></td><td class="Element67" valign="top" width="25%">
+<div class="Element68">
+USART0_TXD0&nbsp;</div></td><td class="Element67" valign="top" width="11%">
+<div class="Element68">
+&nbsp;</div></td><td class="Element67" valign="top" width="7%">
+<div class="Element68">
+&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="9%">
+<div class="Element68">
+21&nbsp;</div></td><td class="Element67" valign="top" width="14%">
+<div class="Element68">
+PB0&nbsp;</div></td><td class="Element67" valign="top" width="34%">
+<div class="Element68">
+USART0_RXD0&nbsp;</div></td><td class="Element67" valign="top" width="25%">
+<div class="Element68">
+USART0_RXD0&nbsp;</div></td><td class="Element67" valign="top" width="11%">
+<div class="Element68">
+&nbsp;</div></td><td class="Element67" valign="top" width="7%">
+<div class="Element68">
+&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="9%">
+<div class="Element68">
+26&nbsp;</div></td><td class="Element67" valign="top" width="14%">
+<div class="Element68">
+PB2&nbsp;</div></td><td class="Element67" valign="top" width="34%">
+<div class="Element68">
+BM64_MFB&nbsp;</div></td><td class="Element67" valign="top" width="25%">
+<div class="Element68">
+GPIO&nbsp;</div></td><td class="Element67" valign="top" width="11%">
+<div class="Element68">
+Out&nbsp;</div></td><td class="Element67" valign="top" width="7%">
+<div class="Element68">
+Low&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="9%">
+<div class="Element68">
+98&nbsp;</div></td><td class="Element67" valign="top" width="14%">
+<div class="Element68">
+PD11&nbsp;</div></td><td class="Element67" valign="top" width="34%">
+<div class="Element68">
+STBYRST&nbsp;</div></td><td class="Element67" valign="top" width="25%">
+<div class="Element68">
+GPIO&nbsp;</div></td><td class="Element67" valign="top" width="11%">
+<div class="Element68">
+Out&nbsp;</div></td><td class="Element67" valign="top" width="7%">
+<div class="Element68">
+High&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="9%">
+<div class="Element68">
+141&nbsp;</div></td><td class="Element67" valign="top" width="14%">
+<div class="Element68">
+PB8&nbsp;</div></td><td class="Element67" valign="top" width="34%">
+<div class="Element68">
+USB_VBUS_SENSE&nbsp;</div></td><td class="Element67" valign="top" width="25%">
+<div class="Element68">
+GPIO&nbsp;</div></td><td class="Element67" valign="top" width="11%">
+<div class="Element68">
+In&nbsp;</div></td><td class="Element67" valign="top" width="7%">
+<div class="Element68">
+&nbsp;</div></td></tr></table></div></div>
+</div>
 </div>
 <a name="546F70696373"></a><div class="Element14">
 Topics</div>

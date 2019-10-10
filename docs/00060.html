@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
-<title>Client Functions</title>
+<title>System Functions</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="Doc-O-Matic" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -18,7 +18,7 @@
 <!-- Begin Page Header -->
 <div class="Element710" id="areafixed">
 <div class="Element94">
-<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00017.html" target="topic">BM71 Bluetooth Driver Library</a> &gt; <a href="00066.html" target="topic">Using the Library</a> &gt; <a href="00058.html" target="topic">How the Library Works</a> &gt; <a href="00060.html" target="topic">Client Functions</a></div>
+<a href="00022.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00017.html" target="topic">BM71 Bluetooth Driver Library</a> &gt; <a href="00065.html" target="topic">Using the Library</a> &gt; <a href="00057.html" target="topic">How the Library Works</a> &gt; <a href="00060.html" target="topic">System Functions</a></div>
 <div class="Element92">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -29,12 +29,12 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element90">
-<a href="00061.html" target="topic">Previous</a> | <a href="00058.html" target="topic">Up</a> | <a href="00059.html" target="topic">Next</a></div>
+<a href="00057.html" target="topic">Previous</a> | <a href="00057.html" target="topic">Up</a> | <a href="00059.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element96">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM71 HTLW Client Functions Topic Title: Client Functions)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM71 HTLW System Functions Topic Title: System Functions)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table><div class="Element5">
-Client Functions</div>
+System Functions</div>
 </div>
 </div>
 
@@ -49,48 +49,36 @@ Client Functions</div>
 <a name="4465736372697074696F6E"></a><div class="Element11">
 <div class="Element10">
 <div class="Element15">
-Open and Close</div>
+Initialization</div>
 <p class="Element10">
-For the application to start using an instance of the module, it must call the <a href="00237.html" target="topic">DRV_BM71_Open</a> function which provides a driver handle to the BM71 Bluetooth driver instance. </p><div class="Element63">
-<div class="TableDiv">
-<table cellspacing="0" class="Table0">
-<tr>
-<td class="Element67" valign="top" width="5%" style="border:none;">
-<div class="Element68">
-<img src="Note Icon.png" border="0" alt="" title="">&nbsp;</div></td><td class="Element67" valign="top" width="6%" style="border:none;">
-<div class="Element68">
-<strong>Note:</strong>&nbsp;</div></td><td class="Element67" valign="top" width="89%" style="border:none;">
-<div class="Element68">
-It is necessary to check the status of driver initialization before opening a driver instance. The status of the BM71 Bluetooth Driver can be known by calling <a href="00242.html" target="topic">DRV_BM71_Status</a>.&nbsp;</div></td></tr></table></div></div>
+The function <a href="00235.html" target="topic">DRV_BM71_Initialize</a> is called by the function SYS_Initialize, in the file system_init.c, to initialize the BM71 Bluetooth driver using constants from the generated system_config.h file.</p><div class="Element15">
+Tasks</div>
 <p class="Element10">
-<strong>Example:</strong> </p><div class="Element13"><div class="Element12"><pre class="Element12"><strong><span style="color: #000080">case</span></strong> BLE_STATE_OPEN:
+The function <a href="00242.html" target="topic">DRV_BM71_Tasks</a> is called from the System Task Service via the function SYS_Tasks in the file system_tasks.c to maintain the driver's internal control and data interface state machine.&nbsp;</p>
+<p class="Element10">
+One can use the function DRV_BM71_TasksReq to make a power on/power off task request (DRV_BM71_REQ_SYSTEM_OFF or DRV_BM71_REQ_SYSTEM_ON).</p><div class="Element15">
+Status</div>
+<p class="Element10">
+The function <a href="00241.html" target="topic">DRV_BM71_Status</a> returns the BM71 Bluetooth driver status, such as SYS_STATUS_READY, SYS_STATUS_BUSY, or SYS_STATUS_ERROR. The driver should not be opened until it has been marked ready.&nbsp;</p>
+<p class="Element10">
+<strong>Example:</strong> &nbsp;</p><div class="Element13"><div class="Element12"><pre class="Element12"><i><span style="color: #008000">// note generic version of call (DRV_BT instead of DRV_BM71) is used</span></i>
+<strong><span style="color: #000080">if</span></strong> (SYS_STATUS_READY == DRV_BT_Status())
 {
-    <strong><span style="color: #000080">if</span></strong> (SYS_STATUS_READY == DRV_BT_Status())
-    {
-    <i><span style="color: #008000">// open BT module</span></i>
-    bleData.bt.handle = DRV_BT_Open(DRV_IO_INTENT_READ, DRV_BT_PROTOCOL_BLE);
-
-    <strong><span style="color: #000080">if</span></strong>(bleData.bt.handle != DRV_HANDLE_INVALID)
-    {
-        bleData.state = BLE_STATE_SET_BT_EVENT_HANDLER;
-    }
-}
-<strong><span style="color: #000080">break</span></strong>;</pre></div></div>
-<div class="Element15">
-Event Handlers</div>
+<i><span style="color: #008000">// This means the driver can be opened using the</span></i>
+<i><span style="color: #008000">// DRV_BT_Open() function.</span></i>
+}</pre></div></div>
 <p class="Element10">
-Event handlers are functions in the user’s code that are used as callbacks from the driver when something occurs that the client needs to know about.&nbsp;</p>
+The BM71-specific function <a href="00233.html" target="topic">DRV_BM71_GetPowerStatus</a> returns the current power status, e.g. DRV_BM71_STATUS_OFF, DRV_BM71_STATUS_OFF, and DRV_BM71_STATUS_READY. Once it returns a ready status, this means the BM71 driver has completed its internal state machine initialization and can begin processing audio.&nbsp;</p>
 <p class="Element10">
-The function <a href="00233.html" target="topic">DRV_BM71_EventHandlerSet</a> is called by a client to identify a general event handling function for the driver to call back. The prototype for the callback is defined by DRV_BM71_EVENT_HANDLER. For BLE applications, the callback will be called for events such as DRV_BT_EVENT_BLESPP_MSG_RECEIVED and DRV_BT_EVENT_BLE_STATUS_CHANGED.&nbsp;</p>
-<p class="Element10">
-<strong>Example:</strong> &nbsp;</p><div class="Element13"><div class="Element12"><pre class="Element12"> <strong><span style="color: #000080">case</span></strong> BLE_STATE_SET_BT_EVENT_HANDLER:
+<strong>Example:</strong> &nbsp;</p><div class="Element13"><div class="Element12"><pre class="Element12"><strong><span style="color: #000080">case</span></strong> APP_STATE_WAIT_INIT:
 {
-    DRV_BT_EventHandlerSet(bleData.bt.handle,
-          bleData.bt.eventHandler, (uintptr_t)0);
-
-    bleData.state = BLE_STATE_INIT_DONE;
+<i><span style="color: #008000">// note generic version of call (DRV_BT instead of DRV_BM71) is used</span></i>
+<strong><span style="color: #000080">if</span></strong> (DRV_BT_STATUS_READY == DRV_BT_GetPowerStatus())
+{
+appData.state=APP_STATE_IDLE;
+<i><span style="color: #008000">// can start processing audio</span></i>
 }
-<strong><span style="color: #000080">break</span></strong>;</pre></div></div>
+}</pre></div></div>
 </div>
 </div>
 </div>
@@ -98,7 +86,7 @@ The function <a href="00233.html" target="topic">DRV_BM71_EventHandlerSet</a> is
 
 <!-- Begin Page Footer -->
 <div class="Element95">
-<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00017.html" target="topic">BM71 Bluetooth Driver Library</a> &gt; <a href="00066.html" target="topic">Using the Library</a> &gt; <a href="00058.html" target="topic">How the Library Works</a> &gt; <a href="00060.html" target="topic">Client Functions</a></div>
+<a href="00022.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00017.html" target="topic">BM71 Bluetooth Driver Library</a> &gt; <a href="00065.html" target="topic">Using the Library</a> &gt; <a href="00057.html" target="topic">How the Library Works</a> &gt; <a href="00060.html" target="topic">System Functions</a></div>
 <div class="Element93">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -109,10 +97,10 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element91">
-<a href="00061.html" target="topic">Previous</a> | <a href="00058.html" target="topic">Up</a> | <a href="00059.html" target="topic">Next</a></div>
+<a href="00057.html" target="topic">Previous</a> | <a href="00057.html" target="topic">Up</a> | <a href="00059.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element97">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM71 HTLW Client Functions Topic Title: Client Functions)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM71 HTLW System Functions Topic Title: System Functions)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table></div>
 
 <!-- End Page Footer -->

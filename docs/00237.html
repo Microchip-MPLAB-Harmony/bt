@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
-<title>DRV_BM71_Open Function</title>
+<title>DRV_BM71_ReadByteFromBLE Function</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="Doc-O-Matic" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -18,7 +18,7 @@
 <!-- Begin Page Header -->
 <div class="Element710" id="areafixed">
 <div class="Element94">
-<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00017.html" target="topic">BM71 Bluetooth Driver Library</a> &gt; <a href="00063.html" target="topic">Library Interface</a> &gt; a) System Functions &gt; <a href="00237.html" target="topic">DRV_BM71_Open Function</a></div>
+<a href="00022.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00017.html" target="topic">BM71 Bluetooth Driver Library</a> &gt; <a href="00062.html" target="topic">Library Interface</a> &gt; a) System Functions &gt; <a href="00237.html" target="topic">DRV_BM71_ReadByteFromBLE Function</a></div>
 <div class="Element92">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -29,12 +29,12 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element90">
-<a href="00236.html" target="topic">Previous</a> | <a href="00063.html" target="topic">Up</a> | <a href="00238.html" target="topic">Next</a></div>
+<a href="00236.html" target="topic">Previous</a> | <a href="00062.html" target="topic">Up</a> | <a href="00238.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element96">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM71_Open@DRV_IO_INTENT@DRV_BM71_PROTOCOL Topic Title: DRV_BM71_Open Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM71_ReadByteFromBLE@DRV_HANDLE@uint8_t* Topic Title: DRV_BM71_ReadByteFromBLE Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table><div class="Element5">
-DRV_BM71_Open Function</div>
+DRV_BM71_ReadByteFromBLE Function</div>
 </div>
 </div>
 
@@ -49,29 +49,25 @@ DRV_BM71_Open Function</div>
 <a name="53756D6D617279"></a><div class="Element11">
 <div class="Element10">
 <p class="Element10">
-Open the specified BM71 driver instance and returns a handle to it</p></div>
+Read a byte over BLE.</p></div>
 </div>
 <a name="4465736372697074696F6E"></a><div class="Element14">
 Description</div>
 <div class="Element11">
 <div class="Element10">
 <p class="Element10">
-Function DRV_BM71_Open:&nbsp;</p>
+Function DRV_BM71_ReadByteFromBLE:&nbsp;</p>
 <p class="Element10">
-DRV_HANDLE DRV_BM71_Open(const DRV_IO_INTENT ioIntent, const DRV_BM71_PROTOCOL protocol);&nbsp;</p>
+bool DRV_BM71_ReadByteFromBLE(const DRV_HANDLE handle, uint8_t* byte);&nbsp;</p>
 <p class="Element10">
-This routine opens the specified BM71 Bluetooth driver instance and provides a handle that must be provided to all other client-level operations to identify the caller and the instance of the driver. The ioIntent parameter defines how the client interacts with this driver instance.&nbsp;</p>
-<p class="Element10">
-Only DRV_IO_INTENT_READ is a valid ioIntent option as the BM71 Bluetooth driver audio stream is read-only.&nbsp;</p>
-<p class="Element10">
-Specifying a DRV_IO_INTENT_EXCLUSIVE will cause the driver to provide exclusive access to this client. The driver cannot be opened by any other client.</p></div>
+Read one byte over BLE using the BM71's &quot;Transparent Service&quot; feature.</p></div>
 </div>
 <a name="507265636F6E646974696F6E73"></a><div class="Element14">
 Preconditions</div>
 <div class="Element11">
 <div class="Element10">
 <p class="Element10">
-<a href="00236.html" target="topic">DRV_BM71_Initialize</a> must have been called to initialize the driver instance.</p></div>
+<a href="00236.html" target="topic">DRV_BM71_Open</a> must have been called to obtain a valid opened device handle.</p></div>
 </div>
 <a name="506172616D6574657273"></a><div class="Element14">
 Parameters</div>
@@ -88,14 +84,14 @@ Parameters&nbsp;</div></td><td class="Element304" valign="top" width="65%">
 Description&nbsp;</div></td></tr><tr>
 <td class="Element302" valign="top" width="35%">
 <div class="Element303">
-ioIntent&nbsp;</div></td><td class="Element306" valign="top" width="65%">
+handle&nbsp;</div></td><td class="Element306" valign="top" width="65%">
 <div class="Element307">
 valid handle to an opened BM71 device driver unique to client&nbsp;</div></td></tr><tr>
 <td class="Element302" valign="top" width="35%">
 <div class="Element303">
-protocol&nbsp;</div></td><td class="Element306" valign="top" width="65%">
+byte&nbsp;</div></td><td class="Element306" valign="top" width="65%">
 <div class="Element307">
-specifies which protocol(s) the client intends to use with this driver. One of the various DRV_BM71_PROTOCOL enum values, including DRV_BM71_PROTOCOL_ALL.&nbsp;</div></td></tr></table></div></div>
+pointer to a uint8_t to receive the data&nbsp;</div></td></tr></table></div></div>
 </div>
 </div>
 <a name="52657475726E73"></a><div class="Element14">
@@ -103,45 +99,33 @@ Returns</div>
 <div class="Element11">
 <div class="Element10">
 <p class="Element10">
-valid handle to an opened BM71 device driver unique to client</p></div>
+bool - true if a byte was returned, false if receive buffer empty</p></div>
 </div>
 <a name="4578616D706C65"></a><div class="Element14">
 Example</div>
 <div class="Element11">
 <div class="Element10">
-<div class="Element13"><div class="Element12"><pre class="Element12"><strong><span style="color: #000080">case</span></strong> APP_STATE_OPEN:
-{
-    <strong><span style="color: #000080">if</span></strong> (SYS_STATUS_READY == DRV_BT_Status())
-    { 
-        <i><span style="color: #008000">// open BT module, including RX audio stream</span></i>
-        <i><span style="color: #008000">// note generic version of call (DRV_BT instead of DRV_BM71) is used</span></i>
-        appData.bt.handle = DRV_BT_Open(DRV_IO_INTENT_READ, DRV_BT_PROTOCOL_ALL);
+<div class="Element13"><div class="Element12"><pre class="Element12">uint8_t byte;
 
-        <strong><span style="color: #000080">if</span></strong>(appData.bt.handle != DRV_HANDLE_INVALID)
-        {
-            appData.state = APP_STATE_SET_BT_BUFFER_HANDLER;
-        }
-        <strong><span style="color: #000080">else</span></strong>
-        {
-            <i><span style="color: #008000">// Got an Invalid Handle.  Wait for BT module to Initialize</span></i>
-        }
-    }
-}
-<strong><span style="color: #000080">break</span></strong>;</pre></div></div>
+<i><span style="color: #008000">// note generic version of call (DRV_BT instead of DRV_BM71) is used</span></i>
+<strong><span style="color: #000080">if</span></strong> (DRV_BT_ReadByteFromBLE(appData.bt.handle, &amp;byte))  <i><span style="color: #008000">// if byte received</span></i>
+{
+    <i><span style="color: #008000">// do something</span></i>
+} </pre></div></div>
 </div>
 </div>
 <a name="43"></a><div class="Element99">
 C</div>
-<div class="Element101"><div class="Element100"><pre class="Element100">DRV_HANDLE <strong><span style="color: #000000">DRV_BM71_Open</span></strong>(
-    <strong><span style="color: #000080">const</span></strong> DRV_IO_INTENT <strong><span style="color: #000000">ioIntent</span></strong>, 
-    <strong><span style="color: #000080">const</span></strong> DRV_BM71_PROTOCOL <strong><span style="color: #000000">protocol</span></strong>
+<div class="Element101"><div class="Element100"><pre class="Element100"><strong><span style="color: #000080">bool</span></strong> <strong><span style="color: #000000">DRV_BM71_ReadByteFromBLE</span></strong>(
+    <strong><span style="color: #000080">const</span></strong> DRV_HANDLE <strong><span style="color: #000000">handle</span></strong>, 
+    uint8_t* <strong><span style="color: #000000">byte</span></strong>
 );</pre></div></div>
 </div>
 <!-- End Page Content -->
 
 <!-- Begin Page Footer -->
 <div class="Element95">
-<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00017.html" target="topic">BM71 Bluetooth Driver Library</a> &gt; <a href="00063.html" target="topic">Library Interface</a> &gt; a) System Functions &gt; <a href="00237.html" target="topic">DRV_BM71_Open Function</a></div>
+<a href="00022.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00017.html" target="topic">BM71 Bluetooth Driver Library</a> &gt; <a href="00062.html" target="topic">Library Interface</a> &gt; a) System Functions &gt; <a href="00237.html" target="topic">DRV_BM71_ReadByteFromBLE Function</a></div>
 <div class="Element93">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -152,10 +136,10 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element91">
-<a href="00236.html" target="topic">Previous</a> | <a href="00063.html" target="topic">Up</a> | <a href="00238.html" target="topic">Next</a></div>
+<a href="00236.html" target="topic">Previous</a> | <a href="00062.html" target="topic">Up</a> | <a href="00238.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element97">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM71_Open@DRV_IO_INTENT@DRV_BM71_PROTOCOL Topic Title: DRV_BM71_Open Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV_BM71_ReadByteFromBLE@DRV_HANDLE@uint8_t* Topic Title: DRV_BM71_ReadByteFromBLE Function)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table></div>
 
 <!-- End Page Footer -->

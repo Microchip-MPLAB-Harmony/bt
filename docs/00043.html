@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
-<title>System Functions</title>
+<title>Introduction</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="Doc-O-Matic" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -18,7 +18,7 @@
 <!-- Begin Page Header -->
 <div class="Element710" id="areafixed">
 <div class="Element94">
-<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00049.html" target="topic">Using the Library</a> &gt; <a href="00037.html" target="topic">How the Library Works</a> &gt; <a href="00043.html" target="topic">System Functions</a></div>
+<a href="00022.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00043.html" target="topic">Introduction</a></div>
 <div class="Element92">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -29,12 +29,12 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element90">
-<a href="00037.html" target="topic">Previous</a> | <a href="00037.html" target="topic">Up</a> | <a href="00040.html" target="topic">Next</a></div>
+<a href="00016.html" target="topic">Previous</a> | <a href="00016.html" target="topic">Up</a> | <a href="00048.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element96">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM64 HTLW System Functions Topic Title: System Functions)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM64 Introduction Topic Title: Introduction)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table><div class="Element5">
-System Functions</div>
+Introduction</div>
 </div>
 </div>
 
@@ -48,45 +48,31 @@ System Functions</div>
 <a name="PageContent"></a><div class="Element58">
 <a name="4465736372697074696F6E"></a><div class="Element11">
 <div class="Element10">
-<div class="Element15">
-Initialization</div>
 <p class="Element10">
-The function <a href="00160.html" target="topic">DRV_BM64_Initialize</a> is called by the function SYS_Initialize, in the file system_init.c, to initialize the BM64 Bluetooth driver using constants from the generated system_config.h file.</p><div class="Element15">
-Tasks</div>
+The BM64 is a Bluetooth 4.2 Stereo Module that supports classic A2DP, AVRCP, HFP, HSP, and SPP protocols, as well as Bluetooth Low Energy (BLE).&nbsp;</p>
 <p class="Element10">
-The function <a href="00218.html" target="topic">DRV_BM64_Tasks</a> is called from the System Task Service via the function SYS_Tasks in the file system_tasks.c to maintain the driver's internal control and data interface state machine.&nbsp;</p>
+The BM64 streams I2S audio at up to 24-bit and 96 kHz, and uses a UART to receive commands from the host microcontroller and send events back over the same interface.&nbsp;</p>
 <p class="Element10">
-One can use the function DRV_BM64_TasksReq to make a power on/power off task request (DRV_BM64_REQ_SYSTEM_OFF or DRV_BM64_REQ_SYSTEM_ON).</p><div class="Element15">
-Status</div>
+Protocols supported by the BM64 include A2DP, AVRCP, HFP, HSP, SPP, and BLE. However, this version of the driver only supports A2DP, AVRCP, HFP, and BLE.&nbsp;</p>
 <p class="Element10">
-The function <a href="00215.html" target="topic">DRV_BM64_Status</a> returns the BM64 Bluetooth driver status, such as SYS_STATUS_READY, SYS_STATUS_BUSY, or SYS_STATUS_ERROR. The driver should not be opened until it has been marked ready.&nbsp;</p>
+The BM64 can be connected to a microphone (for HFP) and also has line-input; however, the latter is not supported by this driver. The multi-speaker modes of the BM64 are also not handled by this driver.&nbsp;</p>
 <p class="Element10">
-<strong>Example:</strong> &nbsp;</p><div class="Element13"><div class="Element12"><pre class="Element12"><i><span style="color: #008000">// note generic version of call (DRV_BT instead of DRV_BM64) is used</span></i>
-<strong><span style="color: #000080">if</span></strong> (SYS_STATUS_READY == DRV_BT_Status())
-{
-<i><span style="color: #008000">// This means the driver can be opened using the</span></i>
-<i><span style="color: #008000">// DRV_BT_Open() function.</span></i>
-}</pre></div></div>
+A typical interface of BM64 to a Microchip microcontroller is provided in the following diagram: </p><div class="Element63">
+<div class="TableDiv">
+<table cellspacing="0" class="Table0">
+<tr>
+<td class="Element77" valign="top" width="100%" style="border:none;">
+<div class="Element78">
+<strong>BM64 to MCU Interface</strong><br><img src="DRV BT BM64 Device Interface Diagram.png" border="0" alt="" title="">&nbsp;</div></td></tr></table></div></div>
 <p class="Element10">
-The BM64-specific function <a href="00158.html" target="topic">DRV_BM64_GetPowerStatus</a> returns the current power status, e.g. DRV_BM64_STATUS_OFF, DRV_BM64_STATUS_OFF, and DRV_BM64_STATUS_READY. Once it returns a ready status, this means the BM64 driver has completed its internal state machine initialization and can begin processing audio.&nbsp;</p>
-<p class="Element10">
-<strong>Example:</strong> &nbsp;</p><div class="Element13"><div class="Element12"><pre class="Element12"><strong><span style="color: #000080">case</span></strong> APP_STATE_WAIT_INIT:
-{
-<i><span style="color: #008000">// note generic version of call (DRV_BT instead of DRV_BM64) is used</span></i>
-<strong><span style="color: #000080">if</span></strong> (DRV_BT_STATUS_READY == DRV_BT_GetPowerStatus())
-{
-appData.state=APP_STATE_IDLE;
-<i><span style="color: #008000">// can start processing audio</span></i>
-}
-}</pre></div></div>
-</div>
+An example demonstration application using this library to interface with the BM64 for BLE functionality is BM64_ble_comm, which is used to send a string of characters to a smartphone when the push button is pressed on the SAM E70 Xplained Ultra board, and to receive a string of characters from the smartphone causing one of the LEDs to turn on and off, both using the &quot;Transparent Service&quot; feature of the BM64.</p></div>
 </div>
 </div>
 <!-- End Page Content -->
 
 <!-- Begin Page Footer -->
 <div class="Element95">
-<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00049.html" target="topic">Using the Library</a> &gt; <a href="00037.html" target="topic">How the Library Works</a> &gt; <a href="00043.html" target="topic">System Functions</a></div>
+<a href="00022.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00043.html" target="topic">Introduction</a></div>
 <div class="Element93">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -97,10 +83,10 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element91">
-<a href="00037.html" target="topic">Previous</a> | <a href="00037.html" target="topic">Up</a> | <a href="00040.html" target="topic">Next</a></div>
+<a href="00016.html" target="topic">Previous</a> | <a href="00016.html" target="topic">Up</a> | <a href="00048.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element97">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM64 HTLW System Functions Topic Title: System Functions)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM64 Introduction Topic Title: Introduction)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table></div>
 
 <!-- End Page Footer -->

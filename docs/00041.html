@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
-<title>Sample Rate</title>
+<title>Settings Functions</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="Doc-O-Matic" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -18,7 +18,7 @@
 <!-- Begin Page Header -->
 <div class="Element710" id="areafixed">
 <div class="Element94">
-<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00049.html" target="topic">Using the Library</a> &gt; <a href="00037.html" target="topic">How the Library Works</a> &gt; <a href="00041.html" target="topic">Sample Rate</a></div>
+<a href="00022.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00048.html" target="topic">Using the Library</a> &gt; <a href="00036.html" target="topic">How the Library Works</a> &gt; <a href="00041.html" target="topic">Settings Functions</a></div>
 <div class="Element92">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -29,12 +29,12 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element90">
-<a href="00042.html" target="topic">Previous</a> | <a href="00037.html" target="topic">Up</a> | <a href="00038.html" target="topic">Next</a></div>
+<a href="00023.html" target="topic">Previous</a> | <a href="00036.html" target="topic">Up</a> | <a href="00040.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element96">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM64 HTLW Sample Rate Topic Title: Sample Rate)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM64 HTLW Settings Functions Topic Title: Settings Functions)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table><div class="Element5">
-Sample Rate</div>
+Settings Functions</div>
 </div>
 </div>
 
@@ -49,28 +49,44 @@ Sample Rate</div>
 <a name="4465736372697074696F6E"></a><div class="Element11">
 <div class="Element10">
 <p class="Element10">
-The function <a href="00093.html" target="topic">DRV_BM64_EnterBTPairingMode</a> is used to enter into pairing mode. Once the BM64 is paired with a device, it will automatically attempt to connect with it again on the next power cycle.&nbsp;</p>
+The function <a href="00219.html" target="topic">DRV_BM64_VolumeGet</a> returns the volume for the current mode (A2DP or HFP) in percent (0-100), and the corresponding function <a href="00220.html" target="topic">DRV_BM64_VolumeSet</a> sets the volume in percent.&nbsp;</p>
 <p class="Element10">
-Calling <a href="00087.html" target="topic">DRV_BM64_DisconnectAllLinks</a> will disconnect the BM64 from the host (smartphone) but will not erase the pairing. So another call to the function <a href="00161.html" target="topic">DRV_BM64_LinkLastDevice</a> will reconnect. However calling the function <a href="00153.html" target="topic">DRV_BM64_ForgetAllLinks</a> will erase all pairing information, and another call to <a href="00093.html" target="topic">DRV_BM64_EnterBTPairingMode</a> will be required to re-establish a connection.&nbsp;</p>
+The functions DRV_BM64_VolumeUp and DRV_BM64_VolumeDown turn the volume up and down on the host device (e.g. smartphone) by one increment (about 3% of full-scale). Either of these will result in a callback with the event DRV_BM64_EVENT_VOLUME_CHANGED specifying the new volume setting.&nbsp;</p>
 <p class="Element10">
-<strong>Example:</strong> &nbsp;</p><div class="Element13"><div class="Element12"><pre class="Element12">    <strong><span style="color: #000080">case</span></strong> BUTTON_STATE_PRESSED:      <i><span style="color: #008000">// (debouncing not shown)</span></i>
+<strong>Example:</strong> &nbsp;</p><div class="Element13"><div class="Element12"><pre class="Element12"><strong><span style="color: #000080">case</span></strong> BUTTON_STATE_PRESSED:      <i><span style="color: #008000">// (debouncing not shown)</span></i>
+{
+    <i><span style="color: #008000">// bump the volume up one notch based on a button press</span></i>
+    <strong><span style="color: #000080">if</span></strong> (BSP_SwitchStateGet(BSP_SWITCH_2)==BSP_SWITCH_STATE_PRESSED))
     {
-        <i><span style="color: #008000">// initiate pairing with a button press</span></i>
-        <strong><span style="color: #000080">if</span></strong> (BSP_SwitchStateGet(BSP_SWITCH_1)==BSP_SWITCH_STATE_PRESSED))
+        <i><span style="color: #008000">// note generic version of call (DRV_BT instead of DRV_BM64) is used</span></i>
+        DRV_BT_volumeUp(appData.bt.handle);
+        appData.buttonState=BUTTON_STATE_WAIT_FOR_RELEASE;
+    }
+}
+
+. . .
+
+<i><span style="color: #008000">// later, a call will come back to the event handler callback function</span></i>
+<i><span style="color: #008000">// (previously set up via a call to DRV_BM64_EventHandlerSet)</span></i>
+<strong><span style="color: #000080">static</span></strong> <strong><span style="color: #000080">void</span></strong> _BLEEventHandler(DRV_BT_EVENT event, uint32_t param, uintptr_t context)
+{
+    <strong><span style="color: #000080">switch</span></strong>(event)
+    {
+        <strong><span style="color: #000080">case</span></strong> DRV_BM64_EVENT_VOLUME_CHANGED:
         {
-            <i><span style="color: #008000">// note generic version of call (DRV_BT instead of DRV_BM64) is used</span></i>
-            DRV_BT_EnterBTPairingMode(appData.bt.handle);
-            appData.buttonState=BUTTON_STATE_WAIT_FOR_RELEASE;
+            uint16_t volume7bits = (127*param)/100;     <i><span style="color: #008000">// convert to 7 bits</span></i>
+            DRV_AK4384_VolumeSet(audioData.codec.handle,         <i><span style="color: #008000">// update codec’s volume</span></i>
+                    DRV_AK4384_CHANNEL_LEFT_RIGHT,volume7bits);
+            laString tempStr;
+            <strong><span style="color: #000080">char</span></strong> buf[5];
+            sprintf(buf,&quot;%3d%%&quot;,param);
+            laWidget_SetVisible((laWidget*)GFX_VOLUME_VALUE, LA_TRUE);
+            tempStr = laString_CreateFromCharBuffer(buf, &amp;LiberationSans12);
+            laLabelWidget_SetText(GFX_VOLUME_VALUE, tempStr);    <i><span style="color: #008000">// update screen</span></i>
+            laString_Destroy(&amp;tempStr);
         }
-    }</pre></div></div>
-<p class="Element10">
-The function <a href="00156.html" target="topic">DRV_BM64_GetLinkStatus</a> returns the current link status, returning an 8-bit value containing the current link status defined by <a href="00162.html" target="topic">DRV_BM64_LINKSTATUS</a> enum. This can be used to restrict calls to AVRCP functions only when an AVRCP link is established.&nbsp;</p>
-<p class="Element10">
-<strong>Example:</strong> &nbsp;</p><div class="Element13"><div class="Element12"><pre class="Element12">   <i><span style="color: #008000">// note generic version of call (DRV_BT instead of DRV_BM64) is used</span></i>
-   <strong><span style="color: #000080">if</span></strong> (DRV_BT_GetLinkStatus(appData.bt.handle) &amp; DRV_BT_AVRCP_LINK_STATUS)
-   {
-       DRV_BT_CancelForwardOrRewind(appData.bt.handle);
-   }</pre></div></div>
+   }
+}</pre></div></div>
 </div>
 </div>
 </div>
@@ -78,7 +94,7 @@ The function <a href="00156.html" target="topic">DRV_BM64_GetLinkStatus</a> retu
 
 <!-- Begin Page Footer -->
 <div class="Element95">
-<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00049.html" target="topic">Using the Library</a> &gt; <a href="00037.html" target="topic">How the Library Works</a> &gt; <a href="00041.html" target="topic">Sample Rate</a></div>
+<a href="00022.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00048.html" target="topic">Using the Library</a> &gt; <a href="00036.html" target="topic">How the Library Works</a> &gt; <a href="00041.html" target="topic">Settings Functions</a></div>
 <div class="Element93">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -89,10 +105,10 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element91">
-<a href="00042.html" target="topic">Previous</a> | <a href="00037.html" target="topic">Up</a> | <a href="00038.html" target="topic">Next</a></div>
+<a href="00023.html" target="topic">Previous</a> | <a href="00036.html" target="topic">Up</a> | <a href="00040.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element97">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM64 HTLW Sample Rate Topic Title: Sample Rate)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: DRV BLUETOOTH BM64 HTLW Settings Functions Topic Title: Settings Functions)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table></div>
 
 <!-- End Page Footer -->

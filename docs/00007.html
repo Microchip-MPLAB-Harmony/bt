@@ -298,6 +298,8 @@ In MHC, under Available Components select the BSP SAM D21 Xplained Pro. Under Bl
 <p class="Element10">
 You should end up with a project graph that looks like this, after rearranging the boxes: </p><p class="Element10" style="text-align: center;">
 <img src="ble comm BM71 D21 XPRO project graph.png" border="0" alt="" title=""></p><p class="Element10">
+Click on SERCOM4 in the graph, and change the Receive Pinout to PAD[1] as shown below: </p><p class="Element10" style="text-align: center;">
+<img src="ble comm BM71 D21 XPRO UART.png" border="0" alt="" title=""></p><p class="Element10">
 &nbsp;</p>
 <p class="Element10">
 <u>For projects using the SAME54 and BM64:</u>&nbsp;</p>
@@ -308,24 +310,24 @@ In MHC, under Available Components select the BSP SAM E54 Curiosity Ultra. Under
 <p class="Element10">
 You should end up with a project graph that looks like this, after rearranging the boxes: </p><p class="Element10" style="text-align: center;">
 <img src="APPS BT BM64 BLE comm E54 Project Graph.png" border="0" alt="" title=""></p><p class="Element10">
-Click on SERCOM7 in the graph, and change Receive Pinout to &quot;SERCOM Pad[1] is used for data reception&quot; in the Configuration Options dialog.&nbsp;</p>
-<p class="Element10">
+Click on SERCOM7 in the graph, and change Receive Pinout to &quot;SERCOM Pad[1] is used for data reception&quot; in the Configuration Options dialog. </p><p class="Element10" style="text-align: center;">
+<img src="ble comm BM64 E54 CULT UART.png" border="0" alt="" title=""></p><p class="Element10">
 &nbsp;</p>
 <p class="Element10">
 <u>For projects using the SAME54 and BM71:</u>&nbsp;</p>
 <p class="Element10">
 When building a new application, start by creating a 32-bit MPLAB Harmony 3 project in MPLAB X IDE by selecting <i>File &gt; New Project</i>. Chose the Configuration name the based on the BSP. Select the appropriate processor (ATSAME54P20A).&nbsp;</p>
 <p class="Element10">
-In MHC, under Available Components select the BSP SAM E54 Curiosity Ultra or BSP SAM E54 Xplianed Pro. Under Bluetooth<i>-&gt;Templates</i>, double-click on BM71 Bluetooth. Answer Yes to all questions.&nbsp;</p>
+In MHC, under Available Components select the BSP SAM E54 Curiosity Ultra or BSP SAM E54 Xplained Pro. Under Bluetooth<i>-&gt;Templates</i>, double-click on BM71 Bluetooth. Answer Yes to all questions.&nbsp;</p>
 <p class="Element10">
-You should end up with a project graph that looks either of these, after rearranging the boxes: </p><p class="Element10" style="text-align: center;">
-<img src="ble comm BM71 E54 CULT project graph.png" border="0" alt="" title="">&nbsp;</p>
+You should end up with a project graph that looks one of these, after rearranging the boxes: </p><p class="Element10" style="text-align: center;">
+<img src="ble comm BM71 E54 CULT project graph.png" border="0" alt="" title=""></p><p class="Element10">
+If using the SAM E54 Curiosity Ultra, click on SERCOM2 in the graph, and change the Receive Pinout to PAD[1] as shown below: </p><p class="Element10" style="text-align: center;">
+<img src="ble comm BM71 E54 CULT UART.png" border="0" alt="" title="">&nbsp;</p>
 <p class="Element10" style="text-align: center;">
-<i>or</i>&nbsp;</p>
-<p class="Element10" style="text-align: center;">
-<img src="ble comm BM71 E54 XPRO project graph.png" border="0" alt="" title="">&nbsp;</p><p class="Element10">
-&nbsp;</p>
-<p class="Element10">
+<img src="ble comm BM71 E54 XPRO project graph.png" border="0" alt="" title=""></p><p class="Element10">
+If using the SAM E54 Xplained Pro, click on SERCOM0 in the graph, and change the Receive Pinout to PAD[1] as shown below: </p><p class="Element10" style="text-align: center;">
+<img src="ble comm BM71 E54 XPRO UART.png" border="0" alt="" title=""></p><p class="Element10">
 <u>For projects using the SAME70:</u>&nbsp;</p>
 <p class="Element10">
 When building a new application, start by creating a 32-bit MPLAB Harmony 3 project in MPLAB X IDE by selecting <i>File &gt; New Project</i>. Chose the Configuration name the based on the BSP. Select the appropriate processor (ATSAME70Q21B).&nbsp;</p>
@@ -334,10 +336,10 @@ In MHC, under Available Components select the BSP SAM E70 Xplained Ultra. Under 
 <p class="Element10">
 You should end up with a project graph that looks like this, after rearranging the boxes: </p><p class="Element10" style="text-align: center;">
 <img src="APPS BT BM64 BLE comm Project Graph.png" border="0" alt="" title=""></p><p class="Element10">
-Click on USART0 in the graph, and change the Baud Rate to 115,200 in the Configuration Options dialog.&nbsp;</p>
-<p class="Element10">
-&nbsp;</p>
-<p class="Element10">
+Click on USART0 in the graph, and change the Baud Rate to 115,200 in the Configuration Options dialog. </p><p class="Element10" style="text-align: center;">
+<img src="ble comm BM64 E70 XULT UART.png" border="0" alt="" title=""></p><p class="Element10">
+In Tools-&gt;Clock Diagram, in the Clock Diagram, set MOSCEL to Main Crystal, check the Bypass checkbox, and uncheck the RC Crystal Oscillator and Main Crystal Oscillator boxes, to make use of the 12 MHz external oscillator: </p><p class="Element10" style="text-align: center;">
+<img src="APPS BT E70 clock diagram main bypass.png" border="0" alt="" title=""></p><p class="Element10">
 If building an application that is going to use the 480x272 display, then do the following instead. In the MHC, under Available&nbsp;</p>
 <p class="Element10">
 Components select the BSP (SAM E70 Xplained Ultra). Under Graphics&gt;Templates, double-click on Aria Graphics w/ PDA&nbsp;</p>
@@ -348,21 +350,11 @@ Then under Audio&gt;Templates, double-click on WM8904 Codec. Answer Yes to all q
 <p class="Element10">
 You should end up with a project graph that looks like this, after rearranging the boxes: </p><p class="Element10" style="text-align: center;">
 <img src="APPS BT bm64 ble comm gfx project graph.png" border="0" alt="" title=""></p><p class="Element10">
-&nbsp;</p>
-<p class="Element10">
-If using the SAM E70 Xplained Ultra board, in the Clock Diagram, in the Clock Diagram, set MOSCEL to Main Crystal, check the&nbsp;</p>
-<p class="Element10">
-Bypass checkbox, and uncheck the RC Crystal Oscillator and Main Crystal Oscillator boxes, to make use of the 12 MHz external&nbsp;</p>
-<p class="Element10">
-oscillator:&nbsp;</p>
-<p class="Element10">
-&nbsp;</p>
-<p class="Element10">
 If using FreeRTOS, in the code you will need to move the call to DRV_WM8904_Tasks(sysObj.drvwm8904Codec0); from the&nbsp;</p>
 <p class="Element10">
 SYS_Tasks function in src/config/&lt;config_name&gt;/tasks.c to inside the while(1) loop of _APP_Tasks (just before the call to&nbsp;</p>
 <p class="Element10">
-APP_Tasks).</p></div>
+APP_Tasks), or create a separate task for it.</p></div>
 </div>
 <a name="546F70696373"></a><div class="Element14">
 Topics</div>

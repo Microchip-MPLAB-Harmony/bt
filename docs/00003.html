@@ -146,21 +146,42 @@ Tools Setup Differences</div>
 <p class="Element10">
 When building a new application, start by creating a 32-bit MPLAB Harmony 3 project in MPLAB X IDE by selecting <i>File &gt; New Project</i>. Chose the Configuration name the based on the BSP. Select the appropriate processor (PIC32MX470F512L).&nbsp;</p>
 <p class="Element10">
-In MHC, under Available Components select the BSP PIC32MX Bluetooth Audio Development Kit. Under Bluetooth<i>-&gt;Templates</i>, double-click on BM64 I2S Bluetooth. Answer Yes to all questions.&nbsp;</p>
+In MHC, under Available Components select the BSP PIC32MX Bluetooth Audio Development Kit. Under <i>Audio-&gt;Templates</i>, double-click on AK4954 Codec. Answer Yes to all questions, except the one about FreeRTOS. In the I2S Driver block, click on the <strong>+</strong> button to the right of Instances, to create a second instance of the driver. Under <i>Bluetooth-&gt;Templates</i>, double-click on BM64 I2S Bluetooth. Answer Yes to all questions, except the one about FreeRTOS.&nbsp;</p>
 <p class="Element10">
 You should end up with a project graph that looks like this, after rearranging the boxes: </p><p class="Element10" style="text-align: center;">
 <img src="a2dp hfp BM64 BTADK project graph.png" border="0" alt="" title=""></p><p class="Element10">
+Click on Tools-&gt;Clock Diagram and change the settings as shown: </p><p class="Element10" style="text-align: center;">
+<img src="a2dp hfp BM64 BTADK CLOCK.png" border="0" alt="" title=""></p><p class="Element10">
+Click on the I2S1 in the Project Graph, and change the settings as shown in green below: </p><p class="Element10" style="text-align: center;">
+<img src="a2dp hfp BM64 I2S.png" border="0" alt="" title=""></p><p class="Element10">
+Then do the same for the I2S2 block.&nbsp;</p>
+<p class="Element10">
+Click on the AK4954 block in the Project Graph, and change the settings as shown in green below: </p><p class="Element10" style="text-align: center;">
+<img src="a2dp hfp BM64 BTADK AK4954.png" border="0" alt="" title=""></p><p class="Element10">
+Click on the BM64 Driver block in the Project Graph, and change the settings as shown in green below: </p><p class="Element10" style="text-align: center;">
+<img src="a2dp hfp BM64 BTADK BM64.png" border="0" alt="" title=""></p><p class="Element10">
 &nbsp;</p>
 <p class="Element10">
 <u>For projects using the PIC32MZ:</u>&nbsp;</p>
 <p class="Element10">
 When building a new application, start by creating a 32-bit MPLAB Harmony 3 project in MPLAB X IDE by selecting <i>File &gt; New Project</i>. Chose the Configuration name the based on the BSP. Select the appropriate processor (PIC32MZ2048EFM144).&nbsp;</p>
 <p class="Element10">
-In MHC, under Available Components select the BSP PIC32MZ EF Curiosity 2.0. Under Bluetooth<i>-&gt;Templates</i>, double-click on BM64 I2S Bluetooth. Answer Yes to all questions.&nbsp;</p>
+In MHC, under Available Components select the BSP PIC32MZ EF Curiosity 2.0. Under <i>Audio-&gt;Templates</i>, double-click on AK4954 Codec. Answer Yes to all questions, except the one about FreeRTOS. In the I2S Driver block, click on the <strong>+</strong> button to the right of Instances, to create a second instance of the driver. Under <i>Bluetooth-&gt;Templates</i>, double-click on BM64 I2S Bluetooth. Answer Yes to all questions, except the one about FreeRTOS.&nbsp;</p>
 <p class="Element10">
 You should end up with a project graph that looks like this, after rearranging the boxes: </p><p class="Element10" style="text-align: center;">
 <img src="a2dp hfp BM64 PIC32 MZ C2 project graph.png" border="0" alt="" title=""></p><p class="Element10">
-Open the <i>Harmony Configurator Framework &gt; Drivers</i> section, and then expand <i>Bluetooth &gt; BM64</i> and select <i>Use BM64 Driver?</i>. A sub-menu will appear with all options selected. Since you will only be using HFP, A2DP, and AVRCP protocols, clear the BLE Features? check box. Leaving the HFP, A2DP, AVRCP Protocols selected will by default bring in the drivers for both the codec and the I2S (and I2C driver, if using the AK4954).</p></div>
+Click on Tools-&gt;Clock Diagram and change the settings as shown: </p><p class="Element10" style="text-align: center;">
+<img src="a2dp hfp BM64 PIC32 MZ C2 CLOCK.png" border="0" alt="" title=""></p><p class="Element10">
+Click on the I2C_BB block in the Project Graph, and fill in the pin numbers and clock speed as shown below: </p><p class="Element10" style="text-align: center;">
+<img src="a2dp hfp BM64 PIC32 MZ C2 I2C.png" border="0" alt="" title=""></p><p class="Element10">
+Click on the I2S1 in the Project Graph, and change the settings as shown in green below: </p><p class="Element10" style="text-align: center;">
+<img src="a2dp hfp BM64 I2S.png" border="0" alt="" title=""></p><p class="Element10">
+Then do the same for the I2S2 block.&nbsp;</p>
+<p class="Element10">
+Click on the AK4954 block in the Project Graph, and change the settings as shown in green below: </p><p class="Element10" style="text-align: center;">
+<img src="a2dp hfp BM64 BTADK AK4954.png" border="0" alt="" title=""></p><p class="Element10">
+Click on the BM64 Driver block in the Project Graph, and change the settings as shown in green below: </p><p class="Element10" style="text-align: center;">
+<img src="a2dp hfp BM64 BTADK BM64.png" border="0" alt="" title=""></p></div>
 </div>
 <a name="546F70696373"></a><div class="Element14">
 Topics</div>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
-<title>drv_bm71_uart.h</title>
+<title>INCLUDE_BM64_BLE Macro</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="Doc-O-Matic" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -18,7 +18,7 @@
 <!-- Begin Page Header -->
 <div class="Element710" id="areafixed">
 <div class="Element94">
-<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00017.html" target="topic">BM71 Bluetooth Driver Library</a> &gt; Files &gt; <a href="00244.html" target="topic">drv_bm71_uart.h</a></div>
+<a href="00022.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00030.html" target="topic">Configuring the Library</a> &gt; <a href="00244.html" target="topic">INCLUDE_BM64_BLE Macro</a></div>
 <div class="Element92">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -29,12 +29,12 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element90">
-<a href="00235.html" target="topic">Previous</a> | <a href="00017.html" target="topic">Up</a></div>
+<a href="00030.html" target="topic">Previous</a> | <a href="00030.html" target="topic">Up</a> | <a href="00245.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element96">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: drv_bm71_uart.h Topic Title: drv_bm71_uart.h)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: INCLUDE_BM64_BLE Topic Title: INCLUDE_BM64_BLE Macro)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table><div class="Element5">
-drv_bm71_uart.h</div>
+INCLUDE_BM64_BLE Macro</div>
 </div>
 </div>
 
@@ -46,35 +46,33 @@ drv_bm71_uart.h</div>
 
 <!-- Begin Page Content -->
 <a name="PageContent"></a><div class="Element58">
-<a name="46696C65204E616D65"></a><div class="Element11">
+<a name="53756D6D617279"></a><div class="Element11">
 <div class="Element10">
 <p class="Element10">
-drv_bm71_uart.h</p></div>
-</div>
-<a name="53756D6D617279"></a><div class="Element14">
-<a onclick="toggleVisibilityStored('53756D6D617279');" class="a_Element14"><img src="btn_collapse_large.gif" border="0" alt="" title="" id="img53756D6D617279">Summary</a></div>
-<div id="div53756D6D617279">
-<div class="Element11">
-<div class="Element10">
-<p class="Element10">
-BM71 Bluetooth Static Driver header file for UART functions.</p></div>
-</div>
+Identifies whether the driver should include BLE</p></div>
 </div>
 <a name="4465736372697074696F6E"></a><div class="Element14">
 Description</div>
 <div class="Element11">
 <div class="Element10">
 <p class="Element10">
-BM71 Bluetooth Static Driver implementation&nbsp;</p>
+Include BLE features?&nbsp;</p>
 <p class="Element10">
-This file is the header file for the internal functions of the BM71 driver related to sending and receiving data to/from the BM71 over UART.</p></div>
+Identifies whether the driver should include BLE (Bluetooth Low Energy) functions.&nbsp;</p>
+<p class="Element10">
+This option currently does not have any effect on the code size.&nbsp;</p>
+<p class="Element10">
+true (checked, default) - include BLE functionality. false (unchecked) - do not include BLE functionality.</p></div>
 </div>
+<a name="43"></a><div class="Element99">
+C</div>
+<div class="Element101"><div class="Element100"><pre class="Element100"><strong><span style="color: #000080">#define</span></strong> <strong><span style="color: #000000">INCLUDE_BM64_BLE</span></strong> </pre></div></div>
 </div>
 <!-- End Page Content -->
 
 <!-- Begin Page Footer -->
 <div class="Element95">
-<a href="00023.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00017.html" target="topic">BM71 Bluetooth Driver Library</a> &gt; Files &gt; <a href="00244.html" target="topic">drv_bm71_uart.h</a></div>
+<a href="00022.html" target="topic">Drivers Libraries Help</a> &gt; <a href="00016.html" target="topic">BM64 Bluetooth Driver Library</a> &gt; <a href="00030.html" target="topic">Configuring the Library</a> &gt; <a href="00244.html" target="topic">INCLUDE_BM64_BLE Macro</a></div>
 <div class="Element93">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr><td width="25%">
@@ -85,10 +83,10 @@ MPLAB Harmony Bluetooth Help</div>
 <a href="contents.html" target="tocidx">Contents</a> | <a href="00020.html" target="topic">Home</a></div>
 </td><td width="25%">
 <div class="Element91">
-<a href="00235.html" target="topic">Previous</a> | <a href="00017.html" target="topic">Up</a></div>
+<a href="00030.html" target="topic">Previous</a> | <a href="00030.html" target="topic">Up</a> | <a href="00245.html" target="topic">Next</a></div>
 </td><td width="25%">
 <div class="Element97">
-<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: drv_bm71_uart.h Topic Title: drv_bm71_uart.h)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
+<a href="mailto:docerrors@microchip.com&subject=MPLAB Harmony Documentation Feedback (Topic ID: INCLUDE_BM64_BLE Topic Title: INCLUDE_BM64_BLE Macro)&body=Thank you for your feedback! Please include a description of your feedback, and indicate whether you are reporting an an error in the documentation or an enhancement.">Documentation Feedback</a><br> <a href="http://support.microchip.com" target="_blank">Microchip Support</a></div>
 </td></tr></table></div>
 
 <!-- End Page Footer -->

@@ -8,11 +8,11 @@
 The following table provides the list of new applications/projects:
 
 | Application | Description | BTADK | MZ/C2 | D21 | E54 CULT | E54 XPRO | E70 | BM64 | BM71 |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | bm64_a2dp_hfp | New application | x | x | | | | | x | |
-| ble_comm | Added variations for BM64 | x | x | | x | | x | x | |
+| ble_comm | Added variations for BM64 | x | x | | | | | x | |
 | ble_comm | New variations for BM71 |  | x | x | x | x | | | x |
-| bm64_bootloader | Added variations for BM64 | x | x | | | | | x | |
+| bm64_bootloader | Added variation for MZ/C2 | | x | | | | | x | |
 
 where:
 
@@ -39,11 +39,11 @@ The following table provides the list of new Bluetooth drivers for the SAM E70:
 
 The following table provides the list new Bluetooth templates:
 
-| Template | Description | BTADK | MZ/C2 | D21 | E54 CULT | E54 XPRO |
-| --- | --- | --- | --- | --- | 
-| BM64 | BLE (no audio) | x | x | | x | |
-| BM64 I2S | with audio | x | x | |  | |
-| BM71 | BLE (no audio) | | x | x | x | x |
+| Template | Description | BTADK | MZ/C2 | D21 | E54 CULT | E54 XPRO | E70 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| BM64 | BLE (no audio) | x | x | | x | | |
+| BM64 I2S | with audio | x | x | |  | | x |
+| BM71 | BLE (no audio) | | x | x | x | x | |
 
 
 ### TESTED WITH:
