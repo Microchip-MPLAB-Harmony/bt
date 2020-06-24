@@ -29,7 +29,7 @@
 
 #include <string.h>
 #include "app.h"        // also beings in app_tone_lookup_table.h
-#include "ble.h"
+#include "ble/non_gui/ble.h"
 extern BLE_DATA bleData;
 
 // *****************************************************************************
