@@ -60,7 +60,9 @@
 #include "bt/driver/bm71/drv_bm71_gpio.h"
 #include "system/time/sys_time.h"
 
-//#define SYS_DEBUG(x,y)    printf(y)      // comment out printf if not defined
+#ifndef SYS_DEBUG
+#define SYS_DEBUG(x,y)    printf(y)      // comment out printf if not defined
+#endif
 
 // all #defines, enums and non-static functions and variables prefixed by
 // DRV_BM71 to avoid name conflicts
@@ -339,7 +341,7 @@ SYS_STATUS DRV_BM71_Status( void )
 
 DRV_BM71_DRVR_STATUS DRV_BM71_GetPowerStatus( void )
 {
-    if (gDrvBm71Obj.state < DRV_BM71_STATE_INIT_RESET_HIGH_WAIT)
+    if (gDrvBm71Obj.state <= DRV_BM71_STATE_INIT_RESET_HIGH_WAIT)
         return DRV_BM71_STATUS_ON;
     else
         return DRV_BM71_STATUS_READY;
@@ -1121,14 +1123,15 @@ static void _BM71AppModeControlTasks(void)
            if (!_timer1ms) // check 200ms times up
            {
                 BM71_RX_IND_Clear();
-                _timer1ms = 100; //wait 100ms                                
+                _timer1ms = 100; //wait 100ms
+                gDrvBm71Obj.state = DRV_BM71_STATE_BLE_ADV_WAIT;
            }
             break;                                         
 
         case DRV_BM71_STATE_INIT_BLE_ADV_START:
             if (!_timer1ms) // check 200ms times up
             {
-                DRV_BM71_BLE_WriteAdvertisingData();
+                //DRV_BM71_BLE_WriteAdvertisingData();
                 _timer1ms = 100; //wait 100ms
                 gDrvBm71Obj.state = DRV_BM71_STATE_SET_BLE_ADV_PARAM;
             }

@@ -242,6 +242,7 @@ void DRV_BM71_CommandDecode( void )
             // CmdBuffer[2-3] is characteristic value handle
             // CmdBuffer[4-] is characteristic value (max 20 bytes)
             // not currently used
+            DRV_BM71_AddBytesToSPPBuff(&CmdBuffer[0], CmdDecodeCmdLength);
             break;
 
         case BM71_TRANSPARENT_DATA_RECEIVED:  // 0x9a
