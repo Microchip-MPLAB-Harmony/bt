@@ -581,12 +581,12 @@ static ble_status_t ble_mgr_connected_cb(event_msg_t* msg)
 		ble_mgr_state = BLE_MGR_STATE_INIT;
 	}
 	
-	printf("Device connected\r\n");
-	printf("Status = 0x%02X\r\n", connected->status);
-	printf("Conn_handle = 0x%02X\r\n", connected->conn_handle);
-	printf("Conn_interval = 0x%04X\r\n", connected->conn_param.conn_interval);
-	printf("Conn_latency = 0x%04X\r\n", connected->conn_param.conn_latency);
-	printf("Conn_sv_timeout = 0x%04X\r\n", connected->conn_param.link_sv_to);
+	printf("\nDevice connected\r\n");
+	printf("\nStatus = 0x%02X\r\n", connected->status);
+	printf("\nConn_handle = 0x%02X\r\n", connected->conn_handle);
+	printf("\nConn_interval = 0x%04X\r\n", connected->conn_param.conn_interval);
+	printf("\nConn_latency = 0x%04X\r\n", connected->conn_param.conn_latency);
+	printf("\nConn_sv_timeout = 0x%04X\r\n", connected->conn_param.link_sv_to);
 	printf("Remote device Address :");
 	for(index = 0; index < BLE_ADDR_LEN; index++)
 	{

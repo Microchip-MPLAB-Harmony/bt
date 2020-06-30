@@ -539,7 +539,7 @@ void APP_Tasks ( void )
             if(temp_notify_enabled & appData.tmrExpired)
             {
                 get_temp_sensor_data((uint8_t *)&celVal);
-                DBG_LOG("\nTemp Value - %d.%02d", (int)(celVal), (int)((celVal - (int)celVal)*100.0));
+                DBG_LOG("\nTemp Value - %d.%02d C", (int)(celVal), (int)((celVal - (int)celVal)*100.0));
                 send_temp_sensor_data((uint8_t *)&celVal);
                 appData.tmrExpired = false;
             }

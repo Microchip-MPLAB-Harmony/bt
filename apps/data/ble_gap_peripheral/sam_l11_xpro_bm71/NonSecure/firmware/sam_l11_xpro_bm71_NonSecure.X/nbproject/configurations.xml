@@ -481,8 +481,6 @@
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-ffff"/>
         <property key="poweroptions.powerenable" value="false"/>
-        <property key="programmerToGoFilePath"
-                  value="C:/Projects/H3/bt/apps/data/ble_gap_peripheral/NonSecure/firmware/sam_l11_xpro_bm71_NonSecure.X/debug/sam_l11_xpro_bm71/sam_l11_xpro_bm71_NonSecure_ptg"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.preservedataflash" value="false"/>
         <property key="programoptions.preservedataflash.ranges"
