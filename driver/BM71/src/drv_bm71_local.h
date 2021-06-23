@@ -392,7 +392,7 @@ typedef enum _bm_application_cmd_state
 //////////////////////////////////////////////////////////////////////////
 
 void DRV_BM71_Timer_1ms( uintptr_t context);
-void DRV_BM71_Timer1MS_event();
+void DRV_BM71_Timer1MS_event( void );
 void DRV_BM71_EventHandler(uint8_t event, uint16_t para, uint8_t* para_full);
 
 void DRV_BM71_SPPBuffClear( void );

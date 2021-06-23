@@ -66,7 +66,6 @@
 #define BM64_BLE_JUMPER_ENABLED 0
 
 </#if>
-#define SYS_DEBUG(x,y)      // not implemented
 
 // all #defines, enums and non-static functions and variables prefixed by
 // DRV_BM64 to avoid name conflicts
@@ -145,6 +144,14 @@ DRV_BM64_CLIENT_OBJ gDrvBm64ClientObj[DRV_BM64_CLIENTS_NUMBER];
  */
 
 DRV_BM64_COMMON_DATA_OBJ gDrvBm64CommonDataObj;
+
+DRV_BM64_LINKBACKSTATUS DRV_BM64_LinkbackStatus;
+DRV_BM64_SYSTEMSTATUS DRV_BM64_SystemStatus;
+DRV_BM64_ECSBSTATUS DRV_BM64_eCSBStatus;
+DRV_BM64_CALLSTATUS DRV_BM64_CallStatus;
+DRV_BM64_LINEINSTATUS DRV_BM64_LineInStatus;
+DRV_BM64_A2DPSTATUS DRV_BM64_A2DPStatus;
+DRV_BM64_ALLCONNECTIONS DRV_BM64_AllConnections;
 
 // *****************************************************************************
 // *****************************************************************************

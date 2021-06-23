@@ -378,12 +378,12 @@ typedef struct {
 
 #define DRV_BM64_CONNECTION_MAX 3
 
-struct {
+typedef struct {
     uint8_t activeIndex;
     DRV_BM64_CONNECTION_STATUS allConnection[DRV_BM64_CONNECTION_MAX];
-} DRV_BM64_AllConnections;
+} DRV_BM64_ALLCONNECTIONS;
 
-enum {
+typedef enum {
     DRV_BM64_LINKBACK_INIT,       //init
     DRV_BM64_LINKBACK_CONNECTING, //sent link_back command but no event yet
     DRV_BM64_LINKBACK_OK,         //link back success, event
@@ -393,16 +393,16 @@ enum {
     DRV_BM64_PAIRING_OK,          //pair event
     DRV_BM64_PAIRING_FAILED,      //pair event
     DRV_BM64_LINK_CONNECTED,         //other event
-} DRV_BM64_LinkbackStatus;       // linkback status
+} DRV_BM64_LINKBACKSTATUS;       // linkback status
 
-enum {
+typedef enum {
     DRV_BM64_SYSTEM_INIT,         //init
     DRV_BM64_SYSTEM_POWER_OFF,    //event
     DRV_BM64_SYSTEM_POWER_ON,     //event
     DRV_BM64_SYSTEM_STANDBY,      //event
     DRV_BM64_SYSTEM_CONNECTED,    //event
     DRV_BM64_SYSTEM_PAIRING,      //event
-} DRV_BM64_SystemStatus;        // BT internal system status
+} DRV_BM64_SYSTEMSTATUS;        // BT internal system status
 
 enum DRV_BM64_NSPK_LINK_STATUS {
     DRV_BM64_NSPK_NO_LINK = 0,
@@ -436,13 +436,13 @@ enum DRV_BM64_NSPK_SYSTEM_STATUS {
     DRV_BM64_CSB_STATUS_BROADCAST_MASTER_CONNECTING,
 };
 
-struct {
+typedef struct {
     enum DRV_BM64_NSPK_LINK_STATUS nspk_link;
     enum DRV_BM64_NSPK_EVENT snpk_event;
     enum DRV_BM64_NSPK_SYSTEM_STATUS  nspk_status;
-} DRV_BM64_eCSBStatus;
+} DRV_BM64_ECSBSTATUS;
 
-enum {
+typedef enum  {
     DRV_BM64_CALL_IDLE = 0,
     DRV_BM64_VOICE_DIAL = 1,
     DRV_BM64_CALL_INCOMMING = 2,
@@ -450,22 +450,22 @@ enum {
     DRV_BM64_CALLING = 4,
     DRV_BM64_CALLING_WAITING = 5,
     DRV_BM64_CALLING_HOLD = 6
-} DRV_BM64_CallStatus;
+} DRV_BM64_CALLSTATUS;
 
-enum {
+typedef enum {
     LINE_IN_INACTIVE = 0,
     LINE_IN_ACTIVE,
     LINE_IN_ACTIVE_WITH_AUDIO,
     LINE_IN_WITH_SILENCE_AUDIO
-} DRV_BM64_LineInStatus;
+} DRV_BM64_LINEINSTATUS;
 
-enum {
+typedef enum {
     DRV_BM64_A2DP_IDLE = 0,
     DRV_BM64_A2DP_ACTIVE = 1
-} DRV_BM64_A2DPStatus;
+} DRV_BM64_A2DPSTATUS;
 
 void DRV_BM64_Timer_1ms( uintptr_t context);
-void DRV_BM64_Timer1MS_event();
+void DRV_BM64_Timer1MS_event( void );
 void DRV_BM64_EventHandler(uint8_t event, uint16_t para, uint8_t* para_full);
 
         void DRV_BM64_SaveLocalBDAddress(uint8_t* address);
